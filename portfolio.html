@@ -1,1 +1,47 @@
-... (will insert) ...
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | JS Cinematography</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="bg-black text-white font-sans">
+  <nav class="p-4 flex justify-between items-center bg-gray-900 shadow">
+    <h1 class="text-2xl font-bold">JS Cinematography</h1>
+    <ul class="flex space-x-4">
+      <li><a href="index.html" class="hover:underline">Home</a></li>
+      <li><a href="about.html" class="hover:underline">About</a></li>
+      <li><a href="portfolio.html" class="hover:underline font-bold">Portfolio</a></li>
+      <li><a href="photography.html" class="hover:underline">Photography</a></li>
+      <li><a href="contact.html" class="hover:underline">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="p-8 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6">Video Portfolio</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <iframe src="https://player.vimeo.com/video/1073431405" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+        <p class="mt-2 text-lg font-semibold">Health Services Spot</p>
+      </div>
+      <div>
+        <iframe src="https://player.vimeo.com/video/947238083" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+        <p class="mt-2 text-lg font-semibold">Long Time No See</p>
+      </div>
+      <div>
+        <iframe src="https://player.vimeo.com/video/947238109" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+        <p class="mt-2 text-lg font-semibold">The Day After</p>
+      </div>
+      <div>
+        <iframe width="100%" height="300" src="https://www.youtube.com/embed?listType=user_uploads&list=TheSalatiz" frameborder="0" allowfullscreen></iframe>
+        <p class="mt-2 text-lg font-semibold">More on YouTube</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="p-4 text-center text-gray-400 text-sm">
+    &copy; 2025 JS Cinematography. All rights reserved.
+  </footer>
+</body>
+</html>
