@@ -5,34 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | JS Cinematography</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <script defer>
+    function toggleMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+  </script>
 </head>
 <body class="bg-black text-white font-sans">
-  <nav class="p-4 flex justify-between items-center bg-gray-900 shadow">
-    <h1 class="text-2xl font-bold">JS Cinematography</h1>
-    <ul class="flex space-x-4">
-      <li><a href="index.html" class="hover:underline">Home</a></li>
-      <li><a href="about.html" class="hover:underline font-bold">About</a></li>
-      <li><a href="portfolio.html" class="hover:underline">Portfolio</a></li>
-      <li><a href="photography.html" class="hover:underline">Photography</a></li>
-      <li><a href="contact.html" class="hover:underline">Contact</a></li>
+  <nav class="bg-gray-900 bg-opacity-80 shadow fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <h1 class="text-2xl font-bold">JS Cinematography</h1>
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <ul class="hidden md:flex space-x-4 text-sm">
+        <li><a href="index.html" class="hover:underline">Home</a></li>
+        <li><a href="about.html" class="hover:underline">About</a></li>
+        <li><a href="portfolio.html" class="hover:underline">Portfolio</a></li>
+        <li><a href="photography.html" class="hover:underline">Photography</a></li>
+        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+      </ul>
+    </div>
+    <ul id="mobile-menu" class="md:hidden hidden flex flex-col px-4 pb-4 text-sm">
+      <li><a href="index.html" class="block py-1 hover:underline">Home</a></li>
+      <li><a href="about.html" class="block py-1 hover:underline">About</a></li>
+      <li><a href="portfolio.html" class="block py-1 hover:underline">Portfolio</a></li>
+      <li><a href="photography.html" class="block py-1 hover:underline">Photography</a></li>
+      <li><a href="contact.html" class="block py-1 hover:underline">Contact</a></li>
     </ul>
   </nav>
 
-  <main class="p-8 max-w-3xl mx-auto">
-    <h2 class="text-3xl font-bold mb-4">About Me</h2>
-    <p class="text-lg leading-relaxed text-gray-300">
-      My name is Juan Salazar, and I’m a Colombian filmmaker, visual storyteller, and multimedia artist with a deep love for cinematic expression and a dream bigger than myself.
+  <main class="max-w-4xl mx-auto px-4 pt-32 pb-20">
+    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
+    <p class="text-lg leading-relaxed text-gray-300 mb-4">
+      My name is Juan Salazar, and I’m a Colombian filmmaker, visual storyteller, and multimedia artist driven by a deep love for cinematic expression and a dream bigger than myself.
     </p>
-
-    <p class="text-lg leading-relaxed text-gray-300 mt-4">
-      I recently completed my degree in Film, Multimedia, and Production in the United States, where I’ve grown as a cinematographer, editor, and Director. For me, filmmaking is more than visuals — it’s about connection, identity, and purpose. Each frame I compose, each project I take on, is shaped by a desire to move people and represent truth with emotional clarity.
+    <p class="text-lg leading-relaxed text-gray-300 mb-4">
+      I recently completed my degree in Film, Multimedia, and Production in the United States, where I’ve grown as a cinematographer, editor, and creative producer. For me, filmmaking is more than visuals — it’s about connection, identity, and purpose. Each frame I compose, each project I take on, is shaped by a desire to move people and represent truth with emotional clarity.
     </p>
-
-    <p class="text-lg leading-relaxed text-gray-300 mt-4">
+    <p class="text-lg leading-relaxed text-gray-300 mb-4">
       My work reflects both technical skill and personal vision — blending natural light, intentional composition, and intuitive storytelling. Whether I’m directing a cinematic diary, crafting a short film, or capturing the energy of a live event, I strive to deliver content that resonates.
     </p>
-
-    <p class="text-lg leading-relaxed text-gray-300 mt-4">
+    <p class="text-lg leading-relaxed text-gray-300">
       As an international artist, I carry not just my camera, but my family’s hopes. I’m motivated by the dream of building a fulfilling life through meaningful work — and giving back to those who helped me get here.
     </p>
   </main>
