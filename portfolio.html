@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | JS Cinematography</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
   <script defer>
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
@@ -17,14 +17,14 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
       <h1 class="text-2xl font-bold">JS Cinematography</h1>
       <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
       <ul class="hidden md:flex space-x-4 text-sm">
         <li><a href="index.html" class="hover:underline">Home</a></li>
         <li><a href="about.html" class="hover:underline">About</a></li>
-        <li><a href="portfolio.html" class="hover:underline">Portfolio</a></li>
+        <li><a href="portfolio.html" class="hover:underline font-semibold">Portfolio</a></li>
         <li><a href="photography.html" class="hover:underline">Photography</a></li>
         <li><a href="contact.html" class="hover:underline">Contact</a></li>
       </ul>
@@ -39,6 +39,26 @@
   </nav>
 
   <main class="p-8 pt-28 max-w-6xl mx-auto">
+    <!-- 🎬 Ephemeral Highlight -->
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold mb-4">🎬 Ephemeral – Short Film</h2>
+      <p class="text-lg text-gray-300 mb-6 max-w-3xl">
+        <em>Ephemeral</em> My senior project — a deeply personal short film about depression, friendship, and mental health. 
+        I served as the cinematographer, color grading artist, and the only person in the lighting, camera, and grip department. This film is currently under consideration 
+        for festival distribution in 2026.
+      </p>
+      <div class="aspect-w-16 aspect-h-9 rounded shadow-lg overflow-hidden">
+        <iframe class="w-full h-full"
+                src="https://www.youtube.com/embed/eKQ7GISTy5g"
+                title="Ephemeral Short Film"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- 🎥 Main Portfolio Grid -->
     <h2 class="text-3xl font-bold mb-6">Video Portfolio</h2>
     <div class="grid md:grid-cols-2 gap-8">
       <div>
@@ -64,7 +84,7 @@
     </div>
   </main>
 
-  <footer class="p-4 text-center text-gray-400 text-sm">
+  <footer class="p-4 text-center text-gray-400 text-sm mt-12">
     &copy; 2025 JS Cinematography. All rights reserved.
   </footer>
 </body>
