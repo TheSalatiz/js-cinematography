@@ -18,19 +18,23 @@
       .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--secondary-color); }
+      
+      /* --- NEW FORM STYLES --- */
+      .form-label {
+        @apply block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2;
+      }
       .contact-input {
-        @apply w-full p-3 rounded-md bg-gray-900 text-white border border-gray-700;
+        @apply w-full p-3 bg-transparent text-white border-b-2 border-gray-700;
         transition: border-color 0.3s;
       }
       .contact-input:focus {
-        border-color: var(--accent-color);
+        border-color: var(--secondary-color);
         outline: none;
       }
-      .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out; z-index: 1; display: inline-block; }
+      .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out; z-index: 1; display: inline-block; }
       .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background-color: var(--accent-color); transition: height 0.4s ease; z-index: -1; }
-      .cta-button:hover { color: black; }
+      .cta-button:hover { color: black; border-color: var(--accent-color); }
       .cta-button:hover::before { height: 100%; }
-      .social-icon:hover { color: var(--secondary-color); transform: scale(1.1); }
     </style>
 </head>
 <body>
@@ -58,40 +62,38 @@
     </nav>
 
     <main class="py-24 sm:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h1 class="text-4xl md:text-5xl font-bold text-accent">Let's Create Together</h1>
-                <p class="mt-4 text-lg text-gray-400">Whether you're interested in collaborating, hiring, or just connecting — feel free to reach out.</p>
+        <div class="max-w-3xl mx-auto">
+            
+            <div class="text-center reveal" data-animate>
+                <h1 class="text-5xl md:text-6xl font-bold text-accent">Let's Create Together</h1>
+                <p class="mt-6 text-lg text-gray-400 max-w-xl mx-auto">Whether you're interested in collaborating, hiring, or just connecting — I’d love to hear from you.</p>
             </div>
 
-            <div class="mt-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
-                <div class="lg:col-span-1 space-y-8 reveal" data-animate>
-                    <div>
-                        <h3 class="text-lg font-bold uppercase tracking-wider">Email Me</h3>
-                        <a href="mailto:salazar.cinematography@gmail.com" class="text-gray-300 hover:text-accent transition">salazar.cinematography@gmail.com</a>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold uppercase tracking-wider">Find Me On</h3>
-                        <div class="flex space-x-4 mt-2">
-                            <a href="#" class="social-icon text-gray-400 transition" aria-label="LinkedIn"></a>
-                            <a href="#" class="social-icon text-gray-400 transition" aria-label="Vimeo"></a>
-                            <a href="#" class="social-icon text-gray-400 transition" aria-label="Instagram"></a>
+            <div class="mt-20 reveal" data-animate style="animation-delay: 0.2s;">
+                <form action="https://formspree.io/f/mblydwrk" method="POST" class="space-y-8">
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" name="name" id="name" class="contact-input" required>
+                        </div>
+                        <div>
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" name="_replyto" id="email" class="contact-input" required>
                         </div>
                     </div>
-                </div>
 
-                <div class="lg:col-span-2 reveal" data-animate style="animation-delay: 0.2s;">
-                    <form action="https://formspree.io/f/mblydwrk" method="POST" class="space-y-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <input type="text" name="name" placeholder="Your Name" class="contact-input" required>
-                            <input type="email" name="_replyto" placeholder="Your Email" class="contact-input" required>
-                        </div>
-                        <textarea name="message" placeholder="Your message" rows="6" class="contact-input" required></textarea>
-                        <button type="submit" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">
+                    <div>
+                        <label for="message" class="form-label">Message</label>
+                        <textarea name="message" id="message" rows="5" class="contact-input" required></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="cta-button w-full sm:w-auto px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">
                             Send Message
                         </button>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </main>
