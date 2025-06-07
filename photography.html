@@ -19,36 +19,34 @@
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--secondary-color); }
       
-      /* --- NEW STYLES for Gallery --- */
+      /* Styles for Gallery Items and Lightbox */
       .gallery-item {
-        @apply rounded-lg overflow-hidden shadow-2xl cursor-pointer;
+        @apply rounded-lg overflow-hidden shadow-lg cursor-pointer bg-gray-900;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       .gallery-item:hover {
-        transform: scale(1.03);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
       }
       .gallery-item img {
-        transition: transform 0.5s ease;
+        transition: transform 0.4s ease;
       }
       .gallery-item:hover img {
-        transform: scale(1.1);
+        transform: scale(1.05);
       }
-
-      /* --- NEW STYLES for Lightbox --- */
       .lightbox {
         @apply fixed inset-0 w-full h-full bg-black bg-opacity-90 flex items-center justify-center z-50;
         animation: fadeIn 0.3s ease;
       }
       .lightbox-content {
-        @apply max-w-4xl max-h-4/5;
+        @apply max-w-5xl max-h-4/5 p-4;
         animation: slideIn 0.3s ease;
       }
       .lightbox-content img {
-        @apply w-full h-full object-contain;
+        @apply w-full h-full object-contain rounded-lg shadow-2xl;
       }
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+      @keyframes slideIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
@@ -76,38 +74,39 @@
     </nav>
 
     <main class="py-24 sm:py-32 px-6">
-        <div class="max-w-7xl mx-auto space-y-24 sm:space-y-32">
+        <div class="max-w-7xl mx-auto">
 
             <section class="text-center max-w-4xl mx-auto reveal" data-animate>
                 <h1 class="text-4xl md:text-5xl font-bold text-accent">Photography</h1>
                 <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
             </section>
             
-            <section>
+            <section class="mt-20">
                 <div class="max-w-4xl mx-auto text-center reveal" data-animate>
                     <h2 class="text-3xl font-bold">Senior Recital & Showcase</h2>
                     <p class="mt-4 text-gray-400 max-w-2xl mx-auto">A selection composed and lit to highlight expression, elegance, and presence.</p>
                 </div>
-                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-fr">
-                    <div class="gallery-item md:col-span-2 md:row-span-2 reveal" data-animate><img src="photo1.jpg" alt="Recital Photo 1" loading="lazy" class="w-full h-full object-cover"></div>
+                <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                    <div class="gallery-item reveal" data-animate><img src="photo1.jpg" alt="Recital Photo 1" loading="lazy" class="w-full h-full object-cover"></div>
                     <div class="gallery-item reveal" data-animate style="animation-delay: 0.1s;"><img src="photo2.jpg" alt="Recital Photo 2" loading="lazy" class="w-full h-full object-cover"></div>
                     <div class="gallery-item reveal" data-animate style="animation-delay: 0.2s;"><img src="photo3.jpg" alt="Recital Photo 3" loading="lazy" class="w-full h-full object-cover"></div>
                 </div>
             </section>
             
-            <section>
+            <section class="mt-24 sm:mt-32">
                 <div class="max-w-4xl mx-auto text-center reveal" data-animate>
                     <h2 class="text-3xl font-bold">Senior Graduation Photos</h2>
                     <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Portraits reflecting joy, pride, and the beauty of a milestone fulfilled.</p>
                 </div>
-                <div class="mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-fr">
-                    <div class="gallery-item reveal" data-animate><img src="DSC00563-min.jpg" alt="Graduation Photo 1" loading="lazy" class="w-full h-full object-cover"></div>
-                    <div class="gallery-item md:col-span-2 reveal" data-animate style="animation-delay: 0.1s;"><img src="DSC00517-min.jpg" alt="Graduation Photo 2" loading="lazy" class="w-full h-full object-cover"></div>
-                    <div class="gallery-item md:col-span-2 reveal" data-animate style="animation-delay: 0.2s;"><img src="DSC00504-min.jpg" alt="Graduation Photo 3" loading="lazy" class="w-full h-full object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.3s;"><img src="DSC00409-min.jpg" alt="Graduation Photo 4" loading="lazy" class="w-full h-full object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.4s;"><img src="DSC00956-min.jpg" alt="Graduation Photo 5" loading="lazy" class="w-full h-full object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.5s;"><img src="DSC00811-min.jpg" alt="Graduation Photo 6" loading="lazy" class="w-full h-full object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.6s;"><img src="untitled-21-min.jpg" alt="Graduation Photo 7" loading="lazy" class="w-full h-full object-cover"></div>
+                <div class="mt-16 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                    <div class="gallery-item reveal" data-animate><img src="DSC00563-min.jpg" alt="Graduation Photo 1" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.1s;"><img src="DSC00517-min.jpg" alt="Graduation Photo 2" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.2s;"><img src="DSC00504-min.jpg" alt="Graduation Photo 3" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.3s;"><img src="DSC00409-min.jpg" alt="Graduation Photo 4" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.4s;"><img src="DSC00956-min.jpg" alt="Graduation Photo 5" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.5s;"><img src="DSC00811-min.jpg" alt="Graduation Photo 6" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.6s;"><img src="untitled-21-min.jpg" alt="Graduation Photo 7" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.7s;"><img src="DSC01581-min.jpg" alt="Graduation Photo 8" loading="lazy" class="w-full h-full object-cover aspect-w-1 aspect-h-1"></div>
                 </div>
             </section>
         </div>
@@ -119,12 +118,12 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        // --- Mobile Menu Toggle ---
+        // Mobile Menu Toggle
         const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
         const mobileMenu = document.getElementById('mobile-menu');
         menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         
-        // --- Scroll Animations ---
+        // Scroll Animations
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) { entry.target.classList.add('active'); }
@@ -133,7 +132,7 @@
         const animatedElements = document.querySelectorAll('[data-animate]');
         animatedElements.forEach(el => observer.observe(el));
 
-        // --- NEW Lightbox Logic ---
+        // Lightbox Logic
         const galleryItems = document.querySelectorAll('.gallery-item');
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
@@ -142,17 +141,14 @@
                 const lightbox = document.createElement('div');
                 lightbox.classList.add('lightbox');
                 
-                const lightboxContent = document.createElement('div');
-                lightboxContent.classList.add('lightbox-content');
+                lightbox.innerHTML = `
+                    <div class="lightbox-content">
+                        <img src="${imgSrc}" alt="Full-size image">
+                    </div>
+                `;
                 
-                const fullImage = document.createElement('img');
-                fullImage.src = imgSrc;
-                
-                lightboxContent.appendChild(fullImage);
-                lightbox.appendChild(lightboxContent);
                 document.body.appendChild(lightbox);
                 
-                // Close lightbox when clicking on the background
                 lightbox.addEventListener('click', () => {
                     lightbox.remove();
                 });
