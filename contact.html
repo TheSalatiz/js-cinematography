@@ -19,17 +19,33 @@
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--secondary-color); }
       
-      /* --- NEW FORM STYLES --- */
+      /* --- UPDATED FORM STYLES --- */
       .form-label {
-        @apply block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2;
+        @apply block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2;
       }
-      .contact-input {
-        @apply w-full p-3 bg-transparent text-white border-b-2 border-gray-700;
-        transition: border-color 0.3s;
+      /* Add red asterisk to required labels */
+      .form-label.required::after {
+        content: ' *';
+        color: var(--accent-color);
       }
-      .contact-input:focus {
+      .contact-input, .contact-select {
+        @apply w-full p-3 bg-gray-900 bg-opacity-50 text-white border border-gray-700 rounded-md;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
+      .contact-input:focus, .contact-select:focus {
         border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px hsla(174, 57%, 53%, 0.3);
         outline: none;
+      }
+      /* Basic styling for the select arrow */
+      .contact-select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1.25em;
       }
       .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out; z-index: 1; display: inline-block; }
       .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background-color: var(--accent-color); transition: height 0.4s ease; z-index: -1; }
@@ -62,35 +78,53 @@
     </nav>
 
     <main class="py-24 sm:py-32 px-6">
-        <div class="max-w-3xl mx-auto">
+        <div class="max-w-4xl mx-auto">
             
-            <div class="text-center reveal" data-animate>
-                <h1 class="text-5xl md:text-6xl font-bold text-accent">Let's Create Together</h1>
-                <p class="mt-6 text-lg text-gray-400 max-w-xl mx-auto">Whether you're interested in collaborating, hiring, or just connecting — I’d love to hear from you.</p>
+            <div class="text-left reveal" data-animate>
+                <h1 class="text-5xl md:text-6xl font-bold text-white">Connect With Me</h1>
+                <p class="mt-6 text-lg text-gray-400 max-w-3xl">
+                    Whether you're interested in collaborating on a film, hiring for a project, or just want to connect about creative work — feel free to reach out. I’d love to hear from you.
+                </p>
             </div>
 
-            <div class="mt-20 reveal" data-animate style="animation-delay: 0.2s;">
+            <div class="mt-16 reveal" data-animate style="animation-delay: 0.2s;">
                 <form action="https://formspree.io/f/mblydwrk" method="POST" class="space-y-8">
                     
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <label for="name" class="form-label">Full Name</label>
-                            <input type="text" name="name" id="name" class="contact-input" required>
+                            <label for="first-name" class="form-label required">First Name</label>
+                            <input type="text" name="first-name" id="first-name" class="contact-input" required>
                         </div>
                         <div>
-                            <label for="email" class="form-label">Email Address</label>
-                            <input type="email" name="_replyto" id="email" class="contact-input" required>
+                            <label for="last-name" class="form-label required">Last Name</label>
+                            <input type="text" name="last-name" id="last-name" class="contact-input" required>
                         </div>
                     </div>
 
                     <div>
-                        <label for="message" class="form-label">Message</label>
-                        <textarea name="message" id="message" rows="5" class="contact-input" required></textarea>
+                        <label for="email" class="form-label required">Work Email</label>
+                        <input type="email" name="_replyto" id="email" class="contact-input" required>
                     </div>
 
-                    <div class="text-center">
-                        <button type="submit" class="cta-button w-full sm:w-auto px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">
-                            Send Message
+                    <div>
+                        <label for="inquiry-type" class="form-label required">What best describes your inquiry?</label>
+                        <select id="inquiry-type" name="inquiry-type" class="contact-select" required>
+                            <option value="">Please Select</option>
+                            <option value="Cinematography Project">Cinematography Project</option>
+                            <option value="Photography Session">Photography Session</option>
+                            <option value="Consulting">Consulting</option>
+                            <option value="General Question">General Question</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="form-label required">How can I help you?</label>
+                        <textarea name="message" id="message" rows="6" class="contact-input" required></textarea>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="cta-button px-12 py-3 border-2 border-white rounded-full font-bold text-base tracking-wider uppercase">
+                            Submit
                         </button>
                     </div>
                 </form>
