@@ -18,6 +18,17 @@
       .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--secondary-color); }
+
+      /* --- NEW STYLE FOR "COLOMBIAN" --- */
+      /* This creates the smooth gradient of the Colombian flag colors */
+      .colombian-flag-text {
+        font-weight: 700; /* Makes the color stand out more */
+        background: linear-gradient(to right, #FFCD00, #003893, #CE1126);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
     </style>
 </head>
 <body>
@@ -48,7 +59,7 @@
         <div class="max-w-7xl mx-auto">
             
             <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h1 class="text-4xl md:text-5xl font-bold">About Me</h1>
+                <h1 class="text-4xl md:text-5xl font-bold text-accent">About Me</h1>
                 <p class="mt-4 text-lg text-gray-400">Filmmaker, Storyteller, Artist</p>
             </div>
 
@@ -60,16 +71,16 @@
 
                 <div class="md:col-span-2 text-lg text-gray-300 leading-relaxed space-y-6 reveal" data-animate style="animation-delay: 0.2s;">
                     <p>
-                        My name is Juan Salazar. I’m a Colombian filmmaker and visual storyteller, but <span class="text-accent">that’s just the surface.</span>
+                        My name is Juan Salazar. I’m a <span class="colombian-flag-text">Colombian</span> filmmaker and visual storyteller, but that’s just the surface.
                     </p>
                     <p>
-                        Back home, my first camera was my phone. I didn’t have gear or connections, just the instinct to record moments that <strong class="text-white">felt important.</strong> 
+                        Back home, my first camera was my phone. I didn’t have gear or connections, just the instinct to record moments that felt important. 
                     </p>
                     <p>
-                        When I moved to the US to study film and multimedia, everything changed and also, nothing did. I learned the craft, the tools, the language of production. I became a cinematographer, an editor, and a producer. But I’m still chasing the same feeling I had when I was 15, filming with shaky hands, trying to capture something <span class="text-accent">real.</span>
+                        When I moved to the US to study film and multimedia, everything changed and also, nothing did. I learned the craft, the tools, the language of production. I became a cinematographer, an editor, and a producer. But I’m still chasing the same feeling I had when I was 15, filming with shaky hands, trying to capture something real.
                     </p>
                     <p>
-                        For me, filmmaking is about <strong class="text-white">presence.</strong> It’s not just how it looks. <span class="text-accent">It’s how it feels.</span> I work with natural light, clean frames, and honest pacing. Whether I’m shooting a personal short, a live event, or a branded story, my goal is to make the viewer stop for a second and <strong class="text-white">feel seen.</strong>
+                        For me, filmmaking is about presence. It’s not just how it looks. It’s how it feels. I work with natural light, clean frames, and honest pacing. Whether I’m shooting a personal short, a live event, or a branded story, my goal is to make the viewer stop for a second and feel seen.
                     </p>
                     <p class="italic">
                         I carry more than just a camera. I carry the responsibility of a dream that doesn’t just belong to me. My work is my way of giving back, of building something solid enough to stand on, and maybe one day, let someone else climb it too.
