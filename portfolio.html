@@ -1,94 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | JS Cinematography</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
-  <script defer>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Juan Salazar Cinema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root { --accent-color: #ec4899; --secondary-color: #40e0d0; }
+      body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; }
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .menu-item a { position: relative; transition: color 0.3s ease; }
+      .menu-item a.active-link { color: white; font-weight: 700; }
+      .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover { color: white; }
+      .menu-item a:hover:after { width: 100%; }
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      .text-accent { color: var(--secondary-color); }
+      .card {
+        @apply bg-gray-900 bg-opacity-50 rounded-lg overflow-hidden shadow-lg;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
+      }
+      .card iframe {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* Ensures a consistent video shape */
+      }
+    </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <!-- Navigation -->
-  <nav class="bg-gray-900 bg-opacity-80 shadow fixed top-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-2xl font-bold">JS Cinematography</h1>
-      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-      <ul class="hidden md:flex space-x-4 text-sm">
-        <li><a href="index.html" class="hover:underline">Home</a></li>
-        <li><a href="about.html" class="hover:underline">About</a></li>
-        <li><a href="portfolio.html" class="hover:underline font-semibold">Portfolio</a></li>
-        <li><a href="photography.html" class="hover:underline">Photography</a></li>
-        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+<body>
+    <nav id="main-nav" class="sticky top-0 w-full z-50 bg-black">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
+        <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html" class="text-gray-300">Home</a></li>
+            <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
+            <li class="menu-item"><a href="portfolio.html" class="active-link">Portfolio</a></li>
+            <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
+            <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
+        </ul>
+      </div>
+      <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
+          <li><a href="index.html" class="block py-2 text-gray-300">Home</a></li>
+          <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
+          <li><a href="portfolio.html" class="block py-2 text-white">Portfolio</a></li>
+          <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
+          <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
       </ul>
-    </div>
-    <ul id="mobile-menu" class="md:hidden hidden flex flex-col px-4 pb-4 text-sm">
-      <li><a href="index.html" class="block py-1 hover:underline">Home</a></li>
-      <li><a href="about.html" class="block py-1 hover:underline">About</a></li>
-      <li><a href="portfolio.html" class="block py-1 hover:underline">Portfolio</a></li>
-      <li><a href="photography.html" class="block py-1 hover:underline">Photography</a></li>
-      <li><a href="contact.html" class="block py-1 hover:underline">Contact</a></li>
-    </ul>
-  </nav>
+    </nav>
 
-  <!-- Main Content -->
-  <main class="p-8 pt-28 max-w-6xl mx-auto">
-    <!-- 🎬 Ephemeral Highlight -->
-    <section class="mb-16">
-      <h2 class="text-4xl font-bold mb-4">🎬 Ephemeral – Short Film</h2>
-      <p class="text-lg text-gray-300 mb-6 max-w-3xl">
-        <em>Ephemeral</em> is my senior project — a deeply personal short film about depression, friendship, and mental health. 
-        I served as the cinematographer, color grading artist, and the only person in the lighting, camera, and grip department. 
-        This film is currently under consideration for festival distribution in 2026.
-      </p>
-      <div class="w-full max-w-5xl mx-auto rounded overflow-hidden shadow-lg mb-10" style="height: 550px;">
-        <iframe class="w-full h-full"
-                src="https://www.youtube.com/embed/weYjcut-2u4"
-                title="Ephemeral Short Film"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-        </iframe>
-      </div>
-    </section>
+    <main class="py-24 sm:py-32 px-6">
+        <div class="max-w-7xl mx-auto space-y-24 sm:space-y-32">
 
-    <!-- 🎥 Main Portfolio Grid -->
-    <h2 class="text-3xl font-bold mb-6">Video Portfolio</h2>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div>
-        <iframe src="https://player.vimeo.com/video/947238083" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-        <p class="mt-2 text-lg font-semibold">Blue Pill Red Pill (Matrix Short)</p>
-      </div>
-      <div>
-        <iframe src="https://player.vimeo.com/video/1073431405" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-        <p class="mt-2 text-lg font-semibold">GSU Immunization Compliance Spot</p>
-      </div>
-      <div>
-        <iframe width="100%" height="300" src="https://www.youtube.com/embed/1g93Kf2msoE" frameborder="0" allowfullscreen></iframe>
-        <p class="mt-2 text-lg font-semibold">Long Time No See</p>
-      </div>
-      <div>
-        <iframe width="100%" height="300" src="https://www.youtube.com/embed/dfunWv1MXuw" frameborder="0" allowfullscreen></iframe>
-        <p class="mt-2 text-lg font-semibold">The Day After</p>
-      </div>
-      <div>
-        <iframe src="https://player.vimeo.com/video/947238109" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-        <p class="mt-2 text-lg font-semibold">Code Words (GFA Project)</p>
-      </div>
-    </div>
-  </main>
+            <section class="text-center max-w-4xl mx-auto reveal" data-animate>
+                <h1 class="text-4xl md:text-5xl font-bold text-accent">Video Portfolio</h1>
+                <p class="mt-4 text-lg text-gray-400">A collection of my work in motion.</p>
+            </section>
 
-  <!-- Footer -->
-  <footer class="p-4 text-center text-gray-400 text-sm mt-12">
-    &copy; 2025 JS Cinematography. All rights reserved.
-  </footer>
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="reveal" data-animate>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">🎬 Ephemeral – Short Film</h2>
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        <em>Ephemeral</em> is my senior project — a deeply personal short film about depression, friendship, and mental health. 
+                        I served as the cinematographer, color grading artist, and the only person in the lighting, camera, and grip department. 
+                        This film is currently under consideration for festival distribution.
+                    </p>
+                </div>
+                <div class="card reveal" data-animate style="animation-delay: 0.2s;">
+                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </section>
+
+            <section>
+                <div class="max-w-4xl mx-auto text-center reveal" data-animate>
+                    <h2 class="text-3xl font-bold">More Work</h2>
+                </div>
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="card reveal" data-animate>
+                        <iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe>
+                        <p class="p-4 text-lg font-semibold">Blue Pill Red Pill (Matrix Short)</p>
+                    </div>
+                    <div class="card reveal" data-animate style="animation-delay: 0.1s;">
+                        <iframe src="https://player.vimeo.com/video/1073431405" frameborder="0" allowfullscreen></iframe>
+                        <p class="p-4 text-lg font-semibold">GSU Immunization Compliance Spot</p>
+                    </div>
+                    <div class="card reveal" data-animate style="animation-delay: 0.2s;">
+                        <iframe src="https://www.youtube.com/embed/1g93Kf2msoE" frameborder="0" allowfullscreen></iframe>
+                        <p class="p-4 text-lg font-semibold">Long Time No See</p>
+                    </div>
+                    <div class="card reveal" data-animate style="animation-delay: 0.3s;">
+                        <iframe src="https://www.youtube.com/embed/dfunWv1MXuw" frameborder="0" allowfullscreen></iframe>
+                        <p class="p-4 text-lg font-semibold">The Day After</p>
+                    </div>
+                    <div class="card reveal" data-animate style="animation-delay: 0.4s;">
+                        <iframe src="https://player.vimeo.com/video/947238109" frameborder="0" allowfullscreen></iframe>
+                        <p class="p-4 text-lg font-semibold">Code Words (GFA Project)</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+      © 2025 Juan Salazar Cinema. All rights reserved.
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('active'); }
+          });
+        }, { threshold: 0.1 });
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        animatedElements.forEach(el => observer.observe(el));
+      });
+    </script>
 </body>
 </html>
