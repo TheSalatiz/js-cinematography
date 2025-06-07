@@ -1,61 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About | JS Cinematography</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <script defer>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About | Juan Salazar Cinema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root { --accent-color: #ec4899; --secondary-color: #40e0d0; }
+      body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; }
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .menu-item a { position: relative; transition: color 0.3s ease; }
+      .menu-item a.active-link { color: white; font-weight: 700; }
+      .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover { color: white; }
+      .menu-item a:hover:after { width: 100%; }
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <nav class="bg-gray-900 bg-opacity-80 shadow fixed top-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-2xl font-bold">JS Cinematography</h1>
-      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <ul class="hidden md:flex space-x-4 text-sm">
-        <li><a href="index.html" class="hover:underline">Home</a></li>
-        <li><a href="about.html" class="hover:underline">About</a></li>
-        <li><a href="portfolio.html" class="hover:underline">Portfolio</a></li>
-        <li><a href="photography.html" class="hover:underline">Photography</a></li>
-        <li><a href="contact.html" class="hover:underline">Contact</a></li>
+<body>
+    <nav id="main-nav" class="sticky top-0 w-full z-50 bg-black">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
+        <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html" class="text-gray-300">Home</a></li>
+            <li class="menu-item"><a href="about.html" class="active-link">About</a></li>
+            <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
+            <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
+            <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
+        </ul>
+      </div>
+      <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
+          <li><a href="index.html" class="block py-2 text-gray-300">Home</a></li>
+          <li><a href="about.html" class="block py-2 text-white">About</a></li>
+          <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
+          <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
+          <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
       </ul>
-    </div>
-    <ul id="mobile-menu" class="md:hidden hidden flex flex-col px-4 pb-4 text-sm">
-      <li><a href="index.html" class="block py-1 hover:underline">Home</a></li>
-      <li><a href="about.html" class="block py-1 hover:underline">About</a></li>
-      <li><a href="portfolio.html" class="block py-1 hover:underline">Portfolio</a></li>
-      <li><a href="photography.html" class="block py-1 hover:underline">Photography</a></li>
-      <li><a href="contact.html" class="block py-1 hover:underline">Contact</a></li>
-    </ul>
-  </nav>
+    </nav>
 
-  <main class="max-w-4xl mx-auto px-4 pt-32 pb-20">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
-    <p class="text-lg leading-relaxed text-gray-300 mb-4">
-      My name is Juan Salazar, and I’m a Colombian filmmaker, visual storyteller, and multimedia artist driven by a deep love for cinematic expression and a dream bigger than myself.
-    </p>
-    <p class="text-lg leading-relaxed text-gray-300 mb-4">
-      I recently completed my degree in Film, Multimedia, and Production in the United States, where I’ve grown as a cinematographer, editor, and creative producer. For me, filmmaking is more than visuals — it’s about connection, identity, and purpose. Each frame I compose, each project I take on, is shaped by a desire to move people and represent truth with emotional clarity.
-    </p>
-    <p class="text-lg leading-relaxed text-gray-300 mb-4">
-      My work reflects both technical skill and personal vision — blending natural light, intentional composition, and intuitive storytelling. Whether I’m directing a cinematic diary, crafting a short film, or capturing the energy of a live event, I strive to deliver content that resonates.
-    </p>
-    <p class="text-lg leading-relaxed text-gray-300">
-      As an international artist, I carry not just my camera, but my family’s hopes. I’m motivated by the dream of building a fulfilling life through meaningful work — and giving back to those who helped me get here.
-    </p>
-  </main>
+    <main class="py-24 sm:py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+                <h2 class="text-4xl md:text-5xl font-bold">About Me</h2>
+                <p class="mt-4 text-lg text-gray-400">Filmmaker, Storyteller, Artist</p>
+            </div>
 
-  <footer class="p-4 text-center text-gray-400 text-sm">
-    &copy; 2025 JS Cinematography. All rights reserved.
-  </footer>
+            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
+                <div class="md:col-span-1 reveal" data-animate>
+                    <img src="https://placehold.co/600x800/111111/FFFFFF?text=Juan+Salazar" alt="A photo of Juan Salazar" class="rounded-lg shadow-2xl w-full">
+                </div>
+
+                <div class="md:col-span-2 text-lg text-gray-300 leading-relaxed space-y-6 reveal" data-animate style="animation-delay: 0.2s;">
+                    <p>
+                        My name is Juan Salazar, and I’m a Colombian filmmaker, visual storyteller, and multimedia artist driven by a deep love for cinematic expression and a dream bigger than myself.
+                    </p>
+                    <p>
+                        I recently completed my degree in Film, Multimedia, and Production in the United States, where I’ve grown as a cinematographer, editor, and creative producer. For me, filmmaking is more than visuals — it’s about <strong class="text-white">connection, identity, and purpose.</strong> Each frame I compose, each project I take on, is shaped by a desire to move people and represent truth with emotional clarity.
+                    </p>
+                    <p>
+                        My work reflects both technical skill and personal vision — blending natural light, intentional composition, and intuitive storytelling. Whether I’m directing a cinematic diary, crafting a short film, or capturing the energy of a live event, I strive to deliver content that resonates.
+                    </p>
+                    <p>
+                        As an international artist, I carry not just my camera, but my family’s hopes. I’m motivated by the dream of building a fulfilling life through meaningful work — and giving back to those who helped me get here.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+      © 2025 Juan Salazar Cinema. All rights reserved.
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('active'); }
+          });
+        }, { threshold: 0.1 });
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        animatedElements.forEach(el => observer.observe(el));
+      });
+    </script>
 </body>
 </html>
