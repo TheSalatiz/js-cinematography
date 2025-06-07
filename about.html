@@ -17,6 +17,12 @@
       .menu-item a:hover:after { width: 100%; }
       .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
+      .text-accent { color: var(--secondary-color); }
+      /* New style for the blockquote */
+      .philosophy-quote {
+        border-left: 4px solid var(--accent-color);
+        padding-left: 2rem;
+      }
     </style>
 </head>
 <body>
@@ -44,32 +50,46 @@
     </nav>
 
     <main class="py-24 sm:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h2 class="text-4xl md:text-5xl font-bold">About Me</h2>
-                <p class="mt-4 text-lg text-gray-400">Filmmaker, Storyteller, Artist</p>
-            </div>
+        <div class="max-w-5xl mx-auto space-y-24 sm:space-y-32">
 
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-center">
+            <section class="text-center max-w-4xl mx-auto reveal" data-animate>
+                <h1 class="text-4xl md:text-6xl font-bold leading-tight">My name is Juan Salazar.</h1>
+                <p class="mt-6 text-xl md:text-2xl text-gray-300">
+                    I’m a Colombian filmmaker and visual storyteller, <br class="hidden sm:block"> but that’s just the surface.
+                </p>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start">
                 <div class="md:col-span-1 reveal" data-animate>
                     <img src="https://placehold.co/600x800/111111/FFFFFF?text=Juan+Salazar" alt="A photo of Juan Salazar" class="rounded-lg shadow-2xl w-full">
                 </div>
-
                 <div class="md:col-span-2 text-lg text-gray-300 leading-relaxed space-y-6 reveal" data-animate style="animation-delay: 0.2s;">
                     <p>
-                        My name is Juan Salazar, and I’m a Colombian filmmaker, visual storyteller, and multimedia artist driven by a deep love for cinematic expression and a dream bigger than myself.
+                        Back home, my first camera was my phone. I didn’t have gear or connections, just the instinct to record moments that felt important. 
                     </p>
                     <p>
-                        I recently completed my degree in Film, Multimedia, and Production in the United States, where I’ve grown as a cinematographer, editor, and creative producer. For me, filmmaking is more than visuals — it’s about <strong class="text-white">connection, identity, and purpose.</strong> Each frame I compose, each project I take on, is shaped by a desire to move people and represent truth with emotional clarity.
-                    </p>
-                    <p>
-                        My work reflects both technical skill and personal vision — blending natural light, intentional composition, and intuitive storytelling. Whether I’m directing a cinematic diary, crafting a short film, or capturing the energy of a live event, I strive to deliver content that resonates.
-                    </p>
-                    <p>
-                        As an international artist, I carry not just my camera, but my family’s hopes. I’m motivated by the dream of building a fulfilling life through meaningful work — and giving back to those who helped me get here.
+                        When I moved to the US to study film and multimedia, everything changed and also, nothing did. I learned the craft, the tools, the language of production. I became a cinematographer, an editor, and a producer. But I’m still chasing the same feeling I had when I was 15, filming with shaky hands, trying to capture something <strong class="text-white">real.</strong>
                     </p>
                 </div>
-            </div>
+            </section>
+
+            <section class="max-w-4xl mx-auto text-center reveal" data-animate>
+                <div class="philosophy-quote">
+                    <h2 class="text-3xl md:text-4xl font-bold leading-snug">
+                        For me, filmmaking is about <span class="text-accent">presence.</span> It’s not just how it looks. <strong class="text-white">It’s how it feels.</strong>
+                    </h2>
+                </div>
+                <p class="mt-8 text-lg text-gray-300 leading-relaxed">
+                    I work with natural light, clean frames, and honest pacing. Whether I’m shooting a personal short, a live event, or a branded story, my goal is to make the viewer stop for a second and feel seen.
+                </p>
+            </section>
+
+            <section class="max-w-4xl mx-auto text-center reveal" data-animate>
+                <p class="text-xl md:text-2xl text-gray-200 leading-relaxed italic">
+                    "I carry more than just a camera. I carry the responsibility of a dream that doesn’t just belong to me. My work is my way of giving back, of building something solid enough to stand on, and maybe one day, let someone else climb it too."
+                </p>
+            </section>
+
         </div>
     </main>
 
