@@ -12,7 +12,6 @@
     #home { background: radial-gradient(circle at 15% 25%, hsla(185, 75%, 60%, 0.15), transparent 40%), radial-gradient(circle at 85% 70%, hsla(324, 82%, 64%, 0.15), transparent 40%), #050505; }
     .video-container { background: #111; padding: 1rem; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); }
     .video-container video { border-radius: 1rem; width: 100%; height: 100%; object-fit: cover; }
-    .highlight-word { color: var(--secondary-color); }
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
     .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
     .menu-item a { position: relative; transition: color 0.3s ease; }
@@ -32,6 +31,9 @@
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
     .contact-input { background-color: #111; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s; }
     .contact-input:focus { border-color: var(--accent-color); outline: none; }
+    /* NEW classes for text emphasis */
+    .text-accent { color: var(--secondary-color); }
+    .highlight-word { color: var(--secondary-color); font-weight: 700; }
   </style>
 </head>
 <body>
@@ -39,9 +41,7 @@
   <nav id="main-nav" class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
-      <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
-      </button>
+      <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg></button>
       <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
         <li class="menu-item"><a href="index.html" class="active-link">Home</a></li>
         <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
@@ -62,7 +62,7 @@
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="text-center md:text-left reveal" data-animate>
-            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
+            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="text-accent">telling</span> Through Light.</h2>
             <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
             <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
         </div>
@@ -77,42 +77,61 @@
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-            <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell your story.</h2>
-            <p class="mt-8 text-2xl text-gray-200">I put the human side at the <span class="text-white font-bold">center</span> 🎯 of everything I do.</p>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell <span class="text-accent">your story.</span></h2>
+            <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
         </div>
         <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            <article class="reveal" data-animate>
-                <h4 class="service-title">Creative</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">Curiosity unleashed.</h3>
-                <p class="text-gray-400 leading-relaxed">I lean on the power of ideas to create content the audience actually WANTS to see. I am an international storyteller who believes that a post can change lives, have a good impact in the world, and in YOUR company. So I pay equal respect to both.</p>
-            </article>
-            <article class="reveal" data-animate>
-                <h4 class="service-title">Media</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">I chase impact, not impressions.</h3>
-                <p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p>
-            </article>
-            <article class="reveal" data-animate>
-                <h4 class="service-title">Strategy</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">People first. Always.</h3>
-                <p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p>
-            </article>
-            <article class="reveal" data-animate>
-                <h4 class="service-title">Consulting</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story differently.</h3>
-                <p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p>
-            </article>
+            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">Leaning on the power of ideas to create content the audience actually WANTS to see. I believe that a post can change lives, have a good impact on the world, and in YOUR company. So I pay equal respect to both.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4"><span class="text-accent">Chase impact,</span> not impressions.</h3><p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story <span class="text-accent">differently.</span></h3><p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p></article>
         </div>
     </div>
   </section>
 
   <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
-    </section>
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Featured Videos</h2>
+            <p class="mt-4 text-lg text-gray-400">A selection of my recent work in cinematography.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="card reveal" data-animate><iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Ephemeral – Short Film</h3><p class="text-gray-400 mt-2">A deeply personal short film about depression, friendship, and mental health.</p></div></div>
+            <div class="card reveal" data-animate><iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Blue Pill Red Pill (Matrix Short)</h3><p class="text-gray-400 mt-2">A short, modern take on a classic scene.</p></div></div>
+        </div>
+        <div class="text-center mt-20 reveal" data-animate>
+            <a href="portfolio.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
+        </div>
+    </div>
+  </section>
   
   <section id="photography" class="py-24 sm:py-32 bg-black px-6">
-    </section>
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Photography Gallery</h2>
+            <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="card reveal" data-animate><img src="photo1.jpg" alt="Photography Project 1" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo2.jpg" alt="Photography Project 2" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo3.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
+        </div>
+        <div class="text-center mt-20 reveal" data-animate>
+            <a href="photography.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
+        </div>
+    </div>
+  </section>
 
   <section id="contact" class="py-24 sm:py-32 px-6">
-    </section>
+    <div class="max-w-4xl mx-auto text-center reveal" data-animate>
+        <h2 class="text-4xl md:text-5xl font-bold">Let's Create Together</h2>
+        <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Have a project in mind or just want to say hello? I’d love to hear from you.</p>
+        <div class="mt-12">
+            <form action="#" method="POST" class="grid grid-cols-1 gap-y-6 text-left"><input type="text" name="name" placeholder="Your Name" class="contact-input w-full rounded-md p-3"><input type="email" name="email" placeholder="Your Email" class="contact-input w-full rounded-md p-3"><textarea name="message" rows="5" placeholder="Your Message" class="contact-input w-full rounded-md p-3"></textarea><button type="submit" class="cta-button w-full md:w-auto md:mx-auto px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Send Message</button></form>
+            <p class="text-xs text-gray-600 mt-4">* This form is a visual template and not connected to a backend.</p>
+        </div>
+    </div>
+  </section>
 
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
