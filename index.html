@@ -13,16 +13,11 @@
     }
     body {
       font-family: 'DM Sans', sans-serif;
-      background-color: #050505; /* Slightly off-black */
+      background-color: #050505;
       color: #f1f1f1;
-      /* cursor: none; <-- This has been removed */
       -webkit-font-smoothing: antialiased;
       scroll-behavior: smooth;
     }
-
-    /* .mouse-follower { ... } <-- This entire style block has been removed */
-
-    /* --- HERO SECTION STYLES --- */
     #home {
       background: 
         radial-gradient(circle at 15% 25%, hsla(185, 75%, 60%, 0.15), transparent 40%),
@@ -42,14 +37,8 @@
       height: 100%;
       object-fit: cover;
     }
-    .highlight-word {
-        color: var(--secondary-color);
-    }
-
-    /* --- Navigation Bar --- */
-    #main-nav {
-      transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
-    }
+    .highlight-word { color: var(--secondary-color); }
+    #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
     .nav-scroll {
       background-color: rgba(5, 5, 5, 0.75) !important;
       backdrop-filter: blur(12px);
@@ -90,14 +79,12 @@
     }
     .cta-button:hover { color: black; }
     .cta-button:hover::before { height: 100%; }
-    
     .service-title {
       color: var(--accent-color);
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
     }
-
     .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -106,6 +93,31 @@
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
+    }
+    /* --- NEW --- Styles for portfolio & gallery cards */
+    .card {
+      background: #111;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+    .card-image-placeholder {
+      background-color: #222;
+      aspect-ratio: 16 / 9;
+    }
+    .contact-input {
+        background-color: #111;
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: border-color 0.3s;
+    }
+    .contact-input:focus {
+        border-color: var(--accent-color);
+        outline: none;
     }
   </style>
 </head>
@@ -120,74 +132,97 @@
       <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
         <li class="menu-item"><a href="#home" class="text-gray-300">Home</a></li>
         <li class="menu-item"><a href="#services" class="text-gray-300">Services</a></li>
-        <li class="menu-item"><a href="#portfolio" class="text-gray-300">Portfolio</a></li>
+        <li class="menu-item"><a href="#portfolio" class="text-gray-300">Videos</a></li>
+        <li class="menu-item"><a href="#photography" class="text-gray-300">Photos</a></li>
         <li class="menu-item"><a href="#contact" class="text-gray-300">Contact</a></li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
       <li><a href="#home" class="block py-2 text-white">Home</a></li>
       <li><a href="#services" class="block py-2 text-gray-300">Services</a></li>
-      <li><a href="#portfolio" class="block py-2 text-gray-300">Portfolio</a></li>
+      <li><a href="#portfolio" class="block py-2 text-gray-300">Videos</a></li>
+      <li><a href="#photography" class="block py-2 text-gray-300">Photos</a></li>
       <li><a href="#contact" class="block py-2 text-gray-300">Contact</a></li>
     </ul>
   </nav>
 
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        
         <div class="text-center md:text-left reveal" data-animate>
-            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">
-                Story<span class="highlight-word">telling</span> Through Light.
-            </h2>
-            <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">
-                A curated collection of work created with purpose and precision.
-            </p>
-            <a href="#services" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">
-                Our Services
-            </a>
+            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
+            <a href="#services" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Our Services</a>
         </div>
-
         <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
             <div class="video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="Jun_06__1203_31s_202506061700_lu5m3 (1).mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+                <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3 (1).mp4" type="video/mp4"></video>
             </div>
         </div>
-
     </div>
   </main>
   
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-        <h2 class="text-4xl md:text-5xl font-bold leading-tight">We're not just a media company.</h2>
-        <h3 class="text-4xl md:text-5xl font-bold text-gray-400 leading-tight mt-2">We would love to tell your story.</h3>
-        <p class="mt-12 text-2xl text-gray-200">We put the emotions at the <span class="text-white font-bold">center</span> &#127919; of everything we do.</p>
-      </div>
-      <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-        <article class="reveal" data-animate>
-          <h4 class="service-title">Creative</h4>
-          <h3 class="text-3xl font-bold mt-4 mb-4">Curiosity unleashed.</h3>
-          <p class="text-gray-400 leading-relaxed">We lean on the power of ideas to create content the audience actually WANTS to see. We are international storytellers who believe a social post can change lives and have a good impact in the world and in YOUR company. So we pay equal respect to both.</p>
-        </article>
-        <article class="reveal" data-animate>
-          <h4 class="service-title">Media</h4>
-          <h3 class="text-3xl font-bold mt-4 mb-4">We chase impact, not impressions.</h3>
-          <p class="text-gray-400 leading-relaxed">Our obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. We disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p>
-        </article>
-        <article class="reveal" data-animate>
-          <h4 class="service-title">Strategy</h4>
-          <h3 class="text-3xl font-bold mt-4 mb-4">People first. Always.</h3>
-          <p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. We research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p>
-        </article>
-        <article class="reveal" data-animate>
-          <h4 class="service-title">Consulting</h4>
-          <h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story differently.</h3>
-          <p class="text-gray-400 leading-relaxed">Work with us to unlock new ways to shape your message, engage your audience, and build lasting connection through the power of visual storytelling.</p>
-        </article>
-      </div>
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">We're not just a media company.</h2>
+            <h3 class="text-4xl md:text-5xl font-bold text-gray-400 leading-tight mt-2">We would love to tell your story.</h3>
+            <p class="mt-12 text-2xl text-gray-200">We put the emotions at the <span class="text-white font-bold">center</span> &#127919; of everything we do.</p>
+        </div>
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">We lean on the power of ideas to create content the audience actually WANTS to see. We are international storytellers who believe a social post can change lives and have a good impact in the world and in YOUR company. So we pay equal respect to both.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4">We chase impact, not impressions.</h3><p class="text-gray-400 leading-relaxed">Our obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. We disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. We research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story differently.</h3><p class="text-gray-400 leading-relaxed">Work with us to unlock new ways to shape your message, engage your audience, and build lasting connection through the power of visual storytelling.</p></article>
+        </div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Featured Videos</h2>
+            <p class="mt-4 text-lg text-gray-400">A selection of our recent work in cinematography.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="card reveal" data-animate>
+                <div class="card-image-placeholder"></div>
+                <div class="p-6"><h3 class="font-bold text-xl">Project Title One</h3><p class="text-gray-400 mt-2">Short description of the music video, commercial, or film project.</p></div>
+            </div>
+            <div class="card reveal" data-animate>
+                <div class="card-image-placeholder"></div>
+                <div class="p-6"><h3 class="font-bold text-xl">Project Title Two</h3><p class="text-gray-400 mt-2">Short description of the music video, commercial, or film project.</p></div>
+            </div>
+        </div>
+    </div>
+  </section>
+  
+  <section id="photography" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Photography Gallery</h2>
+            <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="card reveal" data-animate><img src="https://placehold.co/600x400/050505/40e0d0?text=Photo+1" alt="Photography Project 1" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="https://placehold.co/600x400/050505/ec4899?text=Photo+2" alt="Photography Project 2" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="https://placehold.co/600x400/050505/FFFFFF?text=Photo+3" alt="Photography Project 3" class="w-full h-full object-cover"></div>
+        </div>
+    </div>
+  </section>
+
+  <section id="contact" class="py-24 sm:py-32 px-6">
+    <div class="max-w-4xl mx-auto text-center reveal" data-animate>
+        <h2 class="text-4xl md:text-5xl font-bold">Let's Create Together</h2>
+        <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Have a project in mind or just want to say hello? We’d love to hear from you.</p>
+        <div class="mt-12">
+            <form action="#" method="POST" class="grid grid-cols-1 gap-y-6 text-left">
+                <input type="text" name="name" placeholder="Your Name" class="contact-input w-full rounded-md p-3">
+                <input type="email" name="email" placeholder="Your Email" class="contact-input w-full rounded-md p-3">
+                <textarea name="message" rows="5" placeholder="Your Message" class="contact-input w-full rounded-md p-3"></textarea>
+                <button type="submit" class="cta-button w-full md:w-auto md:mx-auto px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Send Message</button>
+            </form>
+            <p class="text-xs text-gray-600 mt-4">* Please note: This form is a visual template and is not connected to a backend service.</p>
+        </div>
     </div>
   </section>
 
@@ -197,36 +232,21 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-      // --- Interactive Mouse Follower has been removed ---
-
-      // --- Mobile Menu Toggle ---
       const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
       const mobileMenu = document.getElementById('mobile-menu');
-      menuButton.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
-      });
+      menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
       
-      // --- Navigation Bar Scroll Effect ---
       const nav = document.getElementById('main-nav');
       window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-          nav.classList.add('nav-scroll');
-        } else {
-          nav.classList.remove('nav-scroll');
-        }
+        if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } 
+        else { nav.classList.remove('nav-scroll'); }
       });
 
-      // --- Dynamic Scroll Animations ---
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
+          if (entry.isIntersecting) { entry.target.classList.add('active'); }
         });
-      }, {
-        threshold: 0.1
-      });
+      }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
     });
