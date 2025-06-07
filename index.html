@@ -3,129 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS Cinematography | A Modern Portfolio</title>
+  <title>Juan Salazar Cinema | A Modern Portfolio</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --accent-color: #ec4899; /* pink-500 */
-      --secondary-color: #40e0d0; /* turquoise */
-    }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background-color: #050505;
-      color: #f1f1f1;
-      -webkit-font-smoothing: antialiased;
-      scroll-behavior: smooth;
-    }
-    #home {
-      background: 
-        radial-gradient(circle at 15% 25%, hsla(185, 75%, 60%, 0.15), transparent 40%),
-        radial-gradient(circle at 85% 70%, hsla(324, 82%, 64%, 0.15), transparent 40%),
-        #050505;
-    }
-    .video-container {
-      background: #111;
-      padding: 1rem;
-      border-radius: 1.5rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-    .video-container video {
-      border-radius: 1rem;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    :root { --accent-color: #ec4899; --secondary-color: #40e0d0; }
+    body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+    #home { background: radial-gradient(circle at 15% 25%, hsla(185, 75%, 60%, 0.15), transparent 40%), radial-gradient(circle at 85% 70%, hsla(324, 82%, 64%, 0.15), transparent 40%), #050505; }
+    .video-container { background: #111; padding: 1rem; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); }
+    .video-container video { border-radius: 1rem; width: 100%; height: 100%; object-fit: cover; }
     .highlight-word { color: var(--secondary-color); }
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
-    .nav-scroll {
-      background-color: rgba(5, 5, 5, 0.75) !important;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .menu-item a {
-      position: relative;
-      transition: color 0.3s ease;
-    }
-    .menu-item a.active-link {
-        color: white;
-        font-weight: 700;
-    }
-    .menu-item a:after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background-color: var(--accent-color);
-      transition: width 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
-    }
+    .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .menu-item a { position: relative; transition: color 0.3s ease; }
+    .menu-item a.active-link { color: white; font-weight: 700; }
+    .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
     .menu-item a:hover { color: white; }
     .menu-item a:hover:after { width: 100%; }
-    .cta-button {
-      position: relative;
-      overflow: hidden;
-      transition: color 0.4s ease-in-out;
-      z-index: 1;
-      display: inline-block;
-    }
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 0%;
-      background-color: var(--accent-color);
-      transition: height 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
-      z-index: -1;
-    }
+    .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out; z-index: 1; display: inline-block; }
+    .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background-color: var(--accent-color); transition: height 0.4s ease; z-index: -1; }
     .cta-button:hover { color: black; }
     .cta-button:hover::before { height: 100%; }
-    .service-title {
-      color: var(--accent-color);
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .card {
-      background: #111;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    .contact-input {
-        background-color: #111;
-        border: 1px solid rgba(255,255,255,0.1);
-        transition: border-color 0.3s;
-    }
-    .contact-input:focus {
-        border-color: var(--accent-color);
-        outline: none;
-    }
+    .service-title { color: var(--accent-color); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .card iframe { width: 100%; aspect-ratio: 16 / 9; }
+    .contact-input { background-color: #111; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s; }
+    .contact-input:focus { border-color: var(--accent-color); outline: none; }
   </style>
 </head>
 <body>
   
   <nav id="main-nav" class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="text-2xl font-bold tracking-wider">JS CINEMA</a>
+      <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
       <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
       </button>
@@ -151,7 +64,7 @@
         <div class="text-center md:text-left reveal" data-animate>
             <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
             <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
-            <a href="#services" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Our Services</a>
+            <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
         </div>
         <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
             <div class="video-container">
@@ -162,7 +75,35 @@
   </main>
   
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
-    </section>
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell your story.</h2>
+            <p class="mt-8 text-2xl text-gray-200">I put the human side at the <span class="text-white font-bold">center</span> 🎯 of everything I do.</p>
+        </div>
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+            <article class="reveal" data-animate>
+                <h4 class="service-title">Creative</h4>
+                <h3 class="text-3xl font-bold mt-4 mb-4">Curiosity unleashed.</h3>
+                <p class="text-gray-400 leading-relaxed">I lean on the power of ideas to create content the audience actually WANTS to see. I am an international storyteller who believes that a post can change lives, have a good impact in the world, and in YOUR company. So I pay equal respect to both.</p>
+            </article>
+            <article class="reveal" data-animate>
+                <h4 class="service-title">Media</h4>
+                <h3 class="text-3xl font-bold mt-4 mb-4">I chase impact, not impressions.</h3>
+                <p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p>
+            </article>
+            <article class="reveal" data-animate>
+                <h4 class="service-title">Strategy</h4>
+                <h3 class="text-3xl font-bold mt-4 mb-4">People first. Always.</h3>
+                <p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p>
+            </article>
+            <article class="reveal" data-animate>
+                <h4 class="service-title">Consulting</h4>
+                <h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story differently.</h3>
+                <p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p>
+            </article>
+        </div>
+    </div>
+  </section>
 
   <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
     </section>
@@ -174,12 +115,27 @@
     </section>
 
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
-    © 2025 JS Cinematography. All rights reserved.
+    © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
 
   <script>
-    // The JavaScript for animations and the mobile menu is here
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+      const mobileMenu = document.getElementById('mobile-menu');
+      menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+      const nav = document.getElementById('main-nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } 
+        else { nav.classList.remove('nav-scroll'); }
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('active'); }
+        });
+      }, { threshold: 0.1 });
+      const animatedElements = document.querySelectorAll('[data-animate]');
+      animatedElements.forEach(el => observer.observe(el));
+    });
   </script>
-
 </body>
 </html>
