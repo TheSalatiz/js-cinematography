@@ -48,6 +48,10 @@
       position: relative;
       transition: color 0.3s ease;
     }
+    .menu-item a.active-link { /* Style for the active page link */
+        color: white;
+        font-weight: 700;
+    }
     .menu-item a:after {
       content: '';
       position: absolute;
@@ -65,6 +69,7 @@
       overflow: hidden;
       transition: color 0.4s ease-in-out;
       z-index: 1;
+      display: inline-block;
     }
     .cta-button::before {
       content: '';
@@ -94,7 +99,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* --- NEW --- Styles for portfolio & gallery cards */
     .card {
       background: #111;
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -105,10 +109,6 @@
     .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    }
-    .card-image-placeholder {
-      background-color: #222;
-      aspect-ratio: 16 / 9;
     }
     .contact-input {
         background-color: #111;
@@ -125,24 +125,24 @@
   
   <nav id="main-nav" class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#home" class="text-2xl font-bold tracking-wider">JS CINEMA</a>
+      <a href="index.html" class="text-2xl font-bold tracking-wider">JS CINEMA</a>
       <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
       </button>
       <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
-        <li class="menu-item"><a href="#home" class="text-gray-300">Home</a></li>
-        <li class="menu-item"><a href="#services" class="text-gray-300">Services</a></li>
-        <li class="menu-item"><a href="#portfolio" class="text-gray-300">Videos</a></li>
-        <li class="menu-item"><a href="#photography" class="text-gray-300">Photos</a></li>
-        <li class="menu-item"><a href="#contact" class="text-gray-300">Contact</a></li>
+        <li class="menu-item"><a href="index.html" class="active-link">Home</a></li>
+        <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
+        <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
+        <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
+        <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
-      <li><a href="#home" class="block py-2 text-white">Home</a></li>
-      <li><a href="#services" class="block py-2 text-gray-300">Services</a></li>
-      <li><a href="#portfolio" class="block py-2 text-gray-300">Videos</a></li>
-      <li><a href="#photography" class="block py-2 text-gray-300">Photos</a></li>
-      <li><a href="#contact" class="block py-2 text-gray-300">Contact</a></li>
+      <li><a href="index.html" class="block py-2 text-white">Home</a></li>
+      <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
+      <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
+      <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
+      <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
     </ul>
   </nav>
 
@@ -151,11 +151,11 @@
         <div class="text-center md:text-left reveal" data-animate>
             <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
             <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
-            <a href="#services" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Our Services</a>
+            <a href="#services" class="cta-button">Our Services</a>
         </div>
         <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
             <div class="video-container">
-                <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3 (1).mp4" type="video/mp4"></video>
+                <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3.mp4" type="video/mp4"></video>
             </div>
         </div>
     </div>
@@ -166,13 +166,13 @@
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
             <h2 class="text-4xl md:text-5xl font-bold leading-tight">We're not just a media company.</h2>
             <h3 class="text-4xl md:text-5xl font-bold text-gray-400 leading-tight mt-2">We would love to tell your story.</h3>
-            <p class="mt-12 text-2xl text-gray-200">We put the emotions at the <span class="text-white font-bold">center</span> &#127919; of everything we do.</p>
+            <p class="mt-12 text-2xl text-gray-200">We put the emotions at the <span class="text-white font-bold">center</span> 🎯 of everything we do.</p>
         </div>
         <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">We lean on the power of ideas to create content the audience actually WANTS to see. We are international storytellers who believe a social post can change lives and have a good impact in the world and in YOUR company. So we pay equal respect to both.</p></article>
-            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4">We chase impact, not impressions.</h3><p class="text-gray-400 leading-relaxed">Our obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. We disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
-            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. We research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
-            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story differently.</h3><p class="text-gray-400 leading-relaxed">Work with us to unlock new ways to shape your message, engage your audience, and build lasting connection through the power of visual storytelling.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">We lean on the power of ideas to create content the audience actually WANTS to see...</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4">We chase impact, not impressions.</h3><p class="text-gray-400 leading-relaxed">Our obsession is understanding where attention lives today...</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to...</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story differently.</h3><p class="text-gray-400 leading-relaxed">Work with us to unlock new ways to shape your message...</p></article>
         </div>
     </div>
   </section>
@@ -184,14 +184,8 @@
             <p class="mt-4 text-lg text-gray-400">A selection of our recent work in cinematography.</p>
         </div>
         <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="card reveal" data-animate>
-                <div class="card-image-placeholder"></div>
-                <div class="p-6"><h3 class="font-bold text-xl">Project Title One</h3><p class="text-gray-400 mt-2">Short description of the music video, commercial, or film project.</p></div>
-            </div>
-            <div class="card reveal" data-animate>
-                <div class="card-image-placeholder"></div>
-                <div class="p-6"><h3 class="font-bold text-xl">Project Title Two</h3><p class="text-gray-400 mt-2">Short description of the music video, commercial, or film project.</p></div>
-            </div>
+            <div class="card reveal" data-animate><div class="card-image-placeholder"></div><div class="p-6"><h3 class="font-bold text-xl">Project Title One</h3><p class="text-gray-400 mt-2">Short description of the music video, commercial, or film project.</p></div></div>
+            <div class="card reveal" data-animate><div class="card-image-placeholder"></div><div class="p-6"><h3 class="font-bold text-xl">Project Title Two</h3><p class="text-gray-400 mt-2">Short description of the music video, commercial, or film project.</p></div></div>
         </div>
     </div>
   </section>
@@ -203,9 +197,9 @@
             <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
         </div>
         <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="card reveal" data-animate><img src="https://placehold.co/600x400/050505/40e0d0?text=Photo+1" alt="Photography Project 1" class="w-full h-full object-cover"></div>
-            <div class="card reveal" data-animate><img src="https://placehold.co/600x400/050505/ec4899?text=Photo+2" alt="Photography Project 2" class="w-full h-full object-cover"></div>
-            <div class="card reveal" data-animate><img src="https://placehold.co/600x400/050505/FFFFFF?text=Photo+3" alt="Photography Project 3" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo1.jpg" alt="Photography Project 1" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo2.jpg" alt="Photography Project 2" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo3.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
         </div>
     </div>
   </section>
@@ -221,13 +215,13 @@
                 <textarea name="message" rows="5" placeholder="Your Message" class="contact-input w-full rounded-md p-3"></textarea>
                 <button type="submit" class="cta-button w-full md:w-auto md:mx-auto px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Send Message</button>
             </form>
-            <p class="text-xs text-gray-600 mt-4">* Please note: This form is a visual template and is not connected to a backend service.</p>
+            <p class="text-xs text-gray-600 mt-4">* This form is a visual template and not connected to a backend.</p>
         </div>
     </div>
   </section>
 
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
-    &copy; 2025 JS Cinematography. All rights reserved.
+    © 2025 JS Cinematography. All rights reserved.
   </footer>
 
   <script>
@@ -235,13 +229,11 @@
       const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
       const mobileMenu = document.getElementById('mobile-menu');
       menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-      
       const nav = document.getElementById('main-nav');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } 
         else { nav.classList.remove('nav-scroll'); }
       });
-
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) { entry.target.classList.add('active'); }
