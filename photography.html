@@ -1,90 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Photography | JS Cinematography</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
-  <script defer>
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
-    }
-  </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photography | Juan Salazar Cinema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root { --accent-color: #ec4899; --secondary-color: #40e0d0; }
+      body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; }
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .menu-item a { position: relative; transition: color 0.3s ease; }
+      .menu-item a.active-link { color: white; font-weight: 700; }
+      .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover { color: white; }
+      .menu-item a:hover:after { width: 100%; }
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      .text-accent { color: var(--secondary-color); }
+      
+      /* --- NEW STYLES for Gallery --- */
+      .gallery-item {
+        @apply rounded-lg overflow-hidden shadow-2xl cursor-pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .gallery-item:hover {
+        transform: scale(1.03);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+      .gallery-item img {
+        transition: transform 0.5s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      /* --- NEW STYLES for Lightbox --- */
+      .lightbox {
+        @apply fixed inset-0 w-full h-full bg-black bg-opacity-90 flex items-center justify-center z-50;
+        animation: fadeIn 0.3s ease;
+      }
+      .lightbox-content {
+        @apply max-w-4xl max-h-4/5;
+        animation: slideIn 0.3s ease;
+      }
+      .lightbox-content img {
+        @apply w-full h-full object-contain;
+      }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
-<body class="bg-black text-white font-sans">
-  <!-- Navigation -->
-  <nav class="bg-gray-900 bg-opacity-80 shadow fixed top-0 w-full z-50">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-2xl font-bold">JS Cinematography</h1>
-      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-      <ul class="hidden md:flex space-x-4 text-sm">
-        <li><a href="index.html" class="hover:underline">Home</a></li>
-        <li><a href="about.html" class="hover:underline">About</a></li>
-        <li><a href="portfolio.html" class="hover:underline">Portfolio</a></li>
-        <li><a href="photography.html" class="hover:underline">Photography</a></li>
-        <li><a href="contact.html" class="hover:underline">Contact</a></li>
-      </ul>
-    </div>
-    <ul id="mobile-menu" class="md:hidden hidden flex flex-col px-4 pb-4 text-sm">
-      <li><a href="index.html" class="block py-1 hover:underline">Home</a></li>
-      <li><a href="about.html" class="block py-1 hover:underline">About</a></li>
-      <li><a href="portfolio.html" class="block py-1 hover:underline">Portfolio</a></li>
-      <li><a href="photography.html" class="block py-1 hover:underline">Photography</a></li>
-      <li><a href="contact.html" class="block py-1 hover:underline">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="p-8 pt-28 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6">Photography</h2>
-
-    <!-- Senior Recital Section -->
-    <h3 class="text-2xl font-semibold mb-4 mt-6">Senior Recital & Showcase</h3>
-    <p class="text-lg text-gray-300 mb-6">
-      A selection from a senior recital and professional showcase shoot — composed and lit to highlight expression, elegance, and presence.
-    </p>
-    <div class="grid md:grid-cols-3 gap-6 mb-12">
-      <img src="photo1.jpg" alt="Recital Photo 1" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="photo2.jpg" alt="Recital Photo 2" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="photo3.jpg" alt="Recital Photo 3" class="rounded shadow-md w-full" loading="lazy" />
-    </div>
-
-    <!-- Senior Graduation Section -->
-    <h3 class="text-2xl font-semibold mb-4 mt-12">Senior Graduation Photos</h3>
-    <p class="text-lg text-gray-300 mb-6">
-      Captured moments of celebration and achievement — these graduation portraits reflect joy, pride, and the beauty of a milestone fulfilled.
-    </p>
-    <div class="grid md:grid-cols-3 gap-6">
-      <img src="DSC00563-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC00517-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC00504-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC00409-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-
-      <!-- Wrapped version of DSC00956-min with fixed height and object-cover -->
-      <div class="h-[480px] overflow-hidden rounded shadow-md">
-        <img src="DSC00956-min.jpg" alt="Graduation Photo" class="w-full h-full object-cover" loading="lazy" />
+<body>
+    <nav id="main-nav" class="sticky top-0 w-full z-50 bg-black">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
+        <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html" class="text-gray-300">Home</a></li>
+            <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
+            <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
+            <li class="menu-item"><a href="photography.html" class="active-link">Photography</a></li>
+            <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
+        </ul>
       </div>
+      <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
+          <li><a href="index.html" class="block py-2 text-gray-300">Home</a></li>
+          <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
+          <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
+          <li><a href="photography.html" class="block py-2 text-white">Photography</a></li>
+          <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
+      </ul>
+    </nav>
 
-      <img src="DSC00811-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC00677-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC00661-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC00634-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC01628-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="untitled-21-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="Untitled-2-min.png" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-      <img src="DSC01581-min.jpg" alt="Graduation Photo" class="rounded shadow-md w-full" loading="lazy" />
-    </div>
-  </main>
+    <main class="py-24 sm:py-32 px-6">
+        <div class="max-w-7xl mx-auto space-y-24 sm:space-y-32">
 
-  <!-- Footer -->
-  <footer class="p-4 text-center text-gray-400 text-sm mt-12">
-    &copy; 2025 JS Cinematography. All rights reserved.
-  </footer>
+            <section class="text-center max-w-4xl mx-auto reveal" data-animate>
+                <h1 class="text-4xl md:text-5xl font-bold text-accent">Photography</h1>
+                <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
+            </section>
+            
+            <section>
+                <div class="max-w-4xl mx-auto text-center reveal" data-animate>
+                    <h2 class="text-3xl font-bold">Senior Recital & Showcase</h2>
+                    <p class="mt-4 text-gray-400 max-w-2xl mx-auto">A selection composed and lit to highlight expression, elegance, and presence.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-fr">
+                    <div class="gallery-item md:col-span-2 md:row-span-2 reveal" data-animate><img src="photo1.jpg" alt="Recital Photo 1" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.1s;"><img src="photo2.jpg" alt="Recital Photo 2" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.2s;"><img src="photo3.jpg" alt="Recital Photo 3" loading="lazy" class="w-full h-full object-cover"></div>
+                </div>
+            </section>
+            
+            <section>
+                <div class="max-w-4xl mx-auto text-center reveal" data-animate>
+                    <h2 class="text-3xl font-bold">Senior Graduation Photos</h2>
+                    <p class="mt-4 text-gray-400 max-w-2xl mx-auto">Portraits reflecting joy, pride, and the beauty of a milestone fulfilled.</p>
+                </div>
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-fr">
+                    <div class="gallery-item reveal" data-animate><img src="DSC00563-min.jpg" alt="Graduation Photo 1" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item md:col-span-2 reveal" data-animate style="animation-delay: 0.1s;"><img src="DSC00517-min.jpg" alt="Graduation Photo 2" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item md:col-span-2 reveal" data-animate style="animation-delay: 0.2s;"><img src="DSC00504-min.jpg" alt="Graduation Photo 3" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.3s;"><img src="DSC00409-min.jpg" alt="Graduation Photo 4" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.4s;"><img src="DSC00956-min.jpg" alt="Graduation Photo 5" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.5s;"><img src="DSC00811-min.jpg" alt="Graduation Photo 6" loading="lazy" class="w-full h-full object-cover"></div>
+                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.6s;"><img src="untitled-21-min.jpg" alt="Graduation Photo 7" loading="lazy" class="w-full h-full object-cover"></div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+      © 2025 Juan Salazar Cinema. All rights reserved.
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        
+        // --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) { entry.target.classList.add('active'); }
+          });
+        }, { threshold: 0.1 });
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        animatedElements.forEach(el => observer.observe(el));
+
+        // --- NEW Lightbox Logic ---
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                
+                const lightbox = document.createElement('div');
+                lightbox.classList.add('lightbox');
+                
+                const lightboxContent = document.createElement('div');
+                lightboxContent.classList.add('lightbox-content');
+                
+                const fullImage = document.createElement('img');
+                fullImage.src = imgSrc;
+                
+                lightboxContent.appendChild(fullImage);
+                lightbox.appendChild(lightboxContent);
+                document.body.appendChild(lightbox);
+                
+                // Close lightbox when clicking on the background
+                lightbox.addEventListener('click', () => {
+                    lightbox.remove();
+                });
+            });
+        });
+      });
+    </script>
 </body>
 </html>
-
