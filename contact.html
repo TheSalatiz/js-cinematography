@@ -19,17 +19,18 @@
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--secondary-color); }
       
-      /* --- UPDATED FORM STYLES --- */
+      /* --- FORM STYLES UPDATED AS PER YOUR REQUEST --- */
       .form-label {
-        @apply block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2;
+        /* Made the question text bigger */
+        @apply block text-sm font-bold text-gray-400 uppercase tracking-wider mb-2;
       }
-      /* Add red asterisk to required labels */
       .form-label.required::after {
         content: ' *';
         color: var(--accent-color);
       }
       .contact-input, .contact-select {
-        @apply w-full p-3 bg-gray-900 bg-opacity-50 text-white border border-gray-700 rounded-md;
+        /* Increased padding, changed background to black, changed border to white */
+        @apply w-full p-4 bg-black text-white border border-white rounded-md;
         transition: border-color 0.3s, box-shadow 0.3s;
       }
       .contact-input:focus, .contact-select:focus {
@@ -37,14 +38,13 @@
         box-shadow: 0 0 0 3px hsla(174, 57%, 53%, 0.3);
         outline: none;
       }
-      /* Basic styling for the select arrow */
       .contact-select {
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%23FFFFFF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E");
         background-repeat: no-repeat;
-        background-position: right 0.75rem center;
+        background-position: right 1rem center;
         background-size: 1.25em;
       }
       .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out; z-index: 1; display: inline-block; }
