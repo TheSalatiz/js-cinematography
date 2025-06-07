@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JS Cinematography</title>
+  <title>JS Cinematography | Storytelling Through Light</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
+    /* --- Base Setup & Video Background --- */
     .bg-video {
       position: fixed;
       top: 0;
@@ -16,56 +18,134 @@
       z-index: -2;
     }
     .overlay {
-      position: absolute;
+      position: fixed; /* Changed to fixed to cover the whole viewport */
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0,0,0,0.85));
+      /* Using the colorful gradient from file 1 */
+      background: linear-gradient(to bottom, rgba(64, 224, 208, 0.2) 0%, rgba(255, 192, 203, 0.8) 80%);
       z-index: -1;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* --- Typography & Logo --- */
+    .logo-font {
+      font-family: 'Orbitron', sans-serif;
+    }
+    .letter-spacing-wide {
+      letter-spacing: 0.2em;
+    }
+    
+    /* --- Navigation Styling & Animations --- */
+    .nav-scroll {
+      background-color: rgba(0, 0, 0, 0.9) !important;
+      backdrop-filter: blur(10px);
+    }
+    .menu-item {
+      position: relative;
+    }
+    .menu-item:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      transition: width 0.3s ease;
+    }
+    .menu-item:hover:after {
+      width: 100%;
+    }
+    .mobile-menu-item {
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      padding-left: 1rem;
+    }
+    .mobile-menu-item:hover {
+      border-left: 3px solid white;
+      padding-left: 1.5rem;
+    }
+
+    /* --- Button & Card Styling --- */
+    .cta-button {
+      transition: all 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    }
+    .cta-button:hover {
+      transform: scale(1.05) translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+    }
+    .content-card {
+      backdrop-filter: blur(6px);
+      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* --- Animations --- */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
     }
   </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white">
+  
   <video class="bg-video" autoplay muted loop playsinline>
     <source src="Jun_06__1203_31s_202506061700_lu5m3 (1).mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
   <div class="overlay"></div>
 
-  <nav class="fixed top-0 w-full z-50 bg-black bg-opacity-70 shadow">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-      <h1 class="text-2xl font-bold tracking-wide">JS Cinematography</h1>
-      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-black bg-opacity-40 shadow-md transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+        </svg>
+        <h1 class="text-2xl font-bold logo-font">JS CINEMA</h1>
+      </div>
+      <button class="md:hidden text-white focus:outline-none" onclick="toggleMenu()" aria-label="Toggle menu">
+        <svg class="w-8 h-8 text-gray-300 hover:text-white transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
-      <ul class="hidden md:flex space-x-6 text-sm uppercase tracking-wider">
-        <li><a href="index.html" class="hover:text-gray-300">Home</a></li>
-        <li><a href="about.html" class="hover:text-gray-300">About</a></li>
-        <li><a href="portfolio.html" class="hover:text-gray-300">Portfolio</a></li>
-        <li><a href="photography.html" class="hover:text-gray-300">Photography</a></li>
-        <li><a href="contact.html" class="hover:text-gray-300">Contact</a></li>
+      <ul class="hidden md:flex space-x-8 text-sm uppercase font-medium tracking-wider">
+        <li class="menu-item"><a href="index.html" class="text-white hover:text-pink-300 transition">Home</a></li>
+        <li class="menu-item"><a href="about.html" class="text-gray-300 hover:text-pink-300 transition">About</a></li>
+        <li class="menu-item"><a href="portfolio.html" class="text-gray-300 hover:text-pink-300 transition">Portfolio</a></li>
+        <li class="menu-item"><a href="photography.html" class="text-gray-300 hover:text-pink-300 transition">Galleries</a></li>
+        <li class="menu-item"><a href="contact.html" class="text-gray-300 hover:text-pink-300 transition">Contact</a></li>
       </ul>
     </div>
-    <ul id="mobile-menu" class="md:hidden hidden flex flex-col px-4 pb-4 text-sm bg-black bg-opacity-80">
-      <li><a href="index.html" class="block py-1 hover:text-gray-300">Home</a></li>
-      <li><a href="about.html" class="block py-1 hover:text-gray-300">About</a></li>
-      <li><a href="portfolio.html" class="block py-1 hover:text-gray-300">Portfolio</a></li>
-      <li><a href="photography.html" class="block py-1 hover:text-gray-300">Photography</a></li>
-      <li><a href="contact.html" class="block py-1 hover:text-gray-300">Contact</a></li>
+    <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-90 transition-all duration-300 transform origin-top">
+      <li><a href="index.html" class="mobile-menu-item block py-2 text-white hover:text-pink-300">Home</a></li>
+      <li><a href="about.html" class="mobile-menu-item block py-2 text-gray-300 hover:text-pink-300">About</a></li>
+      <li><a href="portfolio.html" class="mobile-menu-item block py-2 text-gray-300 hover:text-pink-300">Portfolio</a></li>
+      <li><a href="photography.html" class="mobile-menu-item block py-2 text-gray-300 hover:text-pink-300">Galleries</a></li>
+      <li><a href="contact.html" class="mobile-menu-item block py-2 text-gray-300 hover:text-pink-300">Contact</a></li>
     </ul>
   </nav>
 
-  <main class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-6 pt-32">
-    <div class="backdrop-blur-sm bg-black bg-opacity-50 p-8 rounded-lg max-w-2xl">
-      <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight tracking-tight">Cinematic Vision. Emotional Depth.</h2>
-      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
-        Welcome to <strong>JS Cinematography</strong> — where storytelling meets light, movement, and soul.
-        Explore a curated collection of film, multimedia, and photography work created with purpose and precision.
+  <main class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <div class="content-card p-8 rounded-lg max-w-3xl fade-in">
+      <h2 class="text-4xl sm:text-5xl font-extrabold mb-6 leading-tight tracking-tight logo-font">
+        Cinematic Vision. Emotional Depth.
+      </h2>
+      <p class="text-lg text-gray-200 mb-8 leading-relaxed">
+        Welcome to <strong>JS Cinematography</strong> — where storytelling meets light, movement, and soul. Explore a curated collection of film, multimedia, and photography work created with purpose and precision.
       </p>
-      <a href="portfolio.html" class="inline-block px-8 py-3 border border-white rounded-full hover:bg-white hover:text-black transition font-medium text-base tracking-wide">
+      <a href="portfolio.html" class="cta-button inline-block px-8 py-3 bg-pink-500 text-white rounded-full hover:bg-pink-400 font-medium text-base tracking-wide">
         View My Work
       </a>
     </div>
@@ -80,6 +160,17 @@
       const menu = document.getElementById('mobile-menu');
       menu.classList.toggle('hidden');
     }
+
+    // Optional: Add a class to the nav on scroll for a cool effect
+    window.addEventListener('scroll', () => {
+        const nav = document.getElementById('main-nav');
+        if (window.scrollY > 50) {
+            nav.classList.add('nav-scroll');
+        } else {
+            nav.classList.remove('nav-scroll');
+        }
+    });
   </script>
+
 </body>
 </html>
