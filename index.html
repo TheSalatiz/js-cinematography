@@ -12,16 +12,17 @@
     #home { background: radial-gradient(circle at 15% 25%, hsla(185, 75%, 60%, 0.15), transparent 40%), radial-gradient(circle at 85% 70%, hsla(324, 82%, 64%, 0.15), transparent 40%), #050505; }
     .video-container { background: #111; padding: 1rem; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); }
     .video-container video { border-radius: 1rem; width: 100%; height: 100%; object-fit: cover; }
+    .highlight-word { color: var(--secondary-color); }
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
     .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .menu-item a { position: relative; transition: color 0.3s ease; }
-    .menu-item a.active-link { color: white; font-weight: 700; }
-    .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
-    .menu-item a:hover { color: white; }
-    .menu-item a:hover:after { width: 100%; }
+    .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; }
+    .menu-item a.active-link, .menu-item button.active-link { color: white; font-weight: 700; }
+    .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+    .menu-item a:hover, .menu-item button:hover { color: white; }
+    .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
     .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out; z-index: 1; display: inline-block; }
-    .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background-color: var(--accent-color); transition: height 0.4s ease; z-index: -1; }
-    .cta-button:hover { color: black; }
+    .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(to right, var(--secondary-color), var(--accent-color)); transition: height 0.4s ease; z-index: -1; }
+    .cta-button:hover { color: black; border-color: transparent; }
     .cta-button:hover::before { height: 100%; }
     .service-title { color: var(--accent-color); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -29,11 +30,42 @@
     .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
-    .contact-input { background-color: #111; border: 1px solid rgba(255,255,255,0.1); transition: border-color 0.3s; }
-    .contact-input:focus { border-color: var(--accent-color); outline: none; }
-    /* NEW classes for text emphasis */
-    .text-accent { color: var(--secondary-color); }
-    .highlight-word { color: var(--secondary-color); font-weight: 700; }
+    .contact-input { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
+    .contact-input:focus { outline: none; border-bottom-color: var(--secondary-color); }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus { -webkit-text-fill-color: #ffffff !important; -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important; transition: background-color 5000s ease-in-out 0s; }
+
+    /* --- STYLES FOR POP-UP CONTACT PANEL --- */
+    .contact-popup-overlay {
+      @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .contact-popup-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .contact-popup-panel {
+      @apply fixed top-0 right-0 h-screen w-full max-w-lg bg-gray-900 text-white shadow-2xl z-50;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .contact-popup-panel.open {
+      transform: translateX(0);
+    }
+    .radio-label {
+      @apply block w-full p-3 text-center border-2 border-gray-700 rounded-md cursor-pointer transition-colors;
+    }
+    .radio-input {
+      @apply hidden;
+    }
+    .radio-input:checked + span {
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+    .radio-input:checked + span, .radio-label:has(.radio-input:checked) {
+      border-color: var(--secondary-color);
+    }
   </style>
 </head>
 <body>
@@ -41,13 +73,15 @@
   <nav id="main-nav" class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
-      <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg></button>
+      <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+      </button>
       <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
         <li class="menu-item"><a href="index.html" class="active-link">Home</a></li>
         <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
         <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
         <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
-        <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
+        <li class="menu-item"><button id="open-contact-popup" class="text-gray-300 uppercase">Contact</button></li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
@@ -55,14 +89,14 @@
       <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
       <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
       <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
-      <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
+       <li><button id="open-contact-popup-mobile" class="block w-full text-left py-2 text-gray-300">Contact</button></li>
     </ul>
   </nav>
 
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="text-center md:text-left reveal" data-animate>
-            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="text-accent">telling</span> Through Light.</h2>
+            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
             <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
             <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
         </div>
@@ -75,70 +109,75 @@
   </main>
   
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-            <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell <span class="text-accent">your story.</span></h2>
-            <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
-        </div>
-        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">Leaning on the power of ideas to create content the audience actually WANTS to see. I believe that a post can change lives, have a good impact on the world, and in YOUR company. So I pay equal respect to both.</p></article>
-            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4"><span class="text-accent">Chase impact,</span> not impressions.</h3><p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
-            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
-            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story <span class="text-accent">differently.</span></h3><p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p></article>
-        </div>
-    </div>
-  </section>
+     </section>
 
   <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-            <h2 class="text-4xl md:text-5xl font-bold">Featured Videos</h2>
-            <p class="mt-4 text-lg text-gray-400">A selection of my recent work in cinematography.</p>
-        </div>
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div class="card reveal" data-animate><iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Ephemeral – Short Film</h3><p class="text-gray-400 mt-2">A deeply personal short film about depression, friendship, and mental health.</p></div></div>
-            <div class="card reveal" data-animate><iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Blue Pill Red Pill (Matrix Short)</h3><p class="text-gray-400 mt-2">A short, modern take on a classic scene.</p></div></div>
-        </div>
-        <div class="text-center mt-20 reveal" data-animate>
-            <a href="portfolio.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
-        </div>
-    </div>
-  </section>
+     </section>
   
   <section id="photography" class="py-24 sm:py-32 bg-black px-6">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-            <h2 class="text-4xl md:text-5xl font-bold">Photography Gallery</h2>
-            <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
-        </div>
-        <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <div class="card reveal" data-animate><img src="photo1.jpg" alt="Photography Project 1" class="w-full h-full object-cover"></div>
-            <div class="card reveal" data-animate><img src="DSC00956-min.jpg" alt="Photography Project 2" class="w-full h-full object-cover"></div>
-            <div class="card reveal" data-animate><img src="DSC01581-min.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
-        </div>
-        <div class="text-center mt-20 reveal" data-animate>
-            <a href="photography.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
-        </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-24 sm:py-32 px-6">
-    <div class="max-w-4xl mx-auto text-center reveal" data-animate>
-        <h2 class="text-4xl md:text-5xl font-bold">Let's Create Together</h2>
-        <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto">Have a project in mind or just want to say hello? I’d love to hear from you.</p>
-        <div class="mt-12">
-            <form action="#" method="POST" class="grid grid-cols-1 gap-y-6 text-left"><input type="text" name="name" placeholder="Your Name" class="contact-input w-full rounded-md p-3"><input type="email" name="email" placeholder="Your Email" class="contact-input w-full rounded-md p-3"><textarea name="message" rows="5" placeholder="Your Message" class="contact-input w-full rounded-md p-3"></textarea><button type="submit" class="cta-button w-full md:w-auto md:mx-auto px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Send Message</button></form>
-            <p class="text-xs text-gray-600 mt-4">* This form is a visual template and not connected to a backend.</p>
-        </div>
-    </div>
-  </section>
+     </section>
 
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
 
+  <div id="contact-overlay" class="contact-popup-overlay"></div>
+  <div id="contact-popup" class="contact-popup-panel">
+      <div class="flex items-center justify-between p-6 border-b border-gray-800">
+          <h2 class="text-2xl font-bold">Let's Create Together</h2>
+          <button id="close-contact-popup" class="p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Close contact panel">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+          </button>
+      </div>
+      <div class="p-6 overflow-y-auto" style="height: calc(100% - 81px);">
+          <p class="text-gray-400 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible.</p>
+          <form action="https://formspree.io/f/mblydwrk" method="POST" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                      <label for="popup-first-name" class="form-label">First Name *</label>
+                      <input type="text" name="first-name" id="popup-first-name" class="contact-input" required>
+                  </div>
+                  <div>
+                      <label for="popup-last-name" class="form-label">Last Name *</label>
+                      <input type="text" name="last-name" id="popup-last-name" class="contact-input" required>
+                  </div>
+              </div>
+              <div>
+                  <label for="popup-email" class="form-label">Email *</label>
+                  <input type="email" name="_replyto" id="popup-email" class="contact-input" required>
+              </div>
+              <div>
+                  <label for="popup-inquiry-type" class="form-label">What service are you interested in?</label>
+                  <select id="popup-inquiry-type" name="inquiry-type" class="contact-input" required>
+                      <option value="Cinematography Project">Cinematography Project</option>
+                      <option value="Photography Session">Photography Session</option>
+                      <option value="Consulting">Consulting</option>
+                      <option value="General Question">General Question</option>
+                  </select>
+              </div>
+              <div>
+                  <p class="form-label">Estimated Budget *</p>
+                  <div class="grid grid-cols-2 gap-4 mt-2">
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$5,000+" class="radio-input"><span>$5,000+</span></label></div>
+                  </div>
+              </div>
+              <div>
+                  <label for="popup-message" class="form-label">Tell me about your project *</label>
+                  <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
+              </div>
+              <div class="pt-2">
+                  <button type="submit" class="cta-button w-full px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Submit Inquiry</button>
+              </div>
+          </form>
+      </div>
+  </div>
+
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // --- Standard Menu & Animation Logic ---
       const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
       const mobileMenu = document.getElementById('mobile-menu');
       menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
@@ -154,7 +193,37 @@
       }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
+
+      // --- SCRIPT FOR CONTACT POP-UP ---
+      const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
+      const closeButton = document.getElementById('close-contact-popup');
+      const overlay = document.getElementById('contact-overlay');
+      const popup = document.getElementById('contact-popup');
+
+      function openPopup() {
+          overlay.classList.add('open');
+          popup.classList.add('open');
+      }
+
+      function closePopup() {
+          overlay.classList.remove('open');
+          popup.classList.remove('open');
+      }
+
+      openButtons.forEach(button => {
+          button.addEventListener('click', openPopup);
+      });
+
+      closeButton.addEventListener('click', closePopup);
+      overlay.addEventListener('click', closePopup);
+
+      document.addEventListener('keydown', (e) => {
+          if (e.key === "Escape" && overlay.classList.contains('open')) {
+              closePopup();
+          }
+      });
     });
   </script>
+
 </body>
 </html>
