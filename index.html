@@ -20,34 +20,29 @@
     .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
     .menu-item a:hover, .menu-item button:hover { color: white; }
     .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+    /* cta-button animation (original - like "View Portfolio") */
     .cta-button, .menu-item button.cta-anim {
       position: relative;
       overflow: hidden;
-      transition: color 0.4s cubic-bezier(.77,0,.18,1), box-shadow 0.4s cubic-bezier(.77,0,.18,1);
+      transition: color 0.4s ease-in-out;
       z-index: 1;
       display: inline-block;
-      box-shadow: 0 2px 12px 0 rgba(64,224,208,0.10), 0 8px 32px 0 rgba(236,72,153,0.12);
     }
     .cta-button::before, .menu-item button.cta-anim::before {
       content: '';
       position: absolute;
-      top: 50%; left: 50%;
-      width: 400%; height: 400%;
-      background: radial-gradient(circle at 50% 50%, var(--secondary-color), var(--accent-color), transparent 80%);
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0.7;
-      transition: transform 0.5s cubic-bezier(.77,0,.18,1), opacity 0.5s cubic-bezier(.77,0,.18,1);
+      bottom: 0; left: 0;
+      width: 100%; height: 0%;
+      background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
+      transition: height 0.4s ease;
       z-index: -1;
-      pointer-events: none;
-    }
-    .cta-button:hover::before, .menu-item button.cta-anim:hover::before {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 1;
     }
     .cta-button:hover, .menu-item button.cta-anim:hover {
-      color: #000;
+      color: black;
       border-color: transparent;
-      box-shadow: 0 8px 32px 0 rgba(64,224,208,0.18), 0 16px 48px 0 rgba(236,72,153,0.20);
+    }
+    .cta-button:hover::before, .menu-item button.cta-anim:hover::before {
+      height: 100%;
     }
     .cta-button:active, .menu-item button.cta-anim:active {
       transform: scale(0.97);
@@ -58,11 +53,39 @@
     .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
-    .contact-input { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
-    .contact-input:focus { outline: none; border-bottom-color: var(--secondary-color); }
-    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus { -webkit-text-fill-color: #ffffff !important; -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important; transition: background-color 5000s ease-in-out 0s; }
-
-    /* Popup Overlay and Panel - Fullscreen and Centered */
+    .contact-input {
+      width: 100%;
+      padding-top: 0.75rem;
+      padding-bottom: 0.5rem;
+      background: #181b20;
+      color: #e5e7eb;
+      font-size: 1.125rem;
+      border: 0;
+      border-bottom: 2px solid #374151;
+      border-radius: 0;
+      -webkit-appearance: none;
+      transition: border-color 0.3s ease, background 0.3s;
+    }
+    .contact-input:focus {
+      outline: none;
+      border-bottom-color: var(--secondary-color);
+      background: #23242a;
+      color: #fff;
+    }
+    /* Autofill override for Chrome/Safari */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      -webkit-text-fill-color: #e5e7eb !important;
+      -webkit-box-shadow: 0 0 0px 1000px #181b20 inset !important;
+      transition: background-color 5000s ease-in-out 0s;
+    }
     .contact-popup-overlay {
       @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40;
       opacity: 0;
@@ -78,7 +101,7 @@
       max-width: 600px;
       height: auto;
       max-height: 88vh;
-      background: #16181d;
+      background: #181b20;
       color: white;
       border-radius: 2rem;
       box-shadow: 0 32px 64px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03);
