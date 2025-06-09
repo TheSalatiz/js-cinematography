@@ -15,11 +15,11 @@
     .highlight-word { color: var(--secondary-color); }
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
     .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; }
+    .menu-item a { position: relative; transition: color 0.3s ease; }
     .menu-item a.active-link { color: white; font-weight: 700; }
-    .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
-    .menu-item a:hover, .menu-item button:hover { color: white; }
-    .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+    .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+    .menu-item a:hover { color: white; }
+    .menu-item a:hover:after { width: 100%; }
     .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out, border-color 0.4s ease-in-out; z-index: 1; display: inline-block; }
     .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(to right, var(--secondary-color), var(--accent-color)); transition: height 0.4s ease; z-index: -1; }
     .cta-button:hover { color: black; border-color: transparent; }
@@ -31,17 +31,10 @@
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
     .text-accent { color: var(--secondary-color); }
-    .contact-popup-overlay { @apply fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40; opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out; }
-    .contact-popup-overlay.open { opacity: 1; pointer-events: auto; }
-    .contact-popup-panel { @apply fixed bg-white text-gray-800 rounded-lg shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col z-50; top: 50%; left: 50%; opacity: 0; transform: translate(-50%, -50%) scale(0.95); pointer-events: none; transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; }
-    .contact-popup-panel.open { opacity: 1; transform: translate(-50%, -50%) scale(1); pointer-events: auto; }
-    .form-label { @apply block text-gray-700 text-sm font-bold mb-2; }
-    .contact-input, .contact-select { @apply w-full py-2 px-3 bg-gray-100 text-gray-800 border border-gray-300 rounded-md; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
-    .contact-input:focus, .contact-select:focus { outline: none; border-color: var(--secondary-color); box-shadow: 0 0 0 3px hsla(174, 57%, 53%, 0.4); }
-    .radio-label { @apply block w-full p-3 text-center border-2 border-gray-300 rounded-md cursor-pointer transition-colors text-gray-600; }
-    .radio-input { @apply hidden; }
-    .radio-input:checked + span { color: var(--secondary-color); font-weight: 700; }
-    .radio-label:has(.radio-input:checked) { border-color: var(--secondary-color); }
+    .contact-input { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
+    .contact-input:focus { outline: none; border-bottom-color: var(--secondary-color); }
+    input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus { -webkit-text-fill-color: #ffffff !important; -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important; transition: background-color 5000s ease-in-out 0s; }
+    .form-label { @apply block text-sm font-semibold text-gray-400 mb-2; }
   </style>
 </head>
 <body>
@@ -55,12 +48,7 @@
         <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
         <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
         <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
-        <li class="menu-item">
-          <button id="open-contact-popup" class="flex items-center cursor-pointer gap-2 px-4 py-2 border border-white rounded-full text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300">
-            Get in Touch
-            <svg stroke="currentColor" fill="currentColor" stroke-width="1" viewBox="0 0 24 24" class="transition-all duration-300" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M18.25 15.5a.75.75 0 0 1-.75-.75V7.56L7.28 17.78a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L16.44 6.5H9.25a.75.75 0 0 1 0-1.5h9a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-.75.75Z"></path></svg>
-          </button>
-        </li>
+        <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
@@ -68,7 +56,7 @@
       <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
       <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
       <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
-      <li><button id="open-contact-popup-mobile" class="block w-full text-left py-2 text-gray-300">Get in Touch</button></li>
+      <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
     </ul>
   </nav>
 
@@ -135,59 +123,45 @@
             </div>
         </div>
     </section>
+
+    <section id="contact" class="py-24 sm:py-32 px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center reveal" data-animate>
+                <h2 class="text-5xl md:text-6xl font-bold text-white">Connect With Me</h2>
+                <p class="mt-6 text-lg text-gray-400 max-w-xl mx-auto">Have a project, a question, or an idea? I’d love to be the one to help you bring it to life.</p>
+            </div>
+            <div class="mt-16 reveal" data-animate style="animation-delay: 0.2s;">
+                <form action="https://salatiz.app.n8n.cloud/form-test/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-10">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                        <div>
+                            <label for="first-name" class="form-label">First Name *</label>
+                            <input type="text" name="first-name" id="first-name" class="contact-input" required>
+                        </div>
+                        <div>
+                            <label for="last-name" class="form-label">Last Name *</label>
+                            <input type="text" name="last-name" id="last-name" class="contact-input" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" name="_replyto" id="email" class="contact-input" required>
+                    </div>
+                    <div>
+                        <label for="message" class="form-label">Message *</label>
+                        <textarea name="message" id="message" rows="5" class="contact-input" required></textarea>
+                    </div>
+                    <div class="text-center pt-4">
+                        <button type="submit" class="cta-button w-full sm:w-auto px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
   </main>
 
-  <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+  <footer class="relative z-10 p-10 text-center text-gray-500 text-sm">
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
-
-  <div id="contact-overlay" class="contact-popup-overlay hidden">
-    <div id="contact-popup" class="contact-popup-panel">
-      <div class="flex items-center justify-between p-6 border-b border-gray-200">
-        <h2 class="text-2xl font-bold text-gray-800">Get in Touch</h2>
-        <button id="close-contact-popup" class="p-2 rounded-full text-gray-500 hover:bg-gray-200 transition-colors" aria-label="Close contact panel"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-      </div>
-      <div class="p-6 overflow-y-auto">
-          <p class="text-gray-600 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible.</p>
-          <form action="https://salatiz.app.n8n.cloud/form-test/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-5">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                      <label for="popup-first-name" class="form-label">First Name *</label>
-                      <input type="text" name="first-name" id="popup-first-name" class="contact-input" required>
-                  </div>
-                  <div>
-                      <label for="popup-last-name" class="form-label">Last Name *</label>
-                      <input type="text" name="last-name" id="popup-last-name" class="contact-input" required>
-                  </div>
-              </div>
-              <div>
-                  <label for="popup-email" class="form-label">Email *</label>
-                  <input type="email" name="email" id="popup-email" class="contact-input" required>
-              </div>
-              <div>
-                  <label for="popup-inquiry-type" class="form-label">What service are you interested in?</label>
-                  <select id="popup-inquiry-type" name="service_type" class="contact-input" required><option value="Cinematography Project">Cinematography Project</option><option value="Photography Session">Photography Session</option><option value="Consulting">Consulting</option><option value="General Question">General Question</option></select>
-              </div>
-              <div>
-                  <p class="form-label">Estimated Budget *</p>
-                  <div class="grid grid-cols-2 gap-4 mt-2">
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$5,000+" class="radio-input"><span>$5,000+</span></label></div>
-                  </div>
-              </div>
-              <div>
-                  <label for="popup-message" class="form-label">Tell me about your project *</label>
-                  <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
-              </div>
-              <div class="pt-4">
-                  <button type="submit" class="cta-button w-full px-16 py-3 border-2 border-gray-800 text-gray-800 rounded-full font-bold text-base tracking-wider uppercase hover:text-white">Submit Inquiry</button>
-              </div>
-          </form>
-      </div>
-    </div>
-  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -203,34 +177,6 @@
       const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
-      
-      const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
-      const closeButton = document.getElementById('close-contact-popup');
-      const overlay = document.getElementById('contact-overlay');
-      const popup = document.getElementById('contact-popup');
-
-      if (openButtons.length > 0 && closeButton && overlay && popup) {
-        function openPopup() {
-          overlay.classList.remove('hidden');
-        }
-        function closePopup() {
-          overlay.classList.add('hidden');
-        }
-        openButtons.forEach(button => {
-            button.addEventListener('click', openPopup);
-        });
-        closeButton.addEventListener('click', closePopup);
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) {
-                closePopup();
-            }
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === "Escape" && !overlay.classList.contains('hidden')) {
-                closePopup();
-            }
-        });
-      }
     });
   </script>
 
