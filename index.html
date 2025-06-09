@@ -15,12 +15,12 @@
     .highlight-word { color: var(--secondary-color); }
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
     .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-    .menu-item a { position: relative; transition: color 0.3s ease; }
+    .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; }
     .menu-item a.active-link { color: white; font-weight: 700; }
-    .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
-    .menu-item a:hover { color: white; }
-    .menu-item a:hover:after { width: 100%; }
-    .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out, border-color 0.4s ease-in-out; z-index: 1; display: inline-block; }
+    .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+    .menu-item a:hover, .menu-item button:hover { color: white; }
+    .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+    .cta-button { position: relative; overflow: hidden; transition: color 0.4s ease-in-out; z-index: 1; display: inline-block; }
     .cta-button::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%; background: linear-gradient(to right, var(--secondary-color), var(--accent-color)); transition: height 0.4s ease; z-index: -1; }
     .cta-button:hover { color: black; border-color: transparent; }
     .cta-button:hover::before { height: 100%; }
@@ -30,12 +30,17 @@
     .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
-    .text-accent { color: var(--secondary-color); }
-    .form-label { @apply block text-sm font-semibold text-gray-400 mb-2; }
-    .contact-input, .contact-select { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
-    .contact-input:focus, .contact-select:focus { outline: none; border-bottom-color: var(--secondary-color); }
+    .contact-input { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
+    .contact-input:focus { outline: none; border-bottom-color: var(--secondary-color); }
     input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus { -webkit-text-fill-color: #ffffff !important; -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important; transition: background-color 5000s ease-in-out 0s; }
-    .contact-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='2' stroke='%239CA3AF'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5' /%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.5rem center; background-size: 1.25em; }
+    .contact-popup-overlay { @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
+    .contact-popup-overlay.open { opacity: 1; pointer-events: auto; }
+    .contact-popup-panel { @apply fixed top-0 right-0 h-screen w-full max-w-lg bg-gray-900 text-white shadow-2xl z-50; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .contact-popup-panel.open { transform: translateX(0); }
+    .radio-label { @apply block w-full p-3 text-center border-2 border-gray-700 rounded-md cursor-pointer transition-colors; }
+    .radio-input { @apply hidden; }
+    .radio-input:checked + span { color: var(--secondary-color); font-weight: 700; }
+    .radio-input:checked + span, .radio-label:has(.radio-input:checked) { border-color: var(--secondary-color); }
   </style>
 </head>
 <body>
@@ -49,7 +54,7 @@
         <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
         <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
         <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
-        <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
+        <li class="menu-item"><button id="open-contact-popup" class="text-gray-300 uppercase">Contact</button></li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
@@ -57,147 +62,146 @@
       <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
       <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
       <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
-      <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
+      <li><button id="open-contact-popup-mobile" class="block w-full text-left py-2 text-gray-300">Contact</button></li>
     </ul>
   </nav>
 
-  <main id="home" class="relative z-10">
-    <div class="min-h-screen w-full flex items-center px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div class="text-center md:text-left reveal" data-animate>
-                <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
-                <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
-                <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
-            </div>
-            <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
-                <div class="video-container">
-                    <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3.mp4" type="video/mp4"></video>
-                </div>
+  <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="text-center md:text-left reveal" data-animate>
+            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
+            <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
+        </div>
+        <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
+            <div class="video-container">
+                <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3.mp4" type="video/mp4"></video>
             </div>
         </div>
     </div>
-  
-    <section id="services" class="py-24 sm:py-32 bg-black px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell <span class="text-accent">your story.</span></h2>
-                <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
-            </div>
-            <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">Leaning on the power of ideas to create content the audience actually WANTS to see. I believe that a post can change lives, have a good impact on the world, and in YOUR company. So I pay equal respect to both.</p></article>
-                <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4"><span class="text-accent">Chase impact,</span> not impressions.</h3><p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
-                <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
-                <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story <span class="text-accent">differently.</span></h3><p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p></article>
-            </div>
-        </div>
-    </section>
-
-    <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h2 class="text-4xl md:text-5xl font-bold">Featured Videos</h2>
-                <p class="mt-4 text-lg text-gray-400">A selection of my recent work in cinematography.</p>
-            </div>
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="card reveal" data-animate><iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Ephemeral – Short Film</h3><p class="text-gray-400 mt-2">A deeply personal short film about depression, friendship, and mental health.</p></div></div>
-                <div class="card reveal" data-animate><iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Blue Pill Red Pill (Matrix Short)</h3><p class="text-gray-400 mt-2">A short, modern take on a classic scene.</p></div></div>
-            </div>
-            <div class="text-center mt-20 reveal" data-animate>
-                <a href="portfolio.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
-            </div>
-        </div>
-    </section>
-  
-    <section id="photography" class="py-24 sm:py-32 bg-black px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h2 class="text-4xl md:text-5xl font-bold">Photography Gallery</h2>
-                <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
-            </div>
-            <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div class="card reveal" data-animate><img src="photo1.jpg" alt="Photography Project 1" class="w-full h-full object-cover"></div>
-                <div class="card reveal" data-animate><img src="DSC00956-min.jpg" alt="Photography Project 2" class="w-full h-full object-cover"></div>
-                <div class="card reveal" data-animate><img src="DSC01581-min.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
-            </div>
-            <div class="text-center mt-20 reveal" data-animate>
-                <a href="photography.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 sm:py-32 px-6">
-        <div class="max-w-3xl mx-auto">
-            <div class="text-center reveal" data-animate>
-                <h2 class="text-5xl md:text-6xl font-bold text-white">Connect With Me</h2>
-                <p class="mt-6 text-lg text-gray-400 max-w-xl mx-auto">Have a project, a question, or an idea? I’d love to be the one to help you bring it to life.</p>
-            </div>
-            <div class="mt-16 reveal" data-animate style="animation-delay: 0.2s;">
-                <form action="https://salatiz.app.n8n.cloud/form-test/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-10">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                        <div>
-                            <label for="first_name" class="form-label">First Name *</label>
-                            <input type="text" name="first_name" id="first_name" class="contact-input" required>
-                        </div>
-                        <div>
-                            <label for="last_name" class="form-label">Last Name *</label>
-                            <input type="text" name="last_name" id="last_name" class="contact-input" required>
-                        </div>
-                    </div>
-                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                        <div>
-                            <label for="company_website" class="form-label">Company Website</label>
-                            <input type="url" name="company_website" id="company_website" class="contact-input">
-                        </div>
-                        <div>
-                            <label for="job_title" class="form-label">Job Title</label>
-                            <input type="text" name="job_title" id="job_title" class="contact-input">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="email" class="form-label">Work Email *</label>
-                        <input type="email" name="email" id="email" class="contact-input" required>
-                    </div>
-                    <div>
-                         <label for="inquiry_category" class="form-label">What best describes your inquiry? *</label>
-                        <select id="inquiry_category" name="inquiry_category" class="contact-input contact-select" required>
-                            <option value="">Please Select</option>
-                            <option value="Cinematography Project">Cinematography Project</option>
-                            <option value="Photography Session">Photography Session</option>
-                            <option value="Consulting">Consulting</option>
-                            <option value="General Question">General Question</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label for="message" class="form-label">How can I help you? *</label>
-                        <textarea name="message" id="message" rows="5" class="contact-input" required></textarea>
-                    </div>
-                    <div class="text-center pt-4">
-                        <button type="submit" class="cta-button w-full sm:w-auto px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
   </main>
+  
+  <section id="services" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell <span class="text-accent">your story.</span></h2>
+            <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
+        </div>
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">Leaning on the power of ideas to create content the audience actually WANTS to see. I believe that a post can change lives, have a good impact on the world, and in YOUR company. So I pay equal respect to both.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4"><span class="text-accent">Chase impact,</span> not impressions.</h3><p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story <span class="text-accent">differently.</span></h3><p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p></article>
+        </div>
+    </div>
+  </section>
 
-  <footer class="relative z-10 p-10 text-center text-gray-500 text-sm">
+  <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Featured Videos</h2>
+            <p class="mt-4 text-lg text-gray-400">A selection of my recent work in cinematography.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="card reveal" data-animate><iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Ephemeral – Short Film</h3><p class="text-gray-400 mt-2">A deeply personal short film about depression, friendship, and mental health.</p></div></div>
+            <div class="card reveal" data-animate><iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Blue Pill Red Pill (Matrix Short)</h3><p class="text-gray-400 mt-2">A short, modern take on a classic scene.</p></div></div>
+        </div>
+        <div class="text-center mt-20 reveal" data-animate>
+            <a href="portfolio.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
+        </div>
+    </div>
+  </section>
+  
+  <section id="photography" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Photography Gallery</h2>
+            <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="card reveal" data-animate><img src="photo1.jpg" alt="Photography Project 1" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo2.jpg" alt="Photography Project 2" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo3.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
+        </div>
+        <div class="text-center mt-20 reveal" data-animate>
+            <a href="photography.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
+        </div>
+    </div>
+  </section>
+
+  <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
+
+  <div id="contact-overlay" class="contact-popup-overlay"></div>
+  <div id="contact-popup" class="contact-popup-panel">
+      <div class="flex items-center justify-between p-6 border-b border-gray-800">
+          <h2 class="text-2xl font-bold">Let's Create Together</h2>
+          <button id="close-contact-popup" class="p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Close contact panel"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+      </div>
+      <div class="p-6 overflow-y-auto" style="height: calc(100% - 81px);">
+          <p class="text-gray-400 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible.</p>
+          <form action="https://salatiz.app.n8n.cloud/form-test/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                      <label for="popup-first-name" class="form-label">First Name *</label>
+                      <input type="text" name="first-name" id="popup-first-name" class="contact-input" required>
+                  </div>
+                  <div>
+                      <label for="popup-last-name" class="form-label">Last Name *</label>
+                      <input type="text" name="last-name" id="popup-last-name" class="contact-input" required>
+                  </div>
+              </div>
+              <div>
+                  <label for="popup-email" class="form-label">Email *</label>
+                  <input type="email" name="_replyto" id="popup-email" class="contact-input" required>
+              </div>
+              <div>
+                  <label for="popup-inquiry-type" class="form-label">What service are you interested in?</label>
+                  <select id="popup-inquiry-type" name="inquiry-type" class="contact-input" required>
+                      <option value="Cinematography Project">Cinematography Project</option><option value="Photography Session">Photography Session</option><option value="Consulting">Consulting</option><option value="General Question">General Question</option>
+                  </select>
+              </div>
+              <div>
+                  <p class="form-label">Estimated Budget *</p>
+                  <div class="grid grid-cols-2 gap-4 mt-2">
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$5,000+" class="radio-input"><span>$5,000+</span></label></div>
+                  </div>
+              </div>
+              <div>
+                  <label for="popup-message" class="form-label">Tell me about your project *</label>
+                  <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
+              </div>
+              <div class="pt-2">
+                  <button type="submit" class="cta-button w-full px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Submit Inquiry</button>
+              </div>
+          </form>
+      </div>
+  </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
       const mobileMenu = document.getElementById('mobile-menu');
-      if (menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-      }
+      menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
       const nav = document.getElementById('main-nav');
-      if (nav) {
-        window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } else { nav.classList.remove('nav-scroll'); } });
-      }
+      window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } else { nav.classList.remove('nav-scroll'); } });
       const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
+      const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
+      const closeButton = document.getElementById('close-contact-popup');
+      const overlay = document.getElementById('contact-overlay');
+      const popup = document.getElementById('contact-popup');
+      function openPopup() { overlay.classList.add('open'); popup.classList.add('open'); }
+      function closePopup() { overlay.classList.remove('open'); popup.classList.remove('open'); }
+      openButtons.forEach(button => { button.addEventListener('click', openPopup); });
+      closeButton.addEventListener('click', closePopup);
+      overlay.addEventListener('click', closePopup);
+      document.addEventListener('keydown', (e) => { if (e.key === "Escape" && overlay.classList.contains('open')) { closePopup(); } });
     });
   </script>
 
