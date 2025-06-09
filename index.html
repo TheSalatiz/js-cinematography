@@ -32,32 +32,17 @@
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
     .text-accent { color: var(--secondary-color); }
 
-    /* --- FINAL, CORRECTED STYLES FOR POP-UP --- */
+    /* --- FINAL, ROBUST STYLES FOR POP-UP --- */
     .contact-popup-overlay {
-      /* This is now just the blurred background layer */
-      @apply fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40;
+      @apply fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40 flex items-center justify-center p-4;
       opacity: 0;
-      pointer-events: none;
       transition: opacity 0.3s ease-in-out;
     }
-    .contact-popup-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
     .contact-popup-panel {
-      /* This element now handles its own centering, which is more reliable */
-      @apply fixed bg-white text-gray-800 rounded-lg shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col z-50;
-      top: 50%;
-      left: 50%;
+      @apply bg-white text-gray-800 rounded-lg shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col;
       opacity: 0;
-      transform: translate(-50%, -50%) scale(0.95);
-      pointer-events: none;
+      transform: scale(0.95);
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-    .contact-popup-panel.open {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-      pointer-events: auto;
     }
     .form-label { @apply block text-gray-700 text-sm font-bold mb-2; }
     .contact-input, .contact-select { @apply w-full py-2 px-3 bg-gray-100 text-gray-800 border border-gray-300 rounded-md; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
@@ -165,98 +150,116 @@
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
 
-  <div id="contact-overlay" class="contact-popup-overlay">
-      <div id="contact-popup" class="contact-popup-panel">
-        <div class="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-800">Get in Touch</h2>
-          <button id="close-contact-popup" class="p-2 rounded-full text-gray-500 hover:bg-gray-200 transition-colors" aria-label="Close contact panel"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        </div>
-        <div class="p-6 overflow-y-auto">
-            <p class="text-gray-600 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible.</p>
-            <form action="https://salatiz.app.n8n.cloud/form-test/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-5">
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                        <label for="popup-first-name" class="form-label">First Name *</label>
-                        <input type="text" name="first-name" id="popup-first-name" class="contact-input" required>
-                    </div>
-                    <div>
-                        <label for="popup-last-name" class="form-label">Last Name *</label>
-                        <input type="text" name="last-name" id="popup-last-name" class="contact-input" required>
-                    </div>
-                </div>
-                <div>
-                    <label for="popup-email" class="form-label">Email *</label>
-                    <input type="email" name="email" id="popup-email" class="contact-input" required>
-                </div>
-                <div>
-                    <label for="popup-inquiry-type" class="form-label">What service are you interested in?</label>
-                    <select id="popup-inquiry-type" name="service_type" class="contact-input" required><option value="Cinematography Project">Cinematography Project</option><option value="Photography Session">Photography Session</option><option value="Consulting">Consulting</option><option value="General Question">General Question</option></select>
-                </div>
-                <div>
-                    <p class="form-label">Estimated Budget *</p>
-                    <div class="grid grid-cols-2 gap-4 mt-2">
-                        <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
-                        <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
-                        <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
-                        <div><label class="radio-label"><input type="radio" name="budget" value="$5,000+" class="radio-input"><span>$5,000+</span></label></div>
-                    </div>
-                </div>
-                <div>
-                    <label for="popup-message" class="form-label">Tell me about your project *</label>
-                    <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
-                </div>
-                <div class="pt-4">
-                    <button type="submit" class="cta-button w-full px-16 py-3 border-2 border-gray-800 text-gray-800 rounded-full font-bold text-base tracking-wider uppercase hover:text-white">Submit Inquiry</button>
-                </div>
-            </form>
-        </div>
+  <div id="contact-overlay" class="contact-popup-overlay" style="display: none;">
+    <div id="contact-popup" class="contact-popup-panel">
+      <div class="flex items-center justify-between p-6 border-b border-gray-200">
+        <h2 class="text-2xl font-bold text-gray-800">Get in Touch</h2>
+        <button id="close-contact-popup" class="p-2 rounded-full text-gray-500 hover:bg-gray-200 transition-colors" aria-label="Close contact panel"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
       </div>
+      <div class="p-6 overflow-y-auto">
+          <p class="text-gray-600 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible.</p>
+          <form action="https://salatiz.app.n8n.cloud/form-test/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-5">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                      <label for="popup-first-name" class="form-label">First Name *</label>
+                      <input type="text" name="first-name" id="popup-first-name" class="contact-input" required>
+                  </div>
+                  <div>
+                      <label for="popup-last-name" class="form-label">Last Name *</label>
+                      <input type="text" name="last-name" id="popup-last-name" class="contact-input" required>
+                  </div>
+              </div>
+              <div>
+                  <label for="popup-email" class="form-label">Email *</label>
+                  <input type="email" name="email" id="popup-email" class="contact-input" required>
+              </div>
+              <div>
+                  <label for="popup-inquiry-type" class="form-label">What service are you interested in?</label>
+                  <select id="popup-inquiry-type" name="service_type" class="contact-input" required><option value="Cinematography Project">Cinematography Project</option><option value="Photography Session">Photography Session</option><option value="Consulting">Consulting</option><option value="General Question">General Question</option></select>
+              </div>
+              <div>
+                  <p class="form-label">Estimated Budget *</p>
+                  <div class="grid grid-cols-2 gap-4 mt-2">
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
+                      <div><label class="radio-label"><input type="radio" name="budget" value="$5,000+" class="radio-input"><span>$5,000+</span></label></div>
+                  </div>
+              </div>
+              <div>
+                  <label for="popup-message" class="form-label">Tell me about your project *</label>
+                  <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
+              </div>
+              <div class="pt-4">
+                  <button type="submit" class="cta-button w-full px-16 py-3 border-2 border-gray-800 text-gray-800 rounded-full font-bold text-base tracking-wider uppercase hover:text-white">Submit Inquiry</button>
+              </div>
+          </form>
+      </div>
+    </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Standard Menu & Animation Logic
+      // --- Standard Menu & Animation Logic ---
       const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
       const mobileMenu = document.getElementById('mobile-menu');
-      menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+      if (menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+      }
       const nav = document.getElementById('main-nav');
-      window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } else { nav.classList.remove('nav-scroll'); } });
+      if (nav) {
+        window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } else { nav.classList.remove('nav-scroll'); } });
+      }
       const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
       
-      // SCRIPT FOR CENTERED POP-UP - This is now corrected
+      // --- FINAL, ROBUST SCRIPT FOR POP-UP ---
       const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
       const closeButton = document.getElementById('close-contact-popup');
       const overlay = document.getElementById('contact-overlay');
       const popup = document.getElementById('contact-popup');
 
-      function openPopup() {
-          overlay.classList.add('open');
-          popup.classList.add('open');
+      // Check if all pop-up elements exist before adding listeners
+      if (openButtons.length > 0 && closeButton && overlay && popup) {
+        function openPopup() {
+          overlay.style.display = 'flex';
+          // Use a tiny timeout to allow the browser to apply the display style before starting the transition
+          setTimeout(() => {
+            overlay.style.opacity = '1';
+            popup.style.opacity = '1';
+            popup.style.transform = 'translate(-50%, -50%) scale(1)';
+          }, 10);
+        }
+
+        function closePopup() {
+          overlay.style.opacity = '0';
+          popup.style.opacity = '0';
+          popup.style.transform = 'translate(-50%, -50%) scale(0.95)';
+          // Wait for the transition to finish before hiding the overlay completely
+          setTimeout(() => {
+            overlay.style.display = 'none';
+          }, 300); // This duration should match your CSS transition duration
+        }
+
+        openButtons.forEach(button => {
+            button.addEventListener('click', openPopup);
+        });
+
+        closeButton.addEventListener('click', closePopup);
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                closePopup();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            // Check if the overlay is currently visible by checking opacity
+            if (e.key === "Escape" && overlay.style.opacity === '1') {
+                closePopup();
+            }
+        });
       }
-
-      function closePopup() {
-          overlay.classList.remove('open');
-          popup.classList.remove('open');
-      }
-
-      openButtons.forEach(button => {
-          button.addEventListener('click', openPopup);
-      });
-
-      closeButton.addEventListener('click', closePopup);
-      overlay.addEventListener('click', (e) => {
-          if (e.target === overlay) {
-              closePopup();
-          }
-      });
-
-      document.addEventListener('keydown', (e) => {
-          if (e.key === "Escape" && overlay.classList.contains('open')) {
-              closePopup();
-          }
-      });
     });
   </script>
 
