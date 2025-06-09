@@ -86,7 +86,7 @@
     }
 
     /* Contact input and select improvements */
-    .contact-input {
+    .contact-input, .contact-select {
       width: 100%;
       padding-top: 0.75rem;
       padding-bottom: 0.5rem;
@@ -99,34 +99,25 @@
       -webkit-appearance: none;
       transition: border-color 0.3s ease, background 0.3s;
     }
-    .contact-input:focus {
+    .contact-input:focus, .contact-select:focus {
       outline: none;
       border-bottom-color: var(--secondary-color);
       background: #23242a;
       color: #fff;
     }
-    /* Enhanced select dropdown styling */
     .contact-select {
-      width: 100%;
       padding: 0.75rem 2.8rem 0.75rem 1rem;
-      font-size: 1.125rem;
-      color: #e5e7eb;
-      background: #23242a;
+      border-bottom: none;
       border: 2px solid #374151;
       border-radius: 1.2em;
-      appearance: none;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
       box-shadow: 0 1.5px 8px 0 rgba(64,224,208,0.07), 0 0.5px 2px 0 rgba(236,72,153,0.04);
+      font-size: 1.125rem;
       position: relative;
     }
     .contact-select:focus {
-      outline: none;
       border-color: var(--secondary-color);
       background: #181b20;
       box-shadow: 0 0 0 3px rgba(64,224,208,0.18);
-      color: #fff;
     }
     .contact-select:hover {
       border-color: var(--secondary-color);
@@ -149,7 +140,6 @@
       align-items: center;
       justify-content: center;
     }
-
     /* Autofill override for Chrome/Safari */
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
@@ -321,26 +311,42 @@
           <button id="close-contact-popup" class="p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Close contact panel"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
       </div>
       <div class="p-6 overflow-y-auto" style="height: calc(100% - 81px);">
-          <p class="text-gray-400 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible.</p>
+          <p class="text-gray-400 mb-8">Tell me a bit about your project, and I'll get back to you as soon as possible!</p>
           <form action="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-6">
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                      <label for="popup-first-name" class="form-label">First Name *</label>
-                      <input type="text" name="first-name" id="popup-first-name" class="contact-input" required>
-                  </div>
-                  <div>
-                      <label for="popup-last-name" class="form-label">Last Name *</label>
-                      <input type="text" name="last-name" id="popup-last-name" class="contact-input" required>
-                  </div>
+              <div>
+                  <label for="popup-name" class="form-label">What is your name?</label>
+                  <input type="text" name="name" id="popup-name" class="contact-input" required>
               </div>
               <div>
-                  <label for="popup-email" class="form-label">Email *</label>
-                  <input type="email" name="_replyto" id="popup-email" class="contact-input" required>
+                  <label for="popup-website" class="form-label">What is your company website?</label>
+                  <input type="text" name="website" id="popup-website" class="contact-input" value="https://thesalatiz.github.io/js-cinematography">
+              </div>
+              <div>
+                  <label for="popup-email" class="form-label">What is your email?</label>
+                  <input type="email" name="email" id="popup-email" class="contact-input" required>
+              </div>
+              <div>
+                  <label for="popup-budget" class="form-label">Project Budget</label>
+                  <div class="select-wrapper">
+                    <select id="popup-budget" name="budget" class="contact-select" required>
+                        <option value="" disabled selected>Select an option ...</option>
+                        <option value="$500 - $1,000">$500 - $1,000</option>
+                        <option value="$1,000 - $2,000">$1,000 - $2,000</option>
+                        <option value="$2,000 - $5,000">$2,000 - $5,000</option>
+                        <option value="$5,000+">$5,000+</option>
+                    </select>
+                    <span class="select-arrow">
+                      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 8 10 12 14 8"/>
+                      </svg>
+                    </span>
+                  </div>
               </div>
               <div>
                   <label for="popup-inquiry-type" class="form-label">What services are you interested in?</label>
                   <div class="select-wrapper">
-                    <select id="popup-inquiry-type" name="inquiry-type" class="contact-select" required>
+                    <select id="popup-inquiry-type" name="service" class="contact-select" required>
+                        <option value="" disabled selected>Select an option ...</option>
                         <option value="Photography">Photography</option>
                         <option value="Videography">Videography</option>
                     </select>
@@ -352,16 +358,7 @@
                   </div>
               </div>
               <div>
-                  <p class="form-label">Estimated Budget *</p>
-                  <div class="grid grid-cols-2 gap-4 mt-2">
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
-                      <div><label class="radio-label"><input type="radio" name="budget" value="$5,000+" class="radio-input"><span>$5,000+</span></label></div>
-                  </div>
-              </div>
-              <div>
-                  <label for="popup-message" class="form-label">Tell me about your project *</label>
+                  <label for="popup-message" class="form-label">Message</label>
                   <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
               </div>
               <div class="pt-2">
