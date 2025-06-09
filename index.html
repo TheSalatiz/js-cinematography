@@ -140,64 +140,6 @@
       align-items: center;
       justify-content: center;
     }
-    /* Autofill override for Chrome/Safari */
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    textarea:-webkit-autofill,
-    textarea:-webkit-autofill:hover,
-    textarea:-webkit-autofill:focus,
-    select:-webkit-autofill,
-    select:-webkit-autofill:hover,
-    select:-webkit-autofill:focus {
-      -webkit-text-fill-color: #e5e7eb !important;
-      -webkit-box-shadow: 0 0 0px 1000px #181b20 inset !important;
-      transition: background-color 5000s ease-in-out 0s;
-    }
-    .contact-popup-overlay {
-      @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s cubic-bezier(.77,0,.18,1);
-    }
-    .contact-popup-overlay.open { opacity: 1; pointer-events: auto; }
-    .contact-popup-panel {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      max-width: 600px;
-      height: auto;
-      max-height: 88vh;
-      background: #181b20;
-      color: white;
-      border-radius: 2rem;
-      box-shadow: 0 32px 64px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03);
-      z-index: 50;
-      opacity: 0;
-      transform: translate(-50%, 70%) scale(0.92);
-      transition: opacity 0.5s cubic-bezier(.77,0,.18,1), transform 0.5s cubic-bezier(.77,0,.18,1);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      pointer-events: none;
-    }
-    .contact-popup-panel.open {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-      pointer-events: auto;
-    }
-    @media (max-width: 640px) {
-      .contact-popup-panel {
-        max-width: 96vw;
-        max-height: 98vh;
-        border-radius: 1.2rem;
-      }
-    }
-    .radio-label { @apply block w-full p-3 text-center border-2 border-gray-700 rounded-md cursor-pointer transition-colors; }
-    .radio-input { @apply hidden; }
-    .radio-input:checked + span { color: var(--secondary-color); font-weight: 700; }
-    .radio-input:checked + span, .radio-label:has(.radio-input:checked) { border-color: var(--secondary-color); }
     .checkbox-style {
       accent-color: var(--accent-color);
       width: 1.15em;
@@ -228,6 +170,54 @@
       margin-left: 0.2em;
       font-size: 1em;
       font-weight: 700;
+    }
+    /* Nice animated submit button */
+    .cta-button {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.16s;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .cta-button::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.15;
+      transition: transform 0.45s cubic-bezier(.37,2,.47,.95), opacity 0.3s;
+      border-radius: inherit;
+      z-index: -1;
+    }
+    .cta-button:hover::before,
+    .cta-button:focus::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    .cta-button:hover,
+    .cta-button:focus {
+      color: #181b20;
+      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+      border-color: transparent;
+      box-shadow: 0 8px 32px 0 rgba(64,224,208,0.20), 0 16px 48px 0 rgba(236,72,153,0.18);
+      outline: none;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .cta-button:active {
+      filter: brightness(0.97);
+      transform: scale(0.97);
     }
   </style>
 </head>
@@ -354,7 +344,7 @@
         <!-- Name -->
         <div>
           <label for="popup-name" class="form-label"
-            >What is your name?<span class="required-star">*</span></label>
+            >name?<span class="required-star">*</span></label>
           <input
             type="text"
             name="name"
@@ -366,17 +356,16 @@
           />
         </div>
 
-        <!-- Company website -->
+        <!-- Company website (not required) -->
         <div>
           <label for="popup-website" class="form-label"
-            >What is your company website?<span class="required-star">*</span></label>
+            >company website?</label>
           <input
             type="url"
             name="website"
             id="popup-website"
             class="contact-input placeholder-gray-400"
             placeholder="https://thesalatiz.github.io/js-cinematography"
-            required
             autocomplete="url"
           />
         </div>
@@ -384,7 +373,7 @@
         <!-- Email -->
         <div>
           <label for="popup-email" class="form-label"
-            >What is your email?<span class="required-star">*</span></label>
+            >email?<span class="required-star">*</span></label>
           <input
             type="email"
             name="email"
@@ -416,32 +405,33 @@
           </div>
         </div>
 
-        <!-- Services (Checkboxes) -->
+        <!-- Services (Checkboxes, not required individually, only group required) -->
         <div>
           <label class="form-label"
             >What services are you interested in?<span class="required-star">*</span></label>
-          <div class="flex flex-col space-y-2 pl-1">
+          <div class="flex flex-col space-y-2 pl-1" id="service-checkboxes">
             <label class="inline-flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="service[]" value="Photography" class="checkbox-style" required/>
+              <input type="checkbox" name="service[]" value="Photography" class="checkbox-style"/>
               <span class="checkbox-label">Photography</span>
             </label>
             <label class="inline-flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="service[]" value="Videography" class="checkbox-style" required/>
+              <input type="checkbox" name="service[]" value="Videography" class="checkbox-style"/>
               <span class="checkbox-label">Videography</span>
             </label>
+            <span id="service-error" class="text-sm text-pink-400 mt-1 hidden">Please select at least one service.</span>
           </div>
         </div>
 
         <!-- Message -->
         <div>
           <label for="popup-message" class="form-label"
-            >Message</label>
+            >Tell me about your project.</label>
           <textarea
             name="message"
             id="popup-message"
             rows="5"
             class="contact-input placeholder-gray-400"
-            placeholder="Enter message"
+            placeholder="Tell me about your project."
             required
           ></textarea>
         </div>
@@ -450,6 +440,7 @@
           <button
             type="submit"
             class="cta-button w-full px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase"
+            id="submit-inquiry-btn"
           >
             Submit Inquiry
           </button>
@@ -478,6 +469,32 @@
       closeButton.addEventListener('click', closePopup);
       overlay.addEventListener('click', closePopup);
       document.addEventListener('keydown', (e) => { if (e.key === "Escape" && overlay.classList.contains('open')) { closePopup(); } });
+
+      // Custom validation for service[] checkboxes (at least one required)
+      const serviceCheckboxes = document.querySelectorAll('input[name="service[]"]');
+      const serviceError = document.getElementById('service-error');
+      const form = popup.querySelector('form');
+      form.addEventListener('submit', function(e){
+        let checked = 0;
+        serviceCheckboxes.forEach(cb => { if(cb.checked){ checked++; } });
+        if(checked < 1){
+          e.preventDefault();
+          serviceError.classList.remove('hidden');
+        } else {
+          serviceError.classList.add('hidden');
+        }
+      });
+      serviceCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function(){
+          let checked = 0;
+          serviceCheckboxes.forEach(c => { if(c.checked){ checked++; } });
+          if(checked < 1){
+            serviceError.classList.remove('hidden');
+          } else {
+            serviceError.classList.add('hidden');
+          }
+        });
+      });
     });
   </script>
 
