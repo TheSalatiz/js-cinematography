@@ -20,7 +20,6 @@
     .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
     .menu-item a:hover, .menu-item button:hover { color: white; }
     .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
-    /* Contact Button Animation */
     .cta-button, .menu-item button.cta-anim {
       position: relative;
       overflow: hidden;
@@ -71,7 +70,6 @@
       transition: opacity 0.4s cubic-bezier(.77,0,.18,1);
     }
     .contact-popup-overlay.open { opacity: 1; pointer-events: auto; }
-
     .contact-popup-panel {
       position: fixed;
       top: 50%;
@@ -134,9 +132,73 @@
     </ul>
   </nav>
 
-  <!-- ...main site content remains unchanged... -->
+  <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="text-center md:text-left reveal" data-animate>
+            <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
+            <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
+            <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
+        </div>
+        <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
+            <div class="video-container">
+                <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3.mp4" type="video/mp4"></video>
+            </div>
+        </div>
+    </div>
+  </main>
+  
+  <section id="services" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell <span class="text-accent">your story.</span></h2>
+            <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
+        </div>
+        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+            <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">Leaning on the power of ideas to create content the audience actually WANTS to see. I believe that a post can change lives, have a good impact on the world, and in YOUR company. So I pay equal respect to both.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Media</h4><h3 class="text-3xl font-bold mt-4 mb-4"><span class="text-accent">Chase impact,</span> not impressions.</h3><p class="text-gray-400 leading-relaxed">My obsession is understanding where attention lives today, then lighting a path straight to action. This is about hitting the right target with precision, making every second count. I disrupt the old model of reach and efficiency by focusing on relevance and results that actually move the audience.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Strategy</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">People first. Always.</h3><p class="text-gray-400 leading-relaxed">True growth comes when you know who you’re talking to, understand their world, and speak their language, not your own. I research, plan, produce, and deliver work tailored to you and the people you want to reach, not some one-size-fits-all formula.</p></article>
+            <article class="reveal" data-animate><h4 class="service-title">Consulting</h4><h3 class="text-3xl font-bold mt-4 mb-4">Learn how to see your story <span class="text-accent">differently.</span></h3><p class="text-gray-400 leading-relaxed">Let's work together to unlock new ways to shape your message, engage your audience, and build lasting connections through the power of visual storytelling.</p></article>
+        </div>
+    </div>
+  </section>
 
-  <!-- Popup Elements -->
+  <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Featured Videos</h2>
+            <p class="mt-4 text-lg text-gray-400">A selection of my recent work in cinematography.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="card reveal" data-animate><iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Ephemeral – Short Film</h3><p class="text-gray-400 mt-2">A deeply personal short film about depression, friendship, and mental health.</p></div></div>
+            <div class="card reveal" data-animate><iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Blue Pill Red Pill (Matrix Short)</h3><p class="text-gray-400 mt-2">A short, modern take on a classic scene.</p></div></div>
+        </div>
+        <div class="text-center mt-20 reveal" data-animate>
+            <a href="portfolio.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
+        </div>
+    </div>
+  </section>
+  
+  <section id="photography" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+            <h2 class="text-4xl md:text-5xl font-bold">Photography Gallery</h2>
+            <p class="mt-4 text-lg text-gray-400">Capturing moments that tell a story.</p>
+        </div>
+        <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="card reveal" data-animate><img src="photo1.jpg" alt="Photography Project 1" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo2.jpg" alt="Photography Project 2" class="w-full h-full object-cover"></div>
+            <div class="card reveal" data-animate><img src="photo3.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
+        </div>
+        <div class="text-center mt-20 reveal" data-animate>
+            <a href="photography.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
+        </div>
+    </div>
+  </section>
+
+  <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+    © 2025 Juan Salazar Cinema. All rights reserved.
+  </footer>
+
   <div id="contact-overlay" class="contact-popup-overlay"></div>
   <div id="contact-popup" class="contact-popup-panel" aria-modal="true" role="dialog">
       <div class="flex items-center justify-between p-6 border-b border-gray-800">
