@@ -26,147 +26,6 @@
     .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
-    .start-story-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5em;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.55em 1.5em 0.55em 1.05em;
-      border-radius: 2em;
-      border: 2px solid #fff;
-      color: #fff;
-      background: transparent;
-      position: relative;
-      transition: box-shadow 0.25s, border-color 0.3s, color 0.3s, background 0.3s;
-      box-shadow: 0 2px 24px 0 rgba(76, 232, 228, 0.05), 0 1.5px 8px 0 rgba(236,72,153,0.10);
-      overflow: hidden;
-      cursor: pointer;
-      outline: none;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-    .start-story-btn svg {
-      transition: transform 0.4s cubic-bezier(.77,0,.18,1), stroke 0.3s;
-      margin-left: 0.3em;
-      width: 1.15em;
-      height: 1.15em;
-      stroke-width: 2.1;
-      stroke: #fff;
-      display: inline-block;
-      vertical-align: middle;
-    }
-    .start-story-btn:after {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      inset: 0;
-      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .start-story-btn:hover {
-      color: #000;
-      border-color: transparent;
-      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
-      box-shadow: 0 8px 32px 0 rgba(64,224,208,0.20), 0 16px 48px 0 rgba(236,72,153,0.18);
-    }
-    .start-story-btn:hover:after {
-      opacity: 0.08;
-    }
-    .start-story-btn:hover svg {
-      transform: translateX(6px) scale(1.13) rotate(7deg);
-      stroke: #000;
-    }
-    .start-story-btn:active {
-      filter: brightness(0.97);
-      transform: scale(0.98);
-    }
-    .contact-input, .contact-select {
-      width: 100%;
-      padding-top: 0.75rem;
-      padding-bottom: 0.5rem;
-      background: #181b20;
-      color: #e5e7eb;
-      font-size: 1.125rem;
-      border: 0;
-      border-bottom: 2px solid #374151;
-      border-radius: 0;
-      -webkit-appearance: none;
-      transition: border-color 0.3s ease, background 0.3s;
-    }
-    .contact-input:focus, .contact-select:focus {
-      outline: none;
-      border-bottom-color: var(--secondary-color);
-      background: #23242a;
-      color: #fff;
-    }
-    .contact-select {
-      padding: 0.75rem 2.8rem 0.75rem 1rem;
-      border-bottom: none;
-      border: 2px solid #374151;
-      border-radius: 1.2em;
-      box-shadow: 0 1.5px 8px 0 rgba(64,224,208,0.07), 0 0.5px 2px 0 rgba(236,72,153,0.04);
-      font-size: 1.125rem;
-      position: relative;
-    }
-    .contact-select:focus {
-      border-color: var(--secondary-color);
-      background: #181b20;
-      box-shadow: 0 0 0 3px rgba(64,224,208,0.18);
-    }
-    .contact-select:hover {
-      border-color: var(--secondary-color);
-      background: #202124;
-    }
-    .select-wrapper {
-      position: relative;
-      display: flex;
-      align-items: center;
-    }
-    .select-arrow {
-      position: absolute;
-      right: 1.1rem;
-      top: 50%;
-      pointer-events: none;
-      transform: translateY(-50%);
-      width: 1.3em;
-      height: 1.3em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .checkbox-style {
-      accent-color: var(--accent-color);
-      width: 1.15em;
-      height: 1.15em;
-      border-radius: 0.20em;
-      border: 1.5px solid #374151;
-      background: #222;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .checkbox-style:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px var(--accent-color);
-      border-color: var(--accent-color);
-    }
-    .checkbox-label {
-      font-size: 1.05rem;
-      color: #e5e7eb;
-      user-select: none;
-      padding-left: 0.2em;
-    }
-    .form-label {
-      font-weight: 500;
-      margin-bottom: 0.3em;
-      display: block;
-    }
-    .required-star {
-      color: var(--accent-color);
-      margin-left: 0.2em;
-      font-size: 1em;
-      font-weight: 700;
-    }
     .cta-button {
       background: transparent;
       color: #fff;
@@ -177,7 +36,7 @@
       letter-spacing: 0.05em;
       text-transform: uppercase;
       position: relative;
-      overflow: hidden;
+      overflow: hidden; /* Ensures animation stays inside rounded button */
       transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.16s;
       z-index: 1;
       cursor: pointer;
@@ -214,107 +73,53 @@
       filter: brightness(0.97);
       transform: scale(0.97);
     }
-    .contact-popup-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(4px);
-      z-index: 40;
+    .form-success-animate {opacity: 0;transform: scale(0.85) translateY(12px);transition: opacity 0.5s, transform 0.5s;}
+    .form-success-animate.visible {opacity: 1;transform: scale(1) translateY(0);}
+    #mobile-menu {
+      transition: max-height 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+      max-height: 0;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s cubic-bezier(.77,0,.18,1);
-    }
-    .contact-popup-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .contact-popup-panel {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      max-width: 600px;
-      height: auto;
-      max-height: 88vh;
-      background: #181b20;
-      color: white;
-      border-radius: 2rem;
-      box-shadow: 0 32px 64px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.03);
-      z-index: 50;
-      opacity: 0;
-      transform: translate(-50%, 70%) scale(0.92);
-      transition: opacity 0.5s cubic-bezier(.77,0,.18,1), transform 0.5s cubic-bezier(.77,0,.18,1);
-      display: flex;
-      flex-direction: column;
       overflow: hidden;
-      pointer-events: none;
     }
-    .contact-popup-panel.open {
+    #mobile-menu.open {
+      max-height: 500px;
       opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-      pointer-events: auto;
-    }
-    @media (max-width: 640px) {
-      .contact-popup-panel {
-        max-width: 96vw;
-        max-height: 98vh;
-        border-radius: 1.2rem;
-      }
-    }
-    .form-success-animate {
-      opacity: 0;
-      transform: scale(0.85) translateY(12px);
-      transition: opacity 0.5s cubic-bezier(.77,0,.18,1), transform 0.5s cubic-bezier(.77,0,.18,1);
-    }
-    .form-success-animate.visible {
-      opacity: 1;
-      transform: scale(1) translateY(0);
     }
   </style>
 </head>
 <body>
   <!-- Navigation -->
-  <nav id="main-nav" class="fixed top-0 w-full z-50">
+  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
-      <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg></button>
+      <a href="#" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
+      <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path>
+        </svg>
+      </button>
       <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
-        <li class="menu-item"><a href="index.html" class="active-link">Home</a></li>
-        <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
-        <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
-        <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
-        <li class="menu-item">
-          <button id="open-contact-popup" type="button" class="start-story-btn">
-            Start Your Story
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-              <path d="M5 12h14M13 6l6 6-6 6"/>
-            </svg>
-          </button>
-        </li>
+        <li class="menu-item"><a href="#home" class="active-link">Home</a></li>
+        <li class="menu-item"><a href="#services" class="text-gray-300">Services</a></li>
+        <li class="menu-item"><a href="#portfolio" class="text-gray-300">Portfolio</a></li>
+        <li class="menu-item"><a href="#photography" class="text-gray-300">Photography</a></li>
+        <li class="menu-item"><a href="#contact" class="text-gray-300">Contact</a></li>
       </ul>
     </div>
-    <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
-      <li><a href="index.html" class="block py-2 text-white">Home</a></li>
-      <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
-      <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
-      <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
-      <li>
-        <button id="open-contact-popup-mobile" type="button" class="start-story-btn w-full text-left mt-2">
-          Start Your Story
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
-        </button>
-      </li>
+    <ul id="mobile-menu" class="md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-2 text-white">
+      <li><a href="#home" class="block py-2">Home</a></li>
+      <li><a href="#services" class="block py-2">Services</a></li>
+      <li><a href="#portfolio" class="block py-2">Portfolio</a></li>
+      <li><a href="#photography" class="block py-2">Photography</a></li>
+      <li><a href="#contact" class="block py-2">Contact</a></li>
     </ul>
   </nav>
   <!-- Hero -->
-  <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
+  <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6 pt-24 md:pt-0">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="text-center md:text-left reveal" data-animate>
             <h2 class="text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tighter">Story<span class="highlight-word">telling</span> Through Light.</h2>
             <p class="text-lg text-gray-300 mb-10 max-w-lg mx-auto md:mx-0">A curated collection of work created with purpose and precision.</p>
-            <a href="about.html" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
+            <a href="#services" class="cta-button inline-block px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">My Services</a>
         </div>
         <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
             <div class="video-container">
@@ -350,7 +155,7 @@
             <div class="card reveal" data-animate><iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe><div class="p-6"><h3 class="font-bold text-xl">Blue Pill Red Pill (Matrix Short)</h3><p class="text-gray-400 mt-2">A short, modern take on a classic scene.</p></div></div>
         </div>
         <div class="text-center mt-20 reveal" data-animate>
-            <a href="portfolio.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
+            <a href="#portfolio" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Portfolio</a>
         </div>
     </div>
   </section>
@@ -367,230 +172,134 @@
             <div class="card reveal" data-animate><img src="photo3.jpg" alt="Photography Project 3" class="w-full h-full object-cover"></div>
         </div>
         <div class="text-center mt-20 reveal" data-animate>
-            <a href="photography.html" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
+            <a href="#photography" class="cta-button px-12 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">View Full Gallery</a>
         </div>
+    </div>
+  </section>
+  <!-- Contact -->
+  <section id="contact" class="py-24 sm:py-32 bg-black px-6">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl font-bold mb-2">Let's Create Together</h2>
+        <p class="text-lg text-gray-400">Tell me a bit about your project, and I'll get back to you as soon as possible!</p>
+      </div>
+      <div class="bg-gray-900 bg-opacity-80 rounded-xl shadow-lg p-8">
+        <form id="contact-form"
+          action="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2"
+          method="POST" class="space-y-6">
+          <div>
+            <label class="block mb-1 font-semibold" for="n8n-name">What is your name? <span class="text-pink-400">*</span></label>
+            <input id="n8n-name" type="text" name="What is your name?" required class="w-full rounded px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold" for="n8n-website">Company website? <span class="text-pink-400">*</span></label>
+            <input id="n8n-website" type="text" name="Company website?" required class="w-full rounded px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold" for="n8n-mail">What is your mail? <span class="text-pink-400">*</span></label>
+            <input id="n8n-mail" type="email" name="What is your mail?" required class="w-full rounded px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"/>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold" for="n8n-budget">Project Budget <span class="text-pink-400">*</span></label>
+            <select id="n8n-budget" name="Project Budget" required
+              class="w-full rounded px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <option value="" disabled selected>Select an option</option>
+              <option value="Less than $500">Less than $500</option>
+              <option value="$500-$2k">$500-$2k</option>
+              <option value="$2k-$5k">$2k-$5k</option>
+              <option value="+$5k">+$5k</option>
+            </select>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold" for="n8n-services">What services are you interested in? <span class="text-pink-400">*</span></label>
+            <select id="n8n-services" name="What services are you interested in?" multiple required
+              class="w-full rounded px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400">
+              <option value="Photography">Photography</option>
+              <option value="Videography">Videography</option>
+            </select>
+            <p class="text-xs text-gray-400 mt-1">Hold Ctrl (Cmd on Mac) to select multiple.</p>
+          </div>
+          <div>
+            <label class="block mb-1 font-semibold" for="n8n-message">Message <span class="text-pink-400">*</span></label>
+            <textarea id="n8n-message" name="Message" rows="4" required class="w-full rounded px-4 py-2 bg-gray-800 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full py-3 rounded bg-pink-500 hover:bg-pink-600 text-white font-bold transition">Submit</button>
+        </form>
+        <div id="form-success-message" class="form-success-animate" style="display:none;">
+          <div class="text-center py-8">
+            <h3 class="text-2xl font-bold mb-2 text-green-400">Form Submitted</h3>
+            <p class="text-lg text-gray-200">Your response has been recorded.<br>
+            Thank you for reaching out!<br>
+            <span class="text-xs text-gray-500 block mt-5">Form automated with</span>
+            <span style="vertical-align: middle;">
+              <svg width="70" height="24" viewBox="0 0 100 24" fill="none" style="display:inline-block;vertical-align:middle;"><circle cx="12" cy="12" r="4" fill="#ee4a7b"/><circle cx="28" cy="12" r="4" fill="#ee4a7b"/><circle cx="44" cy="12" r="4" fill="#ee4a7b"/><polyline points="16,12 24,12" stroke="#ee4a7b" stroke-width="2" fill="none"/><polyline points="32,12 40,12" stroke="#ee4a7b" stroke-width="2" fill="none"/></svg>
+              <span class="font-bold text-gray-400" style="font-size:1.2em;vertical-align:middle;">n8n</span>
+            </span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <!-- Footer -->
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
-
-  <!-- POPUP -->
-  <div id="contact-overlay" class="contact-popup-overlay"></div>
-  <div id="contact-popup" class="contact-popup-panel" aria-modal="true" role="dialog">
-    <div class="flex items-center justify-between p-6 border-b border-gray-800">
-      <h2 class="text-2xl font-bold">Let's Create Together</h2>
-      <button id="close-contact-popup" class="p-2 rounded-full hover:bg-gray-800 transition-colors" aria-label="Close contact panel">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-      </button>
-    </div>
-    <div class="p-6 overflow-y-auto" style="height: calc(100% - 81px);">
-      <p class="text-gray-400 mb-8">
-        Tell me a bit about your project, and I'll get back to you as soon as possible!
-      </p>
-      <form id="contact-form" action="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-6">
-        <div>
-          <label for="popup-name" class="form-label"
-            >name?<span class="required-star">*</span></label>
-          <input
-            type="text"
-            name="name"
-            id="popup-name"
-            class="contact-input placeholder-gray-400"
-            placeholder="name"
-            required
-            autocomplete="name"
-          />
-        </div>
-        <div>
-          <label for="popup-website" class="form-label"
-            >company website?</label>
-          <input
-            type="url"
-            name="website"
-            id="popup-website"
-            class="contact-input placeholder-gray-400"
-            placeholder="https://thesalatiz.github.io/js-cinematography"
-            autocomplete="url"
-          />
-        </div>
-        <div>
-          <label for="popup-email" class="form-label"
-            >email?<span class="required-star">*</span></label>
-          <input
-            type="email"
-            name="email"
-            id="popup-email"
-            class="contact-input placeholder-gray-400"
-            placeholder="Email"
-            required
-            autocomplete="email"
-          />
-        </div>
-        <div>
-          <label for="popup-budget" class="form-label"
-            >Project Budget<span class="required-star">*</span></label>
-          <div class="select-wrapper">
-            <select id="popup-budget" name="budget" class="contact-select" required>
-              <option value="" disabled selected>Select an option ...</option>
-              <option value="Less than $500">Less than $500</option>
-              <option value="$500-$2k">$500-$2k</option>
-              <option value="$2k-$5k">$2k-$5k</option>
-              <option value="+$5k">+$5k</option>
-            </select>
-            <span class="select-arrow">
-              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="6 8 10 12 14 8"/>
-              </svg>
-            </span>
-          </div>
-        </div>
-        <div>
-          <label class="form-label"
-            >What services are you interested in?<span class="required-star">*</span></label>
-          <div class="flex flex-col space-y-2 pl-1" id="service-checkboxes">
-            <label class="inline-flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="service[]" value="Photography" class="checkbox-style"/>
-              <span class="checkbox-label">Photography</span>
-            </label>
-            <label class="inline-flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="service[]" value="Videography" class="checkbox-style"/>
-              <span class="checkbox-label">Videography</span>
-            </label>
-            <span id="service-error" class="text-sm text-pink-400 mt-1 hidden">Please select at least one service.</span>
-          </div>
-        </div>
-        <div>
-          <label for="popup-message" class="form-label"
-            >Tell me about your project.</label>
-          <textarea
-            name="message"
-            id="popup-message"
-            rows="5"
-            class="contact-input placeholder-gray-400"
-            placeholder="Tell me about your project."
-            required
-          ></textarea>
-        </div>
-        <div class="pt-2">
-          <button
-            type="submit"
-            class="cta-button w-full px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase"
-            id="submit-inquiry-btn"
-          >
-            Submit Inquiry
-          </button>
-        </div>
-      </form>
-      <div id="form-success-message" class="form-success-animate" style="display:none;">
-        <div class="text-center py-12">
-          <h3 class="text-2xl font-bold mb-2 text-green-400">Form Submitted</h3>
-          <p class="text-lg text-gray-200">Your response has been recorded.<br>
-          Thank you for reaching out!<br>
-          <span class="text-xs text-gray-500 block mt-5">Form automated with</span>
-          <span style="vertical-align: middle;">
-            <svg width="70" height="24" viewBox="0 0 100 24" fill="none" style="display:inline-block;vertical-align:middle;"><circle cx="12" cy="12" r="4" fill="#ee4a7b"/><circle cx="28" cy="12" r="4" fill="#ee4a7b"/><circle cx="44" cy="12" r="4" fill="#ee4a7b"/><polyline points="16,12 24,12" stroke="#ee4a7b" stroke-width="2" fill="none"/><polyline points="32,12 40,12" stroke="#ee4a7b" stroke-width="2" fill="none"/></svg>
-            <span class="font-bold text-gray-400" style="font-size:1.2em;vertical-align:middle;">n8n</span>
-          </span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Mobile nav
-      const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile Nav Toggle
+      const menuButton = document.getElementById('mobile-menu-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+        menuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('open');
+        });
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+          });
+        });
       }
       // Nav scroll effect
       const nav = document.getElementById('main-nav');
-      window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } else { nav.classList.remove('nav-scroll'); } });
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) nav.classList.add('nav-scroll');
+        else nav.classList.remove('nav-scroll');
+      });
       // Reveal on scroll
-      const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+      }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
-      // Popup logic
-      const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
-      const closeButton = document.getElementById('close-contact-popup');
-      const overlay = document.getElementById('contact-overlay');
-      const popup = document.getElementById('contact-popup');
-      function openPopup() { 
-        overlay.classList.add('open'); 
-        popup.classList.add('open'); 
-      }
-      function closePopup() { 
-        overlay.classList.remove('open'); 
-        popup.classList.remove('open'); 
-        // Reset form and thank you message
-        const form = document.getElementById('contact-form');
-        const formSuccess = document.getElementById('form-success-message');
-        if(formSuccess) { formSuccess.classList.remove('visible'); formSuccess.style.display = "none"; }
-        if(form) { form.reset(); form.style.display = "block"; }
-        const submitBtn = document.getElementById('submit-inquiry-btn');
-        if(submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Submit Inquiry"; }
-      }
-      openButtons.forEach(button => { button.addEventListener('click', openPopup); });
-      if(closeButton) closeButton.addEventListener('click', closePopup);
-      if(overlay) overlay.addEventListener('click', closePopup);
-      document.addEventListener('keydown', (e) => { if (e.key === "Escape" && overlay.classList.contains('open')) { closePopup(); } });
-      // Custom validation for service[] checkboxes (at least one required)
-      const serviceCheckboxes = document.querySelectorAll('input[name="service[]"]');
-      const serviceError = document.getElementById('service-error');
-      const form = document.getElementById('contact-form');
-      const formSuccess = document.getElementById('form-success-message');
-      form.addEventListener('submit', function(e){
-        // Validate at least one checkbox
-        let checked = 0;
-        serviceCheckboxes.forEach(cb => { if(cb.checked){ checked++; } });
-        if(checked < 1){
+      // Contact form (AJAX)
+      var form = document.getElementById('contact-form');
+      var formSuccess = document.getElementById('form-success-message');
+      if(form){
+        form.addEventListener('submit', function(e){
           e.preventDefault();
-          serviceError.classList.remove('hidden');
-          return;
-        } else {
-          serviceError.classList.add('hidden');
-        }
-        // AJAX submit
-        e.preventDefault();
-        const data = new FormData(form);
-        const submitBtn = document.getElementById('submit-inquiry-btn');
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Submitting...";
-        fetch(form.action, {
-          method: 'POST',
-          body: data
-        })
-        .then(res => res.json ? res.json() : res)
-        .then(() => {
-          form.style.display = "none";
-          formSuccess.style.display = "block";
-          setTimeout(() => { formSuccess.classList.add('visible'); }, 50);
-        })
-        .catch(() => {
-          form.innerHTML = `
-            <div class="text-center py-12">
-              <h3 class="text-2xl font-bold mb-2 text-red-400">Something went wrong</h3>
-              <p class="text-lg text-gray-200">Please try again later or contact me directly.</p>
-            </div>
-          `;
+          var data = new FormData(form);
+          var submitBtn = form.querySelector('button[type="submit"]');
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Submitting...";
+          fetch(form.action, {
+            method: 'POST',
+            body: data
+          })
+          .then(function(res) {
+            form.style.display = "none";
+            formSuccess.style.display = "block";
+            setTimeout(function(){ formSuccess.classList.add('visible'); }, 30);
+          })
+          .catch(function() {
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Submit";
+            alert("Something went wrong. Please try again or contact directly.");
+          });
         });
-      });
-      serviceCheckboxes.forEach(cb => {
-        cb.addEventListener('change', function(){
-          let checked = 0;
-          serviceCheckboxes.forEach(c => { if(c.checked){ checked++; } });
-          if(checked < 1){
-            serviceError.classList.remove('hidden');
-          } else {
-            serviceError.classList.add('hidden');
-          }
-        });
-      });
+      }
     });
   </script>
 </body>
