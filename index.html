@@ -30,17 +30,44 @@
     .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
-    .contact-input { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
-    .contact-input:focus { outline: none; border-bottom-color: var(--secondary-color); }
+    .contact-input, .contact-select { @apply w-full pt-3 pb-2 bg-transparent text-white text-lg; border: 0; border-bottom: 2px solid #374151; border-radius: 0; -webkit-appearance: none; transition: border-color 0.3s ease; }
+    .contact-input:focus, .contact-select:focus { outline: none; border-bottom-color: var(--secondary-color); }
     input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, textarea:-webkit-autofill, textarea:-webkit-autofill:hover, textarea:-webkit-autofill:focus, select:-webkit-autofill, select:-webkit-autofill:hover, select:-webkit-autofill:focus { -webkit-text-fill-color: #ffffff !important; -webkit-box-shadow: 0 0 0px 1000px #0a0a0a inset !important; transition: background-color 5000s ease-in-out 0s; }
-    .contact-popup-overlay { @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
-    .contact-popup-overlay.open { opacity: 1; pointer-events: auto; }
-    .contact-popup-panel { @apply fixed top-0 right-0 h-screen w-full max-w-lg bg-gray-900 text-white shadow-2xl z-50; transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .contact-popup-panel.open { transform: translateX(0); }
-    .radio-label { @apply block w-full p-3 text-center border-2 border-gray-700 rounded-md cursor-pointer transition-colors; }
-    .radio-input { @apply hidden; }
-    .radio-input:checked + span { color: var(--secondary-color); font-weight: 700; }
-    .radio-input:checked + span, .radio-label:has(.radio-input:checked) { border-color: var(--secondary-color); }
+    .text-accent { color: var(--secondary-color); }
+    .form-label { @apply block text-sm font-semibold text-gray-400 mb-2; }
+
+    /* --- STYLES FOR POP-UP CONTACT PANEL --- */
+    .contact-popup-overlay {
+      @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .contact-popup-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .contact-popup-panel {
+      @apply fixed top-0 right-0 h-screen w-full max-w-lg bg-gray-900 text-white shadow-2xl z-50;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .contact-popup-panel.open {
+      transform: translateX(0);
+    }
+    .radio-label {
+      @apply block w-full p-3 text-center border-2 border-gray-700 rounded-md cursor-pointer transition-colors;
+    }
+    .radio-input {
+      @apply hidden;
+    }
+    .radio-input:checked + span {
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+    .radio-label:has(.radio-input:checked) {
+      border-color: var(--secondary-color);
+    }
   </style>
 </head>
 <body>
@@ -54,7 +81,12 @@
         <li class="menu-item"><a href="about.html" class="text-gray-300">About</a></li>
         <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
         <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
-        <li class="menu-item"><button id="open-contact-popup" class="text-gray-300 uppercase">Contact</button></li>
+        <li class="menu-item">
+          <button id="open-contact-popup" class="flex items-center cursor-pointer gap-2 px-4 py-2 border border-white rounded-full text-white bg-transparent hover:bg-white hover:text-black transition-all duration-300">
+            Stay in Touch
+            <svg stroke="currentColor" fill="currentColor" stroke-width="1" viewBox="0 0 24 24" class="transition-all duration-300" height="18" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M18.25 15.5a.75.75 0 0 1-.75-.75V7.56L7.28 17.78a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L16.44 6.5H9.25a.75.75 0 0 1 0-1.5h9a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-.75.75Z"></path></svg>
+          </button>
+        </li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
@@ -62,7 +94,7 @@
       <li><a href="about.html" class="block py-2 text-gray-300">About</a></li>
       <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
       <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
-      <li><button id="open-contact-popup-mobile" class="block w-full text-left py-2 text-gray-300">Contact</button></li>
+      <li><button id="open-contact-popup-mobile" class="block w-full text-left py-2 text-gray-300">Stay in Touch</button></li>
     </ul>
   </nav>
 
@@ -154,17 +186,17 @@
               </div>
               <div>
                   <label for="popup-email" class="form-label">Email *</label>
-                  <input type="email" name="_replyto" id="popup-email" class="contact-input" required>
+                  <input type="email" name="email" id="popup-email" class="contact-input" required>
               </div>
               <div>
                   <label for="popup-inquiry-type" class="form-label">What service are you interested in?</label>
-                  <select id="popup-inquiry-type" name="inquiry-type" class="contact-input" required>
+                  <select id="popup-inquiry-type" name="service_type" class="contact-input" required>
                       <option value="Cinematography Project">Cinematography Project</option><option value="Photography Session">Photography Session</option><option value="Consulting">Consulting</option><option value="General Question">General Question</option>
                   </select>
               </div>
               <div>
                   <p class="form-label">Estimated Budget *</p>
-                  <div class="grid grid-cols-2 gap-4 mt-2">
+                  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-2">
                       <div><label class="radio-label"><input type="radio" name="budget" value="$500 - $1,000" class="radio-input" required><span>$500 - $1k</span></label></div>
                       <div><label class="radio-label"><input type="radio" name="budget" value="$1,000 - $2,000" class="radio-input"><span>$1k - $2k</span></label></div>
                       <div><label class="radio-label"><input type="radio" name="budget" value="$2,000 - $5,000" class="radio-input"><span>$2k - $5k</span></label></div>
@@ -176,7 +208,7 @@
                   <textarea name="message" id="popup-message" rows="5" class="contact-input" required></textarea>
               </div>
               <div class="pt-2">
-                  <button type="submit" class="cta-button w-full px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase">Submit Inquiry</button>
+                  <button type="submit" class="cta-button w-full px-16 py-3 border-2 border-white rounded-full font-bold text-base tracking-wider uppercase">Submit Inquiry</button>
               </div>
           </form>
       </div>
