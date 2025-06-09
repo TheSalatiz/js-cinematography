@@ -261,10 +261,19 @@
         border-radius: 1.2rem;
       }
     }
+    .form-success-animate {
+      opacity: 0;
+      transform: scale(0.85) translateY(12px);
+      transition: opacity 0.5s cubic-bezier(.77,0,.18,1), transform 0.5s cubic-bezier(.77,0,.18,1);
+    }
+    .form-success-animate.visible {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
   </style>
 </head>
 <body>
-  <!-- Navigation and main content -->
+  <!-- Navigation -->
   <nav id="main-nav" class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
@@ -299,6 +308,7 @@
       </li>
     </ul>
   </nav>
+  <!-- Hero -->
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="text-center md:text-left reveal" data-animate>
@@ -313,6 +323,7 @@
         </div>
     </div>
   </main>
+  <!-- Services -->
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -327,6 +338,7 @@
         </div>
     </div>
   </section>
+  <!-- Portfolio -->
   <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -342,6 +354,7 @@
         </div>
     </div>
   </section>
+  <!-- Photography -->
   <section id="photography" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -358,9 +371,11 @@
         </div>
     </div>
   </section>
+  <!-- Footer -->
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
+
   <!-- POPUP -->
   <div id="contact-overlay" class="contact-popup-overlay"></div>
   <div id="contact-popup" class="contact-popup-panel" aria-modal="true" role="dialog">
@@ -376,10 +391,10 @@
       <p class="text-gray-400 mb-8">
         Tell me a bit about your project, and I'll get back to you as soon as possible!
       </p>
-      <form action="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-6">
+      <form id="contact-form" action="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-6">
         <div>
           <label for="popup-name" class="form-label"
-            >What is your name?<span class="required-star">*</span></label>
+            >name?<span class="required-star">*</span></label>
           <input
             type="text"
             name="name"
@@ -392,7 +407,7 @@
         </div>
         <div>
           <label for="popup-website" class="form-label"
-            >What is your company website?</label>
+            >company website?</label>
           <input
             type="url"
             name="website"
@@ -404,7 +419,7 @@
         </div>
         <div>
           <label for="popup-email" class="form-label"
-            >What is your email?<span class="required-star">*</span></label>
+            >email?<span class="required-star">*</span></label>
           <input
             type="email"
             name="email"
@@ -470,6 +485,19 @@
           </button>
         </div>
       </form>
+      <div id="form-success-message" class="form-success-animate" style="display:none;">
+        <div class="text-center py-12">
+          <h3 class="text-2xl font-bold mb-2 text-green-400">Form Submitted</h3>
+          <p class="text-lg text-gray-200">Your response has been recorded.<br>
+          Thank you for reaching out!<br>
+          <span class="text-xs text-gray-500 block mt-5">Form automated with</span>
+          <span style="vertical-align: middle;">
+            <svg width="70" height="24" viewBox="0 0 100 24" fill="none" style="display:inline-block;vertical-align:middle;"><circle cx="12" cy="12" r="4" fill="#ee4a7b"/><circle cx="28" cy="12" r="4" fill="#ee4a7b"/><circle cx="44" cy="12" r="4" fill="#ee4a7b"/><polyline points="16,12 24,12" stroke="#ee4a7b" stroke-width="2" fill="none"/><polyline points="32,12 40,12" stroke="#ee4a7b" stroke-width="2" fill="none"/></svg>
+            <span class="font-bold text-gray-400" style="font-size:1.2em;vertical-align:middle;">n8n</span>
+          </span>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
   <script>
@@ -499,6 +527,13 @@
       function closePopup() { 
         overlay.classList.remove('open'); 
         popup.classList.remove('open'); 
+        // Reset form and thank you message
+        const form = document.getElementById('contact-form');
+        const formSuccess = document.getElementById('form-success-message');
+        if(formSuccess) { formSuccess.classList.remove('visible'); formSuccess.style.display = "none"; }
+        if(form) { form.reset(); form.style.display = "block"; }
+        const submitBtn = document.getElementById('submit-inquiry-btn');
+        if(submitBtn) { submitBtn.disabled = false; submitBtn.textContent = "Submit Inquiry"; }
       }
       openButtons.forEach(button => { button.addEventListener('click', openPopup); });
       if(closeButton) closeButton.addEventListener('click', closePopup);
@@ -507,16 +542,43 @@
       // Custom validation for service[] checkboxes (at least one required)
       const serviceCheckboxes = document.querySelectorAll('input[name="service[]"]');
       const serviceError = document.getElementById('service-error');
-      const form = popup.querySelector('form');
+      const form = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success-message');
       form.addEventListener('submit', function(e){
+        // Validate at least one checkbox
         let checked = 0;
         serviceCheckboxes.forEach(cb => { if(cb.checked){ checked++; } });
         if(checked < 1){
           e.preventDefault();
           serviceError.classList.remove('hidden');
+          return;
         } else {
           serviceError.classList.add('hidden');
         }
+        // AJAX submit
+        e.preventDefault();
+        const data = new FormData(form);
+        const submitBtn = document.getElementById('submit-inquiry-btn');
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+        fetch(form.action, {
+          method: 'POST',
+          body: data
+        })
+        .then(res => res.json ? res.json() : res)
+        .then(() => {
+          form.style.display = "none";
+          formSuccess.style.display = "block";
+          setTimeout(() => { formSuccess.classList.add('visible'); }, 50);
+        })
+        .catch(() => {
+          form.innerHTML = `
+            <div class="text-center py-12">
+              <h3 class="text-2xl font-bold mb-2 text-red-400">Something went wrong</h3>
+              <p class="text-lg text-gray-200">Please try again later or contact me directly.</p>
+            </div>
+          `;
+        });
       });
       serviceCheckboxes.forEach(cb => {
         cb.addEventListener('change', function(){
