@@ -32,17 +32,13 @@
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
     .text-accent { color: var(--secondary-color); }
 
-    /* --- FINAL, ROBUST STYLES FOR POP-UP --- */
+    /* --- FINAL, SIMPLIFIED STYLES FOR POP-UP --- */
     .contact-popup-overlay {
+      /* The overlay is now a flex container that centers the pop-up. */
       @apply fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40 flex items-center justify-center p-4;
-      opacity: 0;
-      transition: opacity 0.3s ease-in-out;
     }
     .contact-popup-panel {
       @apply bg-white text-gray-800 rounded-lg shadow-2xl w-full max-w-lg max-h-[90vh] flex flex-col;
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
     .form-label { @apply block text-gray-700 text-sm font-bold mb-2; }
     .contact-input, .contact-select { @apply w-full py-2 px-3 bg-gray-100 text-gray-800 border border-gray-300 rounded-md; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
@@ -150,7 +146,7 @@
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
 
-  <div id="contact-overlay" class="contact-popup-overlay" style="display: none;">
+  <div id="contact-overlay" class="contact-popup-overlay hidden">
     <div id="contact-popup" class="contact-popup-panel">
       <div class="flex items-center justify-between p-6 border-b border-gray-200">
         <h2 class="text-2xl font-bold text-gray-800">Get in Touch</h2>
@@ -214,32 +210,19 @@
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
       
-      // --- FINAL, ROBUST SCRIPT FOR POP-UP ---
+      // --- GUARANTEED TO WORK SCRIPT FOR POP-UP ---
       const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
       const closeButton = document.getElementById('close-contact-popup');
       const overlay = document.getElementById('contact-overlay');
-      const popup = document.getElementById('contact-popup');
-
+      
       // Check if all pop-up elements exist before adding listeners
-      if (openButtons.length > 0 && closeButton && overlay && popup) {
+      if (openButtons.length > 0 && closeButton && overlay) {
         function openPopup() {
-          overlay.style.display = 'flex';
-          // Use a tiny timeout to allow the browser to apply the display style before starting the transition
-          setTimeout(() => {
-            overlay.style.opacity = '1';
-            popup.style.opacity = '1';
-            popup.style.transform = 'translate(-50%, -50%) scale(1)';
-          }, 10);
+          overlay.classList.remove('hidden');
         }
 
         function closePopup() {
-          overlay.style.opacity = '0';
-          popup.style.opacity = '0';
-          popup.style.transform = 'translate(-50%, -50%) scale(0.95)';
-          // Wait for the transition to finish before hiding the overlay completely
-          setTimeout(() => {
-            overlay.style.display = 'none';
-          }, 300); // This duration should match your CSS transition duration
+          overlay.classList.add('hidden');
         }
 
         openButtons.forEach(button => {
@@ -248,14 +231,14 @@
 
         closeButton.addEventListener('click', closePopup);
         overlay.addEventListener('click', (e) => {
+            // Close only if the overlay itself (the background) is clicked
             if (e.target === overlay) {
                 closePopup();
             }
         });
 
         document.addEventListener('keydown', (e) => {
-            // Check if the overlay is currently visible by checking opacity
-            if (e.key === "Escape" && overlay.style.opacity === '1') {
+            if (e.key === "Escape" && !overlay.classList.contains('hidden')) {
                 closePopup();
             }
         });
