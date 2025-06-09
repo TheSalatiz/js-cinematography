@@ -26,8 +26,6 @@
     .card { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 1rem; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }
     .card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
     .card iframe { width: 100%; aspect-ratio: 16 / 9; }
-
-    /* Start Your Story button (creative, rounded, arrow, animated) - smaller version */
     .start-story-btn {
       display: inline-flex;
       align-items: center;
@@ -84,8 +82,6 @@
       filter: brightness(0.97);
       transform: scale(0.98);
     }
-
-    /* Contact input and select improvements */
     .contact-input, .contact-select {
       width: 100%;
       padding-top: 0.75rem;
@@ -140,27 +136,98 @@
       align-items: center;
       justify-content: center;
     }
-    /* Autofill override for Chrome/Safari */
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    textarea:-webkit-autofill,
-    textarea:-webkit-autofill:hover,
-    textarea:-webkit-autofill:focus,
-    select:-webkit-autofill,
-    select:-webkit-autofill:hover,
-    select:-webkit-autofill:focus {
-      -webkit-text-fill-color: #e5e7eb !important;
-      -webkit-box-shadow: 0 0 0px 1000px #181b20 inset !important;
-      transition: background-color 5000s ease-in-out 0s;
+    .checkbox-style {
+      accent-color: var(--accent-color);
+      width: 1.15em;
+      height: 1.15em;
+      border-radius: 0.20em;
+      border: 1.5px solid #374151;
+      background: #222;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .checkbox-style:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--accent-color);
+      border-color: var(--accent-color);
+    }
+    .checkbox-label {
+      font-size: 1.05rem;
+      color: #e5e7eb;
+      user-select: none;
+      padding-left: 0.2em;
+    }
+    .form-label {
+      font-weight: 500;
+      margin-bottom: 0.3em;
+      display: block;
+    }
+    .required-star {
+      color: var(--accent-color);
+      margin-left: 0.2em;
+      font-size: 1em;
+      font-weight: 700;
+    }
+    .cta-button {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      font-weight: bold;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.16s;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .cta-button::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0.15;
+      transition: transform 0.45s cubic-bezier(.37,2,.47,.95), opacity 0.3s;
+      border-radius: inherit;
+      z-index: -1;
+    }
+    .cta-button:hover::before,
+    .cta-button:focus::before {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    .cta-button:hover,
+    .cta-button:focus {
+      color: #181b20;
+      background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+      border-color: transparent;
+      box-shadow: 0 8px 32px 0 rgba(64,224,208,0.20), 0 16px 48px 0 rgba(236,72,153,0.18);
+      outline: none;
+      transform: translateY(-2px) scale(1.04);
+    }
+    .cta-button:active {
+      filter: brightness(0.97);
+      transform: scale(0.97);
     }
     .contact-popup-overlay {
-      @apply fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm z-40;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(4px);
+      z-index: 40;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s cubic-bezier(.77,0,.18,1);
     }
-    .contact-popup-overlay.open { opacity: 1; pointer-events: auto; }
+    .contact-popup-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
     .contact-popup-panel {
       position: fixed;
       top: 50%;
@@ -194,45 +261,10 @@
         border-radius: 1.2rem;
       }
     }
-    .radio-label { @apply block w-full p-3 text-center border-2 border-gray-700 rounded-md cursor-pointer transition-colors; }
-    .radio-input { @apply hidden; }
-    .radio-input:checked + span { color: var(--secondary-color); font-weight: 700; }
-    .radio-input:checked + span, .radio-label:has(.radio-input:checked) { border-color: var(--secondary-color); }
-    .checkbox-style {
-      accent-color: var(--accent-color);
-      width: 1.15em;
-      height: 1.15em;
-      border-radius: 0.20em;
-      border: 1.5px solid #374151;
-      background: #222;
-      transition: box-shadow 0.2s, border-color 0.2s;
-    }
-    .checkbox-style:focus {
-      outline: none;
-      box-shadow: 0 0 0 2px var(--accent-color);
-      border-color: var(--accent-color);
-    }
-    .checkbox-label {
-      font-size: 1.05rem;
-      color: #e5e7eb;
-      user-select: none;
-      padding-left: 0.2em;
-    }
-    .form-label {
-      font-weight: 500;
-      margin-bottom: 0.3em;
-      display: block;
-    }
-    .required-star {
-      color: var(--accent-color);
-      margin-left: 0.2em;
-      font-size: 1em;
-      font-weight: 700;
-    }
   </style>
 </head>
 <body>
-  
+  <!-- Navigation and main content -->
   <nav id="main-nav" class="fixed top-0 w-full z-50">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
@@ -243,7 +275,7 @@
         <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
         <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
         <li class="menu-item">
-          <button id="open-contact-popup" class="start-story-btn">
+          <button id="open-contact-popup" type="button" class="start-story-btn">
             Start Your Story
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -258,7 +290,7 @@
       <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
       <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
       <li>
-        <button id="open-contact-popup-mobile" class="start-story-btn w-full text-left mt-2">
+        <button id="open-contact-popup-mobile" type="button" class="start-story-btn w-full text-left mt-2">
           Start Your Story
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M5 12h14M13 6l6 6-6 6"/>
@@ -267,7 +299,6 @@
       </li>
     </ul>
   </nav>
-
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="text-center md:text-left reveal" data-animate>
@@ -282,7 +313,6 @@
         </div>
     </div>
   </main>
-  
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -297,7 +327,6 @@
         </div>
     </div>
   </section>
-
   <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -313,7 +342,6 @@
         </div>
     </div>
   </section>
-  
   <section id="photography" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -330,11 +358,10 @@
         </div>
     </div>
   </section>
-
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
-
+  <!-- POPUP -->
   <div id="contact-overlay" class="contact-popup-overlay"></div>
   <div id="contact-popup" class="contact-popup-panel" aria-modal="true" role="dialog">
     <div class="flex items-center justify-between p-6 border-b border-gray-800">
@@ -350,8 +377,6 @@
         Tell me a bit about your project, and I'll get back to you as soon as possible!
       </p>
       <form action="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2" method="POST" class="space-y-6">
-
-        <!-- Name -->
         <div>
           <label for="popup-name" class="form-label"
             >What is your name?<span class="required-star">*</span></label>
@@ -365,23 +390,18 @@
             autocomplete="name"
           />
         </div>
-
-        <!-- Company website -->
         <div>
           <label for="popup-website" class="form-label"
-            >What is your company website?<span class="required-star">*</span></label>
+            >What is your company website?</label>
           <input
             type="url"
             name="website"
             id="popup-website"
             class="contact-input placeholder-gray-400"
             placeholder="https://thesalatiz.github.io/js-cinematography"
-            required
             autocomplete="url"
           />
         </div>
-
-        <!-- Email -->
         <div>
           <label for="popup-email" class="form-label"
             >What is your email?<span class="required-star">*</span></label>
@@ -395,8 +415,6 @@
             autocomplete="email"
           />
         </div>
-        
-        <!-- Project Budget -->
         <div>
           <label for="popup-budget" class="form-label"
             >Project Budget<span class="required-star">*</span></label>
@@ -415,41 +433,38 @@
             </span>
           </div>
         </div>
-
-        <!-- Services (Checkboxes) -->
         <div>
           <label class="form-label"
             >What services are you interested in?<span class="required-star">*</span></label>
-          <div class="flex flex-col space-y-2 pl-1">
+          <div class="flex flex-col space-y-2 pl-1" id="service-checkboxes">
             <label class="inline-flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="service[]" value="Photography" class="checkbox-style" required/>
+              <input type="checkbox" name="service[]" value="Photography" class="checkbox-style"/>
               <span class="checkbox-label">Photography</span>
             </label>
             <label class="inline-flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" name="service[]" value="Videography" class="checkbox-style" required/>
+              <input type="checkbox" name="service[]" value="Videography" class="checkbox-style"/>
               <span class="checkbox-label">Videography</span>
             </label>
+            <span id="service-error" class="text-sm text-pink-400 mt-1 hidden">Please select at least one service.</span>
           </div>
         </div>
-
-        <!-- Message -->
         <div>
           <label for="popup-message" class="form-label"
-            >Message</label>
+            >Tell me about your project.</label>
           <textarea
             name="message"
             id="popup-message"
             rows="5"
             class="contact-input placeholder-gray-400"
-            placeholder="Enter message"
+            placeholder="Tell me about your project."
             required
           ></textarea>
         </div>
-
         <div class="pt-2">
           <button
             type="submit"
             class="cta-button w-full px-16 py-4 border-2 border-white rounded-full font-bold text-lg tracking-wider uppercase"
+            id="submit-inquiry-btn"
           >
             Submit Inquiry
           </button>
@@ -457,29 +472,64 @@
       </form>
     </div>
   </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Mobile nav
       const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
       const mobileMenu = document.getElementById('mobile-menu');
-      menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+      if(menuButton && mobileMenu) {
+        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+      }
+      // Nav scroll effect
       const nav = document.getElementById('main-nav');
       window.addEventListener('scroll', () => { if (window.scrollY > 50) { nav.classList.add('nav-scroll'); } else { nav.classList.remove('nav-scroll'); } });
+      // Reveal on scroll
       const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
       const animatedElements = document.querySelectorAll('[data-animate]');
       animatedElements.forEach(el => observer.observe(el));
+      // Popup logic
       const openButtons = document.querySelectorAll('#open-contact-popup, #open-contact-popup-mobile');
       const closeButton = document.getElementById('close-contact-popup');
       const overlay = document.getElementById('contact-overlay');
       const popup = document.getElementById('contact-popup');
-      function openPopup() { overlay.classList.add('open'); popup.classList.add('open'); }
-      function closePopup() { overlay.classList.remove('open'); popup.classList.remove('open'); }
+      function openPopup() { 
+        overlay.classList.add('open'); 
+        popup.classList.add('open'); 
+      }
+      function closePopup() { 
+        overlay.classList.remove('open'); 
+        popup.classList.remove('open'); 
+      }
       openButtons.forEach(button => { button.addEventListener('click', openPopup); });
-      closeButton.addEventListener('click', closePopup);
-      overlay.addEventListener('click', closePopup);
+      if(closeButton) closeButton.addEventListener('click', closePopup);
+      if(overlay) overlay.addEventListener('click', closePopup);
       document.addEventListener('keydown', (e) => { if (e.key === "Escape" && overlay.classList.contains('open')) { closePopup(); } });
+      // Custom validation for service[] checkboxes (at least one required)
+      const serviceCheckboxes = document.querySelectorAll('input[name="service[]"]');
+      const serviceError = document.getElementById('service-error');
+      const form = popup.querySelector('form');
+      form.addEventListener('submit', function(e){
+        let checked = 0;
+        serviceCheckboxes.forEach(cb => { if(cb.checked){ checked++; } });
+        if(checked < 1){
+          e.preventDefault();
+          serviceError.classList.remove('hidden');
+        } else {
+          serviceError.classList.add('hidden');
+        }
+      });
+      serviceCheckboxes.forEach(cb => {
+        cb.addEventListener('change', function(){
+          let checked = 0;
+          serviceCheckboxes.forEach(c => { if(c.checked){ checked++; } });
+          if(checked < 1){
+            serviceError.classList.remove('hidden');
+          } else {
+            serviceError.classList.add('hidden');
+          }
+        });
+      });
     });
   </script>
-
 </body>
 </html>
