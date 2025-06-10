@@ -106,7 +106,6 @@
       transform: translateX(6px) scale(1.13) rotate(7deg);
       stroke: #000;
     }
-    /* Modal Styles */
     .modal-bg {
       position: fixed;
       z-index: 1000;
@@ -178,7 +177,6 @@
         font-size: 1rem;
         padding: 1em 0.5em;
       }
-      /* Make only the header Start Your Story button smaller */
       #open-contact-modal-nav.cta-button-round {
         font-size: 0.93rem;
         padding: 0.7em 1em 0.7em 1em;
@@ -186,6 +184,18 @@
         min-height: 38px;
         max-width: 160px;
       }
+    }
+    /* Hide mobile menu by default, only show when .open is present */
+    #mobile-menu {
+      transition: max-height 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      display: block;
+    }
+    #mobile-menu.open {
+      max-height: 500px;
+      opacity: 1;
     }
   </style>
 </head>
@@ -329,6 +339,12 @@
       // Mobile Nav Toggle
       const menuButton = document.getElementById('mobile-menu-toggle');
       const mobileMenu = document.getElementById('mobile-menu');
+      // Ensure mobile menu is hidden on load
+      if (mobileMenu) {
+        mobileMenu.classList.remove('open');
+        mobileMenu.style.maxHeight = '0';
+        mobileMenu.style.opacity = '0';
+      }
       if(menuButton && mobileMenu) {
         menuButton.addEventListener('click', function() {
           mobileMenu.classList.toggle('open');
