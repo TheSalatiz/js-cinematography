@@ -8,75 +8,233 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
       :root { --accent-color: #ec4899; --secondary-color: #40e0d0; }
-      body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; }
+      body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
       #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
-      .menu-item a { position: relative; transition: color 0.3s ease; }
+      .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; }
       .menu-item a.active-link { color: white; font-weight: 700; }
-      .menu-item a:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
-      .menu-item a:hover { color: white; }
-      .menu-item a:hover:after { width: 100%; }
+      .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover, .menu-item button:hover { color: white; }
+      .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
       .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--secondary-color); }
-
-      /* The .colombian-flag-text style has been deleted from here */
-
+      .about-bio-section {
+        background: radial-gradient(circle at 80% 20%, hsla(324, 82%, 64%, 0.10), transparent 40%), 
+                    radial-gradient(circle at 10% 80%, hsla(185, 75%, 60%, 0.10), transparent 40%), #18181b;
+        border-radius: 2rem;
+        box-shadow: 0 12px 48px 0 rgba(20,20,30,0.25);
+        padding: 2.5rem 2rem;
+      }
+      .about-avatar {
+        border-radius: 1.2rem;
+        box-shadow: 0 6px 24px 0 rgba(0,0,0,0.23), 0 1.5px 8px 0 rgba(236,72,153,0.10);
+        border: 2px solid rgba(255,255,255,0.06);
+        background: #111;
+        object-fit: cover;
+      }
+      .about-bio-section p {
+        font-size: 1.13rem;
+      }
+      .about-highlight {
+        color: var(--accent-color);
+        font-weight: bold;
+      }
+      .bio-quote {
+        font-style: italic;
+        color: #bdbdbd;
+        border-left: 3px solid var(--secondary-color);
+        padding-left: 1.1em;
+        margin-left: -.8em;
+      }
+      .bio-gradient {
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 90%);
+        height: 3px;
+        border-radius: 2px;
+        margin: 2.5rem 0 2rem 0;
+        opacity: 0.42;
+      }
+      .cta-button-round {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        color: #fff;
+        border: 2px solid #fff;
+        border-radius: 999px;
+        font-weight: bold;
+        font-size: 1.15rem;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.16s;
+        z-index: 1;
+        outline: none;
+        padding: 1em 2.2em;
+        min-width: 200px;
+        min-height: 56px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 24px 0 rgba(76, 232, 228, 0.05), 0 1.5px 8px 0 rgba(236,72,153,0.10);
+        gap: 0.5em;
+      }
+      .cta-button-round:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 300%;
+        height: 300%;
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.15;
+        transition: transform 0.45s cubic-bezier(.37,2,.47,.95), opacity 0.3s;
+        border-radius: inherit;
+        z-index: -1;
+      }
+      .cta-button-round:hover:before, .cta-button-round:focus:before {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+      }
+      .cta-button-round:hover, .cta-button-round:focus {
+        color: #181b20;
+        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
+        border-color: transparent;
+        box-shadow: 0 8px 32px 0 rgba(64,224,208,0.20), 0 16px 48px 0 rgba(236,72,153,0.18);
+        outline: none;
+        transform: translateY(-2px) scale(1.04);
+      }
+      .cta-button-round:active {
+        filter: brightness(0.97);
+        transform: scale(0.97);
+      }
+      .cta-button-round svg {
+        transition: transform 0.4s cubic-bezier(.77,0,.18,1), stroke 0.3s;
+        margin-left: 0.3em;
+        width: 1.15em;
+        height: 1.15em;
+        stroke-width: 2.1;
+        stroke: #fff;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      @media (max-width: 900px) {
+        .about-bio-section {
+          padding: 1.5rem 1rem;
+        }
+      }
+      @media (max-width: 600px) {
+        .about-bio-section {
+          border-radius: 1.1rem;
+          padding: 1.15rem 0.4rem;
+        }
+        .about-avatar {
+          border-radius: 0.8rem;
+        }
+        .cta-button-round {
+          min-width: 0;
+          width: 100%;
+          font-size: 1rem;
+          padding: 1em 0.5em;
+        }
+        #open-contact-modal-nav.cta-button-round {
+          font-size: 0.93rem;
+          padding: 0.7em 1em 0.7em 1em;
+          min-width: 120px;
+          min-height: 38px;
+          max-width: 160px;
+        }
+      }
+      #mobile-menu {
+        transition: max-height 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        display: block;
+      }
+      #mobile-menu.open {
+        max-height: 500px;
+        opacity: 1;
+      }
     </style>
 </head>
 <body>
-    <nav id="main-nav" class="sticky top-0 w-full z-50 bg-black">
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
       <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
-        <button class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
-            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+        <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path>
+            </svg>
         </button>
         <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
             <li class="menu-item"><a href="index.html" class="text-gray-300">Home</a></li>
-            <li class="menu-item"><a href="about.html" class="active-link">About</a></li>
-            <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Portfolio</a></li>
+            <li class="menu-item"><a href="about.html" class="active-link">About Me</a></li>
+            <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Videography</a></li>
             <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
-            <li class="menu-item"><a href="contact.html" class="text-gray-300">Contact</a></li>
+            <li class="menu-item">
+              <button type="button" class="cta-button-round" id="open-contact-modal-nav">
+                Start Your Story
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M5 12h14M13 6l6 6-6 6"/>
+                </svg>
+              </button>
+            </li>
         </ul>
       </div>
-      <ul id="mobile-menu" class="md:hidden hidden flex flex-col space-y-2 px-6 py-4 bg-black bg-opacity-95">
+      <ul id="mobile-menu" class="md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-2 text-white">
           <li><a href="index.html" class="block py-2 text-gray-300">Home</a></li>
-          <li><a href="about.html" class="block py-2 text-white">About</a></li>
-          <li><a href="portfolio.html" class="block py-2 text-gray-300">Portfolio</a></li>
+          <li><a href="about.html" class="block py-2 text-white">About Me</a></li>
+          <li><a href="portfolio.html" class="block py-2 text-gray-300">Videography</a></li>
           <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
-          <li><a href="contact.html" class="block py-2 text-gray-300">Contact</a></li>
+          <li>
+            <button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">
+              Start Your Story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path d="M5 12h14M13 6l6 6-6 6"/>
+              </svg>
+            </button>
+          </li>
       </ul>
     </nav>
 
-    <main class="py-24 sm:py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            
-            <div class="text-center max-w-4xl mx-auto reveal" data-animate>
+    <main class="py-28 sm:py-36 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto reveal" data-animate>
                 <h1 class="text-4xl md:text-5xl font-bold text-accent">About Me</h1>
                 <p class="mt-4 text-lg text-gray-400">Filmmaker, Storyteller, Artist</p>
             </div>
-
-            <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start">
-                
-                <div class="md:col-span-1 reveal" data-animate>
-                    <img src="https://placehold.co/600x800/111111/FFFFFF?text=Juan+Salazar" alt="A photo of Juan Salazar" class="rounded-lg shadow-2xl w-full">
+            <div class="bio-gradient"></div>
+            <div class="about-bio-section grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 items-start reveal" data-animate style="animation-delay:0.12s;">
+                <div class="md:col-span-1 flex justify-center md:justify-start">
+                    <img src="https://placehold.co/600x800/111111/FFFFFF?text=Juan+Salazar" alt="A photo of Juan Salazar" class="about-avatar shadow-2xl w-full max-w-xs">
                 </div>
-
-                <div class="md:col-span-2 text-lg text-gray-300 leading-relaxed space-y-6 reveal" data-animate style="animation-delay: 0.2s;">
+                <div class="md:col-span-2 text-lg text-gray-300 leading-relaxed space-y-6">
                     <p>
-                        My name is Juan Salazar. I’m a Colombian filmmaker and visual storyteller, but that’s just the surface.
+                        My name is <span class="about-highlight">Juan Salazar</span>.
+                        I’m a Colombian filmmaker and visual storyteller, but that’s just the surface.
                     </p>
                     <p>
-                        Back home, my first camera was my phone. I didn’t have gear or connections, just the instinct to record moments that felt important. 
+                        Back home, my first camera was my phone. I didn’t have gear or connections—just the instinct to record moments that felt important. 
                     </p>
                     <p>
-                        When I moved to the US to study film and multimedia, everything changed and also, nothing did. I learned the craft, the tools, the language of production. I became a cinematographer, an editor, and a producer. But I’m still chasing the same feeling I had when I was 15, filming with shaky hands, trying to capture something real.
+                        When I moved to the US to study film and multimedia, everything changed—and also, nothing did. I learned the craft, the tools, the language of production. I became a cinematographer, an editor, and a producer. But I’m still chasing the same feeling I had when I was 15, filming with shaky hands, trying to capture something real.
                     </p>
                     <p>
                         For me, filmmaking is about presence. It’s not just how it looks. It’s how it feels. I work with natural light, clean frames, and honest pacing. Whether I’m shooting a personal short, a live event, or a branded story, my goal is to make the viewer stop for a second and feel seen.
                     </p>
-                    <p class="italic">
+                    <p class="bio-quote">
                         I carry more than just a camera. I carry the responsibility of a dream that doesn’t just belong to me. My work is my way of giving back, of building something solid enough to stand on, and maybe one day, let someone else climb it too.
                     </p>
+                    <div>
+                      <button type="button" class="cta-button-round mt-8" id="open-contact-modal-section">
+                        Start Your Story
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                          <path d="M5 12h14M13 6l6 6-6 6"/>
+                        </svg>
+                      </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,19 +244,89 @@
       © 2025 Juan Salazar Cinema. All rights reserved.
     </footer>
 
+    <!-- Modal for Contact Form -->
+    <div id="contact-modal" class="modal-bg" hidden>
+      <div class="modal-content">
+        <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">&times;</button>
+        <iframe class="modal-iframe" src="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2"></iframe>
+      </div>
+    </div>
+
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const menuButton = document.querySelector('button[aria-label="Toggle menu"]');
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Nav Toggle
+        const menuButton = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        menuButton.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) { entry.target.classList.add('active'); }
+        // Ensure mobile menu is hidden on load
+        if (mobileMenu) {
+          mobileMenu.classList.remove('open');
+          mobileMenu.style.maxHeight = '0';
+          mobileMenu.style.opacity = '0';
+        }
+        if(menuButton && mobileMenu) {
+          menuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            // Remove inline styles to allow CSS transition
+            if (mobileMenu.classList.contains('open')) {
+              mobileMenu.style.maxHeight = '';
+              mobileMenu.style.opacity = '';
+            } else {
+              mobileMenu.style.maxHeight = '0';
+              mobileMenu.style.opacity = '0';
+            }
           });
+          // Close menu when clicking a link or button
+          mobileMenu.querySelectorAll('a, button').forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.remove('open');
+              mobileMenu.style.maxHeight = '0';
+              mobileMenu.style.opacity = '0';
+            });
+          });
+        }
+        // Nav scroll effect
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) nav.classList.add('nav-scroll');
+          else nav.classList.remove('nav-scroll');
+        });
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         const animatedElements = document.querySelectorAll('[data-animate]');
         animatedElements.forEach(el => observer.observe(el));
+
+        // Contact Modal logic
+        function openContactModal() {
+          document.getElementById('contact-modal').hidden = false;
+          document.body.style.overflow = 'hidden';
+          // Close mobile menu if open and reset inline styles
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            mobileMenu.style.maxHeight = '0';
+            mobileMenu.style.opacity = '0';
+          }
+        }
+        function closeContactModal() {
+          document.getElementById('contact-modal').hidden = true;
+          document.body.style.overflow = '';
+          if (mobileMenu) {
+            mobileMenu.style.maxHeight = '0';
+            mobileMenu.style.opacity = '0';
+          }
+        }
+        document.getElementById('open-contact-modal-nav').onclick = openContactModal;
+        document.getElementById('open-contact-modal-section').onclick = openContactModal;
+        const mobileModalBtn = document.getElementById('open-contact-modal-mobile');
+        if (mobileModalBtn) mobileModalBtn.onclick = openContactModal;
+        document.getElementById('close-contact-modal').onclick = closeContactModal;
+        document.getElementById('contact-modal').addEventListener('click', function(e) {
+          if (e.target === this) closeContactModal();
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === "Escape") closeContactModal();
+        });
       });
     </script>
 </body>
