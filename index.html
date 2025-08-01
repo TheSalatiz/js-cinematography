@@ -11,7 +11,7 @@
     body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
     #home { background: radial-gradient(circle at 15% 25%, hsla(185, 75%, 60%, 0.15), transparent 40%), radial-gradient(circle at 85% 70%, hsla(324, 82%, 64%, 0.15), transparent 40%), #050505; }
     .video-container { background: #111; padding: 1rem; border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); }
-    .video-container video { border-radius: 1rem; width: 100%; height: 100%; object-fit: cover; }
+    .video-container iframe { border-radius: 1rem; } /* Changed from video to iframe */
     .highlight-word { color: var(--secondary-color); }
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
     .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
@@ -200,7 +200,6 @@
   </style>
 </head>
 <body>
-  <!-- Navigation -->
   <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <a href="#" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
@@ -211,7 +210,6 @@
       </button>
       <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
         <li class="menu-item"><a href="#home" class="active-link">Home</a></li>
-        <!-- About Me Button - Added here -->
         <li class="menu-item"><a href="about.html" class="text-gray-300">About Me</a></li>
         <li class="menu-item"><a href="portfolio.html" class="text-gray-300">Videography</a></li>
         <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
@@ -227,7 +225,6 @@
     </div>
     <ul id="mobile-menu" class="md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-2 text-white">
       <li><a href="#home" class="block py-2">Home</a></li>
-      <!-- About Me Button - Added here for mobile menu -->
       <li><a href="about.html" class="block py-2">About Me</a></li>
       <li><a href="portfolio.html" class="block py-2">Portfolio</a></li>
       <li><a href="photography.html" class="block py-2">Photography</a></li>
@@ -241,7 +238,6 @@
       </li>
     </ul>
   </nav>
-  <!-- Hero -->
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6 pt-24 md:pt-0">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
         <div class="text-center md:text-left reveal" data-animate>
@@ -251,17 +247,16 @@
         </div>
         <div class="w-full max-w-md mx-auto reveal" data-animate style="animation-delay: 0.2s;">
             <div class="video-container">
-                <video autoplay muted loop playsinline><source src="Jun_06__1203_31s_202506061700_lu5m3.mp4" type="video/mp4"></video>
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1106622625?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="preview"></iframe></div>
             </div>
         </div>
     </div>
   </main>
-  <!-- Services -->
   <section id="services" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
             <h2 class="text-4xl md:text-5xl font-bold leading-tight">I would love to tell <span class="text-accent">your story.</span></h2>
-            <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
+            <p class="mt-8 text-2xl text-gray-200">I put the <span class="font-bold text-white">human side</span> at the <span class="highlight-word">center</span> 🎯 of everything I do.</p>
         </div>
         <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
             <article class="reveal" data-animate><h4 class="service-title">Creative</h4><h3 class="text-3xl font-bold mt-4 mb-4 text-accent">Curiosity unleashed.</h3><p class="text-gray-400 leading-relaxed">Leaning on the power of ideas to create content the audience actually WANTS to see. I believe that a post can change lives, have a good impact on the world, and in YOUR company. So I pay equal respect to both.</p></article>
@@ -271,7 +266,6 @@
         </div>
     </div>
   </section>
-  <!-- Portfolio -->
   <section id="portfolio" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -292,7 +286,6 @@
         </div>
     </div>
   </section>
-  <!-- Photography -->
   <section id="photography" class="py-24 sm:py-32 bg-black px-6">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
@@ -314,7 +307,6 @@
         </div>
     </div>
   </section>
-  <!-- Contact -->
   <section id="contact" class="py-24 sm:py-32 bg-black px-6 text-center">
     <h2 class="text-4xl font-bold mb-4">Let's Create Together</h2>
     <p class="text-lg text-gray-400 mb-10">Ready to start your project? Click below to fill out my contact form.</p>
@@ -325,17 +317,16 @@
       </svg>
     </button>
   </section>
-  <!-- Modal for Contact Form -->
   <div id="contact-modal" class="modal-bg" hidden>
     <div class="modal-content">
-      <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">&times;</button>
+      <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">×</button>
       <iframe class="modal-iframe" src="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2"></iframe>
     </div>
   </div>
-  <!-- Footer -->
   <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
     © 2025 Juan Salazar Cinema. All rights reserved.
   </footer>
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile Nav Toggle
@@ -416,3 +407,4 @@
   </script>
 </body>
 </html>
+```
