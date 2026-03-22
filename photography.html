@@ -21,7 +21,7 @@
         scroll-behavior: smooth; 
       }
       
-      h1, h2, h3, h4, .font-bold.tracking-wider {
+      h1, h2, h3, h4, .font-bold.tracking-wider, .editorial-title {
         font-family: 'Playfair Display', serif;
       }
 
@@ -45,48 +45,71 @@
       .reveal.active { opacity: 1; transform: translateY(0); }
       .text-accent { color: var(--accent-color); }
 
-      /* Gallery Grid & Items */
-      .gallery-item {
-        background: #FFFFFF;
-        border-radius: 0.5rem; /* Slightly sharper corners for photos */
-        overflow: hidden;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-        cursor: pointer;
+      /* Editorial Album Layout */
+      .album-card {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-bottom: 8rem;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        .album-card { flex-direction: row; gap: 5rem; }
+        .album-card.reverse { flex-direction: row-reverse; }
+        .album-image-wrapper { width: 55%; }
+        .album-text-wrapper { width: 45%; padding: 2rem; }
+      }
+      
+      .album-image-wrapper {
         position: relative;
+        overflow: hidden;
+        border-radius: 0.25rem;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08);
       }
-      .gallery-item::after {
-        content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1); opacity: 0; transition: opacity 0.3s ease;
+      .album-image-wrapper img {
+        width: 100%;
+        height: 70vh;
+        min-height: 500px;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
-      .gallery-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+      .album-card:hover .album-image-wrapper img {
+        transform: scale(1.04);
       }
-      .gallery-item:hover::after { opacity: 1; }
-      .gallery-item img {
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      
+      .album-category {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--secondary-color);
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: block;
       }
-      .gallery-item:hover img {
-        transform: scale(1.03);
+      
+      .view-gallery-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.9rem;
+        color: var(--text-main);
+        transition: color 0.3s ease;
+        text-decoration: none;
       }
-
-      /* Lightbox Styling */
-      .lightbox {
-        position: fixed; inset: 0; width: 100vw; height: 100vh;
-        background: rgba(15, 17, 21, 0.95); /* Deep charcoal overlay */
-        backdrop-filter: blur(8px);
-        display: flex; align-items: center; justify-content: center;
-        z-index: 1000; animation: fadeIn 0.3s ease; cursor: zoom-out;
+      .view-gallery-link::after {
+        content: '→';
+        margin-left: 0.5rem;
+        transition: transform 0.3s ease;
       }
-      .lightbox-content {
-        max-width: 90vw; max-height: 90vh; padding: 1rem; animation: slideIn 0.3s ease;
+      .view-gallery-link:hover {
+        color: var(--accent-color);
       }
-      .lightbox-content img {
-        width: 100%; height: 100%; object-fit: contain;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.5); border-radius: 0.25rem;
+      .view-gallery-link:hover::after {
+        transform: translateX(5px);
       }
-      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      @keyframes slideIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
       /* Buttons */
       .cta-button-round {
@@ -175,52 +198,84 @@
     <main class="py-28 sm:py-36 px-6">
         <div class="max-w-7xl mx-auto">
 
-            <section class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h1 class="text-4xl md:text-5xl font-bold">Photography</h1>
-                <p class="mt-4 text-lg text-gray-600">Capturing fleeting moments with cinematic precision.</p>
+            <section class="text-center max-w-4xl mx-auto reveal mb-24" data-animate>
+                <h1 class="text-4xl md:text-5xl font-bold">Featured Galleries</h1>
+                <p class="mt-4 text-lg text-gray-600">Stories told through light, composition, and authentic emotion.</p>
             </section>
             
-            <section class="mt-24">
-                <div class="max-w-7xl mx-auto text-center md:text-left reveal" data-animate>
-                    <h2 class="text-3xl font-bold text-accent">Weddings & Live Events</h2>
-                    <p class="mt-2 text-gray-600 max-w-2xl">High-energy coverage and timeless romance, documented naturally as it unfolds.</p>
+            <article class="album-card reveal" data-animate>
+                <div class="album-image-wrapper w-full">
+                    <a href="gallery-wedding.html">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="A Timeless Vegas Elopement" loading="lazy">
+                    </a>
                 </div>
-                
-                <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <div class="gallery-item reveal" data-animate><img src="photo1.jpg" alt="Event Photo" loading="lazy" class="w-full h-80 object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.1s;"><img src="photo2.jpg" alt="Event Photo" loading="lazy" class="w-full h-80 object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.2s;"><img src="photo3.jpg" alt="Event Photo" loading="lazy" class="w-full h-80 object-cover"></div>
+                <div class="album-text-wrapper w-full text-center md:text-left">
+                    <span class="album-category">Luxury Wedding</span>
+                    <h2 class="editorial-title text-4xl mb-4">A Timeless Vegas Elopement</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Intimate moments captured amidst the neon glow and desert beauty of Las Vegas. A celebration of romance, elegance, and unscripted joy.
+                    </p>
+                    <a href="gallery-wedding.html" class="view-gallery-link">View The Gallery</a>
                 </div>
-            </section>
-            
-            <section class="mt-32">
-                <div class="max-w-7xl mx-auto text-center md:text-left reveal" data-animate>
-                    <h2 class="text-3xl font-bold text-accent">Portraits & Editorial</h2>
-                    <p class="mt-2 text-gray-600 max-w-2xl">Composed to highlight expression, elegance, and genuine personality.</p>
-                </div>
-                
-                <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="gallery-item reveal" data-animate><img src="DSC00563-min.jpg" alt="Portrait" loading="lazy" class="w-full h-64 object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.1s;"><img src="DSC00517-min.jpg" alt="Portrait" loading="lazy" class="w-full h-64 object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.2s;"><img src="DSC00504-min.jpg" alt="Portrait" loading="lazy" class="w-full h-64 object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.3s;"><img src="DSC00409-min.jpg" alt="Portrait" loading="lazy" class="w-full h-64 object-cover"></div>
-                    
-                    <div class="gallery-item reveal md:col-span-2" data-animate><img src="DSC00956-min.jpg" alt="Portrait" loading="lazy" class="w-full h-96 object-cover"></div>
-                    <div class="gallery-item reveal md:col-span-2" data-animate style="animation-delay: 0.1s;"><img src="DSC01581-min.jpg" alt="Portrait" loading="lazy" class="w-full h-96 object-cover"></div>
-                    
-                    <div class="gallery-item reveal" data-animate><img src="DSC00811-min.jpg" alt="Portrait" loading="lazy" class="w-full h-64 object-cover"></div>
-                    <div class="gallery-item reveal" data-animate style="animation-delay: 0.1s;"><img src="untitled-21-min.jpg" alt="Portrait" loading="lazy" class="w-full h-64 object-cover"></div>
-                </div>
-            </section>
+            </article>
 
-            <div class="text-center mt-24 reveal" data-animate>
-                <button type="button" class="cta-button-round" onclick="window.location='portfolio.html';">
-                  View Videography
+            <article class="album-card reverse reveal" data-animate>
+                <div class="album-image-wrapper w-full">
+                     <a href="gallery-event.html">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=2070&auto=format&fit=crop" alt="Live Energy: Brand Summit" loading="lazy">
+                    </a>
+                </div>
+                <div class="album-text-wrapper w-full text-center md:text-left">
+                    <span class="album-category">Corporate & Live Events</span>
+                    <h2 class="editorial-title text-4xl mb-4">Live Energy: Brand Summit</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Fast-paced, dynamic coverage capturing the scale, speakers, and atmosphere of high-tier corporate gatherings on the Strip.
+                    </p>
+                    <a href="gallery-event.html" class="view-gallery-link">View The Gallery</a>
+                </div>
+            </article>
+
+            <article class="album-card reveal" data-animate>
+                <div class="album-image-wrapper w-full">
+                    <a href="gallery-grad.html">
+                        <img src="DSC00956-min.jpg" alt="Milestones & Portraits" loading="lazy">
+                    </a>
+                </div>
+                <div class="album-text-wrapper w-full text-center md:text-left">
+                    <span class="album-category">Editorial Portraits</span>
+                    <h2 class="editorial-title text-4xl mb-4">Milestones & Portraits</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        A collection of individual portraits designed to highlight confidence, character, and the beauty of a milestone fulfilled.
+                    </p>
+                    <a href="gallery-grad.html" class="view-gallery-link">View The Gallery</a>
+                </div>
+            </article>
+
+            <article class="album-card reverse reveal" data-animate>
+                <div class="album-image-wrapper w-full">
+                    <a href="gallery-recital.html">
+                        <img src="photo1.jpg" alt="The Art of Performance" loading="lazy">
+                    </a>
+                </div>
+                <div class="album-text-wrapper w-full text-center md:text-left">
+                    <span class="album-category">Editorial Portraits</span>
+                    <h2 class="editorial-title text-4xl mb-4">The Art of Performance</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        Meticulously lit sessions focused on artists in their element. Composed to showcase expression, form, and presence.
+                    </p>
+                    <a href="gallery-recital.html" class="view-gallery-link">View The Gallery</a>
+                </div>
+            </article>
+
+            <div class="text-center mt-12 reveal" data-animate>
+                <button type="button" class="cta-button-round" id="open-contact-modal-section">
+                  Book A Session
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                     <path d="M5 12h14M13 6l6 6-6 6"/>
                   </svg>
                 </button>
             </div>
+            
         </div>
     </main>
 
@@ -254,7 +309,7 @@
             link.addEventListener('click', () => { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; });
           });
         }
-
+        
         // Nav scroll effect
         const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
@@ -279,30 +334,12 @@
           if (mobileMenu) { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
         }
         document.getElementById('open-contact-modal-nav').onclick = openContactModal;
+        document.getElementById('open-contact-modal-section').onclick = openContactModal;
         const mobileModalBtn = document.getElementById('open-contact-modal-mobile');
         if (mobileModalBtn) mobileModalBtn.onclick = openContactModal;
         document.getElementById('close-contact-modal').onclick = closeContactModal;
         document.getElementById('contact-modal').addEventListener('click', function(e) { if (e.target === this) closeContactModal(); });
         document.addEventListener('keydown', function(e) { if (e.key === "Escape") closeContactModal(); });
-
-        // Lightbox Logic (Updated for smooth closing)
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const imgSrc = item.querySelector('img').src;
-                const lightbox = document.createElement('div');
-                lightbox.classList.add('lightbox');
-                lightbox.innerHTML = `<div class="lightbox-content"><img src="${imgSrc}" alt="Full-size image"></div>`;
-                document.body.appendChild(lightbox);
-                // Prevent scrolling while lightbox is open
-                document.body.style.overflow = 'hidden';
-                
-                lightbox.addEventListener('click', () => {
-                    lightbox.remove();
-                    document.body.style.overflow = '';
-                });
-            });
-        });
       });
     </script>
 </body>
