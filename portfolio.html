@@ -5,216 +5,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Videography | Juan Salazar Cinema</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-      :root { --accent-color: #ec4899; --secondary-color: #40e0d0; }
-      body { font-family: 'DM Sans', sans-serif; background-color: #050505; color: #f1f1f1; -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+      :root { 
+        --accent-color: #5E6C58; /* Muted Sage Green */
+        --secondary-color: #D9C5B2; /* Soft Champagne/Blush */
+        --bg-color: #FAFAF9; /* Warm Alabaster */
+        --text-main: #2C2C2C; /* Soft Black */
+      }
+      body { 
+        font-family: 'DM Sans', sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        -webkit-font-smoothing: antialiased; 
+        scroll-behavior: smooth; 
+      }
+      
+      h1, h2, h3, h4, .font-bold.tracking-wider {
+        font-family: 'Playfair Display', serif;
+      }
+
+      /* Navigation */
       #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
-      .nav-scroll { background-color: rgba(5, 5, 5, 0.75) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; }
-      .menu-item a.active-link { color: white; font-weight: 700; }
-      .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
-      .menu-item a:hover, .menu-item button:hover { color: white; }
+      .nav-scroll { 
+        background-color: rgba(250, 250, 249, 0.95) !important; 
+        backdrop-filter: blur(12px); 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+      }
+      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; color: var(--text-main); }
+      .menu-item a.active-link { font-weight: 700; color: var(--accent-color); }
+      .menu-item a:after, .menu-item button:after { 
+        content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; 
+        background-color: var(--accent-color); transition: width 0.3s ease; 
+      }
       .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+
+      /* Animations */
       .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
-      .text-accent { color: var(--secondary-color); }
+      .text-accent { color: var(--accent-color); }
+
+      /* Video Cards */
       .card {
-        background: #111;
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.05);
         border-radius: 1rem;
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
       .card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.08);
       }
-      .card iframe {
+      .card iframe, .card video {
         width: 100%;
         aspect-ratio: 16 / 9;
+        display: block;
       }
+      .section-divider {
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+        margin: 4rem 0;
+      }
+
+      /* Buttons */
       .cta-button-round {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-        color: #fff;
-        border: 2px solid #fff;
-        border-radius: 999px;
-        font-weight: bold;
-        font-size: 1.15rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        transition: color 0.3s, background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.16s;
-        z-index: 1;
-        outline: none;
-        padding: 1em 2.2em;
-        min-width: 200px;
-        min-height: 56px;
-        box-sizing: border-box;
-        box-shadow: 0 2px 24px 0 rgba(76, 232, 228, 0.05), 0 1.5px 8px 0 rgba(236,72,153,0.10);
-        gap: 0.5em;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: transparent; color: var(--text-main); border: 1px solid var(--text-main);
+        border-radius: 999px; font-family: 'DM Sans', sans-serif;
+        font-weight: 500; font-size: 1.05rem; letter-spacing: 0.05em; text-transform: uppercase;
+        position: relative; overflow: hidden; cursor: pointer;
+        transition: all 0.3s ease; z-index: 1; outline: none;
+        padding: 1em 2.2em; min-width: 200px; min-height: 56px; gap: 0.5em;
       }
-      .cta-button-round:before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 300%;
-        height: 300%;
-        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 0.15;
-        transition: transform 0.45s cubic-bezier(.37,2,.47,.95), opacity 0.3s;
-        border-radius: inherit;
-        z-index: -1;
-      }
-      .cta-button-round:hover:before, .cta-button-round:focus:before {
-        transform: translate(-50%, -50%) scale(1);
-        opacity: 1;
-      }
-      .cta-button-round:hover, .cta-button-round:focus {
-        color: #181b20;
-        background: linear-gradient(90deg, var(--secondary-color) 0%, var(--accent-color) 100%);
-        border-color: transparent;
-        box-shadow: 0 8px 32px 0 rgba(64,224,208,0.20), 0 16px 48px 0 rgba(236,72,153,0.18);
-        outline: none;
-        transform: translateY(-2px) scale(1.04);
-      }
-      .cta-button-round:active {
-        filter: brightness(0.97);
-        transform: scale(0.97);
+      .cta-button-round:hover {
+        color: #fff; background-color: var(--accent-color); border-color: var(--accent-color);
+        transform: translateY(-2px); box-shadow: 0 10px 20px rgba(94, 108, 88, 0.2);
       }
       .cta-button-round svg {
-        transition: transform 0.4s cubic-bezier(.77,0,.18,1), stroke 0.3s;
-        margin-left: 0.3em;
-        width: 1.15em;
-        height: 1.15em;
-        stroke-width: 2.1;
-        stroke: #fff;
-        display: inline-block;
-        vertical-align: middle;
+        transition: transform 0.4s cubic-bezier(.77,0,.18,1); margin-left: 0.3em; width: 1.15em; height: 1.15em; stroke-width: 1.5; stroke: currentColor;
       }
-      .cta-button-round:hover svg,
-      .cta-button-round:focus svg {
-        transform: translateX(6px) scale(1.13) rotate(7deg);
-        stroke: #000;
-      }
-      @media (max-width: 600px) {
-        .cta-button-round {
-          min-width: 0;
-          width: 100%;
-          font-size: 1rem;
-          padding: 1em 0.5em;
-        }
-        #open-contact-modal-nav.cta-button-round {
-          font-size: 0.93rem;
-          padding: 0.7em 1em 0.7em 1em;
-          min-width: 120px;
-          min-height: 38px;
-          max-width: 160px;
-        }
-      }
-      /* Hide mobile menu by default, only show when .open is present */
-      #mobile-menu {
-        transition: max-height 0.4s cubic-bezier(.77,0,.18,1), opacity 0.3s;
-        max-height: 0;
-        opacity: 0;
-        overflow: hidden;
-        display: block;
-      }
-      #mobile-menu.open {
-        max-height: 500px;
-        opacity: 1;
-      }
-      /* Modal styles */
+      .cta-button-round:hover svg { transform: translateX(4px); }
+
+      /* Modals & Mobile Menu */
+      #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
+      #mobile-menu.open { max-height: 500px; opacity: 1; }
       .modal-bg {
-        position: fixed;
-        z-index: 1000;
-        inset: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(10,10,10,0.82);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: opacity 0.3s;
-        opacity: 1;
-        pointer-events: auto;
+        position: fixed; z-index: 1000; inset: 0; width: 100vw; height: 100vh;
+        background: rgba(250, 250, 249, 0.95); display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.3s; opacity: 1; pointer-events: auto; backdrop-filter: blur(5px);
       }
-      .modal-bg[hidden] {
-        opacity: 0;
-        pointer-events: none;
-      }
+      .modal-bg[hidden] { opacity: 0; pointer-events: none; }
       .modal-content {
-        background: #18181b;
-        border-radius: 1.5em;
-        box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-        padding: 0;
-        max-width: 95vw;
-        width: 420px;
-        min-height: 600px;
-        max-height: 90vh;
-        overflow: hidden;
-        position: relative;
-        display: flex;
-        flex-direction: column;
+        background: #FFFFFF; border-radius: 1.5em; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        padding: 0; max-width: 95vw; width: 420px; min-height: 600px; max-height: 90vh; overflow: hidden; position: relative;
       }
       .modal-close-btn {
-        position: absolute;
-        top: 0.7em;
-        right: 1.1em;
-        background: none;
-        border: none;
-        color: #fff;
-        font-size: 2em;
-        line-height: 1;
-        cursor: pointer;
-        z-index: 10;
-        transition: color 0.2s;
+        position: absolute; top: 0.7em; right: 1.1em; background: none; border: none;
+        color: var(--text-main); font-size: 2em; line-height: 1; cursor: pointer; z-index: 10;
       }
-      .modal-close-btn:hover { color: var(--accent-color); }
-      .modal-iframe {
-        width: 100%;
-        height: 80vh;
-        min-height: 600px;
-        border: none;
-        border-radius: 0 0 1.5em 1.5em;
-        background: #fff;
-        display: block;
-      }
+      .modal-iframe { width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 0 0 1.5em 1.5em; }
       @media (max-width: 600px) {
-        .modal-content {
-          width: 99vw;
-          min-height: 95vh;
-          max-height: 99vh;
-          border-radius: 0.8em;
-        }
-        .modal-iframe {
-          min-height: 75vh;
-        }
+        .cta-button-round { min-width: 0; width: 100%; font-size: 1rem; padding: 1em 0.5em; }
+        .modal-content { width: 99vw; min-height: 95vh; border-radius: 0.8em; }
+        .modal-iframe { min-height: 75vh; }
       }
     </style>
 </head>
 <body>
-    <!-- Navigation (matching index.html, with Start Your Story button) -->
     <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
       <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="index.html" class="text-xl font-bold tracking-wider">Juan Salazar Cinema</a>
-        <button id="mobile-menu-toggle" class="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
+        <a href="index.html" class="text-xl font-bold tracking-wider" style="font-family: 'Playfair Display', serif;">Juan Salazar Cinema</a>
+        <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path>
             </svg>
         </button>
         <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
-            <li class="menu-item"><a href="index.html" class="text-gray-300">Home</a></li>
-            <li class="menu-item"><a href="about.html" class="text-gray-300">About Me</a></li>
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="about.html">About Me</a></li>
             <li class="menu-item"><a href="portfolio.html" class="active-link">Videography</a></li>
-            <li class="menu-item"><a href="photography.html" class="text-gray-300">Photography</a></li>
+            <li class="menu-item"><a href="photography.html">Photography</a></li>
             <li class="menu-item">
               <button type="button" class="cta-button-round" id="open-contact-modal-nav">
                 Start Your Story
@@ -225,11 +136,11 @@
             </li>
         </ul>
       </div>
-      <ul id="mobile-menu" class="md:hidden bg-black bg-opacity-95 px-6 py-4 space-y-2 text-white">
-          <li><a href="index.html" class="block py-2 text-gray-300">Home</a></li>
-          <li><a href="about.html" class="block py-2 text-gray-300">About Me</a></li>
-          <li><a href="portfolio.html" class="block py-2 text-white">Videography</a></li>
-          <li><a href="photography.html" class="block py-2 text-gray-300">Photography</a></li>
+      <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
+          <li><a href="index.html" class="block py-2">Home</a></li>
+          <li><a href="about.html" class="block py-2">About Me</a></li>
+          <li><a href="portfolio.html" class="block py-2 font-bold text-accent">Videography</a></li>
+          <li><a href="photography.html" class="block py-2">Photography</a></li>
           <li>
             <button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">
               Start Your Story
@@ -242,55 +153,121 @@
     </nav>
 
     <main class="py-28 sm:py-36 px-6">
-        <div class="max-w-7xl mx-auto space-y-24 sm:space-y-32">
+        <div class="max-w-7xl mx-auto">
 
-            <section class="text-center max-w-4xl mx-auto reveal" data-animate>
-                <h1 class="text-4xl md:text-5xl font-bold text-accent">Videography Portfolio</h1>
-                <p class="mt-4 text-lg text-gray-400">A collection of my work in motion.</p>
+            <section class="text-center max-w-4xl mx-auto reveal mb-20" data-animate>
+                <h1 class="text-4xl md:text-5xl font-bold">Cinematic Portfolio</h1>
+                <p class="mt-4 text-lg text-gray-600">A curated selection of luxury weddings, dynamic live events, and narrative films.</p>
             </section>
 
-            <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div class="reveal" data-animate>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ephemeral – Short Film</h2>
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        <em>Ephemeral</em> is my senior project — a deeply personal short film about depression, friendship, and mental health. 
-                        I served as the cinematographer, color grading artist, and the only person in the lighting, camera, and grip department. 
-                        This film is currently under consideration for festival distribution.
-                    </p>
+            <section class="mb-20">
+                <div class="text-center md:text-left mb-10 reveal" data-animate>
+                    <h2 class="text-3xl font-bold text-accent">Luxury Weddings</h2>
+                    <p class="text-gray-600 mt-2">Elegant, emotion-driven storytelling crafted to be remembered forever.</p>
                 </div>
-                <div class="card reveal" data-animate style="animation-delay: 0.2s;">
-                    <iframe class="w-full h-full" src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="card reveal" data-animate>
+                        <video controls preload="metadata" class="w-full">
+                          <source src="assets/your-wedding-film-1.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl">Client Name & Name</h3>
+                            <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Las Vegas, NV</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card reveal" data-animate style="animation-delay: 0.1s;">
+                        <video controls preload="metadata" class="w-full">
+                          <source src="assets/your-wedding-film-2.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl">Client Name & Name</h3>
+                            <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Venue Name</p>
+                        </div>
+                    </div>
                 </div>
             </section>
+
+            <div class="section-divider reveal" data-animate></div>
+
+            <section class="mb-20">
+                <div class="text-center md:text-left mb-10 reveal" data-animate>
+                    <h2 class="text-3xl font-bold text-accent">Corporate & Live Events</h2>
+                    <p class="text-gray-600 mt-2">High-energy coverage for brands, keynotes, and nightlife.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="card reveal" data-animate>
+                        <video controls preload="metadata" class="w-full">
+                          <source src="assets/your-event-film-1.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl">Corporate Event Name</h3>
+                            <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Las Vegas Strip</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card reveal" data-animate style="animation-delay: 0.1s;">
+                        <video controls preload="metadata" class="w-full">
+                          <source src="assets/your-event-film-2.mp4" type="video/mp4">
+                          Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl">Brand Highlight Reel</h3>
+                            <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Mandalay Bay</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider reveal" data-animate></div>
 
             <section>
-                <div class="max-w-4xl mx-auto text-center reveal" data-animate>
-                    <h2 class="text-3xl font-bold">More Work</h2>
+                <div class="text-center md:text-left mb-10 reveal" data-animate>
+                    <h2 class="text-3xl font-bold text-accent">Narrative & Short Films</h2>
+                    <p class="text-gray-600 mt-2">A collection of cinematic projects showcasing lighting, framing, and storytelling.</p>
                 </div>
-                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                <div class="card reveal mb-12" data-animate>
+                    <iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="p-6 md:p-8">
+                        <h3 class="font-bold text-2xl mb-3">Ephemeral</h3>
+                        <p class="text-gray-600 leading-relaxed max-w-4xl">
+                            A deeply personal short film about depression, friendship, and mental health. 
+                            I served as the cinematographer, color grading artist, and the sole person in the lighting, camera, and grip department.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="card reveal" data-animate>
                         <iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe>
-                        <p class="p-4 text-lg font-semibold">Blue Pill Red Pill (Matrix Short)</p>
+                        <div class="p-5"><h3 class="font-bold text-lg">Blue Pill Red Pill (Matrix Short)</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.1s;">
                         <iframe src="https://player.vimeo.com/video/1073431405" frameborder="0" allowfullscreen></iframe>
-                        <p class="p-4 text-lg font-semibold">GSU Immunization Compliance Spot</p>
+                        <div class="p-5"><h3 class="font-bold text-lg">GSU Immunization Compliance Spot</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.2s;">
                         <iframe src="https://www.youtube.com/embed/1g93Kf2msoE" frameborder="0" allowfullscreen></iframe>
-                        <p class="p-4 text-lg font-semibold">Long Time No See</p>
+                        <div class="p-5"><h3 class="font-bold text-lg">Long Time No See</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.3s;">
                         <iframe src="https://www.youtube.com/embed/dfunWv1MXuw" frameborder="0" allowfullscreen></iframe>
-                        <p class="p-4 text-lg font-semibold">The Day After</p>
+                        <div class="p-5"><h3 class="font-bold text-lg">The Day After</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.4s;">
                         <iframe src="https://player.vimeo.com/video/947238109" frameborder="0" allowfullscreen></iframe>
-                        <p class="p-4 text-lg font-semibold">Code Words (GFA Project)</p>
+                        <div class="p-5"><h3 class="font-bold text-lg">Code Words (GFA Project)</h3></div>
                     </div>
                 </div>
             </section>
-            <div class="text-center mt-20 reveal" data-animate>
+
+            <div class="text-center mt-24 reveal" data-animate>
                 <button type="button" class="cta-button-round" onclick="window.location='photography.html';">
                   View Photography Gallery
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -298,14 +275,14 @@
                   </svg>
                 </button>
             </div>
+            
         </div>
     </main>
 
     <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
-      © 2025 Juan Salazar Cinema. All rights reserved.
+      © 2026 Juan Salazar Cinema. All rights reserved.
     </footer>
 
-    <!-- Modal for Contact Form -->
     <div id="contact-modal" class="modal-bg" hidden>
       <div class="modal-content">
         <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">&times;</button>
@@ -318,39 +295,28 @@
         // Mobile Nav Toggle
         const menuButton = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        // Ensure mobile menu is hidden on load
-        if (mobileMenu) {
-          mobileMenu.classList.remove('open');
-          mobileMenu.style.maxHeight = '0';
-          mobileMenu.style.opacity = '0';
-        }
+        if (mobileMenu) { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
         if(menuButton && mobileMenu) {
           menuButton.addEventListener('click', function() {
             mobileMenu.classList.toggle('open');
-            // Remove inline styles to allow CSS transition
             if (mobileMenu.classList.contains('open')) {
-              mobileMenu.style.maxHeight = '';
-              mobileMenu.style.opacity = '';
+              mobileMenu.style.maxHeight = ''; mobileMenu.style.opacity = '';
             } else {
-              mobileMenu.style.maxHeight = '0';
-              mobileMenu.style.opacity = '0';
+              mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0';
             }
           });
-          // Close menu when clicking a link or button
           mobileMenu.querySelectorAll('a, button').forEach(link => {
-            link.addEventListener('click', () => {
-              mobileMenu.classList.remove('open');
-              mobileMenu.style.maxHeight = '0';
-              mobileMenu.style.opacity = '0';
-            });
+            link.addEventListener('click', () => { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; });
           });
         }
+        
         // Nav scroll effect
         const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
           if (window.scrollY > 50) nav.classList.add('nav-scroll');
           else nav.classList.remove('nav-scroll');
         });
+
         // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
@@ -360,33 +326,19 @@
 
         // Contact Modal logic
         function openContactModal() {
-          document.getElementById('contact-modal').hidden = false;
-          document.body.style.overflow = 'hidden';
-          // Close mobile menu if open and reset inline styles
-          if (mobileMenu && mobileMenu.classList.contains('open')) {
-            mobileMenu.classList.remove('open');
-            mobileMenu.style.maxHeight = '0';
-            mobileMenu.style.opacity = '0';
-          }
+          document.getElementById('contact-modal').hidden = false; document.body.style.overflow = 'hidden';
+          if (mobileMenu && mobileMenu.classList.contains('open')) { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
         }
         function closeContactModal() {
-          document.getElementById('contact-modal').hidden = true;
-          document.body.style.overflow = '';
-          if (mobileMenu) {
-            mobileMenu.style.maxHeight = '0';
-            mobileMenu.style.opacity = '0';
-          }
+          document.getElementById('contact-modal').hidden = true; document.body.style.overflow = '';
+          if (mobileMenu) { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
         }
         document.getElementById('open-contact-modal-nav').onclick = openContactModal;
         const mobileModalBtn = document.getElementById('open-contact-modal-mobile');
         if (mobileModalBtn) mobileModalBtn.onclick = openContactModal;
         document.getElementById('close-contact-modal').onclick = closeContactModal;
-        document.getElementById('contact-modal').addEventListener('click', function(e) {
-          if (e.target === this) closeContactModal();
-        });
-        document.addEventListener('keydown', function(e) {
-          if (e.key === "Escape") closeContactModal();
-        });
+        document.getElementById('contact-modal').addEventListener('click', function(e) { if (e.target === this) closeContactModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === "Escape") closeContactModal(); });
       });
     </script>
 </body>
