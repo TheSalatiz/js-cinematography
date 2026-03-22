@@ -26,13 +26,9 @@
       .back-link:hover { color: var(--accent-color); }
       .back-link:hover::before { transform: translateX(-5px); }
 
-      /* Simplified Masonry Grid */
-      .masonry-grid { column-count: 1; column-gap: 1.5rem; }
-      @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-      @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
-      
-      .gallery-item { break-inside: avoid; margin-bottom: 1.5rem; border-radius: 0.25rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); pointer-events: none; /* Disables clicking entirely */ }
-      .gallery-item img { width: 100%; display: block; }
+      /* New Pillar Layout CSS */
+      .gallery-item { border-radius: 0.25rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); pointer-events: none; width: 100%; }
+      .gallery-item img { width: 100%; display: block; height: auto; }
       
       #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
       #mobile-menu.open { max-height: 500px; opacity: 1; }
@@ -68,22 +64,33 @@
                 <p class="text-xl text-gray-600 max-w-2xl">A collection of individual portraits designed to highlight confidence, character, and the beauty of a milestone fulfilled.</p>
             </div>
 
-            <div class="masonry-grid reveal" data-animate style="animation-delay: 0.1s;">
-                <div class="gallery-item"><img src="DSC00956-min.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC01238.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00540.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC01394-2.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00504-2.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC01258.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00517.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC01241-2.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00637.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC01634-2.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00709.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00677.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC01628-2.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00661.jpg" alt="Portrait" loading="lazy"></div>
-                <div class="gallery-item"><img src="DSC00811.jpg" alt="Portrait" loading="lazy"></div>
+            <div class="flex flex-col md:flex-row gap-6 reveal" data-animate style="animation-delay: 0.1s;">
+                
+                <div class="flex flex-col gap-6 flex-1">
+                    <div class="gallery-item"><img src="DSC00956-min.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC01258.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC01394-2.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00637.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00504-2.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC01634.jpg" alt="Portrait" loading="lazy"></div>
+                </div>
+
+                <div class="flex flex-col gap-6 flex-1">
+                    <div class="gallery-item"><img src="DSC01238.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00709.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00517.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00661.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC01241-2.jpg" alt="Portrait" loading="lazy"></div>
+                </div>
+
+                <div class="flex flex-col gap-6 flex-1">
+                    <div class="gallery-item"><img src="DSC00540.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00677.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC01628.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC01634-2.jpg" alt="Portrait" loading="lazy"></div>
+                    <div class="gallery-item"><img src="DSC00811.jpg" alt="Portrait" loading="lazy"></div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -94,7 +101,6 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Mobile Nav
         const menuButton = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         if(menuButton && mobileMenu) {
@@ -105,13 +111,11 @@
           });
         }
         
-        // Nav scroll effect
         const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
           if (window.scrollY > 50) nav.classList.add('nav-scroll'); else nav.classList.remove('nav-scroll');
         });
 
-        // Animations
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
