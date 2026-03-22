@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milestones & Portraits | Juan Salazar Cinema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root { 
+        --accent-color: #5E6C58; 
+        --secondary-color: #D9C5B2; 
+        --bg-color: #FAFAF9; 
+        --text-main: #2C2C2C; 
+      }
+      body { 
+        font-family: 'DM Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); 
+        -webkit-font-smoothing: antialiased; scroll-behavior: smooth; 
+      }
+      h1, h2, h3, h4, .font-bold.tracking-wider { font-family: 'Playfair Display', serif; }
+
+      /* Navigation */
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .nav-scroll { background-color: rgba(250, 250, 249, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; color: var(--text-main); }
+      .menu-item a.active-link { font-weight: 700; color: var(--accent-color); }
+      .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+
+      /* Animations & UI */
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      
+      .back-link {
+        display: inline-flex; align-items: center; font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.1em; font-size: 0.85rem; color: var(--text-main); transition: color 0.3s ease; margin-bottom: 2rem;
+      }
+      .back-link::before { content: '←'; margin-right: 0.5rem; transition: transform 0.3s ease; }
+      .back-link:hover { color: var(--accent-color); }
+      .back-link:hover::before { transform: translateX(-5px); }
+
+      /* Masonry Gallery Grid */
+      .masonry-grid {
+        column-count: 1;
+        column-gap: 1.5rem;
+      }
+      @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+      @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+      
+      .gallery-item {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
+        background: #FFFFFF;
+        border-radius: 0.25rem;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        cursor: pointer;
+        position: relative;
+      }
+      .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1); opacity: 0; transition: opacity 0.3s ease; }
+      .gallery-item:hover::after { opacity: 1; }
+      .gallery-item img { width: 100%; display: block; transition: transform 0.5s ease; }
+      .gallery-item:hover img { transform: scale(1.03); }
+
+      /* Lightbox */
+      .lightbox {
+        position: fixed; inset: 0; width: 100vw; height: 100vh;
+        background: rgba(15, 17, 21, 0.95); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center;
+        z-index: 1000; animation: fadeIn 0.3s ease; cursor: zoom-out;
+      }
+      .lightbox-content { max-width: 90vw; max-height: 90vh; padding: 1rem; animation: slideIn 0.3s ease; }
+      .lightbox-content img { width: 100%; height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border-radius: 0.25rem; }
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes slideIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+      /* Buttons & Mobile Nav (same as previous pages) */
+      .cta-button-round { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text-main); border: 1px solid var(--text-main); border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1.05rem; letter-spacing: 0.05em; text-transform: uppercase; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease; z-index: 1; outline: none; padding: 1em 2.2em; min-width: 200px; min-height: 56px; gap: 0.5em; }
+      .cta-button-round:hover { color: #fff; background-color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(94, 108, 88, 0.2); }
+      .cta-button-round svg { transition: transform 0.4s cubic-bezier(.77,0,.18,1); margin-left: 0.3em; width: 1.15em; height: 1.15em; stroke-width: 1.5; stroke: currentColor; }
+      .cta-button-round:hover svg { transform: translateX(4px); }
+      #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
+      #mobile-menu.open { max-height: 500px; opacity: 1; }
+      @media (max-width: 600px) { .cta-button-round { min-width: 0; width: 100%; font-size: 1rem; padding: 1em 0.5em; } }
+    </style>
+</head>
+<body>
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider" style="font-family: 'Playfair Display', serif;">Juan Salazar Cinema</a>
+        <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="about.html">About Me</a></li>
+            <li class="menu-item"><a href="portfolio.html">Videography</a></li>
+            <li class="menu-item"><a href="photography.html" class="active-link">Photography</a></li>
+        </ul>
+      </div>
+      <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
+          <li><a href="index.html" class="block py-2">Home</a></li>
+          <li><a href="about.html" class="block py-2">About Me</a></li>
+          <li><a href="portfolio.html" class="block py-2">Videography</a></li>
+          <li><a href="photography.html" class="block py-2 font-bold" style="color: var(--accent-color);">Photography</a></li>
+      </ul>
+    </nav>
+
+    <main class="py-28 sm:py-36 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 reveal" data-animate>
+                <a href="photography.html" class="back-link">Back to Galleries</a>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Milestones & Portraits</h1>
+                <p class="text-xl text-gray-600 max-w-2xl">A collection of individual portraits designed to highlight confidence, character, and the beauty of a milestone fulfilled.</p>
+            </div>
+
+            <div class="masonry-grid reveal" data-animate style="animation-delay: 0.1s;">
+                <div class="gallery-item"><img src="DSC00956-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC00563-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC00517-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC01581-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC00504-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC00409-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC00811-min.jpg" alt="Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="untitled-21-min.jpg" alt="Portrait" loading="lazy"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+      © 2026 Juan Salazar Cinema. All rights reserved.
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Nav
+        const menuButton = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuButton && mobileMenu) {
+          menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) { mobileMenu.style.maxHeight = '500px'; mobileMenu.style.opacity = '1'; }
+            else { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
+          });
+        }
+        
+        // Nav scroll effect
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) nav.classList.add('nav-scroll'); else nav.classList.remove('nav-scroll');
+        });
+
+        // Animations
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+
+        // Lightbox
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                const lightbox = document.createElement('div');
+                lightbox.classList.add('lightbox');
+                lightbox.innerHTML = `<div class="lightbox-content"><img src="${imgSrc}" alt="Expanded Photo"></div>`;
+                document.body.appendChild(lightbox);
+                document.body.style.overflow = 'hidden';
+                
+                lightbox.addEventListener('click', () => {
+                    lightbox.remove();
+                    document.body.style.overflow = '';
+                });
+            });
+        });
+      });
+    </script>
+</body>
+</html>
