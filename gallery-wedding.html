@@ -21,36 +21,26 @@
       .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
       .reveal.active { opacity: 1; transform: translateY(0); }
       
-      .back-link {
-        display: inline-flex; align-items: center; font-weight: 600; text-transform: uppercase;
-        letter-spacing: 0.1em; font-size: 0.85rem; color: var(--text-main); transition: color 0.3s ease; margin-bottom: 2rem;
-      }
+      .back-link { display: inline-flex; align-items: center; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; color: var(--text-main); transition: color 0.3s ease; margin-bottom: 2rem; }
       .back-link::before { content: '←'; margin-right: 0.5rem; transition: transform 0.3s ease; }
       .back-link:hover { color: var(--accent-color); }
       .back-link:hover::before { transform: translateX(-5px); }
 
-      .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+      /* Pixieset-style Filter Menu */
+      .filter-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 3rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 1rem; }
+      .filter-btn { background: none; border: none; font-family: 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; font-weight: 600; color: #9CA3AF; cursor: pointer; transition: all 0.3s ease; padding-bottom: 0.5rem; position: relative; }
+      .filter-btn:hover { color: var(--text-main); }
+      .filter-btn.active { color: var(--text-main); }
+      .filter-btn.active::after { content: ''; position: absolute; bottom: -1rem; left: 0; width: 100%; height: 2px; background-color: var(--accent-color); }
+
+      /* Masonry layout compatible with filtering */
+      .masonry-grid { column-count: 1; column-gap: 1.5rem; transition: all 0.5s ease; }
       @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
       @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
       
-      .gallery-item {
-        break-inside: avoid; margin-bottom: 1.5rem; background: #FFFFFF; border-radius: 0.25rem; overflow: hidden;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05); cursor: pointer; position: relative;
-      }
-      .gallery-item::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.1); opacity: 0; transition: opacity 0.3s ease; }
-      .gallery-item:hover::after { opacity: 1; }
-      .gallery-item img { width: 100%; display: block; transition: transform 0.5s ease; }
-      .gallery-item:hover img { transform: scale(1.03); }
-
-      .lightbox {
-        position: fixed; inset: 0; width: 100vw; height: 100vh;
-        background: rgba(15, 17, 21, 0.95); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center;
-        z-index: 1000; animation: fadeIn 0.3s ease; cursor: zoom-out;
-      }
-      .lightbox-content { max-width: 90vw; max-height: 90vh; padding: 1rem; animation: slideIn 0.3s ease; }
-      .lightbox-content img { width: 100%; height: 100%; object-fit: contain; box-shadow: 0 20px 60px rgba(0,0,0,0.5); border-radius: 0.25rem; }
-      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      @keyframes slideIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+      .gallery-item { break-inside: avoid; margin-bottom: 1.5rem; border-radius: 0.25rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease; transform-origin: center; }
+      .gallery-item.hidden { display: none; opacity: 0; transform: scale(0.95); }
+      .gallery-item img { width: 100%; display: block; height: auto; }
       
       #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
       #mobile-menu.open { max-height: 500px; opacity: 1; }
@@ -80,19 +70,56 @@
 
     <main class="py-28 sm:py-36 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-12 reveal" data-animate>
+            <div class="mb-8 reveal" data-animate>
                 <a href="photography.html" class="back-link">Back to Galleries</a>
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">A Timeless Vegas Elopement</h1>
-                <p class="text-xl text-gray-600 max-w-2xl">Intimate moments captured amidst the neon glow and desert beauty of Las Vegas. A celebration of romance, elegance, and unscripted joy.</p>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-center md:text-left">A Timeless Vegas Elopement</h1>
+                <p class="text-xl text-gray-600 max-w-2xl text-center md:text-left mx-auto md:mx-0">Intimate moments captured amidst the neon glow and desert beauty of Las Vegas. A celebration of romance, elegance, and unscripted joy.</p>
             </div>
 
-            <div class="masonry-grid reveal" data-animate style="animation-delay: 0.1s;">
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Vegas Wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Vegas Wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop" alt="Vegas Wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=2070&auto=format&fit=crop" alt="Vegas Wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" alt="Vegas Wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Vegas Wedding" loading="lazy"></div>
+            <div class="filter-menu reveal" data-animate style="animation-delay: 0.1s;">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="getting-ready">Getting Ready</button>
+                <button class="filter-btn" data-filter="ceremony">Ceremony</button>
+                <button class="filter-btn" data-filter="portraits">Portraits</button>
+                <button class="filter-btn" data-filter="reception">Reception</button>
+            </div>
+
+            <div class="masonry-grid reveal" data-animate style="animation-delay: 0.2s;">
+                
+                <div class="gallery-item" data-category="getting-ready">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Getting Ready" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="getting-ready">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" alt="Getting Ready" loading="lazy">
+                </div>
+
+                <div class="gallery-item" data-category="ceremony">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070&auto=format&fit=crop" alt="Ceremony" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="ceremony">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop" alt="Ceremony" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="ceremony">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Ceremony" loading="lazy">
+                </div>
+
+                <div class="gallery-item" data-category="portraits">
+                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=2070&auto=format&fit=crop" alt="Portraits" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="portraits">
+                    <img src="https://images.unsplash.com/photo-1583939000240-690b1e005669?q=80&w=2070&auto=format&fit=crop" alt="Portraits" loading="lazy">
+                </div>
+
+                <div class="gallery-item" data-category="reception">
+                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" alt="Reception" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="reception">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8892bf309c?q=80&w=2070&auto=format&fit=crop" alt="Reception" loading="lazy">
+                </div>
+                <div class="gallery-item" data-category="reception">
+                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop" alt="Reception" loading="lazy">
+                </div>
+
             </div>
         </div>
     </main>
@@ -103,7 +130,7 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Mobile Nav
+        // Mobile Menu
         const menuButton = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         if(menuButton && mobileMenu) {
@@ -114,34 +141,43 @@
           });
         }
         
-        // Nav scroll effect
+        // Nav Background Scroll
         const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
           if (window.scrollY > 50) nav.classList.add('nav-scroll'); else nav.classList.remove('nav-scroll');
         });
 
-        // Animations
+        // Scroll Animations
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
-        // Lightbox
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const imgSrc = item.querySelector('img').src;
-                const lightbox = document.createElement('div');
-                lightbox.classList.add('lightbox');
-                lightbox.innerHTML = `<div class="lightbox-content"><img src="${imgSrc}" alt="Expanded Photo"></div>`;
-                document.body.appendChild(lightbox);
-                document.body.style.overflow = 'hidden';
-                
-                lightbox.addEventListener('click', () => {
-                    lightbox.remove();
-                    document.body.style.overflow = '';
+        // Pixieset Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Remove active styling from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // 2. Add active styling to clicked button
+                btn.classList.add('active');
+
+                // 3. Get the category we want to show
+                const filterValue = btn.getAttribute('data-filter');
+
+                // 4. Hide or show photos instantly
+                galleryItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
                 });
             });
         });
+
       });
     </script>
 </body>
