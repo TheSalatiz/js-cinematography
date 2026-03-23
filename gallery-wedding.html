@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A Timeless Vegas Elopement | Juan Salazar Cinema</title>
+    <title>Wedding Galleries | Juan Salazar Cinema</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
       :root { --accent-color: #5E6C58; --secondary-color: #D9C5B2; --bg-color: #FAFAF9; --text-main: #2C2C2C; }
       body { font-family: 'DM Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-      h1, h2, h3, h4, .font-bold.tracking-wider { font-family: 'Playfair Display', serif; }
+      h1, h2, h3, h4, .font-playfair { font-family: 'Playfair Display', serif; }
 
       #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
       .nav-scroll { background-color: rgba(250, 250, 249, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
@@ -25,22 +25,6 @@
       .back-link::before { content: '←'; margin-right: 0.5rem; transition: transform 0.3s ease; }
       .back-link:hover { color: var(--accent-color); }
       .back-link:hover::before { transform: translateX(-5px); }
-
-      /* Pixieset-style Filter Menu */
-      .filter-menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 3rem; border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 1rem; }
-      .filter-btn { background: none; border: none; font-family: 'DM Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.85rem; font-weight: 600; color: #9CA3AF; cursor: pointer; transition: all 0.3s ease; padding-bottom: 0.5rem; position: relative; }
-      .filter-btn:hover { color: var(--text-main); }
-      .filter-btn.active { color: var(--text-main); }
-      .filter-btn.active::after { content: ''; position: absolute; bottom: -1rem; left: 0; width: 100%; height: 2px; background-color: var(--accent-color); }
-
-      /* Masonry layout compatible with filtering */
-      .masonry-grid { column-count: 1; column-gap: 1.5rem; transition: all 0.5s ease; }
-      @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
-      @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
-      
-      .gallery-item { break-inside: avoid; margin-bottom: 1.5rem; border-radius: 0.25rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); pointer-events: none; transition: opacity 0.4s ease, transform 0.4s ease; transform-origin: center; }
-      .gallery-item.hidden { display: none; opacity: 0; transform: scale(0.95); }
-      .gallery-item img { width: 100%; display: block; height: auto; }
       
       #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
       #mobile-menu.open { max-height: 500px; opacity: 1; }
@@ -49,7 +33,7 @@
 <body>
     <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
       <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a href="index.html" class="text-xl font-bold tracking-wider" style="font-family: 'Playfair Display', serif;">Juan Salazar Cinema</a>
+        <a href="index.html" class="text-xl font-bold tracking-wider font-playfair">Juan Salazar Cinema</a>
         <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
         </button>
@@ -70,55 +54,29 @@
 
     <main class="py-28 sm:py-36 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-8 reveal" data-animate>
-                <a href="photography.html" class="back-link">Back to Galleries</a>
-                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-center md:text-left">A Timeless Vegas Elopement</h1>
-                <p class="text-xl text-gray-600 max-w-2xl text-center md:text-left mx-auto md:mx-0">Intimate moments captured amidst the neon glow and desert beauty of Las Vegas. A celebration of romance, elegance, and unscripted joy.</p>
+            <div class="mb-16 reveal" data-animate>
+                <a href="photography.html" class="back-link">Back to Categories</a>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 font-playfair">Wedding Galleries</h1>
+                <p class="text-xl text-gray-600 max-w-2xl">Select a couple below to view the story of their day.</p>
             </div>
 
-            <div class="filter-menu reveal" data-animate style="animation-delay: 0.1s;">
-                <button class="filter-btn active" data-filter="all">All Photos</button>
-                <button class="filter-btn" data-filter="getting-ready">Getting Ready</button>
-                <button class="filter-btn" data-filter="ceremony">Ceremony</button>
-                <button class="filter-btn" data-filter="portraits">Portraits</button>
-                <button class="filter-btn" data-filter="reception">Reception</button>
-            </div>
-
-            <div class="masonry-grid reveal" data-animate style="animation-delay: 0.2s;">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 reveal" data-animate style="animation-delay: 0.1s;">
                 
-                <div class="gallery-item" data-category="getting-ready">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Getting Ready" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="getting-ready">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop" alt="Getting Ready" loading="lazy">
-                </div>
+                <a href="gallery-robert-mackenzie.html" class="group block cursor-pointer">
+                    <div class="overflow-hidden rounded-md shadow-lg mb-4">
+                        <img src="robert-mackenzie/photo1.jpg" alt="Robert and Mackenzie" class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-105">
+                    </div>
+                    <h2 class="text-2xl font-bold font-playfair transition-colors duration-300" style="color: var(--text-main);">Robert & Mackenzie</h2>
+                    <p class="text-sm tracking-widest uppercase mt-1" style="color: var(--secondary-color); font-weight: bold;">Las Vegas Elopement</p>
+                </a>
 
-                <div class="gallery-item" data-category="ceremony">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?q=80&w=2070&auto=format&fit=crop" alt="Ceremony" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="ceremony">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=2070&auto=format&fit=crop" alt="Ceremony" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="ceremony">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop" alt="Ceremony" loading="lazy">
-                </div>
-
-                <div class="gallery-item" data-category="portraits">
-                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&w=2070&auto=format&fit=crop" alt="Portraits" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="portraits">
-                    <img src="https://images.unsplash.com/photo-1583939000240-690b1e005669?q=80&w=2070&auto=format&fit=crop" alt="Portraits" loading="lazy">
-                </div>
-
-                <div class="gallery-item" data-category="reception">
-                    <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?q=80&w=2070&auto=format&fit=crop" alt="Reception" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="reception">
-                    <img src="https://images.unsplash.com/photo-1530103862676-de8892bf309c?q=80&w=2070&auto=format&fit=crop" alt="Reception" loading="lazy">
-                </div>
-                <div class="gallery-item" data-category="reception">
-                    <img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?q=80&w=2070&auto=format&fit=crop" alt="Reception" loading="lazy">
-                </div>
+                <a href="#" class="group block cursor-pointer">
+                    <div class="overflow-hidden rounded-md shadow-lg mb-4">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Coming Soon" class="w-full h-80 object-cover transform transition duration-700 group-hover:scale-105">
+                    </div>
+                    <h2 class="text-2xl font-bold font-playfair transition-colors duration-300" style="color: var(--text-main);">Sarah & James</h2>
+                    <p class="text-sm tracking-widest uppercase mt-1" style="color: var(--secondary-color); font-weight: bold;">Red Rock Canyon</p>
+                </a>
 
             </div>
         </div>
@@ -130,7 +88,6 @@
 
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        // Mobile Menu
         const menuButton = document.getElementById('mobile-menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
         if(menuButton && mobileMenu) {
@@ -141,43 +98,15 @@
           });
         }
         
-        // Nav Background Scroll
         const nav = document.getElementById('main-nav');
         window.addEventListener('scroll', () => {
           if (window.scrollY > 50) nav.classList.add('nav-scroll'); else nav.classList.remove('nav-scroll');
         });
 
-        // Scroll Animations
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
-
-        // Pixieset Filtering Logic
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // 1. Remove active styling from all buttons
-                filterBtns.forEach(b => b.classList.remove('active'));
-                // 2. Add active styling to clicked button
-                btn.classList.add('active');
-
-                // 3. Get the category we want to show
-                const filterValue = btn.getAttribute('data-filter');
-
-                // 4. Hide or show photos instantly
-                galleryItems.forEach(item => {
-                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
       });
     </script>
 </body>
