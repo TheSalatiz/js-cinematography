@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Robert & Mackenzie | Juan Salazar Cinema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root { --accent-color: #5E6C58; --secondary-color: #D9C5B2; --bg-color: #FAFAF9; --text-main: #2C2C2C; }
+      body { font-family: 'DM Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+      h1, h2, h3, h4, .font-bold.tracking-wider { font-family: 'Playfair Display', serif; }
+
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .nav-scroll { background-color: rgba(250, 250, 249, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; color: var(--text-main); }
+      .menu-item a.active-link { font-weight: 700; color: var(--accent-color); }
+      .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      
+      .back-link { display: inline-flex; align-items: center; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; color: var(--text-main); transition: color 0.3s ease; margin-bottom: 2rem; }
+      .back-link::before { content: '←'; margin-right: 0.5rem; transition: transform 0.3s ease; }
+      .back-link:hover { color: var(--accent-color); }
+      .back-link:hover::before { transform: translateX(-5px); }
+
+      /* Standard Masonry layout */
+      .masonry-grid { column-count: 1; column-gap: 1.5rem; }
+      @media (min-width: 640px) { .masonry-grid { column-count: 2; } }
+      @media (min-width: 1024px) { .masonry-grid { column-count: 3; } }
+      
+      .gallery-item { break-inside: avoid; margin-bottom: 1.5rem; border-radius: 0.25rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); pointer-events: none; }
+      .gallery-item img { width: 100%; display: block; height: auto; }
+      
+      #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
+      #mobile-menu.open { max-height: 500px; opacity: 1; }
+    </style>
+</head>
+<body>
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider" style="font-family: 'Playfair Display', serif;">Juan Salazar Cinema</a>
+        <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="about.html">About Me</a></li>
+            <li class="menu-item"><a href="videography.html">Videography</a></li>
+            <li class="menu-item"><a href="photography.html" class="active-link">Photography</a></li>
+        </ul>
+      </div>
+      <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
+          <li><a href="index.html" class="block py-2">Home</a></li>
+          <li><a href="about.html" class="block py-2">About Me</a></li>
+          <li><a href="videography.html" class="block py-2">Videography</a></li>
+          <li><a href="photography.html" class="block py-2 font-bold" style="color: var(--accent-color);">Photography</a></li>
+      </ul>
+    </nav>
+
+    <main class="py-28 sm:py-36 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 reveal" data-animate>
+                <a href="photography.html" class="back-link">Back to Galleries</a>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-center md:text-left">Robert & Mackenzie</h1>
+                <p class="text-xl text-gray-600 max-w-2xl text-center md:text-left mx-auto md:mx-0">A curated collection of intimate moments and elegant portraiture.</p>
+            </div>
+
+            <div class="masonry-grid reveal" data-animate style="animation-delay: 0.1s;">
+                <div class="gallery-item"><img src="robert-mackenzie/photo1.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo2.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo3.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo4.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo5.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo6.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo7.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo8.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo9.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo10.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo11.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo12.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo13.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo14.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo15.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo16.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo17.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo18.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo19.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo20.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo21.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo22.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo23.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo24.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo25.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo26.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo27.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo28.jpg" alt="Wedding Portrait" loading="lazy"></div>
+                <div class="gallery-item"><img src="robert-mackenzie/photo29.jpg" alt="Wedding Portrait" loading="lazy"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+      © 2026 Juan Salazar Cinema. All rights reserved.
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuButton && mobileMenu) {
+          menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) { mobileMenu.style.maxHeight = '500px'; mobileMenu.style.opacity = '1'; }
+            else { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
+          });
+        }
+        
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) nav.classList.add('nav-scroll'); else nav.classList.remove('nav-scroll');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+      });
+    </script>
+</body>
+</html>
