@@ -1,3 +1,10 @@
+Here is the complete, final code for your `videography.html` page.
+
+I have updated the **Cooney Tech** card in the Corporate section to use the new YouTube link, swapping it from a local HTML5 `<video>` tag to an optimized `<iframe>`. I also applied all the design theory and performance upgrades we discussed, including `loading="lazy"` for all embedded players and `title` attributes for web accessibility.
+
+The **Motor Q** card remains set up as a local video placeholder with a `poster` image attribute so it doesn't display as a blank black box while you wait to finalize that specific video.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,7 +174,7 @@
                 </div>
                 
                 <div class="card reveal mb-12" data-animate>
-                    <iframe src="https://www.youtube.com/embed/Ia8Bz2sdrAY" title="Julia's Wedding Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/Ia8Bz2sdrAY" title="Julia's Wedding Film" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="p-6 md:p-8">
                         <h3 class="font-bold text-2xl mb-2">Julia's Wedding</h3>
                         <p class="text-gray-600 text-sm uppercase tracking-wider">Las Vegas, NV</p>
@@ -185,7 +192,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div class="card reveal" data-animate>
-                        <video controls preload="metadata" class="w-full">
+                        <video controls preload="metadata" class="w-full" poster="assets/motor-q-thumbnail.jpg">
                           <source src="assets/motor-q.mp4" type="video/mp4">
                           Your browser does not support the video tag.
                         </video>
@@ -196,10 +203,7 @@
                     </div>
                     
                     <div class="card reveal" data-animate style="animation-delay: 0.1s;">
-                        <video controls preload="metadata" class="w-full">
-                          <source src="assets/cooney-tech.mp4" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
+                        <iframe src="https://www.youtube.com/embed/Akp2CSGU-Vg" title="Cooney Tech Corporate Event" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <div class="p-6">
                             <h3 class="font-bold text-xl">Cooney Tech</h3>
                             <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Corporate Event</p>
@@ -217,7 +221,7 @@
                 </div>
 
                 <div class="card reveal mb-12" data-animate>
-                    <iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/weYjcut-2u4" title="Ephemeral Short Film" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <div class="p-6 md:p-8">
                         <h3 class="font-bold text-2xl mb-3">Ephemeral</h3>
                         <p class="text-gray-600 leading-relaxed max-w-4xl">
@@ -229,23 +233,23 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div class="card reveal" data-animate>
-                        <iframe src="https://player.vimeo.com/video/947238083" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/947238083" title="Blue Pill Red Pill Matrix Short" loading="lazy" frameborder="0" allowfullscreen></iframe>
                         <div class="p-5"><h3 class="font-bold text-lg">Blue Pill Red Pill (Matrix Short)</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.1s;">
-                        <iframe src="https://player.vimeo.com/video/1073431405" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/1073431405" title="GSU Immunization Compliance Spot" loading="lazy" frameborder="0" allowfullscreen></iframe>
                         <div class="p-5"><h3 class="font-bold text-lg">GSU Immunization Compliance Spot</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.2s;">
-                        <iframe src="https://www.youtube.com/embed/1g93Kf2msoE" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/1g93Kf2msoE" title="Long Time No See Film" loading="lazy" frameborder="0" allowfullscreen></iframe>
                         <div class="p-5"><h3 class="font-bold text-lg">Long Time No See</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.3s;">
-                        <iframe src="https://www.youtube.com/embed/dfunWv1MXuw" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/dfunWv1MXuw" title="The Day After Film" loading="lazy" frameborder="0" allowfullscreen></iframe>
                         <div class="p-5"><h3 class="font-bold text-lg">The Day After</h3></div>
                     </div>
                     <div class="card reveal" data-animate style="animation-delay: 0.4s;">
-                        <iframe src="https://player.vimeo.com/video/947238109" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="https://player.vimeo.com/video/947238109" title="Code Words GFA Project" loading="lazy" frameborder="0" allowfullscreen></iframe>
                         <div class="p-5"><h3 class="font-bold text-lg">Code Words (GFA Project)</h3></div>
                     </div>
                 </div>
@@ -327,3 +331,5 @@
     </script>
 </body>
 </html>
+
+```
