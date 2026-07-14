@@ -9,7 +9,7 @@
   <style>
     :root { --accent-color: #5E6C58; --secondary-color: #D9C5B2; --bg-color: #FAFAF9; --text-main: #2C2C2C; }
     body { font-family: 'DM Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-    h1, h2, h3, h4, .service-title { font-family: 'Playfair Display', serif; }
+    h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
 
     #home { background: radial-gradient(circle at 15% 25%, rgba(94, 108, 88, 0.08), transparent 40%), radial-gradient(circle at 85% 70%, rgba(217, 197, 178, 0.15), transparent 40%), var(--bg-color); }
     .video-container { background: #FFFFFF; padding: 1rem; border-radius: 1.5rem; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); }
@@ -26,7 +26,7 @@
     .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
     .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
 
-    .service-title { color: var(--secondary-color); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.9rem;}
+    .service-title { color: var(--secondary-color); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.9rem; font-family: 'Playfair Display', serif; }
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
@@ -54,7 +54,7 @@
 <body>
   <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold tracking-wider" style="font-family: 'Playfair Display', serif;">Juan Salazar Cinema</a>
+      <a href="#" class="text-xl font-bold tracking-wider font-serif">Juan Salazar Cinema</a>
       <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
       </button>
@@ -77,10 +77,10 @@
     </ul>
   </nav>
 
-  <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6 pt-32 md:pt-0">
+  <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6 pt-32 pb-16 md:pt-0">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-5 text-center lg:text-left">
-            <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tighter">Cinematic Storytelling & <br><span class="highlight-word">Visual Production.</span></h2>
+            <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tighter font-serif">Cinematic Storytelling & <br><span class="highlight-word">Visual Production.</span></h2>
             <p class="text-lg text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0">Specializing in polished, emotion-driven videography and photography for corporate events, narrative films, and high-impact brand campaigns.</p>
             <a href="videography.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-lg tracking-wider uppercase">View My Work</a>
         </div>
@@ -92,48 +92,101 @@
     </div>
   </main>
 
-  <section id="services" class="py-24 sm:py-32 px-6 bg-white">
+  <!-- NEW: Social Proof Banner -->
+  <aside class="bg-gray-100 py-10 border-y border-gray-200">
+      <div class="max-w-7xl mx-auto px-6 text-center reveal" data-animate>
+          <p class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6">Trusted on location at premier luxury venues</p>
+          <div class="flex flex-wrap justify-center items-center gap-8 md:gap-20 text-gray-800 font-serif text-2xl md:text-3xl opacity-80">
+              <span>Caesars Palace</span>
+              <span>The Bellagio</span>
+              <span>Resorts World</span>
+          </div>
+      </div>
+  </aside>
+
+  <!-- TIGHTENED: Services Section -->
+  <section id="services" class="py-16 sm:py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
         <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-            <h2 class="text-4xl md:text-5xl font-bold leading-tight">Your vision, <span class="highlight-word">captured flawlessly.</span></h2>
-            <p class="mt-8 text-xl text-gray-600">From the fast-paced energy of a live corporate event to the meticulous framing of a narrative short, I bring a cinematic approach and professional precision to every set.</p>
+            <h2 class="text-4xl md:text-5xl font-bold leading-tight font-serif">Your vision, <span class="highlight-word">captured flawlessly.</span></h2>
+            <p class="mt-6 text-xl text-gray-600">From the fast-paced energy of a live corporate event to the meticulous framing of a narrative short, I bring a cinematic approach and professional precision to every set.</p>
         </div>
-        <div class="mt-24 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        
+        <!-- Redesigned Grid: Corporate takes full width top row to assert dominance -->
+        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
             
-            <article class="reveal flex flex-col h-full" data-animate>
-                <h4 class="service-title">Videography</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">Corporate & Live Events</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">From high-stakes keynotes to high-energy nightlife, I deliver crisp, dynamic coverage. I thrive in fast-paced environments, ensuring your brand or event is documented perfectly without missing a beat.</p>
-                <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Event Films &rarr;</a>
+            <article class="reveal md:col-span-2 bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100" data-animate>
+                <div class="max-w-3xl">
+                    <h4 class="service-title mb-2">Primary Focus</h4>
+                    <h3 class="text-3xl font-bold mb-4 font-serif">Corporate & Live Events</h3>
+                    <p class="text-gray-600 leading-relaxed text-lg mb-6">From high-stakes keynotes to high-energy nightlife, I deliver crisp, dynamic 4K coverage. I thrive in fast-paced, high-pressure environments, ensuring your brand or live event is documented perfectly without missing a beat.</p>
+                    <a href="videography.html" class="font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Event Films &rarr;</a>
+                </div>
             </article>
 
-            <article class="reveal flex flex-col h-full" data-animate>
+            <article class="reveal flex flex-col h-full p-6" data-animate>
                 <h4 class="service-title">Videography</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">Narrative & Short Films</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">Bringing stories to life through deliberate blocking, sophisticated lighting, and expert camera work. I collaborate closely with directors and producers to ensure the visual tone matches the emotional core.</p>
+                <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Narrative & Short Films</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">Bringing stories to life through deliberate blocking, sophisticated lighting, and expert camera work. I collaborate closely with directors to ensure the visual tone matches the emotional core.</p>
                 <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Narrative Work &rarr;</a>
             </article>
             
-            <article class="reveal flex flex-col h-full" data-animate>
+            <article class="reveal flex flex-col h-full p-6" data-animate>
                 <h4 class="service-title">Photography</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">Professional Photo Coverage</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">Striking imagery with a masterful focus on lighting and composition. I offer complete photography packages that seamlessly complement my video production for a cohesive, premium look.</p>
+                <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Dedicated Photo Coverage</h3>
+                <p class="text-gray-600 leading-relaxed flex-grow">Striking imagery with a masterful focus on lighting and composition. Depending on the event's needs, I alternate roles to provide fully dedicated, premium photo coverage that perfectly complements my video production aesthetics.</p>
                 <a href="photography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Photo Galleries &rarr;</a>
-            </article>
-            
-            <article class="reveal flex flex-col h-full" data-animate>
-                <h4 class="service-title">Post-Production</h4>
-                <h3 class="text-3xl font-bold mt-4 mb-4">Color Grading & Editing</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">Every project is meticulously assembled, color-graded, and sound-designed to meet the highest professional standards using industry tools like Adobe Premiere Pro and DaVinci Resolve.</p>
-                <a href="about.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">Learn About My Process &rarr;</a>
             </article>
 
         </div>
     </div>
   </section>
 
-  <section id="contact" class="py-24 sm:py-32 px-6 text-center">
-    <h2 class="text-4xl font-bold mb-4">Let's Create Together</h2>
+  <!-- NEW: The Filmmaker Tease -->
+  <section class="py-16 sm:py-24 px-6 bg-gray-50 border-t border-gray-100">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <!-- Placeholder for your BTS photo -->
+          <div class="aspect-w-4 aspect-h-5 md:aspect-h-4 rounded-2xl overflow-hidden bg-gray-200 shadow-lg reveal" data-animate>
+              <img src="assets/juan-salazar-bts.jpg" alt="Juan Salazar behind the camera" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/800x1000?text=Insert+Behind+The+Scenes+Photo+Here'">
+          </div>
+          <div class="reveal" data-animate>
+              <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">The Director Behind the Lens.</h2>
+              <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                  Holding a Bachelor's degree in Film and Production from Georgia Southern University, I ground my cinematic style in formal, high-level academic training. 
+              </p>
+              <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                  I don't just point a camera and press record—I apply deliberate blocking, sophisticated lighting, and rigorous technical standards to every frame I capture.
+              </p>
+              <a href="about.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-sm tracking-wider uppercase">Meet The Filmmaker</a>
+          </div>
+      </div>
+  </section>
+
+  <!-- NEW: The Tech Stack / Workflow -->
+  <section class="py-16 sm:py-24 px-6 bg-white">
+      <div class="max-w-7xl mx-auto text-center reveal" data-animate>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Professional Owner-Operator Kit.</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto mb-16 text-lg">A fully self-sufficient production pipeline built for high-end reliability and cinematic fidelity.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+              <div class="p-8 border border-gray-100 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 class="font-bold text-xl mb-3 font-serif">Camera & Optics</h3>
+                  <p class="text-gray-600">Built around the Sony a7 IV paired with a versatile Sigma 24-70mm lens, ensuring stunning 60fps resolution, incredible low-light performance, and razor-sharp S-Cinetone color profiles.</p>
+              </div>
+              <div class="p-8 border border-gray-100 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 class="font-bold text-xl mb-3 font-serif">Motion & Audio</h3>
+                  <p class="text-gray-600">Dynamic, buttery-smooth movement achieved with the DJI RS 4 Mini gimbal. Broadcast-quality sound is captured flawlessly on location using the Røde Wireless Pro microphone system.</p>
+              </div>
+              <div class="p-8 border border-gray-100 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-shadow">
+                  <h3 class="font-bold text-xl mb-3 font-serif">Post-Production Pipeline</h3>
+                  <p class="text-gray-600">Projects are efficiently edited and color-graded on a high-performance MSI Katana RTX 5070 workstation. Fully proficient in industry-standard software including Adobe Premiere Pro and DaVinci Resolve.</p>
+              </div>
+          </div>
+      </div>
+  </section>
+
+  <section id="contact" class="py-16 sm:py-24 px-6 text-center border-t border-gray-100">
+    <h2 class="text-4xl font-bold mb-4 font-serif">Let's Create Together</h2>
     <p class="text-lg text-gray-600 mb-10">Ready to start your project? Click below to fill out my contact form.</p>
     <button type="button" class="cta-button-round" id="open-contact-modal-section">
       Start Your Story
