@@ -3,42 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juan Salazar Cinema | Cinematic Storytelling & Visual Production</title>
+  <title>Juan Salazar | Videographer & Editor</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    :root { --accent-color: #5E6C58; --secondary-color: #D9C5B2; --bg-color: #FAFAF9; --text-main: #2C2C2C; }
-    body { font-family: 'DM Sans', sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
-    h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+    :root { 
+      --accent-color: #2563EB; /* Electric Cobalt Blue */
+      --secondary-color: #6B7280; /* Neutral Gray for subheaders */
+      --bg-color: #FFFFFF; /* True White */
+      --bg-alt: #F9FAFB; /* Stark Light Gray */
+      --text-main: #111827; /* Deep Charcoal */
+    }
+    
+    body { 
+      font-family: 'DM Sans', sans-serif; 
+      background-color: var(--bg-color); 
+      color: var(--text-main); 
+      -webkit-font-smoothing: antialiased; 
+      scroll-behavior: smooth; 
+    }
+    
+    h1, h2, h3, h4, .font-serif { 
+      font-family: 'Playfair Display', serif; 
+    }
 
-    #home { background: radial-gradient(circle at 15% 25%, rgba(94, 108, 88, 0.08), transparent 40%), radial-gradient(circle at 85% 70%, rgba(217, 197, 178, 0.15), transparent 40%), var(--bg-color); }
-    .video-container { background: #FFFFFF; padding: 1rem; border-radius: 1.5rem; box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08); border: 1px solid rgba(0, 0, 0, 0.05); }
+    #home { background: var(--bg-color); }
+    
+    .video-container { 
+      background: var(--bg-color); 
+      padding: 1rem; 
+      border-radius: 1.5rem; 
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05); 
+      border: 1px solid rgba(0, 0, 0, 0.05); 
+    }
+    
     .video-container iframe { border-radius: 1rem; }
-    .highlight-word { color: var(--accent-color); font-style: italic;}
+    
+    .highlight-word { color: var(--accent-color); font-style: normal; }
 
     /* Smart Header CSS */
     #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease, transform 0.4s ease; }
     .nav-hidden { transform: translateY(-100%); }
-    .nav-scroll { background-color: rgba(250, 250, 249, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+    .nav-scroll { background-color: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
     
     .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; color: var(--text-main); }
     .menu-item a.active-link { font-weight: 700; color: var(--accent-color); }
     .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
     .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
 
-    .service-title { color: var(--secondary-color); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 0.9rem; font-family: 'Playfair Display', serif; }
+    .service-title { color: var(--secondary-color); font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.85rem; font-family: 'DM Sans', sans-serif; }
+    
     .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    .cta-button, .cta-button-round { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text-main); border: 1px solid var(--text-main); border-radius: 999px; font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1.05rem; letter-spacing: 0.05em; text-transform: uppercase; position: relative; overflow: hidden; cursor: pointer; transition: all 0.3s ease; z-index: 1; outline: none; padding: 1em 3em; min-width: 200px; min-height: 56px; box-sizing: border-box; }
-    .cta-button:hover, .cta-button-round:hover { color: #fff; background-color: var(--accent-color); border-color: var(--accent-color); transform: translateY(-2px); box-shadow: 0 10px 20px rgba(94, 108, 88, 0.2); }
+    .cta-button, .cta-button-round { 
+      display: inline-flex; align-items: center; justify-content: center; 
+      background: transparent; color: var(--text-main); 
+      border: 1px solid var(--text-main); border-radius: 999px; 
+      font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 1.05rem; 
+      letter-spacing: 0.05em; text-transform: uppercase; position: relative; 
+      overflow: hidden; cursor: pointer; transition: all 0.3s ease; z-index: 1; 
+      outline: none; padding: 1em 3em; min-width: 200px; min-height: 56px; box-sizing: border-box; 
+    }
+    
+    .cta-button:hover, .cta-button-round:hover { 
+      color: #fff; background-color: var(--accent-color); border-color: var(--accent-color); 
+      transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2); 
+    }
+    
     .cta-button-round { padding: 1em 2.2em; gap: 0.5em; }
     .cta-button-round svg { transition: transform 0.4s cubic-bezier(.77,0,.18,1); margin-left: 0.3em; width: 1.15em; height: 1.15em; stroke-width: 1.5; stroke: currentColor; }
     .cta-button-round:hover svg { transform: translateX(4px); }
 
-    .modal-bg { position: fixed; z-index: 1000; inset: 0; width: 100vw; height: 100vh; background: rgba(250, 250, 249, 0.95); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; opacity: 1; pointer-events: auto; backdrop-filter: blur(5px); }
+    .modal-bg { position: fixed; z-index: 1000; inset: 0; width: 100vw; height: 100vh; background: rgba(255, 255, 255, 0.95); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; opacity: 1; pointer-events: auto; backdrop-filter: blur(5px); }
     .modal-bg[hidden] { opacity: 0; pointer-events: none; }
-    .modal-content { background: #FFFFFF; border-radius: 1.5em; box-shadow: 0 20px 60px rgba(0,0,0,0.15); padding: 0; max-width: 95vw; width: 420px; min-height: 600px; max-height: 90vh; overflow: hidden; position: relative; }
+    .modal-content { background: var(--bg-color); border-radius: 1.5em; box-shadow: 0 20px 60px rgba(0,0,0,0.15); padding: 0; max-width: 95vw; width: 420px; min-height: 600px; max-height: 90vh; overflow: hidden; position: relative; }
     .modal-close-btn { position: absolute; top: 0.7em; right: 1.1em; background: none; border: none; color: var(--text-main); font-size: 2em; line-height: 1; cursor: pointer; z-index: 10; }
     .modal-iframe { width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 0 0 1.5em 1.5em; }
 
@@ -54,7 +93,7 @@
 <body>
   <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold tracking-wider font-serif">Juan Salazar Cinema</a>
+      <a href="#" class="text-xl font-bold tracking-wider font-serif">Juan Salazar</a>
       <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path></svg>
       </button>
@@ -64,7 +103,7 @@
         <li class="menu-item"><a href="videography.html">Videography</a></li>
         <li class="menu-item"><a href="photography.html">Photography</a></li>
         <li class="menu-item">
-          <button type="button" class="cta-button-round" id="open-contact-modal-nav" style="padding: 0.7em 1.5em; min-width: 0; min-height: 0;">Start Your Story</button>
+          <button type="button" class="cta-button-round" id="open-contact-modal-nav" style="padding: 0.7em 1.5em; min-width: 0; min-height: 0;">Contact</button>
         </li>
       </ul>
     </div>
@@ -73,16 +112,16 @@
       <li><a href="about.html" class="block py-2">About Me</a></li>
       <li><a href="videography.html" class="block py-2">Videography</a></li>
       <li><a href="photography.html" class="block py-2">Photography</a></li>
-      <li><button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">Start Your Story</button></li>
+      <li><button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">Contact</button></li>
     </ul>
   </nav>
 
   <main id="home" class="relative z-10 min-h-screen w-full flex items-center px-6 pt-32 pb-16 md:pt-0">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-5 text-center lg:text-left">
-            <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tighter font-serif">Cinematic Storytelling & <br><span class="highlight-word">Visual Production.</span></h2>
-            <p class="text-lg text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0">Specializing in polished, emotion-driven videography and photography for corporate events, narrative films, and high-impact brand campaigns.</p>
-            <a href="videography.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-lg tracking-wider uppercase">View My Work</a>
+            <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tighter font-serif">Cinematic Storytelling & <span class="highlight-word">Visual Production.</span></h2>
+            <p class="text-lg text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0">I am an established videographer and editor specializing in corporate events, brand campaigns, and narrative shorts. Delivering high-impact media from production to final export.</p>
+            <a href="videography.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-lg tracking-wider uppercase">View Portfolio</a>
         </div>
         <div class="lg:col-span-7 w-full">
             <div class="video-container">
@@ -92,104 +131,97 @@
     </div>
   </main>
 
-  <!-- NEW: Social Proof Banner -->
-  <aside class="bg-gray-100 py-10 border-y border-gray-200">
+  <aside class="bg-gray-50 py-8 border-y border-gray-200">
       <div class="max-w-7xl mx-auto px-6 text-center reveal" data-animate>
-          <p class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-6">Trusted on location at premier luxury venues</p>
-          <div class="flex flex-wrap justify-center items-center gap-8 md:gap-20 text-gray-800 font-serif text-2xl md:text-3xl opacity-80">
+          <p class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Trusted on location at premier venues</p>
+          <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-gray-800 font-serif text-xl md:text-2xl opacity-90">
               <span>Caesars Palace</span>
+              <span class="text-gray-300">|</span>
               <span>The Bellagio</span>
+              <span class="text-gray-300">|</span>
               <span>Resorts World</span>
+              <span class="text-gray-300">|</span>
+              <span>Wynn</span>
+              <span class="text-gray-300">|</span>
+              <span>Encore</span>
           </div>
       </div>
   </aside>
 
-  <!-- TIGHTENED: Services Section -->
   <section id="services" class="py-16 sm:py-24 px-6 bg-white">
     <div class="max-w-7xl mx-auto">
-        <div class="text-center max-w-4xl mx-auto reveal" data-animate>
-            <h2 class="text-4xl md:text-5xl font-bold leading-tight font-serif">Your vision, <span class="highlight-word">captured flawlessly.</span></h2>
-            <p class="mt-6 text-xl text-gray-600">From the fast-paced energy of a live corporate event to the meticulous framing of a narrative short, I bring a cinematic approach and professional precision to every set.</p>
-        </div>
-        
-        <!-- Redesigned Grid: Corporate takes full width top row to assert dominance -->
-        <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
             
             <article class="reveal md:col-span-2 bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100" data-animate>
                 <div class="max-w-3xl">
                     <h4 class="service-title mb-2">Primary Focus</h4>
                     <h3 class="text-3xl font-bold mb-4 font-serif">Corporate & Live Events</h3>
-                    <p class="text-gray-600 leading-relaxed text-lg mb-6">From high-stakes keynotes to high-energy nightlife, I deliver crisp, dynamic 4K coverage. I thrive in fast-paced, high-pressure environments, ensuring your brand or live event is documented perfectly without missing a beat.</p>
-                    <a href="videography.html" class="font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Event Films &rarr;</a>
+                    <p class="text-gray-600 leading-relaxed text-lg mb-6">I deliver 4K coverage for keynotes, brand activations, and live entertainment. I operate efficiently in fast-paced environments, ensuring your event is documented accurately and dynamically.</p>
+                    <a href="videography.html" class="font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Event Work &rarr;</a>
                 </div>
             </article>
 
             <article class="reveal flex flex-col h-full p-6" data-animate>
                 <h4 class="service-title">Videography</h4>
                 <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Narrative & Short Films</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">Bringing stories to life through deliberate blocking, sophisticated lighting, and expert camera work. I collaborate closely with directors to ensure the visual tone matches the emotional core.</p>
-                <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Narrative Work &rarr;</a>
+                <p class="text-gray-600 leading-relaxed flex-grow">I bring stories to the screen through deliberate blocking, technical lighting, and controlled camera work. I collaborate directly with directors to ensure the visual execution matches the script.</p>
+                <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Narrative Work &rarr;</a>
             </article>
             
             <article class="reveal flex flex-col h-full p-6" data-animate>
                 <h4 class="service-title">Photography</h4>
                 <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Dedicated Photo Coverage</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">Striking imagery with a masterful focus on lighting and composition. Depending on the event's needs, I alternate roles to provide fully dedicated, premium photo coverage that perfectly complements my video production aesthetics.</p>
-                <a href="photography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm hover:text-green-800 transition-colors" style="color: var(--accent-color);">View Photo Galleries &rarr;</a>
+                <p class="text-gray-600 leading-relaxed flex-grow">I provide high-resolution imagery focusing on correct exposure and structured composition. Depending on production requirements, I alternate roles to capture comprehensive still coverage.</p>
+                <a href="photography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Photo Galleries &rarr;</a>
             </article>
 
         </div>
     </div>
   </section>
 
-  <!-- NEW: The Filmmaker Tease -->
-  <section class="py-16 sm:py-24 px-6 bg-gray-50 border-t border-gray-100">
+  <section class="py-16 sm:py-24 px-6 bg-gray-50 border-t border-gray-200">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <!-- Placeholder for your BTS photo -->
-          <div class="aspect-w-4 aspect-h-5 md:aspect-h-4 rounded-2xl overflow-hidden bg-gray-200 shadow-lg reveal" data-animate>
-              <img src="assets/juan-salazar-bts.jpg" alt="Juan Salazar behind the camera" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/800x1000?text=Insert+Behind+The+Scenes+Photo+Here'">
+          <div class="aspect-w-4 aspect-h-5 md:aspect-h-4 rounded-2xl overflow-hidden bg-gray-200 shadow-md reveal" data-animate>
+              <img src="assets/juan-salazar-bts.jpg" alt="Juan Salazar operating camera on set" class="object-cover w-full h-full" onerror="this.src='https://via.placeholder.com/800x1000?text=Insert+Behind+The+Scenes+Photo+Here'">
           </div>
           <div class="reveal" data-animate>
-              <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">The Director Behind the Lens.</h2>
+              <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Videographer & Editor.</h2>
               <p class="text-gray-600 text-lg mb-6 leading-relaxed">
-                  Holding a Bachelor's degree in Film and Production from Georgia Southern University, I ground my cinematic style in formal, high-level academic training. 
+                  I hold a Bachelor's degree in Film and Production from Georgia Southern University, graduating with a 3.94 GPA. My cinematic approach is grounded in formal academic training and technical discipline.
               </p>
               <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-                  I don't just point a camera and press record—I apply deliberate blocking, sophisticated lighting, and rigorous technical standards to every frame I capture.
+                  I apply rigorous technical standards to every frame I capture. From configuring precise lighting setups to managing post-production workflows, I maintain a strict focus on quality control and reliability on set.
               </p>
-              <a href="about.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-sm tracking-wider uppercase">Meet The Filmmaker</a>
+              <a href="about.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-sm tracking-wider uppercase">Read Full Bio</a>
           </div>
       </div>
   </section>
 
-  <!-- NEW: The Tech Stack / Workflow -->
-  <section class="py-16 sm:py-24 px-6 bg-white">
-      <div class="max-w-7xl mx-auto text-center reveal" data-animate>
-          <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Professional Owner-Operator Kit.</h2>
-          <p class="text-gray-600 max-w-2xl mx-auto mb-16 text-lg">A fully self-sufficient production pipeline built for high-end reliability and cinematic fidelity.</p>
+  <section class="py-16 sm:py-24 px-6 bg-white border-t border-gray-200">
+      <div class="max-w-5xl mx-auto reveal" data-animate>
+          <div class="text-center mb-16">
+              <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Technical Proficiency & Equipment.</h2>
+              <p class="text-gray-600 text-lg">A self-sufficient production pipeline built for reliability and high-resolution output.</p>
+          </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
-              <div class="p-8 border border-gray-100 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="font-bold text-xl mb-3 font-serif">Camera & Optics</h3>
-                  <p class="text-gray-600">Built around the Sony a7 IV paired with a versatile Sigma 24-70mm lens, ensuring stunning 60fps resolution, incredible low-light performance, and razor-sharp S-Cinetone color profiles.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+              <div class="p-8 border border-gray-200 rounded-2xl bg-gray-50">
+                  <h3 class="font-bold text-xl mb-3 font-serif text-gray-900">Production Gear</h3>
+                  <p class="text-gray-600 leading-relaxed">My primary kit is built around the Sony a7 IV paired with a Sigma 24-70mm lens, capturing sharp 4K resolution and strong low-light performance. Smooth, controlled movement is achieved via the DJI RS 4 Mini gimbal, and broadcast-quality audio is recorded directly on location using the Røde Wireless Pro system.</p>
               </div>
-              <div class="p-8 border border-gray-100 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="font-bold text-xl mb-3 font-serif">Motion & Audio</h3>
-                  <p class="text-gray-600">Dynamic, buttery-smooth movement achieved with the DJI RS 4 Mini gimbal. Broadcast-quality sound is captured flawlessly on location using the Røde Wireless Pro microphone system.</p>
-              </div>
-              <div class="p-8 border border-gray-100 rounded-2xl bg-gray-50 shadow-sm hover:shadow-md transition-shadow">
-                  <h3 class="font-bold text-xl mb-3 font-serif">Post-Production Pipeline</h3>
-                  <p class="text-gray-600">Projects are efficiently edited and color-graded on a high-performance MSI Katana RTX 5070 workstation. Fully proficient in industry-standard software including Adobe Premiere Pro and DaVinci Resolve.</p>
+              <div class="p-8 border border-gray-200 rounded-2xl bg-gray-50">
+                  <h3 class="font-bold text-xl mb-3 font-serif text-gray-900">Post-Production Pipeline</h3>
+                  <p class="text-gray-600 leading-relaxed">I am fully proficient in industry-standard post-production software. Projects are efficiently edited, color-graded, and sound-mixed utilizing Adobe Premiere Pro and DaVinci Resolve. I manage the complete technical workflow from initial media ingest to final client delivery.</p>
               </div>
           </div>
       </div>
   </section>
 
-  <section id="contact" class="py-16 sm:py-24 px-6 text-center border-t border-gray-100">
-    <h2 class="text-4xl font-bold mb-4 font-serif">Let's Create Together</h2>
-    <p class="text-lg text-gray-600 mb-10">Ready to start your project? Click below to fill out my contact form.</p>
-    <button type="button" class="cta-button-round" id="open-contact-modal-section">
-      Start Your Story
+  <section id="contact" class="py-16 sm:py-24 px-6 text-center border-t border-gray-200 bg-gray-50">
+    <h2 class="text-4xl font-bold mb-4 font-serif text-gray-900">Let's Discuss Your Next Project</h2>
+    <p class="text-lg text-gray-600 mb-10">Reach out to review my availability and production rates.</p>
+    <button type="button" class="cta-button-round bg-white" id="open-contact-modal-section">
+      Contact Me
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </section>
@@ -201,8 +233,8 @@
     </div>
   </div>
 
-  <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
-    © 2026 Juan Salazar Cinema. All rights reserved.
+  <footer class="bg-white relative z-10 p-10 text-center text-gray-500 text-sm reveal border-t border-gray-200" data-animate>
+    © 2026 Juan Salazar. All rights reserved.
   </footer>
 
   <script>
@@ -225,18 +257,16 @@
       let lastScrollY = window.scrollY;
 
       window.addEventListener('scroll', () => {
-        // Background blur toggle
         if (window.scrollY > 50) {
             nav.classList.add('nav-scroll');
         } else {
             nav.classList.remove('nav-scroll');
         }
 
-        // Hide/Show on scroll
         if (window.scrollY > lastScrollY && window.scrollY > 100) {
-            nav.classList.add('nav-hidden'); // Scrolling down
+            nav.classList.add('nav-hidden');
         } else {
-            nav.classList.remove('nav-hidden'); // Scrolling up
+            nav.classList.remove('nav-hidden');
         }
         
         lastScrollY = window.scrollY;
