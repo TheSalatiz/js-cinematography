@@ -134,10 +134,12 @@
   <aside class="bg-gray-50 py-8 border-y border-gray-200">
       <div class="max-w-7xl mx-auto px-6 text-center reveal" data-animate>
           <p class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Trusted on location at premier venues</p>
-          <div class="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-gray-800 font-serif text-xl md:text-2xl opacity-90">
+          <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-gray-800 font-serif text-lg md:text-2xl opacity-90">
               <span>Caesars Palace</span>
               <span class="text-gray-300">|</span>
               <span>The Bellagio</span>
+              <span class="text-gray-300">|</span>
+              <span>The Venetian</span>
               <span class="text-gray-300">|</span>
               <span>Resorts World</span>
               <span class="text-gray-300">|</span>
@@ -152,33 +154,55 @@
     <div class="max-w-7xl mx-auto">
         <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12">
             
-            <article class="reveal md:col-span-2 bg-gray-50 rounded-2xl p-8 md:p-12 border border-gray-100" data-animate>
-                <div class="max-w-3xl">
-                    <h4 class="service-title mb-2">Primary Focus</h4>
-                    <h3 class="text-3xl font-bold mb-4 font-serif">Corporate & Live Events</h3>
-                    <p class="text-gray-600 leading-relaxed text-lg mb-6">I deliver 4K coverage for keynotes, brand activations, and live entertainment. I operate efficiently in fast-paced environments, ensuring your event is documented accurately and dynamically.</p>
-                    <a href="videography.html" class="font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Event Work &rarr;</a>
+            <!-- Corporate Focus Card with Split Visual -->
+            <article class="reveal md:col-span-2 bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-shadow" data-animate>
+                <div class="grid grid-cols-1 lg:grid-cols-2">
+                    <div class="p-8 md:p-12 flex flex-col justify-center">
+                        <h4 class="service-title mb-2">Primary Focus</h4>
+                        <h3 class="text-3xl font-bold mb-4 font-serif">Corporate & Live Events</h3>
+                        <p class="text-gray-600 leading-relaxed text-lg mb-6">I deliver 4K coverage for keynotes, brand activations, and live entertainment. I operate efficiently in fast-paced environments, ensuring your event is documented accurately and dynamically.</p>
+                        <a href="videography.html" class="font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors mt-auto" style="color: var(--accent-color);">View Event Work &rarr;</a>
+                    </div>
+                    <div class="h-64 lg:h-auto bg-gray-200 relative">
+                        <!-- Add a still from Motor Q or Cooney Tech here -->
+                        <img src="assets/motor-q-thumbnail.jpg" alt="Corporate Event Coverage" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/800x600?text=Insert+Corporate+Thumbnail+Here'">
+                    </div>
                 </div>
             </article>
 
-            <article class="reveal flex flex-col h-full p-6" data-animate>
-                <h4 class="service-title">Videography</h4>
-                <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Narrative & Short Films</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">I bring stories to the screen through deliberate blocking, technical lighting, and controlled camera work. I collaborate directly with directors to ensure the visual execution matches the script.</p>
-                <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Narrative Work &rarr;</a>
+            <!-- Narrative Film Card with Top Thumbnail -->
+            <article class="reveal flex flex-col h-full bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow" data-animate>
+                <div class="h-48 bg-gray-200 relative">
+                    <!-- Add a still from Ephemeral here -->
+                    <img src="assets/narrative-thumbnail.jpg" alt="Narrative Short Film Production" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=Insert+Narrative+Thumbnail+Here'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h4 class="service-title">Videography</h4>
+                    <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Narrative & Short Films</h3>
+                    <p class="text-gray-600 leading-relaxed flex-grow">I bring stories to the screen through deliberate blocking, technical lighting, and controlled camera work. I collaborate directly with directors to ensure the visual execution matches the script.</p>
+                    <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Narrative Work &rarr;</a>
+                </div>
             </article>
             
-            <article class="reveal flex flex-col h-full p-6" data-animate>
-                <h4 class="service-title">Photography</h4>
-                <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Dedicated Photo Coverage</h3>
-                <p class="text-gray-600 leading-relaxed flex-grow">I provide high-resolution imagery focusing on correct exposure and structured composition. Depending on production requirements, I alternate roles to capture comprehensive still coverage.</p>
-                <a href="photography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Photo Galleries &rarr;</a>
+            <!-- Photography Card with Top Thumbnail -->
+            <article class="reveal flex flex-col h-full bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow" data-animate>
+                <div class="h-48 bg-gray-200 relative">
+                    <!-- Add a favorite photo here -->
+                    <img src="assets/photo-thumbnail.jpg" alt="Professional Photography" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=Insert+Photo+Thumbnail+Here'">
+                </div>
+                <div class="p-8 flex flex-col flex-grow">
+                    <h4 class="service-title">Photography</h4>
+                    <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Dedicated Photo Coverage</h3>
+                    <p class="text-gray-600 leading-relaxed flex-grow">I provide high-resolution imagery focusing on correct exposure and structured composition. Depending on production requirements, I alternate roles to capture comprehensive still coverage.</p>
+                    <a href="photography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Photo Galleries &rarr;</a>
+                </div>
             </article>
 
         </div>
     </div>
   </section>
 
+  <!-- About the Filmmaker Section -->
   <section class="py-16 sm:py-24 px-6 bg-gray-50 border-t border-gray-200">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div class="aspect-w-4 aspect-h-5 md:aspect-h-4 rounded-2xl overflow-hidden bg-gray-200 shadow-md reveal" data-animate>
@@ -197,22 +221,60 @@
       </div>
   </section>
 
-  <section class="py-16 sm:py-24 px-6 bg-white border-t border-gray-200">
-      <div class="max-w-5xl mx-auto reveal" data-animate>
-          <div class="text-center mb-16">
-              <h2 class="text-3xl md:text-4xl font-bold mb-4 font-serif">Technical Proficiency & Equipment.</h2>
-              <p class="text-gray-600 text-lg">A self-sufficient production pipeline built for reliability and high-resolution output.</p>
+  <!-- NEW: Dark Mode "Technical Arsenal" Section -->
+  <section class="py-20 sm:py-32 px-6 bg-gray-900 text-white border-t border-gray-800">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start reveal" data-animate>
+          
+          <div class="lg:col-span-5 lg:sticky lg:top-32">
+              <h2 class="text-4xl md:text-5xl font-bold mb-6 font-serif text-white">Technical Arsenal.</h2>
+              <p class="text-gray-400 text-lg leading-relaxed mb-8 max-w-md">
+                  A fully self-sufficient production pipeline. I bring enterprise-grade reliability and cinematic fidelity to every set.
+              </p>
+              <div class="h-1 w-16 bg-blue-600 rounded"></div>
           </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-              <div class="p-8 border border-gray-200 rounded-2xl bg-gray-50">
-                  <h3 class="font-bold text-xl mb-3 font-serif text-gray-900">Production Gear</h3>
-                  <p class="text-gray-600 leading-relaxed">My primary kit is built around the Sony a7 IV paired with a Sigma 24-70mm lens, capturing sharp 4K resolution and strong low-light performance. Smooth, controlled movement is achieved via the DJI RS 4 Mini gimbal, and broadcast-quality audio is recorded directly on location using the Røde Wireless Pro system.</p>
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 mt-8 lg:mt-0">
+              
+              <div class="p-8 border border-gray-700 rounded-2xl bg-gray-800 hover:border-blue-500 transition-colors shadow-xl">
+                  <h3 class="font-bold text-xl mb-6 font-serif text-white border-b border-gray-700 pb-4">Production Gear</h3>
+                  <ul class="space-y-5 text-gray-300">
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Camera System</strong> Sony a7 IV (4K 60fps, S-Cinetone)</div>
+                      </li>
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Optics</strong> Sigma 24-70mm f/2.8</div>
+                      </li>
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Stabilization</strong> DJI RS 4 Mini Gimbal</div>
+                      </li>
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Audio Capture</strong> Røde Wireless Pro System</div>
+                      </li>
+                  </ul>
               </div>
-              <div class="p-8 border border-gray-200 rounded-2xl bg-gray-50">
-                  <h3 class="font-bold text-xl mb-3 font-serif text-gray-900">Post-Production Pipeline</h3>
-                  <p class="text-gray-600 leading-relaxed">I am fully proficient in industry-standard post-production software. Projects are efficiently edited, color-graded, and sound-mixed utilizing Adobe Premiere Pro and DaVinci Resolve. I manage the complete technical workflow from initial media ingest to final client delivery.</p>
+
+              <div class="p-8 border border-gray-700 rounded-2xl bg-gray-800 hover:border-blue-500 transition-colors shadow-xl">
+                  <h3 class="font-bold text-xl mb-6 font-serif text-white border-b border-gray-700 pb-4">Post-Production</h3>
+                  <ul class="space-y-5 text-gray-300">
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Non-Linear Editing</strong> Adobe Premiere Pro</div>
+                      </li>
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Color Grading</strong> DaVinci Resolve</div>
+                      </li>
+                      <li class="flex items-start">
+                          <span class="text-blue-500 mr-3 font-bold mt-0.5">✓</span>
+                          <div><strong class="text-white block font-medium">Workflow Management</strong> End-to-end media handling from on-set ingest to final client delivery.</div>
+                      </li>
+                  </ul>
               </div>
+              
           </div>
       </div>
   </section>
@@ -220,7 +282,7 @@
   <section id="contact" class="py-16 sm:py-24 px-6 text-center border-t border-gray-200 bg-gray-50">
     <h2 class="text-4xl font-bold mb-4 font-serif text-gray-900">Let's Discuss Your Next Project</h2>
     <p class="text-lg text-gray-600 mb-10">Reach out to review my availability and production rates.</p>
-    <button type="button" class="cta-button-round bg-white" id="open-contact-modal-section">
+    <button type="button" class="cta-button-round bg-white border-2 hover:bg-blue-600 hover:text-white transition-colors" id="open-contact-modal-section">
       Contact Me
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
