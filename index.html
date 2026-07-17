@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Juan Salazar | Videographer & Editor</title>
+  
+  <!-- Fixes the loading globe icon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
@@ -75,17 +79,18 @@
     .cta-button-round svg { transition: transform 0.4s cubic-bezier(.77,0,.18,1); margin-left: 0.3em; width: 1.15em; height: 1.15em; stroke-width: 1.5; stroke: currentColor; }
     .cta-button-round:hover svg { transform: translateX(4px); }
 
+    /* Updated Modal CSS */
     .modal-bg { position: fixed; z-index: 1000; inset: 0; width: 100vw; height: 100vh; background: rgba(255, 255, 255, 0.95); display: flex; align-items: center; justify-content: center; transition: opacity 0.3s; opacity: 1; pointer-events: auto; backdrop-filter: blur(5px); }
     .modal-bg[hidden] { opacity: 0; pointer-events: none; }
-    .modal-content { background: var(--bg-color); border-radius: 1.5em; box-shadow: 0 20px 60px rgba(0,0,0,0.15); padding: 0; max-width: 95vw; width: 420px; min-height: 600px; max-height: 90vh; overflow: hidden; position: relative; }
-    .modal-close-btn { position: absolute; top: 0.7em; right: 1.1em; background: none; border: none; color: var(--text-main); font-size: 2em; line-height: 1; cursor: pointer; z-index: 10; }
-    .modal-iframe { width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 0 0 1.5em 1.5em; }
+    .modal-content { background: var(--bg-color); border-radius: 1.5rem; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; }
+    .modal-close-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #9CA3AF; cursor: pointer; z-index: 10; transition: color 0.3s; display: flex; align-items: center; justify-content: center; }
+    .modal-close-btn:hover { color: #111827; }
 
     #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
     #mobile-menu.open { max-height: 500px; opacity: 1; }
 
     @media (max-width: 600px) {
-      .modal-content { width: 99vw; min-height: 95vh; border-radius: 0.8em; }
+      .modal-content { width: 95vw; min-height: auto; border-radius: 1rem; }
       .cta-button, .cta-button-round { min-width: 0; width: 100%; font-size: 1rem; padding: 1em 0.5em; }
     }
   </style>
@@ -120,7 +125,6 @@
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
         <div class="lg:col-span-5 text-center lg:text-left">
             <h2 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tighter font-serif">Cinematic Storytelling & <span class="highlight-word">Visual Production.</span></h2>
-            <!-- Upgraded to text-xl and leading-relaxed -->
             <p class="text-xl text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">I am an established videographer and editor specializing in corporate events, brand campaigns, and narrative shorts. Delivering high-impact media from production to final export.</p>
             <a href="videography.html" class="cta-button inline-block border-2 border-gray-800 rounded-full font-bold text-lg tracking-wider uppercase">View Portfolio</a>
         </div>
@@ -135,7 +139,6 @@
   <aside class="bg-gray-50 py-8 border-y border-gray-200">
       <div class="max-w-7xl mx-auto px-6 text-center reveal" data-animate>
           <p class="text-sm font-bold tracking-widest text-gray-500 uppercase mb-4">Trusted on location at premier venues</p>
-          <!-- Applied standard inline CSS to bypass Tailwind v2.2 limitations -->
           <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 font-serif text-lg md:text-2xl opacity-90" style="color: #B4975A;">
               <span>Caesars Palace</span>
               <span class="text-gray-300">|</span>
@@ -161,7 +164,6 @@
                     <div class="p-8 md:p-12 flex flex-col justify-center">
                         <h4 class="service-title mb-2">Primary Focus</h4>
                         <h3 class="text-3xl font-bold mb-4 font-serif">Corporate & Live Events</h3>
-                        <!-- Upgraded to text-xl and max-w-2xl -->
                         <p class="text-gray-600 leading-relaxed text-xl max-w-2xl mb-6">I deliver 4K coverage for keynotes, brand activations, and live entertainment. I operate efficiently in fast-paced environments, ensuring your event is documented accurately and dynamically.</p>
                         <a href="videography.html" class="font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors mt-auto" style="color: var(--accent-color);">View Event Work &rarr;</a>
                     </div>
@@ -178,7 +180,6 @@
                 <div class="p-8 flex flex-col flex-grow">
                     <h4 class="service-title">Videography</h4>
                     <h3 class="text-2xl font-bold mt-3 mb-4 font-serif">Narrative & Short Films</h3>
-                    <!-- Enhanced typography scaling for grid cards -->
                     <p class="text-gray-600 leading-relaxed text-lg flex-grow">I bring stories to the screen through deliberate blocking, technical lighting, and controlled camera work. I collaborate directly with directors to ensure the visual execution matches the script.</p>
                     <a href="videography.html" class="mt-6 font-bold text-gray-800 uppercase tracking-wider text-sm transition-colors" style="color: var(--accent-color);">View Narrative Work &rarr;</a>
                 </div>
@@ -207,7 +208,6 @@
           </div>
           <div class="reveal" data-animate>
               <h2 class="text-3xl md:text-4xl font-bold mb-6 font-serif">Videographer & Editor.</h2>
-              <!-- Upgraded to text-xl and max-w-2xl -->
               <p class="text-gray-600 text-xl mb-6 leading-relaxed max-w-2xl">
                   I hold a Bachelor's degree in Film and Production from Georgia Southern University, graduating with a 3.94 GPA. My cinematic approach is grounded in formal academic training and technical discipline.
               </p>
@@ -224,7 +224,6 @@
           
           <div class="lg:col-span-5 lg:sticky lg:top-32">
               <h2 class="text-4xl md:text-5xl font-bold mb-6 font-serif text-white">Technical Arsenal.</h2>
-              <!-- Upgraded intro to text-xl -->
               <p class="text-gray-400 text-xl leading-relaxed mb-8 max-w-md">
                   A fully self-sufficient production pipeline. I bring enterprise-grade reliability and cinematic fidelity to every set.
               </p>
@@ -279,7 +278,6 @@
 
   <section id="contact" class="py-16 sm:py-24 px-6 text-center border-t border-gray-200 bg-gray-50">
     <h2 class="text-4xl font-bold mb-4 font-serif text-gray-900">Let's Discuss Your Next Project</h2>
-    <!-- Narrowed container and scaled text -->
     <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">Reach out to review my availability and production rates.</p>
     <button type="button" class="cta-button-round bg-white border-2 hover:bg-blue-600 hover:text-white transition-colors" id="open-contact-modal-section">
       Contact Me
@@ -287,43 +285,39 @@
     </button>
   </section>
 
- <div id="contact-modal" class="modal-bg" hidden>
-    <div class="modal-content p-8 md:p-12 flex flex-col justify-center">
-      <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">×</button>
+  <!-- Web3Forms Custom Modal -->
+  <div id="contact-modal" class="modal-bg" hidden>
+    <div class="modal-content p-8 sm:p-12">
+      <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
       
-      <div class="mb-8">
-          <h2 class="text-3xl font-bold font-serif text-gray-900 mb-2">Let's Connect</h2>
-          <p class="text-gray-600 text-sm">Fill out the form below and I will get back to you shortly.</p>
+      <div class="mb-10 text-center">
+          <h2 class="text-3xl font-bold font-serif text-gray-900 mb-3">Let's Connect</h2>
+          <p class="text-gray-500 text-sm">Fill out the form below and I will get back to you shortly.</p>
       </div>
 
-      <!-- Web3Forms API Connection -->
       <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-          
-          <!-- Your Unique Access Key -->
           <input type="hidden" name="access_key" value="16826c68-529b-4013-9d59-d8ebb841a676">
-          
-          <!-- Redirects user back to your site after sending -->
           <input type="hidden" name="redirect" value="https://thesalatiz.github.io/js-cinematography/index.html">
-
-          <!-- Honeypot Spam Protection (Invisible to humans, traps bots) -->
           <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
 
           <div>
-              <label for="name" class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 font-serif">Name</label>
-              <input type="text" name="name" id="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all bg-gray-50 text-gray-900">
+              <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Name</label>
+              <input type="text" name="name" id="name" required class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-gray-900 text-base">
           </div>
           
           <div>
-              <label for="email" class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 font-serif">Email Address</label>
-              <input type="email" name="email" id="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all bg-gray-50 text-gray-900">
+              <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Address</label>
+              <input type="email" name="email" id="email" required class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-gray-900 text-base">
           </div>
           
           <div>
-              <label for="message" class="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2 font-serif">Project Details</label>
-              <textarea name="message" id="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all bg-gray-50 text-gray-900 resize-none"></textarea>
+              <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Project Details</label>
+              <textarea name="message" id="message" rows="4" required class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all text-gray-900 text-base resize-none"></textarea>
           </div>
           
-          <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg uppercase tracking-widest transition-colors shadow-md">
+          <button type="submit" class="w-full py-4 mt-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl uppercase tracking-widest text-sm transition-colors shadow-lg shadow-blue-600/30">
               Send Message
           </button>
       </form>
