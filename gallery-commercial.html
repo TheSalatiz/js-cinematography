@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Culinary Aesthetics | Juan Salazar Cinema</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root { 
+        --accent-color: #5E6C58;
+        --secondary-color: #D9C5B2;
+        --bg-color: #FAFAF9;
+        --text-main: #2C2C2C;
+      }
+      body { 
+        font-family: 'DM Sans', sans-serif; 
+        background-color: var(--bg-color); 
+        color: var(--text-main); 
+        -webkit-font-smoothing: antialiased; 
+        scroll-behavior: smooth; 
+      }
+      
+      h1, h2, h3, h4, .font-bold.tracking-wider, .editorial-title {
+        font-family: 'Playfair Display', serif;
+      }
+
+      /* Navigation */
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .nav-scroll { 
+        background-color: rgba(250, 250, 249, 0.95) !important; 
+        backdrop-filter: blur(12px); 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05); 
+      }
+      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; color: var(--text-main); }
+      .menu-item a.active-link { font-weight: 700; color: var(--accent-color); }
+      .menu-item a:after, .menu-item button:after { 
+        content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; 
+        background-color: var(--accent-color); transition: width 0.3s ease; 
+      }
+      .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+
+      /* Animations */
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      .text-accent { color: var(--accent-color); }
+
+      /* Gallery Layout */
+      .gallery-item {
+        overflow: hidden;
+        border-radius: 0.25rem;
+        background: #f0f0f0; /* Placeholder color before image loads */
+      }
+      .gallery-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+      .gallery-item:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Links & Buttons */
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.85rem;
+        color: var(--text-main);
+        transition: color 0.3s ease;
+        text-decoration: none;
+        margin-bottom: 2rem;
+      }
+      .back-link::before {
+        content: '←';
+        margin-right: 0.5rem;
+        transition: transform 0.3s ease;
+      }
+      .back-link:hover { color: var(--accent-color); }
+      .back-link:hover::before { transform: translateX(-5px); }
+
+      .cta-button-round {
+        display: inline-flex; align-items: center; justify-content: center;
+        background: transparent; color: var(--text-main); border: 1px solid var(--text-main);
+        border-radius: 999px; font-family: 'DM Sans', sans-serif;
+        font-weight: 500; font-size: 1.05rem; letter-spacing: 0.05em; text-transform: uppercase;
+        position: relative; overflow: hidden; cursor: pointer;
+        transition: all 0.3s ease; z-index: 1; outline: none;
+        padding: 1em 2.2em; min-width: 200px; min-height: 56px; gap: 0.5em;
+      }
+      .cta-button-round:hover {
+        color: #fff; background-color: var(--accent-color); border-color: var(--accent-color);
+        transform: translateY(-2px); box-shadow: 0 10px 20px rgba(94, 108, 88, 0.2);
+      }
+
+      /* Modals & Mobile Menu */
+      #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
+      #mobile-menu.open { max-height: 500px; opacity: 1; }
+      .modal-bg {
+        position: fixed; z-index: 1000; inset: 0; width: 100vw; height: 100vh;
+        background: rgba(250, 250, 249, 0.95); display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.3s; opacity: 1; pointer-events: auto; backdrop-filter: blur(5px);
+      }
+      .modal-bg[hidden] { opacity: 0; pointer-events: none; }
+      .modal-content {
+        background: #FFFFFF; border-radius: 1.5em; box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        padding: 0; max-width: 95vw; width: 420px; min-height: 600px; max-height: 90vh; overflow: hidden; position: relative;
+      }
+      .modal-close-btn {
+        position: absolute; top: 0.7em; right: 1.1em; background: none; border: none;
+        color: var(--text-main); font-size: 2em; line-height: 1; cursor: pointer; z-index: 10;
+      }
+      .modal-iframe { width: 100%; height: 80vh; min-height: 600px; border: none; border-radius: 0 0 1.5em 1.5em; }
+    </style>
+</head>
+<body>
+    <!-- Navigation (Identical to your main pages) -->
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider" style="font-family: 'Playfair Display', serif;">Juan Salazar Cinema</a>
+        <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m4 18h16"></path>
+            </svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="about.html">About Me</a></li>
+            <li class="menu-item"><a href="videography.html">Videography</a></li>
+            <li class="menu-item"><a href="photography.html" class="active-link">Photography</a></li>
+            <li class="menu-item">
+              <button type="button" class="cta-button-round" id="open-contact-modal-nav" style="min-width: auto; min-height: auto; padding: 0.8em 1.5em; font-size: 0.85rem;">
+                Start Your Story
+              </button>
+            </li>
+        </ul>
+      </div>
+      <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
+          <li><a href="index.html" class="block py-2">Home</a></li>
+          <li><a href="about.html" class="block py-2">About Me</a></li>
+          <li><a href="videography.html" class="block py-2">Videography</a></li>
+          <li><a href="photography.html" class="block py-2 font-bold text-accent">Photography</a></li>
+          <li>
+            <button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">
+              Start Your Story
+            </button>
+          </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="py-36 px-6">
+        <div class="max-w-7xl mx-auto">
+            
+            <!-- Gallery Header -->
+            <div class="reveal mb-16" data-animate>
+                <a href="photography.html" class="back-link">Back to Galleries</a>
+                <h1 class="text-4xl md:text-6xl font-bold editorial-title mt-4">Culinary Aesthetics</h1>
+                <p class="mt-4 text-lg text-gray-600 max-w-2xl">
+                    Elevating product presentation through precision lighting and rich textural detail. A dedicated focus on visual storytelling designed to strengthen brand identity.
+                </p>
+            </div>
+
+            <!-- Image Grid mapped to your exact filenames -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 reveal" data-animate>
+                
+                <div class="gallery-item"><img src="Afogatto-2.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06586.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06587.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06588.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06589.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06592.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06593.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06604.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06608.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06631.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06632.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06633.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06634.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06635.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06636.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06638.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06639.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06641.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06642.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06643.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06647.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06648.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06649.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06650.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06652.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06655.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06656.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06657.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06658.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06660.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06661.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06662.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06663.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+                <div class="gallery-item"><img src="DSC06665.JPG" alt="Commercial Affogato Photography" loading="lazy"></div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
+      © 2026 Juan Salazar Cinema. All rights reserved.
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="modal-bg" hidden>
+      <div class="modal-content">
+        <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">&times;</button>
+        <iframe class="modal-iframe" src="https://salatiz.app.n8n.cloud/form/736c6f51-0de4-4634-a994-f09daf4692d2"></iframe>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Nav Toggle
+        const menuButton = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
+        if(menuButton && mobileMenu) {
+          menuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('open');
+            if (mobileMenu.classList.contains('open')) {
+              mobileMenu.style.maxHeight = ''; mobileMenu.style.opacity = '';
+            } else {
+              mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0';
+            }
+          });
+          mobileMenu.querySelectorAll('a, button').forEach(link => {
+            link.addEventListener('click', () => { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; });
+          });
+        }
+        
+        // Nav scroll effect
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) nav.classList.add('nav-scroll');
+          else nav.classList.remove('nav-scroll');
+        });
+
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        animatedElements.forEach(el => observer.observe(el));
+
+        // Contact Modal logic
+        function openContactModal() {
+          document.getElementById('contact-modal').hidden = false; document.body.style.overflow = 'hidden';
+          if (mobileMenu && mobileMenu.classList.contains('open')) { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
+        }
+        function closeContactModal() {
+          document.getElementById('contact-modal').hidden = true; document.body.style.overflow = '';
+          if (mobileMenu) { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
+        }
+        document.getElementById('open-contact-modal-nav').onclick = openContactModal;
+        const mobileModalBtn = document.getElementById('open-contact-modal-mobile');
+        if (mobileModalBtn) mobileModalBtn.onclick = openContactModal;
+        document.getElementById('close-contact-modal').onclick = closeContactModal;
+        document.getElementById('contact-modal').addEventListener('click', function(e) { if (e.target === this) closeContactModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === "Escape") closeContactModal(); });
+      });
+    </script>
+</body>
+</html>
