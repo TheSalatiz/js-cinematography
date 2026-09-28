@@ -4,7 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Videography | Juan Salazar Cinema</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <meta name="description" content="Videography portfolio: wedding films, corporate event coverage and narrative short films shot and edited by Juan Salazar in Las Vegas.">
+    <link rel="canonical" href="https://thesalatiz.github.io/js-cinematography/videography.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Juan Salazar">
+    <meta property="og:title" content="Videography | Juan Salazar Cinema">
+    <meta property="og:description" content="Videography portfolio: wedding films, corporate event coverage and narrative short films shot and edited by Juan Salazar in Las Vegas.">
+    <meta property="og:url" content="https://thesalatiz.github.io/js-cinematography/videography.html">
+    <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/photo3.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/tailwind.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
       :root { 
@@ -125,7 +136,7 @@
         <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
             <li class="menu-item"><a href="index.html">Home</a></li>
             <li class="menu-item"><a href="about.html">About Me</a></li>
-            <li class="menu-item"><a href="portfolio.html" class="active-link">Videography</a></li>
+            <li class="menu-item"><a href="videography.html" class="active-link">Videography</a></li>
             <li class="menu-item"><a href="photography.html">Photography</a></li>
             <li class="menu-item">
               <button type="button" class="cta-button-round" id="open-contact-modal-nav">
@@ -140,7 +151,7 @@
       <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
           <li><a href="index.html" class="block py-2">Home</a></li>
           <li><a href="about.html" class="block py-2">About Me</a></li>
-          <li><a href="portfolio.html" class="block py-2 font-bold text-accent">Videography</a></li>
+          <li><a href="videography.html" class="block py-2 font-bold text-accent">Videography</a></li>
           <li><a href="photography.html" class="block py-2">Photography</a></li>
           <li>
             <button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">
@@ -184,24 +195,11 @@
                     <p class="text-gray-600 mt-2">High-energy coverage for brands, keynotes, and nightlife.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                    <div class="card reveal" data-animate>
-                        <video controls preload="metadata" class="w-full" poster="assets/motor-q-thumbnail.jpg">
-                          <source src="assets/motor-q.mp4" type="video/mp4">
-                          Your browser does not support the video tag.
-                        </video>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl">Motor Q</h3>
-                            <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Corporate Event</p>
-                        </div>
-                    </div>
-                    
-                    <div class="card reveal" data-animate style="animation-delay: 0.1s;">
-                        <iframe src="https://www.youtube.com/embed/Akp2CSGU-Vg" title="Cooney Tech Corporate Event" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl">Cooney Tech</h3>
-                            <p class="text-gray-600 mt-2 text-sm uppercase tracking-wider">Corporate Event</p>
-                        </div>
+                <div class="card reveal mb-12 max-w-5xl mx-auto" data-animate>
+                    <iframe src="https://www.youtube.com/embed/Akp2CSGU-Vg" title="Cooney Tech Corporate Event" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="p-6 md:p-8">
+                        <h3 class="font-bold text-2xl mb-2">Cooney Tech</h3>
+                        <p class="text-gray-600 text-sm uppercase tracking-wider">Corporate Event</p>
                     </div>
                 </div>
             </section>
