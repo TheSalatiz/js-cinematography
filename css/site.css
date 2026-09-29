@@ -1,0 +1,26 @@
+/* Shared across every page: nav button and footer. */
+
+.nav-cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid currentColor; border-radius: 999px;
+  padding: 0.7em 1.5em; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.nav-cta:hover { background-color: #111827; border-color: #111827; color: #fff !important; }
+.menu-item a.nav-cta:after { display: none; }
+
+.site-footer { background: #111827; color: #D1D5DB; padding: 3.5rem 1.5rem 2rem; font-size: 0.95rem; }
+.site-footer-inner {
+  max-width: 80rem; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem;
+  justify-content: space-between; align-items: flex-start;
+}
+.site-footer-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 0.35rem; }
+.site-footer-links { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; align-items: center; }
+.site-footer-links a { color: #D1D5DB; text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; transition: color 0.2s ease; }
+.site-footer-links a:hover { color: #B4975A; }
+.site-footer-links a.site-footer-cta { color: #B4975A; font-weight: 700; }
+.site-footer-links a.site-footer-cta:hover { color: #fff; }
+.site-footer-copy {
+  max-width: 80rem; margin: 2.5rem auto 0; padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1); color: #9CA3AF; font-size: 0.8rem;
+}
