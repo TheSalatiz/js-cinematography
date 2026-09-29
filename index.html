@@ -29,6 +29,7 @@
   </script>
   <link rel="preload" as="image" href="DSC00540.jpg">
   <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
     :root { 
@@ -75,8 +76,8 @@
     #main-nav:not(.nav-scroll) > div .menu-item button,
     #main-nav:not(.nav-scroll) #mobile-menu-toggle { color: #fff; }
     #main-nav:not(.nav-scroll) > div .menu-item a.active-link { color: var(--gold); }
-    #main-nav:not(.nav-scroll) #open-contact-modal-nav { border-color: rgba(255, 255, 255, 0.85); }
-    #main-nav:not(.nav-scroll) #open-contact-modal-nav:hover { background-color: #fff; border-color: #fff; color: var(--text-main); }
+    #main-nav:not(.nav-scroll) .nav-cta { border-color: rgba(255, 255, 255, 0.85); }
+    #main-nav:not(.nav-scroll) .nav-cta:hover { background-color: #fff; border-color: #fff; color: var(--text-main); }
 
     /* Showreel lightbox */
     .reel-bg { position: fixed; z-index: 1000; inset: 0; background: rgba(10, 12, 18, 0.94); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
@@ -160,9 +161,7 @@
         <li class="menu-item"><a href="about.html">About Me</a></li>
         <li class="menu-item"><a href="videography.html">Videography</a></li>
         <li class="menu-item"><a href="photography.html">Photography</a></li>
-        <li class="menu-item">
-          <button type="button" class="cta-button-round" id="open-contact-modal-nav" style="padding: 0.7em 1.5em; min-width: 0; min-height: 0;">Contact</button>
-        </li>
+        <li class="menu-item"><a href="contact.html" class="nav-cta">Check Availability</a></li>
       </ul>
     </div>
     <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
@@ -170,7 +169,7 @@
       <li><a href="about.html" class="block py-2">About Me</a></li>
       <li><a href="videography.html" class="block py-2">Videography</a></li>
       <li><a href="photography.html" class="block py-2">Photography</a></li>
-      <li><button type="button" class="cta-button-round w-full mt-2" id="open-contact-modal-mobile">Contact</button></li>
+      <li><a href="contact.html" class="nav-cta w-full mt-2">Check Availability</a></li>
     </ul>
   </nav>
 
@@ -183,7 +182,7 @@
         <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-6 leading-tight tracking-tight font-serif text-white">Las Vegas Videographer &amp; <span class="highlight-word">Photographer.</span></h1>
         <p class="text-xl text-gray-200 mb-10 max-w-xl leading-relaxed">Weddings, events, and brand stories, captured the way they really felt.</p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <button type="button" class="cta-button-round btn-gold" id="open-contact-modal-hero">Check Availability</button>
+          <a href="contact.html" class="cta-button-round btn-gold">Check Availability</a>
           <button type="button" class="cta-button-round btn-ghost" id="open-reel">
             <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="margin: 0 0.4em 0 0;"><path d="M8 5v14l11-7z"/></svg>
             Watch the Reel
@@ -268,10 +267,10 @@
       <p class="eyebrow mb-4" style="color: var(--gold);">Let's talk</p>
       <h2 class="text-3xl md:text-5xl font-bold mb-5 font-serif text-white">Let's make something worth remembering.</h2>
       <p class="text-lg text-gray-300 mb-10 leading-relaxed">Tell me about your date, your venue, and what you have in mind. I'll get back to you personally.</p>
-      <button type="button" class="cta-button-round btn-gold" id="open-contact-modal-section">
+      <a href="contact.html" class="cta-button-round btn-gold">
         Check Availability
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
+      </a>
     </div>
   </section>
 
@@ -285,49 +284,22 @@
     </div>
   </div>
 
-  <!-- Web3Forms Custom Modal -->
-  <div id="contact-modal" class="modal-bg" hidden>
-    <div class="modal-content p-8 sm:p-12">
-      <button class="modal-close-btn" id="close-contact-modal" aria-label="Close">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
-      
-      <div class="mb-10 text-center">
-          <h2 class="text-3xl font-bold font-serif text-gray-900 mb-3">Let's Connect</h2>
-          <p class="text-gray-500 text-sm">Fill out the form below and I will get back to you shortly.</p>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div>
+          <p class="site-footer-name">Juan Sebastian</p>
+          <p>Videography &amp; photography &middot; Las Vegas, NV</p>
+        </div>
+        <nav class="site-footer-links" aria-label="Footer">
+          <a href="about.html">About</a>
+          <a href="videography.html">Videography</a>
+          <a href="photography.html">Photography</a>
+          <a href="contact.html" class="site-footer-cta">Check Availability &rarr;</a>
+        </nav>
       </div>
-
-      <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-          <input type="hidden" name="access_key" value="16826c68-529b-4013-9d59-d8ebb841a676">
-          <input type="hidden" name="redirect" value="https://thesalatiz.github.io/js-cinematography/index.html">
-          <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-
-          <div>
-              <label for="name" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Name</label>
-              <input type="text" name="name" id="name" required class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:border-transparent outline-none transition-all text-gray-900 text-base">
-          </div>
-          
-          <div>
-              <label for="email" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Address</label>
-              <input type="email" name="email" id="email" required class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:border-transparent outline-none transition-all text-gray-900 text-base">
-          </div>
-          
-          <div>
-              <label for="message" class="block text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Project Details</label>
-              <textarea name="message" id="message" rows="4" required class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:ring-2 focus:border-transparent outline-none transition-all text-gray-900 text-base resize-none"></textarea>
-          </div>
-          
-          <button type="submit" class="cta-button-round btn-primary w-full mt-2">
-              Send Message
-          </button>
-      </form>
-
-    </div>
-  </div>
-
-  <footer class="bg-white relative z-10 p-10 text-center text-gray-500 text-sm reveal border-t border-gray-200" data-animate>
-    © 2026 Juan Sebastian. All rights reserved.
-  </footer>
+      <p class="site-footer-copy">&copy; 2026 Juan Sebastian. All rights reserved.</p>
+    </footer>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -368,15 +340,6 @@
       const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
       document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
-      // Modals
-      function openContactModal() { document.getElementById('contact-modal').hidden = false; document.body.style.overflow = 'hidden'; if (mobileMenu && mobileMenu.classList.contains('open')) { mobileMenu.classList.remove('open'); mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; } }
-      function closeContactModal() { document.getElementById('contact-modal').hidden = true; document.body.style.overflow = ''; if (mobileMenu) { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; } }
-      document.getElementById('open-contact-modal-nav').onclick = openContactModal;
-      document.getElementById('open-contact-modal-section').onclick = openContactModal;
-      document.getElementById('open-contact-modal-hero').onclick = openContactModal;
-      const mobileModalBtn = document.getElementById('open-contact-modal-mobile'); if (mobileModalBtn) mobileModalBtn.onclick = openContactModal;
-      document.getElementById('close-contact-modal').onclick = closeContactModal;
-      document.getElementById('contact-modal').addEventListener('click', function(e) { if (e.target === this) closeContactModal(); });
       const reelModal = document.getElementById('reel-modal');
       const reelFrame = document.getElementById('reel-iframe');
       function openReel() { reelFrame.src = reelFrame.dataset.src; reelModal.hidden = false; document.body.style.overflow = 'hidden'; }
@@ -384,7 +347,7 @@
       document.getElementById('open-reel').onclick = openReel;
       document.getElementById('close-reel').onclick = closeReel;
       reelModal.addEventListener('click', function(e) { if (e.target === this) closeReel(); });
-      document.addEventListener('keydown', function(e) { if (e.key === "Escape") { closeContactModal(); closeReel(); } });
+      document.addEventListener('keydown', function(e) { if (e.key === "Escape") closeReel(); });
     });
   </script>
 </body>

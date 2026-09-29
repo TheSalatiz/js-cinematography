@@ -16,6 +16,7 @@
     <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/strat-proposal/DSC04501.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
       :root { --accent-color: #8A6D34; --secondary-color: #8A6D34; --bg-color: #FAF8F4; --text-main: #111827; }
@@ -56,6 +57,7 @@
             <li class="menu-item"><a href="about.html">About Me</a></li>
             <li class="menu-item"><a href="videography.html">Videography</a></li>
             <li class="menu-item"><a href="photography.html" class="active-link">Photography</a></li>
+            <li class="menu-item"><a href="contact.html" class="nav-cta">Check Availability</a></li>
         </ul>
       </div>
       <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
@@ -63,6 +65,7 @@
           <li><a href="about.html" class="block py-2">About Me</a></li>
           <li><a href="videography.html" class="block py-2">Videography</a></li>
           <li><a href="photography.html" class="block py-2 font-bold" style="color: var(--accent-color);">Photography</a></li>
+          <li><a href="contact.html" class="nav-cta w-full mt-2">Check Availability</a></li>
       </ul>
     </nav>
 
@@ -163,8 +166,20 @@
         </div>
     </main>
 
-    <footer class="relative z-10 p-10 text-center text-gray-500 text-sm reveal" data-animate>
-      © 2026 Juan Sebastian. All rights reserved.
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div>
+          <p class="site-footer-name">Juan Sebastian</p>
+          <p>Videography &amp; photography &middot; Las Vegas, NV</p>
+        </div>
+        <nav class="site-footer-links" aria-label="Footer">
+          <a href="about.html">About</a>
+          <a href="videography.html">Videography</a>
+          <a href="photography.html">Photography</a>
+          <a href="contact.html" class="site-footer-cta">Check Availability &rarr;</a>
+        </nav>
+      </div>
+      <p class="site-footer-copy">&copy; 2026 Juan Sebastian. All rights reserved.</p>
     </footer>
 
     <script>
