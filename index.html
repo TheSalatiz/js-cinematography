@@ -3,30 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Juan Salazar | Las Vegas Videographer &amp; Editor</title>
-  <meta name="description" content="Las Vegas videographer and editor for corporate events, brand campaigns, weddings and narrative short films. 4K coverage from production to final delivery.">
+  <title>Juan Sebastian | Las Vegas Videographer &amp; Photographer</title>
+  <meta name="description" content="Juan Sebastian is a Las Vegas multimedia specialist: videography and photography for weddings, events and brands.">
   <link rel="canonical" href="https://thesalatiz.github.io/js-cinematography/">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Juan Salazar">
-  <meta property="og:title" content="Juan Salazar | Las Vegas Videographer &amp; Editor">
-  <meta property="og:description" content="Las Vegas videographer and editor for corporate events, brand campaigns, weddings and narrative short films. 4K coverage from production to final delivery.">
+  <meta property="og:site_name" content="Juan Sebastian">
+  <meta property="og:title" content="Juan Sebastian | Las Vegas Videographer &amp; Photographer">
+  <meta property="og:description" content="Juan Sebastian is a Las Vegas multimedia specialist: videography and photography for weddings, events and brands.">
   <meta property="og:url" content="https://thesalatiz.github.io/js-cinematography/">
-  <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/photo3.jpg">
+  <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/strat-proposal/DSC04546.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "Juan Salazar",
-    "description": "Las Vegas videographer and editor for corporate events, brand campaigns, weddings and narrative short films. 4K coverage from production to final delivery.",
+    "name": "Juan Sebastian",
+    "description": "Juan Sebastian is a Las Vegas multimedia specialist: videography and photography for weddings, events and brands.",
     "url": "https://thesalatiz.github.io/js-cinematography/",
-    "image": "https://thesalatiz.github.io/js-cinematography/photo3.jpg",
+    "image": "https://thesalatiz.github.io/js-cinematography/strat-proposal/DSC04546.jpg",
     "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV", "addressCountry": "US" },
     "areaServed": "Las Vegas, NV"
   }
   </script>
+  <link rel="preload" as="image" href="strat-proposal/DSC04546.jpg">
   <link rel="stylesheet" href="css/tailwind.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
@@ -52,9 +53,36 @@
       font-family: 'Playfair Display', serif; 
     }
 
-    #home { background: var(--bg-color); }
     
-    .video-container { border-radius: 1rem; overflow: hidden; background: #111827; box-shadow: 0 30px 60px -20px rgba(17, 24, 39, 0.35); }
+    /* Full-width hero */
+    .hero-inner { min-height: 640px; min-height: min(92vh, 900px); }
+    .hero-img { object-position: center 30%; }
+    .hero-shade { background:
+      linear-gradient(90deg, rgba(10, 12, 18, 0.88) 0%, rgba(10, 12, 18, 0.6) 40%, rgba(10, 12, 18, 0.1) 72%),
+      linear-gradient(0deg, rgba(10, 12, 18, 0.55) 0%, transparent 35%),
+      linear-gradient(180deg, rgba(10, 12, 18, 0.55) 0%, transparent 22%); }
+    .hero .highlight-word { color: var(--gold); }
+    @media (max-width: 767px) {
+      .hero-inner { min-height: 88vh; }
+      .hero-img { object-position: 68% center; }
+      .hero-shade { background: linear-gradient(0deg, rgba(10, 12, 18, 0.94) 0%, rgba(10, 12, 18, 0.65) 55%, rgba(10, 12, 18, 0.4) 100%); }
+    }
+
+    /* Nav sits white over the hero photo until the page scrolls */
+    #main-nav:not(.nav-scroll) > div > a,
+    #main-nav:not(.nav-scroll) > div .menu-item a,
+    #main-nav:not(.nav-scroll) > div .menu-item button,
+    #main-nav:not(.nav-scroll) #mobile-menu-toggle { color: #fff; }
+    #main-nav:not(.nav-scroll) > div .menu-item a.active-link { color: var(--gold); }
+    #main-nav:not(.nav-scroll) #open-contact-modal-nav { border-color: rgba(255, 255, 255, 0.85); }
+    #main-nav:not(.nav-scroll) #open-contact-modal-nav:hover { background-color: #fff; border-color: #fff; color: var(--text-main); }
+
+    /* Showreel lightbox */
+    .reel-bg { position: fixed; z-index: 1000; inset: 0; background: rgba(10, 12, 18, 0.94); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+    .reel-bg[hidden] { display: none; }
+    .reel-frame { width: 100%; max-width: 1100px; border-radius: 0.75rem; overflow: hidden; background: #000; }
+    .reel-close { position: absolute; top: 1.25rem; right: 1.25rem; color: #fff; opacity: 0.8; background: none; border: none; cursor: pointer; }
+    .reel-close:hover { opacity: 1; }
     .bg-warm { background-color: var(--bg-alt); }
     .eyebrow { color: var(--gold-ink); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.8rem; font-family: 'DM Sans', sans-serif; }
     .link-gold { color: var(--gold-ink); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.875rem; transition: color 0.2s ease; }
@@ -95,6 +123,8 @@
     .btn-primary:hover { background-color: var(--gold); border-color: var(--gold); color: var(--text-main); box-shadow: 0 10px 20px rgba(180, 151, 90, 0.3); }
     .btn-gold { background-color: var(--gold); border-color: var(--gold); color: var(--text-main); }
     .btn-gold:hover { background-color: #fff; border-color: #fff; color: var(--text-main); }
+    .btn-ghost { color: #fff; border-color: rgba(255, 255, 255, 0.85); }
+    .btn-ghost:hover { background-color: #fff; border-color: #fff; color: var(--text-main); }
     
     .cta-button-round { padding: 1em 2.2em; gap: 0.5em; }
     .cta-button-round svg { transition: transform 0.4s cubic-bezier(.77,0,.18,1); margin-left: 0.3em; width: 1.15em; height: 1.15em; stroke-width: 1.5; stroke: currentColor; }
@@ -120,7 +150,7 @@
 <body>
   <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
     <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold tracking-wider font-serif">Juan Salazar</a>
+      <a href="#" class="text-xl font-bold tracking-wider font-serif">Juan Sebastian</a>
       <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </button>
@@ -143,24 +173,24 @@
     </ul>
   </nav>
 
-  <main id="home" class="relative z-10 w-full px-6 pt-32 pb-16 md:pt-40 md:pb-24">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        <div class="lg:col-span-6 text-center lg:text-left">
-            <p class="eyebrow mb-5">Weddings &middot; Events &middot; Films</p>
-            <h1 class="text-5xl xl:text-6xl font-bold mb-6 leading-tight tracking-tight font-serif">Las Vegas Event &amp; Brand <span class="highlight-word">Videographer.</span></h1>
-            <p class="text-xl text-gray-600 mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">I'm a Las Vegas-based videographer and editor covering corporate events, brand campaigns, weddings, and narrative shorts, from the first shot to final delivery.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button type="button" class="cta-button-round btn-primary" id="open-contact-modal-hero">Check Availability</button>
-                <a href="videography.html" class="cta-button-round">View My Work</a>
-            </div>
+  <header id="home" class="hero relative w-full overflow-hidden bg-gray-900 text-white">
+    <img src="strat-proposal/DSC04546.jpg" alt="A couple on the Strat observation deck above the lights of the Las Vegas Strip at night" class="hero-img absolute inset-0 w-full h-full object-cover">
+    <div class="hero-shade absolute inset-0"></div>
+    <div class="hero-inner relative z-10 max-w-7xl mx-auto px-6 flex items-end">
+      <div class="max-w-2xl pt-32 pb-16 md:pb-24">
+        <p class="eyebrow mb-5" style="color: var(--gold);">Multimedia Specialist</p>
+        <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold mb-6 leading-tight tracking-tight font-serif text-white">Las Vegas Videographer &amp; <span class="highlight-word">Photographer.</span></h1>
+        <p class="text-xl text-gray-200 mb-10 max-w-xl leading-relaxed">Weddings, events, and brand stories, captured the way they really felt.</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button type="button" class="cta-button-round btn-gold" id="open-contact-modal-hero">Check Availability</button>
+          <button type="button" class="cta-button-round btn-ghost" id="open-reel">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" style="margin: 0 0.4em 0 0;"><path d="M8 5v14l11-7z"/></svg>
+            Watch the Reel
+          </button>
         </div>
-        <div class="lg:col-span-6 w-full">
-            <div class="video-container">
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1106622625?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Showreel"></iframe></div>
-            </div>
-        </div>
+      </div>
     </div>
-  </main>
+  </header>
 
   <aside class="bg-warm py-10 border-y" style="border-color: rgba(180, 151, 90, 0.25);">
       <div class="max-w-7xl mx-auto px-6 text-center reveal" data-animate>
@@ -216,7 +246,7 @@
   <section class="py-20 md:py-28 px-6 bg-warm">
       <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
           <div class="md:col-span-5 max-w-sm md:max-w-none mx-auto w-full rounded-2xl overflow-hidden bg-gray-200 shadow-md reveal" style="aspect-ratio: 4 / 5;" data-animate>
-              <img src="Profile.jpg" alt="Portrait of Juan Salazar" class="object-cover w-full h-full" loading="lazy">
+              <img src="Profile.jpg" alt="Portrait of Juan Sebastian" class="object-cover w-full h-full" loading="lazy">
           </div>
           <div class="md:col-span-7 reveal" data-animate>
               <p class="eyebrow mb-4">About me</p>
@@ -243,6 +273,16 @@
       </button>
     </div>
   </section>
+
+  <!-- Showreel lightbox: the iframe only loads when opened -->
+  <div id="reel-modal" class="reel-bg" hidden>
+    <button class="reel-close" id="close-reel" aria-label="Close video">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
+    <div class="reel-frame">
+      <div style="padding:56.25% 0 0 0;position:relative;"><iframe id="reel-iframe" src="about:blank" data-src="https://player.vimeo.com/video/1106622625?badge=0&autopause=0&autoplay=1&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Juan Sebastian showreel"></iframe></div>
+    </div>
+  </div>
 
   <!-- Web3Forms Custom Modal -->
   <div id="contact-modal" class="modal-bg" hidden>
@@ -285,7 +325,7 @@
   </div>
 
   <footer class="bg-white relative z-10 p-10 text-center text-gray-500 text-sm reveal border-t border-gray-200" data-animate>
-    © 2026 Juan Salazar. All rights reserved.
+    © 2026 Juan Sebastian. All rights reserved.
   </footer>
 
   <script>
@@ -336,7 +376,14 @@
       const mobileModalBtn = document.getElementById('open-contact-modal-mobile'); if (mobileModalBtn) mobileModalBtn.onclick = openContactModal;
       document.getElementById('close-contact-modal').onclick = closeContactModal;
       document.getElementById('contact-modal').addEventListener('click', function(e) { if (e.target === this) closeContactModal(); });
-      document.addEventListener('keydown', function(e) { if (e.key === "Escape") closeContactModal(); });
+      const reelModal = document.getElementById('reel-modal');
+      const reelFrame = document.getElementById('reel-iframe');
+      function openReel() { reelFrame.src = reelFrame.dataset.src; reelModal.hidden = false; document.body.style.overflow = 'hidden'; }
+      function closeReel() { reelModal.hidden = true; reelFrame.src = 'about:blank'; document.body.style.overflow = ''; }
+      document.getElementById('open-reel').onclick = openReel;
+      document.getElementById('close-reel').onclick = closeReel;
+      reelModal.addEventListener('click', function(e) { if (e.target === this) closeReel(); });
+      document.addEventListener('keydown', function(e) { if (e.key === "Escape") { closeContactModal(); closeReel(); } });
     });
   </script>
 </body>

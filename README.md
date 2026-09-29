@@ -1,6 +1,6 @@
 # js-cinematography
 
-Portfolio site for Juan Salazar, a Las Vegas videographer, editor and photographer.
+Portfolio site for Juan Sebastian, a Las Vegas videographer, editor and photographer.
 Live at <https://thesalatiz.github.io/js-cinematography/> (GitHub Pages, served straight from `main`).
 
 ## Pages
