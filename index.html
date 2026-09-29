@@ -13,7 +13,7 @@
   <meta property="og:title" content="Juan Sebastian | Las Vegas Videographer &amp; Photographer">
   <meta property="og:description" content="Juan Sebastian is a Las Vegas multimedia specialist: videography and photography for weddings, events and brands.">
   <meta property="og:url" content="https://thesalatiz.github.io/js-cinematography/">
-  <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/strat-proposal/DSC04546.jpg">
+  <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/DSC00540.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -22,12 +22,12 @@
     "name": "Juan Sebastian",
     "description": "Juan Sebastian is a Las Vegas multimedia specialist: videography and photography for weddings, events and brands.",
     "url": "https://thesalatiz.github.io/js-cinematography/",
-    "image": "https://thesalatiz.github.io/js-cinematography/strat-proposal/DSC04546.jpg",
+    "image": "https://thesalatiz.github.io/js-cinematography/DSC00540.jpg",
     "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV", "addressCountry": "US" },
     "areaServed": "Las Vegas, NV"
   }
   </script>
-  <link rel="preload" as="image" href="strat-proposal/DSC04546.jpg">
+  <link rel="preload" as="image" href="DSC00540.jpg">
   <link rel="stylesheet" href="css/tailwind.css">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
@@ -56,16 +56,17 @@
     
     /* Full-width hero */
     .hero-inner { min-height: 640px; min-height: min(92vh, 900px); }
-    .hero-img { object-position: center 30%; }
+    .hero-img { object-position: center center; }
     .hero-shade { background:
       linear-gradient(90deg, rgba(10, 12, 18, 0.88) 0%, rgba(10, 12, 18, 0.6) 40%, rgba(10, 12, 18, 0.1) 72%),
       linear-gradient(0deg, rgba(10, 12, 18, 0.55) 0%, transparent 35%),
       linear-gradient(180deg, rgba(10, 12, 18, 0.55) 0%, transparent 22%); }
     .hero .highlight-word { color: var(--gold); }
+    .hero h1, .hero p, .hero .eyebrow { text-shadow: 0 2px 16px rgba(10, 12, 18, 0.45); }
     @media (max-width: 767px) {
-      .hero-inner { min-height: 88vh; }
-      .hero-img { object-position: 68% center; }
-      .hero-shade { background: linear-gradient(0deg, rgba(10, 12, 18, 0.94) 0%, rgba(10, 12, 18, 0.65) 55%, rgba(10, 12, 18, 0.4) 100%); }
+      .hero-inner { min-height: 100vh; min-height: 100svh; }
+      .hero-img { object-position: 74% center; }
+      .hero-shade { background: linear-gradient(0deg, rgba(10, 12, 18, 0.95) 0%, rgba(10, 12, 18, 0.82) 52%, rgba(10, 12, 18, 0.15) 78%, rgba(10, 12, 18, 0.45) 100%); }
     }
 
     /* Nav sits white over the hero photo until the page scrolls */
@@ -174,12 +175,12 @@
   </nav>
 
   <header id="home" class="hero relative w-full overflow-hidden bg-gray-900 text-white">
-    <img src="strat-proposal/DSC04546.jpg" alt="A couple on the Strat observation deck above the lights of the Las Vegas Strip at night" class="hero-img absolute inset-0 w-full h-full object-cover">
+    <img src="DSC00540.jpg" alt="A graduate in her cap and gown celebrating in front of the Georgia Southern hedge" class="hero-img absolute inset-0 w-full h-full object-cover">
     <div class="hero-shade absolute inset-0"></div>
     <div class="hero-inner relative z-10 max-w-7xl mx-auto px-6 flex items-end">
       <div class="max-w-2xl pt-32 pb-16 md:pb-24">
         <p class="eyebrow mb-5" style="color: var(--gold);">Multimedia Specialist</p>
-        <h1 class="text-5xl md:text-6xl xl:text-7xl font-bold mb-6 leading-tight tracking-tight font-serif text-white">Las Vegas Videographer &amp; <span class="highlight-word">Photographer.</span></h1>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl xl:text-7xl font-bold mb-6 leading-tight tracking-tight font-serif text-white">Las Vegas Videographer &amp; <span class="highlight-word">Photographer.</span></h1>
         <p class="text-xl text-gray-200 mb-10 max-w-xl leading-relaxed">Weddings, events, and brand stories, captured the way they really felt.</p>
         <div class="flex flex-col sm:flex-row gap-4">
           <button type="button" class="cta-button-round btn-gold" id="open-contact-modal-hero">Check Availability</button>
