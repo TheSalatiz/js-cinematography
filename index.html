@@ -87,11 +87,6 @@
     animation: grain 0.6s steps(4) infinite;
   }
   @keyframes grain { 0% { transform: translate(0, 0); } 25% { transform: translate(-3%, 2%); } 50% { transform: translate(2%, -3%); } 75% { transform: translate(-2%, -1%); } 100% { transform: translate(1%, 3%); } }
-  .vf { position: fixed; z-index: 80; width: 18px; height: 18px; pointer-events: none; opacity: 0.55; border-color: var(--chalk); border-style: solid; border-width: 0; mix-blend-mode: difference; }
-  .vf.tl { top: 14px; left: 14px; border-top-width: 1px; border-left-width: 1px; }
-  .vf.tr { top: 14px; right: 14px; border-top-width: 1px; border-right-width: 1px; }
-  .vf.bl { bottom: 14px; left: 14px; border-bottom-width: 1px; border-left-width: 1px; }
-  .vf.br { bottom: 14px; right: 14px; border-bottom-width: 1px; border-right-width: 1px; }
 
   /* ---------- nav + HUD ---------- */
   .nav {
@@ -119,15 +114,6 @@
   .nav .btn { padding: 0.75em 1.2em; }
   .nav .btn .short { display: none; }
 
-  .hud {
-    position: fixed; z-index: 70; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
-    left: calc(var(--gutter) + 18px); display: flex; align-items: center; gap: 10px;
-    color: var(--chalk); mix-blend-mode: difference; pointer-events: none;
-  }
-  .rec { width: 7px; height: 7px; border-radius: 50%; background: #E2453A; animation: rec 2s ease-in-out infinite; }
-  @keyframes rec { 50% { opacity: 0.25; } }
-  .hud-r { left: auto; right: calc(var(--gutter) + 18px); }
-  .hud.on-light { mix-blend-mode: normal; color: var(--daylight-ink); }
 
   /* phone menu */
   .menu-btn { display: none; background: none; border: 1px solid var(--line); color: var(--chalk); font: 500 0.72rem/1 var(--body); letter-spacing: 0.22em; text-transform: uppercase; padding: 0.95em 1em; cursor: pointer; }
@@ -174,7 +160,7 @@
   .play:hover i::before { border-left-color: var(--night); }
   .hero-meta { position: absolute; right: var(--gutter); bottom: clamp(56px, 9vh, 110px); display: grid; justify-items: end; gap: 8px; text-align: right; color: rgba(237, 231, 220, 0.8); }
   .ctrl { display: flex; align-items: center; gap: 6px; }
-  .ctrl span { min-width: 5.2em; text-align: center; }
+  #fr { min-width: 5.2em; text-align: center; }
   .ctrl button { width: 32px; height: 32px; display: grid; place-items: center; background: rgba(10, 9, 8, 0.35); border: 1px solid rgba(237, 231, 220, 0.35); color: var(--chalk); font: 500 1.05rem/1 var(--body); cursor: pointer; transition: background-color 0.3s, border-color 0.3s; }
   .ctrl button:hover { background: var(--chalk); color: var(--night); border-color: var(--chalk); }
   .ico-pause { display: flex; gap: 3px; }
@@ -187,14 +173,11 @@
   @keyframes frbar { to { transform: scaleX(1); } }
 
   /* ---------- on location ---------- */
-  .venues { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: clamp(20px, 4vw, 56px); padding: clamp(26px, 4vw, 40px) 0 clamp(26px, 4vw, 40px) var(--gutter); border-bottom: 1px solid var(--line); background: var(--night); }
+  .venues { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; gap: clamp(20px, 4vw, 56px); padding: clamp(28px, 4vw, 44px) var(--gutter); border-bottom: 1px solid var(--line); background: var(--night); }
   .venues-label { color: var(--smoke); white-space: nowrap; }
-  .marquee { display: flex; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-  .marquee-track { flex: none; display: flex; list-style: none; margin: 0; padding: 0; animation: marquee 48s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
-  .marquee-track li { font-family: var(--display); font-style: italic; font-size: clamp(1.6rem, 3.4vw, 3rem); line-height: 1.1; white-space: nowrap; padding-inline: clamp(18px, 2.4vw, 36px); display: flex; align-items: center; gap: clamp(18px, 2.4vw, 36px); }
-  .marquee-track li::after { content: ""; width: 6px; height: 6px; background: var(--tungsten); transform: rotate(45deg); margin-left: clamp(18px, 2.4vw, 36px); }
-  @keyframes marquee { to { transform: translateX(-100%); } }
+  .venue-list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 0; }
+  .venue-list li { font-family: var(--display); font-style: italic; font-size: clamp(1.4rem, 2.05vw, 2.4rem); line-height: 1.2; white-space: nowrap; display: flex; align-items: center; }
+  .venue-list li:not(:last-child)::after { content: ""; width: 6px; height: 6px; background: var(--tungsten); transform: rotate(45deg); margin: 0 clamp(14px, 1.8vw, 28px); }
 
   /* ---------- 2. rack focus ---------- */
   .rack { position: relative; height: 260vh; background: #000; }
@@ -348,7 +331,6 @@
     .nav .btn .long { display: none; }
     .nav .btn .short { display: inline; }
     .nav-name { letter-spacing: 0.26em; }
-    .hud-r, .vf { display: none; }
     .hero { height: 86svh; min-height: 540px; }
     .hero-shade { background: linear-gradient(0deg, rgba(10, 9, 8, 0.94) 0%, rgba(10, 9, 8, 0.72) 48%, rgba(10, 9, 8, 0.1) 78%, rgba(10, 9, 8, 0.5) 100%); }
     .frame:first-child img { object-position: 86% center; }
@@ -358,9 +340,9 @@
     .rack-a { top: auto; bottom: 18vh; transform: none; }
     .rack-b { bottom: 18vh; }
     .rack-cap { display: none; }
-    .venues { grid-template-columns: 1fr; gap: 12px; padding-left: 0; }
-    .venues-label { padding-left: var(--gutter); }
-    .cine { grid-template-columns: 1fr; }
+    .venues { grid-template-columns: 1fr; gap: 12px; }
+    .cine { grid-template-columns: minmax(0, 1fr); }
+    .cine h2 { font-size: clamp(2rem, 10.5vw, 3.2rem); }
     .slate { justify-self: start; width: min(100%, 340px); }
     .films li { grid-template-columns: 1fr; gap: 4px; }
     .film-role { text-align: left; }
@@ -370,6 +352,7 @@
     .roll { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 34px; }
     .note.below, .note.above { position: static; display: block; width: auto; margin-top: 30px; font-size: 1.55rem; color: #E8756A; transform: rotate(-3deg); }
     .svc a { grid-template-columns: 72px minmax(0, 1fr); gap: 6px 18px; align-items: center; }
+    .svc-name { font-size: clamp(1.45rem, 7.2vw, 2.4rem); hyphens: auto; }
     .svc-thumb { display: block; grid-row: span 3; width: 72px; aspect-ratio: 1; object-fit: cover; }
     .svc-kind { grid-column: 2; }
     .svc a:hover, .svc a:focus-visible { padding-left: 0; }
@@ -390,7 +373,7 @@
   .stories.free .strip-foot { display: none; }
 
   @media (prefers-reduced-motion: reduce) {
-    .grain, .rec { animation: none; }
+    .grain { animation: none; }
     .frame.on img { animation: none; }
     .reveal.pre { transform: none; opacity: 1; }
     .rack { height: auto; }
@@ -399,16 +382,12 @@
     .rack-loud img { aspect-ratio: 16 / 9; }
     .bar { display: none; }
     .note { opacity: 1; transition: none; }
-    .marquee { mask-image: none; -webkit-mask-image: none; }
-    .marquee-track { animation: none; flex-wrap: wrap; row-gap: 6px; }
-    .marquee-track[aria-hidden] { display: none; }
     .slate-stick { transform: none; transition: none; }
   }
 </style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
-<span class="vf tl" aria-hidden="true"></span><span class="vf tr" aria-hidden="true"></span><span class="vf bl" aria-hidden="true"></span><span class="vf br" aria-hidden="true"></span>
 
 <header class="nav" id="nav">
   <a class="nav-name" href="#top">Juan Sebastian</a>
@@ -431,8 +410,6 @@
   </nav>
 </div>
 
-<div class="hud mono" aria-hidden="true"><span class="rec"></span><span>REC</span><span id="tc">00:00:00:00</span></div>
-<div class="hud hud-r mono" aria-hidden="true"><span>Las Vegas</span><span id="clock">--:--</span></div>
 
 <main>
   <!-- 1. Opening shot -->
@@ -465,14 +442,9 @@
   <!-- On location: the names planners recognise -->
   <section class="venues" aria-label="On location at">
     <p class="caps venues-label">On location at</p>
-    <div class="marquee">
-      <ul class="marquee-track">
-        <li>Wynn</li><li>Encore</li><li>Bellagio</li><li>The Venetian</li><li>Resorts World</li><li>Caesars Palace</li>
-      </ul>
-      <ul class="marquee-track" aria-hidden="true">
-        <li>Wynn</li><li>Encore</li><li>Bellagio</li><li>The Venetian</li><li>Resorts World</li><li>Caesars Palace</li>
-      </ul>
-    </div>
+    <ul class="venue-list">
+      <li>Wynn</li><li>Encore</li><li>Bellagio</li><li>The Venetian</li><li>Resorts World</li><li>Caesars Palace</li>
+    </ul>
   </section>
 
   <!-- 2. Rack focus: the thesis -->
@@ -634,6 +606,7 @@
   <dl class="credits" aria-label="Credits">
     <div class="credit"><dt class="caps">Filmed &amp; photographed by</dt><dd>Juan Sebastian</dd></div>
     <div class="credit"><dt class="caps">Based in</dt><dd>Las Vegas, Nevada</dd></div>
+    <div class="credit"><dt class="caps">Local time</dt><dd><span id="clock">--:--</span> in Las Vegas</dd></div>
     <div class="credit"><dt class="caps">Shot on location at</dt><dd>Wynn · Encore · Bellagio<br>The Venetian · Resorts World · Caesars Palace</dd></div>
     <div class="credit"><dt class="caps">© 2026</dt><dd>All frames by Juan Sebastian</dd></div>
   </dl>
@@ -746,21 +719,11 @@
   const lineA = rack.querySelector('.rack-a'), lineB = rack.querySelector('.rack-b'), rcap = rack.querySelector('.rack-cap');
   const bars = rack.querySelectorAll('.bar');
 
-  const table = document.getElementById('table'), huds = document.querySelectorAll('.hud');
-
-  /* timecode: the page is a 2:30 film at 24 fps */
-  const tc = document.getElementById('tc');
   const pad = n => String(n).padStart(2, '0');
 
   const update = () => {
     const y = window.scrollY, vh = innerHeight;
     nav.classList.toggle('solid', y > vh * 0.6);
-    const tr = table.getBoundingClientRect(), onLight = tr.top < vh - 40 && tr.bottom > vh - 40;
-    huds.forEach(h => h.classList.toggle('on-light', onLight));
-
-    const max = Math.max(1, document.documentElement.scrollHeight - vh);
-    const f = Math.round((y / max) * 150 * 24);
-    tc.textContent = '00:' + pad(Math.floor(f / 1440)) + ':' + pad(Math.floor(f / 24) % 60) + ':' + pad(f % 24);
 
     if (!reduce) {
       const p = clamp((y - rack.offsetTop) / (rack.offsetHeight - vh), 0, 1);
