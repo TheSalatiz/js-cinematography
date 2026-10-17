@@ -1,56 +1,36 @@
 # js-cinematography
 
-Portfolio site for Juan Sebastian, a Las Vegas videographer, editor and photographer.
+One-page site for Juan Sebastian: short-form video for independent med spas in Las Vegas.
 Live at <https://thesalatiz.github.io/js-cinematography/> (GitHub Pages, served straight from `main`).
 
-## Pages
+## Files
 
-| Page | What it is |
+| File | What it is |
 |---|---|
-| `index.html` | Home ("Loud room. Quiet eye."): self-contained page with its own styles and script |
-| `about.html` | Full bio |
-| `videography.html` | Wedding, corporate and narrative films (YouTube/Vimeo embeds) |
-| `photography.html` | Links to the photo galleries |
-| `gallery-*.html` | Individual photo galleries; images live in the matching folder (`jt-caesars/`, `affogato/`, …) |
-| `contact.html` | The one contact form; every "Check Availability" button links here |
+| `index.html` | The whole site: styles and script are inside the page, no build step |
+| `img/` | The affogato pour frames and the portrait, as WebP (each under 40 KB) |
+| `og.jpg` | The 1200×630 image people see when the link is shared in a text, DM or email |
+| `favicon.png`, `apple-touch-icon.png` | Browser and phone icons |
+| `404.html` | Shown for any old or mistyped address, with a link home |
+| `about.html`, `contact.html`, `videography.html`, `photography.html` | Redirects from the old pages to the matching part of the homepage |
+| `robots.txt`, `sitemap.xml` | Tell search engines about the one page. Submit the sitemap in Google Search Console; `robots.txt` only takes effect once the site is on its own domain |
 
-## Homepage
+## Editing
 
-`index.html` doesn't use Tailwind or `css/site.css`; its styles and script live inside the page.
-
-- **Photos:** web-sized copies in `images/home/` (hero frames `hero-1`–`hero-4`, rack focus `loud`/`quiet`,
-  story cards `s-*`, light-table frames `f01`–`f12`, service previews `v-*`). To swap one, export it at
-  about 1800px wide for hero frames or 640px for light-table frames and keep the same file name.
-- **Couples' faces stay off the homepage.** Use hands, veils, backs and details there; faces belong in the galleries.
-- **Red-pencil notes** on the light table are the `<span class="note">` next to each circled frame.
-- **Smooth scrolling** uses [Lenis](https://github.com/darkroomengineering/lenis) (MIT), stored in `js/lenis.min.js`.
-- **Fonts** come from Google Fonts: Bodoni Moda, Jost, IBM Plex Mono and Nanum Pen Script.
-- Motion turns off for visitors who have "reduce motion" enabled, and the slideshow can be paused.
+- **Words:** edit them in `index.html`. Keep lines short and plain; the page is read on phones between patients.
+- **Fonts:** Fraunces for headlines, Hanken Grotesk for everything else, both from Google Fonts. Keep it to these two.
+- **Colors:** set once at the top of the `<style>` block (porcelain, pine, one emerald accent). Every text color passes 4.5:1 contrast; check any new one before using it.
+- **Motion:** the only animation is the 12 posts filling in on the calendar, once, and never for visitors with "reduce motion" on. Keep it that way.
+- **Photos and video:** only work you shot for your own clients or your own projects, with a signed release from anyone on camera. Patient content needs the patient's written authorization. Export stills at about 1200px wide as WebP, quality 75–80.
+- **After the first test spa:** replace the four pour frames with three vertical clips or stills from the spa, and add the day-30 numbers as a short case study.
 
 ## Contact form
 
-`contact.html` sends enquiries through [Web3Forms](https://web3forms.com) to the inbox tied to the
-`access_key` in the form. Spam protection: a hidden `botcheck` checkbox that Web3Forms rejects when
-ticked, and submissions made within 3 seconds of the page loading are dropped. The email address is
-deliberately not written anywhere in the site, so scrapers can't harvest it.
+The form sends requests through [Web3Forms](https://web3forms.com) to the inbox tied to the `access_key` in the form.
+Spam protection: a hidden `botcheck` checkbox that Web3Forms rejects when ticked, and submissions made within
+3 seconds of the page loading are dropped. The email address is not written anywhere on the site, so scrapers can't harvest it.
 
-## Styling
+## If you move to a custom domain
 
-Pages use [Tailwind CSS 2](https://v2.tailwindcss.com/) through a small prebuilt file,
-`css/tailwind.css`, which contains only the classes the pages use. Page-specific styles
-sit in each page's `<style>` block; the nav button and footer shared by every page are in `css/site.css`.
-
-If you add or change Tailwind classes in any HTML file, rebuild the CSS so the new classes
-are included:
-
-```sh
-npm install        # first time only
-npm run build:css
-```
-
-Then commit the updated `css/tailwind.css`.
-
-## Adding photos
-
-Export JPEGs at about 2000px on the long edge and quality 80 before committing. A photo
-straight off the camera can be 5–10× larger and slows the galleries down, especially on phones.
+Add the domain in Settings → Pages, then update the canonical link, `og:url`, `og:image` and the JSON-LD `url` and `image`
+in `index.html`, plus `robots.txt` and `sitemap.xml`, and the links in `404.html`, to the new address.
