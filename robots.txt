@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thesalatiz.github.io/js-cinematography/sitemap.xml
