@@ -1,49 +1,75 @@
 # js-cinematography
 
 Portfolio of Juan Sebastian Salazar, cinematographer and photographer in Las Vegas, plus a separate page for med spa owners.
-Live at <https://thesalatiz.github.io/js-cinematography/> (GitHub Pages, served straight from `main`, no build step).
+Live at <https://thesalatiz.github.io/js-cinematography/> (GitHub Pages, served straight from `main`, no build step to publish).
 
 ## Pages
 
-| Address | What it is |
+| Page | What it is |
 |---|---|
-| `/` (`index.html`) | The portfolio for employers: hero clips, films, photographs, kit, about and a contact form |
-| `gallery-commercial.html`, `gallery-grad.html`, `gallery-recital.html` | The three photo series, each with a full-screen viewer |
-| `/med-spas/` (`med-spas/index.html`) | The page for med spa owners: the free 30-day test, prices, the promo video and the application form. Not linked from the portfolio menu; share it directly |
-| `404.html` | Shown for any old or mistyped address, with links home and to the spa page |
-| `about.html`, `contact.html`, `videography.html`, `photography.html` | Redirects from the old pages to the matching part of the homepage |
+| `index.html` | Home ("Loud room. Quiet eye."): self-contained page with its own styles and script |
+| `about.html` | Bio, kit and languages |
+| `videography.html` | Short films, the Health Services spot and a wedding film (YouTube and Vimeo embeds) |
+| `photography.html` | Links to the three photo series |
+| `gallery-commercial.html`, `gallery-grad.html`, `gallery-recital.html` | The series. Each photo opens in a full-screen viewer (`js/viewer.js`) |
+| `contact.html` | The contact form |
+| `med-spas/index.html` | The page for med spa owners: the free 30-day test, prices, the promo video and the application form. Not linked from the portfolio menu; share `/med-spas/` directly |
+| `404.html` | Shown for any missing address. Any address with "spa" in it goes to the med spa page |
 | `robots.txt`, `sitemap.xml` | For search engines. Submit the sitemap in Google Search Console; `robots.txt` only takes effect on a custom domain |
 
-## Files
+## What can go on the site
 
-| Folder | What's in it |
-|---|---|
-| `assets/` | `portfolio.css` and `portfolio.js`, shared by the portfolio and series pages. The spa page keeps its styles and script inside itself |
-| `img/work/` | Photo series as WebP: a 1600px version for the viewer and an 800px version (`-sm`) for grids |
-| `img/films/` | Stills from the films, 1280px and 640px |
-| `media/` | Short muted videos: the homepage clips (`hero-wide` for screens, `hero-tall` for phones) and the spa promo, each with a still poster |
-| `og.jpg`, `med-spas/og.jpg` | The images people see when a link is shared |
+Only your own work, or your own clients' work, with a release from anyone on camera. **Nothing shot on a job for an employer**,
+and no venue names. Spa patient content needs the patient's written authorization.
 
-Films play from YouTube and Vimeo, so their files never sit in this repository. Keep every video here under about 2 MB:
-GitHub refuses files over 100 MB and warns over 50 MB, and big files slow the site down.
+## Homepage
 
-## Editing
+`index.html` doesn't use Tailwind or `css/site.css`; its styles and script live inside the page.
 
-- **Words:** edit them in the HTML. Keep sentences short and plain.
-- **Fonts:** Fraunces for headlines and Hanken Grotesk for everything else. The portfolio uses Fraunces with sharp corners, the spa page the soft version.
-- **Colors:** portfolio colors are at the top of `assets/portfolio.css`, spa colors at the top of `med-spas/index.html`. Check 4.5:1 contrast for any new text color.
-- **Motion:** the homepage clips and the spa promo play muted with a pause button, and wait for a press when a visitor has "reduce motion" on. The spa calendar fills in once.
-- **Photos and video:** only your own work or your own clients', with a release from anyone on camera. Nothing shot on a job for an employer. Spa patient content needs the patient's written authorization.
-- **Adding a photo:** export a 1600px WebP at quality about 80 and an 800px copy named `-sm`, then add a link in the series page.
-- **After the first test spa:** add three of its vertical clips and the day-30 numbers to the spa page as a case study.
+- **Photos:** web-sized WebP copies in `images/home/`: hero frames (`hero-1`, `hero-violin`, `hero-ltns`, `hero-walk`),
+  the loud and quiet frames (`loud`, `quiet`), story cards (`s-*`), light-table frames (`t01` to `t12`) and service
+  previews (`v-*`). To swap one, export it about 1800px wide for hero frames or 640px for light-table frames and keep the name.
+- **Red-pencil notes** on the light table are the `<span class="note">` next to each circled frame.
+- **Smooth scrolling** uses [Lenis](https://github.com/darkroomengineering/lenis) (MIT), stored in `js/lenis.min.js`.
+- **Fonts** come from Google Fonts: Bodoni Moda and Jost everywhere, plus IBM Plex Mono and Nanum Pen Script on the homepage.
+- Motion turns off for visitors who have "reduce motion" on, and the slideshow can be paused.
+
+## Med spa page
+
+- Styles and script live inside `med-spas/index.html`. Same palette and fonts as the portfolio.
+- The promo in the phone is `media/spa-promo.mp4` (a `.webm` copy is the fallback) with `spa-promo.webp` as its still.
+  Keep each video here under about 2 MB: GitHub refuses files over 100 MB, warns over 50 MB, and big files slow the page.
+- Clinic stills are from the Health Services spot. After the first test spa, add three of its vertical clips and the day-30
+  numbers as a case study.
 
 ## Contact forms
 
-Both forms send through [Web3Forms](https://web3forms.com) to the inbox tied to the `access_key`. The portfolio form's subject
-starts with "Portfolio message", the spa form's with "Test spot request". Spam protection: a hidden `botcheck` box, and anything
-sent within 3 seconds of the page loading is dropped. No email address is written on the site.
+Both forms send through [Web3Forms](https://web3forms.com) to the inbox tied to the `access_key` in the form. Spam protection:
+a hidden `botcheck` box, and anything sent within 3 seconds of the page loading is dropped. The email address is deliberately
+not written anywhere on the site, so scrapers can't harvest it.
+
+## Styling
+
+The inner pages use [Tailwind CSS 2](https://v2.tailwindcss.com/) through a small prebuilt file, `css/tailwind.css`, which
+contains only the classes the pages use. Page styles sit in each page's `<style>` block; the nav button, footer, phone menu
+and photo viewer shared by the inner pages are in `css/site.css`.
+
+If you add or change Tailwind classes in any HTML file, rebuild the CSS so the new classes are included:
+
+```sh
+npm install        # first time only
+npm run build:css
+```
+
+Then commit the updated `css/tailwind.css`.
+
+## Adding photos
+
+Export WebP at about 2000px on the long edge and quality 80 before committing. A photo straight off the camera can be
+5 to 10 times larger and slows the galleries down, especially on phones. Then add it to the gallery page inside
+`<a class="gallery-link" href="photo.webp">` so the viewer picks it up.
 
 ## If you move to a custom domain
 
-Add the domain in Settings → Pages, then update the canonical links, `og:url`, `og:image` and JSON-LD addresses in
-`index.html`, the series pages and `med-spas/index.html`, plus `robots.txt`, `sitemap.xml` and the links in `404.html`.
+Add the domain in Settings, Pages, then update the canonical links, `og:url` and `og:image` addresses in every page,
+plus `robots.txt`, `sitemap.xml` and the full paths in `404.html`.

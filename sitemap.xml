@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://thesalatiz.github.io/js-cinematography/</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://thesalatiz.github.io/js-cinematography/about.html</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://thesalatiz.github.io/js-cinematography/videography.html</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://thesalatiz.github.io/js-cinematography/photography.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://thesalatiz.github.io/js-cinematography/gallery-commercial.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://thesalatiz.github.io/js-cinematography/gallery-grad.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://thesalatiz.github.io/js-cinematography/gallery-recital.html</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://thesalatiz.github.io/js-cinematography/contact.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://thesalatiz.github.io/js-cinematography/med-spas/</loc><lastmod>2026-10-19</lastmod></url>
 </urlset>
