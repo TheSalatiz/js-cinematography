@@ -1,90 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Georgia Southern graduates | Juan Sebastian Salazar</title>
-  <meta name="description" content="Graduation portraits for two students at Georgia Southern University, made on campus in May 2025, in the garden, by the hedge letters and under the university banners.">
-  <meta name="theme-color" content="#0F1A16">
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <link rel="canonical" href="https://thesalatiz.github.io/js-cinematography/gallery-grad.html">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Juan Sebastian Salazar">
-  <meta property="og:title" content="Georgia Southern graduates, a portrait series">
-  <meta property="og:description" content="Graduation portraits for two students at Georgia Southern University, made on campus in May 2025, in the garden, by the hedge letters and under the university banners.">
-  <meta property="og:url" content="https://thesalatiz.github.io/js-cinematography/gallery-grad.html">
-  <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/og.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Hanken+Grotesk:wght@400..700&display=swap">
-  <link rel="stylesheet" href="assets/portfolio.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Milestones & Portraits | Juan Sebastian</title>
+    <meta name="description" content="Milestones &amp; Portraits: graduation portrait sessions by Juan Sebastian.">
+    <link rel="canonical" href="https://thesalatiz.github.io/js-cinematography/gallery-grad.html">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Juan Sebastian">
+    <meta property="og:title" content="Milestones & Portraits | Juan Sebastian">
+    <meta property="og:description" content="Milestones &amp; Portraits: graduation portrait sessions by Juan Sebastian.">
+    <meta property="og:url" content="https://thesalatiz.github.io/js-cinematography/gallery-grad.html">
+    <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/DSC00956-min.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="css/tailwind.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+      :root { --accent-color: #8A6D34; --secondary-color: #8A6D34; --bg-color: #FAF8F4; --text-main: #111827; }
+      body { font-family: 'Jost', sans-serif; background-color: var(--bg-color); color: var(--text-main); -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+      h1, h2, h3, h4, .font-bold.tracking-wider { font-family: 'Bodoni Moda', serif; }
+
+      #main-nav { transition: background-color 0.4s ease, backdrop-filter 0.4s ease; }
+      .nav-scroll { background-color: rgba(250, 248, 244, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+      .menu-item a, .menu-item button { position: relative; transition: color 0.3s ease; color: var(--text-main); }
+      .menu-item a.active-link { font-weight: 700; color: var(--accent-color); }
+      .menu-item a:after, .menu-item button:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0%; height: 2px; background-color: var(--accent-color); transition: width 0.3s ease; }
+      .menu-item a:hover:after, .menu-item button:hover:after { width: 100%; }
+
+      .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      
+      .back-link { display: inline-flex; align-items: center; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; color: var(--text-main); transition: color 0.3s ease; margin-bottom: 2rem; }
+      .back-link::before { content: '←'; margin-right: 0.5rem; transition: transform 0.3s ease; }
+      .back-link:hover { color: var(--accent-color); }
+      .back-link:hover::before { transform: translateX(-5px); }
+
+      /* Pillar Layout CSS */
+      .gallery-item { border-radius: 0.25rem; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 100%; }
+      .gallery-item img { width: 100%; display: block; height: auto; }
+      
+      #mobile-menu { transition: max-height 0.4s ease, opacity 0.3s; max-height: 0; opacity: 0; overflow: hidden; display: block; }
+      #mobile-menu.open { max-height: 500px; opacity: 1; }
+          h1, h2, h3, h4 { font-weight: 500 !important; letter-spacing: -0.01em; }
+    </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-
-<header class="top">
-  <div class="wrap">
-    <a class="mark" href="./">Juan Sebastian</a>
-    <nav class="nav" aria-label="Sections">
-      <a href="./#films">Films</a>
-      <a href="./#photos" aria-current="page">Photos</a>
-      <a href="./#about">About</a>
-      <a href="./#contact">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<main id="main">
-  <section class="series-head" aria-labelledby="title">
-    <div class="wrap">
-      <a class="back" href="./#photos">All photographs</a>
-      <h1 id="title">Georgia Southern graduates</h1>
-      <p>Graduation portraits for two students at Georgia Southern University, made on campus in May 2025, in the garden, by the hedge letters and under the university banners.</p>
-    </div>
-  </section>
-
-  <section aria-label="Photos">
-    <div class="wrap">
-      <div class="masonry" data-gallery="Georgia Southern graduates">
-        <a href="img/work/grad/00709.webp"><img src="img/work/grad/00709-sm.webp" width="800" height="450" alt="Seen from behind, the graduate raises her arms toward the GSU hedge letters" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00517.webp"><img src="img/work/grad/00517-sm.webp" width="800" height="1421" alt="The graduate tossing her cap into the air on a garden path" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00409.webp"><img src="img/work/grad/00409-sm.webp" width="800" height="1200" alt="A graduate in a navy gown standing between hedges on a brick path" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00504.webp"><img src="img/work/grad/00504-sm.webp" width="800" height="1301" alt="The graduate smiling on the path, her cap in hand and stoles over her gown" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00563.webp"><img src="img/work/grad/00563-sm.webp" width="800" height="1200" alt="The graduate holding out her cap in front of the GSU hedge letters" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00637.webp"><img src="img/work/grad/00637-sm.webp" width="800" height="450" alt="The graduate with one hand on her cap in front of the GSU hedge letters" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00677.webp"><img src="img/work/grad/00677-sm.webp" width="800" height="498" alt="The graduate with her arms spread wide in front of the hedge letters" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00811.webp"><img src="img/work/grad/00811-sm.webp" width="800" height="1421" alt="The graduate holding up her cap under a Georgia Southern University banner" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/00956.webp"><img src="img/work/grad/00956-sm.webp" width="800" height="450" alt="The graduate, now in a white dress, walking away down a tree-lined road with her cap in hand" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/walk.webp"><img src="img/work/grad/walk-sm.webp" width="800" height="450" alt="A graduate in a navy gown walking away down a road lined with oaks and university banners" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/01238.webp"><img src="img/work/grad/01238-sm.webp" width="800" height="1200" alt="A graduate in a black suit and a red, white and blue stole, standing on a garden path" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/01634.webp"><img src="img/work/grad/01634-sm.webp" width="800" height="450" alt="The graduate looking down and smiling beside a Georgia Southern University banner" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/01357.webp"><img src="img/work/grad/01357-sm.webp" width="800" height="450" alt="The graduate leaning on a stair rail outside a brick building" loading="lazy" decoding="async"></a>
-        <a href="img/work/grad/01394.webp"><img src="img/work/grad/01394-sm.webp" width="800" height="1421" alt="The graduate standing on the steps of a columned building under a Georgia Southern banner" loading="lazy" decoding="async"></a>
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-transparent">
+      <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <a href="index.html" class="text-xl font-bold tracking-wider" style="font-family: 'Bodoni Moda', serif;">Juan Sebastian</a>
+        <button id="mobile-menu-toggle" class="md:hidden text-gray-800 focus:outline-none" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
+        <ul class="hidden md:flex items-center space-x-10 text-sm uppercase font-medium tracking-widest">
+            <li class="menu-item"><a href="index.html">Home</a></li>
+            <li class="menu-item"><a href="about.html">About Me</a></li>
+            <li class="menu-item"><a href="videography.html">Videography</a></li>
+            <li class="menu-item"><a href="photography.html" class="active-link">Photography</a></li>
+            <li class="menu-item"><a href="contact.html" class="nav-cta">Get in Touch</a></li>
+        </ul>
       </div>
-    </div>
-  </section>
-
-  <section class="others" aria-labelledby="more">
-    <div class="wrap">
-      <h2 id="more">More photographs</h2>
-      <ul>
-        <li><a href="gallery-commercial.html">Affogato</a></li>
-        <li><a href="gallery-recital.html">Violinist</a></li>
-        <li><a href="./#films">Films</a></li>
+      <ul id="mobile-menu" class="md:hidden bg-white border-b border-gray-100 px-6 py-4 space-y-2 text-gray-800 shadow-lg">
+          <li><a href="index.html" class="block py-2">Home</a></li>
+          <li><a href="about.html" class="block py-2">About Me</a></li>
+          <li><a href="videography.html" class="block py-2">Videography</a></li>
+          <li><a href="photography.html" class="block py-2 font-bold" style="color: var(--accent-color);">Photography</a></li>
+          <li><a href="contact.html" class="nav-cta w-full mt-2">Get in Touch</a></li>
       </ul>
-    </div>
-  </section>
-</main>
+    </nav>
 
-<footer>
-  <div class="wrap">
-    <span>&copy; 2026 Juan Sebastian Salazar, Las Vegas, Nevada</span>
-    <a href="https://www.linkedin.com/in/juan-salazar-68a389261/" rel="me noopener">LinkedIn</a>
-  </div>
-</footer>
+    <main class="py-28 sm:py-36 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 reveal" data-animate>
+                <a href="photography.html" class="back-link">Back to Galleries</a>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Milestones & Portraits</h1>
+                <p class="text-xl text-gray-600 max-w-2xl">A collection of individual portraits designed to highlight confidence, character, and the beauty of a milestone fulfilled.</p>
+            </div>
 
-<script src="assets/portfolio.js" defer></script>
+            <div class="flex flex-col md:flex-row gap-6 reveal" data-animate data-gallery="Milestones &amp; Portraits" style="animation-delay: 0.1s;">
+                
+                <div class="flex flex-col gap-6 flex-1">
+                    <div class="gallery-item"><a class="gallery-link" href="DSC01394-2.webp"><img src="DSC01394-2-sm.webp" width="800" height="1421" alt="Graduate in a suit and stole standing on the steps under a Georgia Southern banner" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00637.webp"><img src="DSC00637-sm.webp" width="800" height="450" alt="Graduate adjusting her cap and smiling in front of the Georgia Southern hedge" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC01628-2.webp"><img src="DSC01628-2-sm.webp" width="800" height="450" alt="Graduate with a red, white and blue stole looking away beside a Georgia Southern banner" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00709.webp"><img src="DSC00709-sm.webp" width="800" height="450" alt="Graduate seen from behind with arms outstretched in front of the Georgia Southern hedge" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC01634-2.webp"><img src="DSC01634-2-sm.webp" width="800" height="450" alt="Graduate smiling down beside a Georgia Southern banner" loading="lazy"></a></div>
+                </div>
+
+                <div class="flex flex-col gap-6 flex-1">
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00504-2.webp"><img src="DSC00504-2-sm.webp" width="800" height="1301" alt="Graduate in a navy gown holding her cap on a brick garden path" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00677.webp"><img src="DSC00677-sm.webp" width="800" height="498" alt="Graduate with arms spread wide, kicking up one heel in front of the Georgia Southern hedge" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC01238.webp"><img src="DSC01238-sm.webp" width="800" height="1200" alt="Graduate in a suit with a red, white and blue stole in a tree-lined park" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00661.webp"><img src="DSC00661-sm.webp" width="800" height="450" alt="Graduate laughing with her hands to her face in front of the Georgia Southern hedge" loading="lazy"></a></div>
+                </div>
+
+                <div class="flex flex-col gap-6 flex-1">
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00540.webp"><img src="DSC00540-sm.webp" width="800" height="450" alt="Graduate holding her cap up and kicking one heel in front of the Georgia Southern hedge" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC00517.webp"><img src="DSC00517-sm.webp" width="800" height="1421" alt="Graduate tossing her cap into the air on a tree-lined path" loading="lazy"></a></div>
+                    <div class="gallery-item"><a class="gallery-link" href="DSC01241-2.webp"><img src="DSC01241-2-sm.webp" width="800" height="1476" alt="Graduate holding his diploma cover on the steps of a campus building" loading="lazy"></a></div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer-inner">
+        <div>
+          <p class="site-footer-name">Juan Sebastian</p>
+          <p>Videography &amp; photography &middot; Las Vegas, NV</p>
+        </div>
+        <nav class="site-footer-links" aria-label="Footer">
+          <a href="about.html">About</a>
+          <a href="videography.html">Videography</a>
+          <a href="photography.html">Photography</a>
+          <a href="contact.html" class="site-footer-cta">Get in Touch &rarr;</a>
+          <a href="https://www.linkedin.com/in/juan-salazar-68a389261/" rel="me noopener">LinkedIn</a>
+        </nav>
+      </div>
+      <p class="site-footer-copy">&copy; 2026 Juan Sebastian. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuButton = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if(menuButton && mobileMenu) {
+          menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open'); menuButton.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+            if (mobileMenu.classList.contains('open')) { mobileMenu.style.maxHeight = '500px'; mobileMenu.style.opacity = '1'; }
+            else { mobileMenu.style.maxHeight = '0'; mobileMenu.style.opacity = '0'; }
+          });
+        }
+        
+        const nav = document.getElementById('main-nav');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) nav.classList.add('nav-scroll'); else nav.classList.remove('nav-scroll');
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0, rootMargin: '0px 0px -6% 0px' });
+        document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
+      });
+    </script>
+    <script src="js/viewer.js" defer></script>
 </body>
 </html>

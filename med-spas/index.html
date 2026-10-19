@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Video for Las Vegas med spas | Juan Sebastian</title>
   <meta name="description" content="Twelve short videos in 30 days from one half-day at your spa: planned, filmed, edited, captioned in English and Spanish, and posted for independent Las Vegas med spas, with a day-30 report on views, DMs and bookings. Free from me for 3 spas a month.">
-  <meta name="theme-color" content="#12241E">
+  <meta name="theme-color" content="#100F0D">
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <!-- If you move to a custom domain, change these addresses to it. -->
@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/med-spas/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Twelve videos in 30 days from one half-day at your spa: a calendar of the 30-day test">
+  <meta property="og:image:alt" content="Twelve videos in 30 days from one half-day at your spa, in gold type beside a phone inside a ring light">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -30,239 +30,293 @@
     "image": "https://thesalatiz.github.io/js-cinematography/med-spas/og.jpg",
     "areaServed": { "@type": "City", "name": "Las Vegas, NV" },
     "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV", "addressCountry": "US" },
-    "knowsLanguage": ["en", "es"]
+    "knowsLanguage": ["en", "es"],
+    "founder": { "@type": "Person", "name": "Juan Sebastian Salazar", "url": "https://thesalatiz.github.io/js-cinematography/" }
   }
   </script>
   <link rel="preload" as="image" href="../media/spa-promo.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..600,0..100&family=Hanken+Grotesk:wght@400..700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@400;500;600&display=swap">
   <style>
-  /* One page for a busy med spa owner on a phone. The hero is the memorable
-     moment: a phone playing the promo video inside a ring light, the tool every
-     injector's content is shot with. Everything after it stays calm. */
+  /* One page for a busy med spa owner on a phone, in the portfolio's palette:
+     a night hero with tungsten gold, then warm white pages with gold accents.
+     The memorable moment is the hero: the promo playing on a phone inside a
+     ring light, the tool every injector's content is shot with. */
   :root {
-    --pine: #12241E;        /* hero and dark bands */
-    --pine-deep: #0D1B16;
-    --porcelain: #EEF1EE;   /* page */
-    --card: #FBFCFB;
-    --mint: #DCE9E2;        /* tinted bands */
-    --mint-soft: #BFE6D6;   /* small text on pine, 10:1 */
-    --ink: #33433D;         /* body text on light */
-    --moss: #56655F;        /* secondary text on light, 5.4:1 */
-    --emerald: #0B6E52;     /* buttons and links on light */
-    --emerald-dark: #085641;
-    --line: rgba(18, 36, 30, 0.14);
-    --line-dark: rgba(238, 241, 238, 0.16);
+    --night: #100F0D;        /* hero, proof band, footer */
+    --raised: #1A1916;
+    --chalk: #EDE7DC;        /* text on night */
+    --smoke: #A39C90;        /* secondary text on night, 7:1 */
+    --tungsten: #C9A862;     /* gold on night */
+    --paper: #FAF8F4;        /* page */
+    --white: #FFFFFF;
+    --ink: #191814;          /* headings on light */
+    --body: #3F3D37;         /* text on light */
+    --muted: #5C5A53;        /* secondary text on light, 6.6:1 */
+    --gold: #8A6D34;         /* gold text and buttons on light, 4.7:1 */
+    --gold-dark: #6E5627;
+    --gold-line: #B4975A;    /* hairlines and ornaments only */
+    --line: rgba(25, 24, 20, 0.12);
+    --line-dark: rgba(237, 231, 220, 0.16);
 
-    --display: "Fraunces", "Iowan Old Style", Georgia, serif;
-    --text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+    --text: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
     --gutter: clamp(20px, 5vw, 56px);
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
     color-scheme: light;
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html { background: var(--porcelain); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-  body { margin: 0; background: var(--porcelain); color: var(--ink); font-family: var(--text); font-size: 18px; line-height: 1.55; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  html { background: var(--paper); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--paper); color: var(--body); font-family: var(--text); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
   img, video { display: block; max-width: 100%; }
   img { height: auto; }
   p { margin: 0 0 1em; }
-  a { color: var(--emerald); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
-  a:hover { color: var(--emerald-dark); }
-  :focus-visible { outline: 3px solid var(--emerald); outline-offset: 3px; border-radius: 4px; }
-  .dark :focus-visible { outline-color: var(--mint-soft); }
+  a { color: var(--gold); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--gold-dark); }
+  :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+  .night :focus-visible { outline-color: var(--tungsten); }
   button { font: inherit; }
-  h1, h2 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; font-variation-settings: "opsz" 144, "SOFT" 100; }
-  h1 { font-size: clamp(2.6rem, 1.5rem + 4.6vw, 5rem); line-height: 1.0; letter-spacing: -0.022em; }
-  h2 { font-size: clamp(2.1rem, 1.5rem + 2.3vw, 3.25rem); line-height: 1.06; letter-spacing: -0.014em; color: var(--pine); margin-bottom: 0.55em; }
-  h3 { font-family: var(--text); font-size: 1.12rem; line-height: 1.3; font-weight: 650; color: var(--pine); margin: 0 0 0.3em; }
+  h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+  h1 em, h2 em { font-style: italic; color: var(--gold); }
+  .night h1 em, .night h2 em { color: var(--tungsten); }
+  h1 { font-size: clamp(2.5rem, 1.4rem + 4.4vw, 4.9rem); line-height: 1.02; }
+  h2 { font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.4rem); line-height: 1.06; color: var(--ink); margin-bottom: 0.5em; }
+  h3 { font-family: var(--text); font-size: 1.12rem; line-height: 1.35; font-weight: 600; color: var(--ink); margin: 0 0 0.3em; }
   .wrap { width: min(100%, 1200px); margin-inline: auto; padding-inline: var(--gutter); }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-  .skip { position: absolute; left: 12px; top: -80px; background: var(--porcelain); color: var(--pine); padding: 12px 16px; border-radius: 8px; z-index: 10; font-weight: 600; }
+  .skip { position: absolute; left: 12px; top: -80px; background: var(--paper); color: var(--ink); padding: 12px 16px; z-index: 10; font-weight: 600; }
   .skip:focus { top: 12px; }
+  .kicker { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
+  .kicker::before { content: ""; width: 34px; height: 1px; background: currentColor; opacity: 0.7; }
+  .night .kicker { color: var(--tungsten); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 0; cursor: pointer; background: var(--emerald); color: #fff; font: 600 1.05rem/1 var(--text); text-decoration: none; transition: background-color 0.2s, transform 0.2s; }
-  .btn:hover { background: var(--emerald-dark); color: #fff; }
-  .dark .btn { background: var(--porcelain); color: var(--pine); }
-  .dark .btn:hover { background: #fff; color: var(--pine); }
-  .textlink { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
-  .dark { background: var(--pine); color: #DCE6E0; }
-  .dark h1, .dark h2, .dark h3 { color: #F3F6F4; }
-  .dark a:not(.btn) { color: var(--porcelain); text-decoration-color: var(--mint-soft); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 54px; padding: 0 30px; border: 1px solid var(--gold); background: var(--gold); color: #fff; font: 500 0.88rem/1 var(--text); letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease); }
+  .btn:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .night .btn { background: var(--tungsten); border-color: var(--tungsten); color: var(--night); }
+  .night .btn:hover { background: transparent; color: var(--tungsten); }
+  .textlink { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.86rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; }
+  .night { position: relative; background: var(--night); color: var(--chalk); }
+  .night h1, .night h2 { color: var(--chalk); }
+  .night h3 { color: var(--chalk); }
+  .night a:not(.btn) { color: var(--chalk); }
+  .night a:not(.btn):hover { color: var(--tungsten); }
+
+  /* film grain on the dark bands, as on the portfolio */
+  .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.05; z-index: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  .grain > * { position: relative; z-index: 1; }
 
   /* header sits on the hero */
-  .top { padding-block: 14px; }
+  .top { position: sticky; top: 0; z-index: 20; padding-block: calc(env(safe-area-inset-top, 0px) + 12px) 12px; background: var(--night); transition: background-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+  .top.solid { background: rgba(16, 15, 13, 0.9); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(237, 231, 220, 0.08); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .mark { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--display); font-size: 1.35rem; text-decoration: none; font-variation-settings: "opsz" 36, "SOFT" 100; }
-  .dark .mark { color: var(--porcelain); text-decoration: none; }
-  .top .btn { min-height: 46px; padding: 0 20px; font-size: 0.98rem; }
+  .mark { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.84rem; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase; text-decoration: none; }
+  .top .btn { min-height: 46px; padding: 0 20px; font-size: 0.8rem; }
 
   /* hero */
-  .hero { padding-block: clamp(20px, 4vw, 56px) clamp(56px, 8vw, 104px); overflow: hidden; }
-  .hero .wrap { display: grid; gap: 48px; align-items: center; }
-  .hero h1 { margin-bottom: 24px; max-width: 13ch; }
-  .lead { font-size: 1.18rem; line-height: 1.55; color: #DCE6E0; margin-bottom: 30px; max-width: 34rem; }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
-  .note { margin: 20px 0 0; font-size: 1rem; color: var(--mint-soft); }
+  .hero { padding-block: clamp(24px, 4vw, 56px) clamp(64px, 9vw, 112px); overflow: hidden; }
+  .hero .wrap { display: grid; gap: 40px; align-items: center; grid-template-areas: 'head' 'stage' 'body'; }
+  .hero-head { grid-area: head; }
+  .hero-body { grid-area: body; }
+  .stagebox { grid-area: stage; }
+  .hero h1 { max-width: 13ch; }
+  .lead { font-size: 1.16rem; line-height: 1.6; color: rgba(237, 231, 220, 0.86); margin-bottom: 32px; max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
+  .note { margin: 22px 0 0; font-size: 1rem; color: var(--smoke); }
+  .note b { color: var(--tungsten); font-weight: 500; }
 
-  .stagebox { position: relative; display: grid; justify-items: center; gap: 14px; padding-block: 10px; }
+  .stagebox { position: relative; display: grid; justify-items: center; gap: 16px; padding-block: 10px; }
   .halo { position: absolute; left: 50%; top: 46%; width: min(118%, 560px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%;
-    border: clamp(22px, 3.4vw, 34px) solid #F4FAF7; opacity: 0.22; filter: blur(1.5px);
-    box-shadow: 0 0 90px 24px rgba(214, 240, 228, 0.5), inset 0 0 70px 14px rgba(214, 240, 228, 0.45); pointer-events: none; }
-  .phone { position: relative; width: min(70vw, 300px); border-radius: 42px; padding: 10px; background: #0A1411; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 0 0 1.5px rgba(238, 241, 238, 0.12); }
-  .phone video, .phone img { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 32px; background: var(--pine-deep); }
-  .vidctl { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line-dark); background: transparent; color: var(--mint-soft); cursor: pointer; font-size: 0.95rem; }
-  .vidctl:hover { color: var(--porcelain); border-color: rgba(238, 241, 238, 0.4); }
+    border: clamp(20px, 3.2vw, 32px) solid #FFF4DF; opacity: 0.3; filter: blur(1.5px);
+    box-shadow: 0 0 90px 24px rgba(232, 200, 140, 0.42), inset 0 0 70px 14px rgba(232, 200, 140, 0.38); pointer-events: none;
+    animation: breathe 7s ease-in-out infinite; }
+  @keyframes breathe { 0%, 100% { opacity: 0.24; } 50% { opacity: 0.36; } }
+  .phone { position: relative; width: min(70vw, 300px); border-radius: 42px; padding: 10px; background: #0B0A09; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 1.5px rgba(237, 231, 220, 0.14); }
+  .phone video, .phone img { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 32px; background: var(--night); }
+  .vidctl { position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1px solid var(--line-dark); background: rgba(16, 15, 13, 0.6); color: var(--smoke); cursor: pointer; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .vidctl:hover { color: var(--chalk); border-color: rgba(237, 231, 220, 0.45); }
 
   /* sections */
-  section.band { padding-block: clamp(64px, 9vw, 120px); }
-  .mintband { background: var(--mint); }
-  .two { display: grid; gap: 40px; }
+  section.band { padding-block: clamp(72px, 10vw, 128px); }
+  section[id] { scroll-margin-top: 72px; }
+  .whiteband { background: var(--white); }
+  .two { display: grid; gap: 44px; }
   .prose { max-width: 36rem; }
-  .intro { font-size: 1.15rem; max-width: 40rem; margin-bottom: 36px; }
+  .intro { font-size: 1.15rem; max-width: 42rem; margin-bottom: 40px; }
 
-  /* the menu: priced like a treatment menu, so the free test reads against real prices */
-  .menu { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: clamp(22px, 3.6vw, 40px); }
-  .menu h3 { font-family: var(--display); font-weight: 400; font-size: 1.6rem; font-variation-settings: "opsz" 48, "SOFT" 100; margin-bottom: 18px; }
-  .item { padding: 18px 0; border-top: 1px solid var(--line); }
-  .item .name { display: flex; align-items: baseline; gap: 12px; font-weight: 650; color: var(--pine); font-size: 1.12rem; }
-  .item .name::after { content: ""; order: 2; flex: 1 1 auto; border-bottom: 2px dotted rgba(18, 36, 30, 0.28); transform: translateY(-5px); min-width: 24px; }
-  .item .name .price { order: 3; font-family: var(--display); font-weight: 450; font-size: 1.4rem; font-variation-settings: "opsz" 48, "SOFT" 100; white-space: nowrap; }
-  .item .name .per { font-family: var(--text); font-size: 0.95rem; font-weight: 500; color: var(--moss); }
-  .item p { margin: 6px 0 0; color: var(--moss); font-size: 1rem; max-width: 30rem; }
-  .item.free { margin-top: 6px; padding: 20px; border: 2px solid var(--emerald); border-radius: 16px; background: #F3F9F6; }
-  .item.free .price { color: var(--emerald); font-size: 2rem; }
-  .menu .fine { margin: 16px 0 0; font-size: 0.95rem; color: var(--moss); }
-  .why { display: grid; gap: 26px; }
-  .why ul { margin: 0; padding-left: 1.2em; }
-  .why li { margin-bottom: 8px; }
-  .why li::marker { color: var(--emerald); }
+  /* the menu: printed like a treatment menu, so the free test reads against real prices */
+  .menu { position: relative; background: var(--white); border: 1px solid var(--line); padding: clamp(26px, 4vw, 46px); box-shadow: 0 30px 60px -40px rgba(25, 24, 20, 0.35); }
+  .menu::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(180, 151, 90, 0.35); pointer-events: none; }
+  .menu-head { text-align: center; margin-bottom: 18px; }
+  .menu-head p { margin: 0; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
+  .menu-head h3 { font-family: var(--display); font-weight: 500; font-size: 1.9rem; margin: 6px 0 0; }
+  .item { padding: 20px 0; border-top: 1px solid var(--line); }
+  .item .name { display: flex; align-items: baseline; gap: 12px; font-family: var(--display); font-weight: 500; color: var(--ink); font-size: 1.35rem; line-height: 1.2; }
+  .item .name::after { content: ""; order: 2; flex: 1 1 auto; border-bottom: 1px dotted rgba(25, 24, 20, 0.4); transform: translateY(-6px); min-width: 24px; }
+  .item .name .price { order: 3; font-size: 1.5rem; white-space: nowrap; }
+  .item .name .per { font-family: var(--text); font-size: 0.9rem; font-weight: 400; color: var(--muted); }
+  .item p { margin: 8px 0 0; color: var(--muted); font-size: 1rem; max-width: 30rem; }
+  .item.free { margin-top: 8px; padding: 22px; border: 1px solid var(--gold); background: #FBF7EE; }
+  .item.free .price { color: var(--gold); font-style: italic; font-size: 2.2rem; }
+  .menu .fine { margin: 18px 0 0; font-size: 0.95rem; color: var(--muted); text-align: center; }
+  .why { display: grid; gap: 30px; }
+  .why ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+  .why li { position: relative; padding-left: 28px; }
+  .why li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 9px; height: 9px; border: 1px solid var(--gold); transform: rotate(45deg); }
   .why p { margin: 0; }
-  .honest { padding: 16px 18px; border-radius: 14px; background: var(--mint); color: var(--pine); font-size: 1rem; }
+  .why p + p { margin-top: 12px; }
+  .worth { display: flex; gap: 18px; align-items: baseline; padding: 18px 20px; border-left: 2px solid var(--gold-line); background: #F4EFE4; color: var(--ink); }
+  .worth strong { font-family: var(--display); font-weight: 500; font-size: 1.8rem; line-height: 1; color: var(--gold); white-space: nowrap; }
+  .worth span { font-size: 1rem; }
+  .honest { padding: 18px 20px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 1rem; }
 
   /* the 30-day calendar */
-  .cal { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px clamp(14px, 3vw, 26px) 20px; }
-  .cal h3 { font-family: var(--display); font-weight: 400; font-size: 1.55rem; line-height: 1.15; margin-bottom: 4px; font-variation-settings: "opsz" 48, "SOFT" 100; }
-  .cal .sub { font-size: 0.95rem; color: var(--moss); margin-bottom: 16px; }
+  .cal { background: var(--paper); border: 1px solid var(--line); padding: 24px clamp(14px, 3vw, 28px) 22px; }
+  .cal h3 { font-family: var(--display); font-weight: 500; font-size: 1.6rem; line-height: 1.15; margin-bottom: 4px; }
+  .cal .sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; }
   .cal table { border-collapse: separate; border-spacing: 4px; table-layout: fixed; margin-inline: -4px; width: calc(100% + 8px); }
-  .cal th { font: 600 0.875rem/1 var(--text); color: var(--moss); padding: 0 0 6px; text-align: center; }
-  .cal td { height: 48px; padding: 0; border-radius: 10px; background: #F1F4F2; text-align: center; vertical-align: middle; }
-  .cal td.shoot { background: var(--pine); color: #fff; font-weight: 650; font-size: 0.875rem; }
-  .cal td.report { background: var(--card); box-shadow: inset 0 0 0 2px var(--emerald); color: var(--pine); font-weight: 650; font-size: 0.95rem; }
-  .cal .post { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--emerald); color: #fff; font-weight: 650; font-size: 0.875rem; vertical-align: middle; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1.2), opacity 0.2s; }
+  .cal th { font: 500 0.82rem/1 var(--text); letter-spacing: 0.12em; color: var(--muted); padding: 0 0 6px; text-align: center; }
+  .cal td { height: 48px; padding: 0; background: #EFEAE0; text-align: center; vertical-align: middle; }
+  .cal td.shoot { background: var(--night); color: var(--tungsten); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .cal td.report { background: var(--white); box-shadow: inset 0 0 0 1.5px var(--gold); color: var(--ink); font-family: var(--display); font-size: 1.05rem; }
+  .cal .post { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: #fff; font-weight: 600; font-size: 0.85rem; vertical-align: middle; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2), opacity 0.2s; }
   .cal.arm .post { transform: scale(0.2); opacity: 0; }
   .cal.arm.play .post { transform: scale(1); opacity: 1; transition-delay: calc(var(--i) * 70ms); }
   .legend { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; font-size: 0.95rem; }
   .legend li { display: flex; align-items: center; gap: 10px; }
-  .key { flex: none; width: 18px; height: 18px; border-radius: 5px; }
-  .k-shoot { background: var(--pine); }
-  .k-post { background: var(--emerald); border-radius: 50%; }
-  .k-report { box-shadow: inset 0 0 0 2px var(--emerald); }
-  .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; counter-reset: step; }
-  .steps li { position: relative; padding-left: 52px; }
-  .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: -2px; width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--pine); color: #fff; font-weight: 650; font-size: 0.95rem; }
-  .steps p { margin: 0; color: var(--ink); }
+  .key { flex: none; width: 18px; height: 18px; }
+  .k-shoot { background: var(--night); }
+  .k-post { background: var(--gold); border-radius: 50%; }
+  .k-report { box-shadow: inset 0 0 0 1.5px var(--gold); background: var(--white); }
+  .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 22px; counter-reset: step; }
+  .steps li { position: relative; padding-left: 58px; }
+  .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: -4px; width: 40px; height: 40px; border: 1px solid var(--gold-line); border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 1.15rem; color: var(--gold); }
+  .steps p { margin: 0; }
 
-  /* proof */
+  /* proof, on night */
   .proof figure { margin: 0; }
-  .shot { position: relative; display: block; border-radius: 16px; overflow: hidden; aspect-ratio: 16 / 9; background: var(--pine-deep); }
-  .shot img { width: 100%; height: 100%; object-fit: cover; }
-  .shot .tag { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px 0 16px; border-radius: 999px; background: rgba(13, 27, 22, 0.85); color: var(--porcelain); font-weight: 600; }
-  .shot .tri { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent currentColor; }
-  .proof figcaption { margin-top: 10px; font-size: 0.95rem; color: var(--mint-soft); }
-  .pours { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 26px; }
-  .pours img { border-radius: 10px; aspect-ratio: 2 / 3; object-fit: cover; }
+  .shot { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; background: var(--raised); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .shot:hover img { transform: scale(1.03); }
+  .shot .tag { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 12px; min-height: 46px; padding: 0 18px 0 16px; background: rgba(16, 15, 13, 0.86); color: var(--chalk); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+  .shot .tri { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent var(--tungsten); }
+  .proof figcaption { margin-top: 10px; font-size: 0.95rem; color: var(--smoke); }
+  .stills { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .stills img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+  .stills span { display: block; margin-top: 8px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--smoke); }
 
-  .safe { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
-  .safe p { margin: 0; color: var(--ink); }
+  .safe { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; }
+  .safe li { position: relative; padding-left: 50px; }
+  .safe li::before { content: ""; position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); }
+  .safe li::after { content: ""; position: absolute; left: 11px; top: 6px; width: 8px; height: 15px; border-right: 2.5px solid #fff; border-bottom: 2.5px solid #fff; transform: rotate(45deg); }
+  .safe p { margin: 0; }
 
-  .about-photo { width: min(100%, 320px); aspect-ratio: 4 / 5; object-fit: cover; border-radius: 12px; background: #111; }
+  .about-photo { width: min(100%, 340px); aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; filter: grayscale(1) contrast(1.05); background: #111; }
+  .sign { font-family: var(--display); font-style: italic; font-size: 1.6rem; color: var(--gold); margin-top: 6px; }
 
-  .faq { max-width: 46rem; border-top: 1px solid var(--line); }
+  .faq { max-width: 48rem; border-top: 1px solid var(--line); }
   .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 14px 0; font-weight: 650; color: var(--pine); font-size: 1.05rem; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; padding: 14px 0; font-family: var(--display); font-weight: 500; color: var(--ink); font-size: 1.28rem; line-height: 1.25; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: ""; flex: none; width: 12px; height: 12px; border-right: 2px solid var(--emerald); border-bottom: 2px solid var(--emerald); transform: rotate(45deg) translate(-3px, -3px); transition: transform 0.2s; }
+  .faq summary::after { content: ""; flex: none; width: 11px; height: 11px; border-right: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold); transform: rotate(45deg) translate(-3px, -3px); transition: transform 0.25s; }
   .faq details[open] summary::after { transform: rotate(-135deg) translate(-3px, -3px); }
-  .faq details p { padding: 0 0 18px; max-width: 40rem; margin: 0; }
+  .faq details p { padding: 0 0 20px; max-width: 42rem; margin: 0; }
 
-  .claim { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 4vw, 40px); }
-  .claim form { display: grid; gap: 18px; }
-  .field { display: grid; gap: 6px; }
-  .field label { font-weight: 600; color: var(--pine); font-size: 1rem; }
-  .field .opt { font-weight: 400; color: var(--moss); }
-  .field input, .field textarea { font: inherit; font-size: 1.05rem; color: var(--pine); background: #fff; border: 1px solid rgba(18, 36, 30, 0.28); border-radius: 12px; padding: 12px 14px; min-height: 52px; width: 100%; }
-  .field textarea { min-height: 110px; resize: vertical; }
-  .field input:focus, .field textarea:focus { outline: 3px solid rgba(11, 110, 82, 0.35); outline-offset: 0; border-color: var(--emerald); }
-  .two-fields { display: grid; gap: 18px; }
+  .claim { background: var(--white); border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); box-shadow: 0 30px 60px -40px rgba(25, 24, 20, 0.35); }
+  .claim form { display: grid; gap: 20px; }
+  .field { display: grid; gap: 8px; }
+  .field label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
+  .field .opt { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--muted); }
+  .field input, .field textarea { font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--paper); border: 1px solid rgba(25, 24, 20, 0.22); border-radius: 0; padding: 12px 14px; min-height: 52px; width: 100%; }
+  .field textarea { min-height: 116px; resize: vertical; }
+  .field input:focus, .field textarea:focus { outline: 2px solid rgba(138, 109, 52, 0.45); outline-offset: 0; border-color: var(--gold); background: var(--white); }
+  .two-fields { display: grid; gap: 20px; }
   .trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  .fine { font-size: 0.95rem; color: var(--moss); margin: 0; }
-  #status { font-weight: 600; margin: 0; }
-  #status.ok { color: var(--emerald); }
+  .fine { font-size: 0.95rem; color: var(--muted); margin: 0; }
+  #status { font-weight: 500; margin: 0; }
+  #status.ok { color: #2F6B3A; }
   #status.err { color: #A3241A; }
 
-  footer { padding-block: 40px 56px; font-size: 0.95rem; }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; color: #C9D6CF; }
+  footer { padding-block: 44px calc(env(safe-area-inset-bottom, 0px) + 56px); font-size: 0.95rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; color: var(--smoke); }
   footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
-  dialog.viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(6, 11, 9, 0.97); color: var(--porcelain); }
-  dialog.viewer::backdrop { background: rgba(6, 11, 9, 0.9); }
+  dialog.viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(8, 7, 6, 0.97); color: var(--chalk); }
+  dialog.viewer::backdrop { background: rgba(8, 7, 6, 0.9); }
   .viewer .bar { display: flex; justify-content: flex-end; padding: 10px var(--gutter); }
-  .viewer .close { min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line-dark); background: transparent; color: var(--porcelain); cursor: pointer; }
+  .viewer .close { min-height: 44px; padding: 0 18px; border: 1px solid var(--line-dark); background: transparent; color: var(--chalk); cursor: pointer; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .viewer .close:hover { border-color: var(--tungsten); color: var(--tungsten); }
   .viewer .frame { width: min(calc(100% - 2 * var(--gutter)), calc((100dvh - 120px) * 16 / 9)); margin: 10px auto 0; aspect-ratio: 16 / 9; background: #000; }
   .viewer iframe { width: 100%; height: 100%; border: 0; display: block; }
 
   @media (min-width: 960px) {
-    .hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 56px; }
+    .hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-areas: 'head stage' 'body stage'; column-gap: 56px; row-gap: 28px; align-items: end; }
+    .hero-body { align-self: start; }
     .phone { width: 300px; }
-    .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+    .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 76px; align-items: start; }
     .value .two { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
+    .safe { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 48px; }
     .about-grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); align-items: center; }
     .claim-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
     .two-fields { grid-template-columns: 1fr 1fr; }
   }
+  @media (max-width: 520px) {
+    .stills { grid-template-columns: 1fr 1fr; }
+    .stills li:first-child { grid-column: 1 / -1; }
+    .worth { flex-direction: column; gap: 8px; }
+  }
   @media (max-width: 420px) {
-    .cal { border-radius: 18px; padding-inline: 12px; }
+    .cal { padding-inline: 12px; }
     .cal td { height: 46px; }
     .cal .post { width: 30px; height: 30px; }
-    .top .btn { padding: 0 16px; }
+    .cal td.shoot { font-size: 0.64rem; letter-spacing: 0; }
+    .top .btn { padding: 0 14px; letter-spacing: 0.14em; }
+    .mark { letter-spacing: 0.26em; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    .halo { animation: none; }
     .cal.arm .post { transform: none; opacity: 1; transition: none; }
+    .shot img { transition: none; }
   }
   </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<div class="dark">
-  <header class="top">
+<header class="top night grain" id="top-bar">
     <div class="wrap">
       <a class="mark" href="../">Juan Sebastian</a>
-      <a class="btn" href="#apply">Apply for a spot</a>
+      <a class="btn" href="#apply">Apply</a>
     </div>
-  </header>
+</header>
+
+<div class="night grain">
 
   <section class="hero" id="top" aria-labelledby="hero-h">
     <div class="wrap">
-      <div>
-        <h1 id="hero-h">Twelve videos in 30 days from one half&#8209;day at your spa.</h1>
+      <div class="hero-head">
+        <p class="kicker">For Las Vegas med spas</p>
+        <h1 id="hero-h">Twelve videos in 30 days from <em>one half&#8209;day</em> at your spa.</h1>
+      </div>
+      <div class="hero-body">
         <p class="lead">I plan, film, edit, caption and post short videos for independent med spas in Las Vegas. The first three go live within 72 hours of your shoot, and on day 30 you get a report with your real numbers: views, DMs and bookings.</p>
         <div class="actions">
           <a class="btn" href="#apply">Apply for a test spot</a>
           <a class="textlink" href="#value">Why it&rsquo;s free</a>
         </div>
-        <p class="note">Free from me, for 3 Las Vegas spas a month.</p>
+        <p class="note"><b>Free from me</b>, for 3 Las Vegas spas a month.</p>
       </div>
       <div class="stagebox">
         <div class="halo" aria-hidden="true"></div>
         <div class="phone">
-          <video id="promo" autoplay muted loop playsinline preload="auto" poster="../media/spa-promo.webp" aria-describedby="promo-desc">
+          <video id="promo" autoplay muted loop playsinline preload="metadata" poster="../media/spa-promo.webp" aria-describedby="promo-desc">
             <source src="../media/spa-promo.mp4" type="video/mp4">
             <source src="../media/spa-promo.webm" type="video/webm">
           </video>
         </div>
-        <p class="sr-only" id="promo-desc">An 18-second video: your next patient is scrolling right now. Most spas post when there&rsquo;s time. 12 videos in 30 days, posted for you, with captions in English and Spanish. A product pour from my own shoot. A day-30 report on views, profile visits, DMs and bookings. A free 30-day test for 3 Las Vegas med spas a month; you fund a small ad boost.</p>
+        <p class="sr-only" id="promo-desc">An 18-second video: your next patient is scrolling right now. Most spas post when there&rsquo;s time. 12 videos in 30 days, posted for you, with captions in English and Spanish. Safe for your practice: signed releases for every face on camera, you approve every post, and your medical director checks the claims. A day-30 report on views, profile visits, DMs and bookings. A free 30-day test for 3 Las Vegas med spas a month; you fund a small ad boost.</p>
         <button class="vidctl" id="promo-toggle" type="button">Pause video</button>
       </div>
     </div>
@@ -272,11 +326,12 @@
 <main id="main">
   <section class="band value" id="value" aria-labelledby="value-h">
     <div class="wrap">
-      <h2 id="value-h">What it&rsquo;s worth, and why it&rsquo;s free</h2>
-      <p class="intro">The test is the same work I sell, priced at zero for three spas a month. Here are my real prices next to it.</p>
+      <p class="kicker">The offer</p>
+      <h2 id="value-h">What it&rsquo;s worth, and <em>why it&rsquo;s free</em></h2>
+      <p class="intro">The test is the same work paying spas get: the same shoot, editing, captions and posting. It&rsquo;s priced at zero for three spas a month. Here are my real prices next to it.</p>
       <div class="two">
         <div class="menu">
-          <h3>Video for your spa</h3>
+          <div class="menu-head"><p>Juan Sebastian</p><h3>Video for your spa</h3></div>
           <div class="item">
             <div class="name"><span>Content Sprint</span><span class="price">$997</span></div>
             <p>One shoot and 5 finished videos, delivered in 7 days.</p>
@@ -292,9 +347,11 @@
           <p class="fine">You keep all 12 videos either way. No contract beyond a one-page agreement.</p>
         </div>
         <div class="why">
+          <p class="worth"><strong>$2,300+</strong><span>is what 12 videos would cost at my Content Sprint rate. In the test, my fee is $0.</span></p>
           <div>
             <h3>Why it&rsquo;s free</h3>
-            <p>I&rsquo;m new to filming for Las Vegas med spas. Instead of paying for ads for my own business, I put that time into three spas a month and ask for honest numbers in return. Your results become the proof I show the next spa, if you&rsquo;re happy with them.</p>
+            <p>Spas that pay for video want proof from spas like theirs. I&rsquo;m new to filming for Las Vegas med spas, so I&rsquo;m earning that proof the honest way: three spas a month get the full service with no fee, and I get real numbers and, if you&rsquo;re happy, a review.</p>
+            <p>Instead of spending on ads for my own business, I spend that time on yours.</p>
           </div>
           <div>
             <h3>What you put in</h3>
@@ -311,10 +368,11 @@
     </div>
   </section>
 
-  <section class="band mintband" id="how" aria-labelledby="how-h">
+  <section class="band whiteband" id="how" aria-labelledby="how-h">
     <div class="wrap two">
       <div>
-        <h2 id="how-h">How the 30 days run</h2>
+        <p class="kicker">The 30 days</p>
+        <h2 id="how-h">How the test <em>runs</em></h2>
         <ol class="steps">
           <li><h3>Before day 1</h3><p>A 15-minute call, and I record your last 30 days of Instagram numbers so the report has a real before.</p></li>
           <li><h3>Day 1</h3><p>A half-day shoot at your spa, scheduled around your patients. I bring the release forms.</p></li>
@@ -345,33 +403,35 @@
     </div>
   </section>
 
-  <section class="band dark proof" aria-labelledby="proof-h">
+  <section class="band night grain proof" aria-labelledby="proof-h">
     <div class="wrap two">
       <div class="prose">
-        <h2 id="proof-h">I&rsquo;ve filmed in a clinic before</h2>
-        <p>For Georgia Southern University Health Services I shot a 45-second spot inside their clinic: the front desk, a nurse with a student, a vaccine going in. Quiet, quick and out of the way.</p>
-        <p>I trained as a cinematographer, so I light your treatment rooms the way a commercial set is lit. Skin, glass and liquid are the hardest things to get right on camera, and they&rsquo;re what your treatments are made of.</p>
+        <p class="kicker">Proof</p>
+        <h2 id="proof-h">I&rsquo;ve filmed in a <em>clinic</em> before</h2>
+        <p>For Georgia Southern University Health Services I shot a 45-second spot inside their clinic: the front desk, a nurse walking a student through his forms, a vaccine going in, and an explainer with on-screen graphics. Quiet, quick and out of everyone&rsquo;s way.</p>
+        <p>I trained as a cinematographer, so your treatment rooms get lit properly: soft light that flatters skin and shows results clearly.</p>
         <a class="textlink" href="../">See my full portfolio</a>
       </div>
       <figure>
         <a class="shot" href="https://vimeo.com/1073431405" data-video="vimeo:1073431405" aria-label="Play the 45-second Health Services spot">
-          <img src="../img/films/gsu.webp" srcset="../img/films/gsu-sm.webp 640w, ../img/films/gsu.webp 1280w" sizes="(min-width: 960px) 520px, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
+          <img src="clinic-shot.webp" srcset="clinic-shot-sm.webp 640w, clinic-shot.webp 1280w" sizes="(min-width: 960px) 540px, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
           <span class="tag"><span class="tri" aria-hidden="true"></span>Watch the spot</span>
         </a>
         <figcaption>A nurse gives a student a vaccine in the Health Services spot.</figcaption>
-        <div class="pours">
-          <img src="../img/work/affogato/06652-sm.webp" width="800" height="1200" alt="Espresso streaming from a glass jug onto ice cream in a clear cup" loading="lazy" decoding="async">
-          <img src="../img/work/affogato/06635-sm.webp" width="800" height="1200" alt="A thin stream of espresso falling into a tall glass mug" loading="lazy" decoding="async">
-        </div>
-        <figcaption>From my own product shoot: liquid and glass, lit to read on a phone.</figcaption>
+        <ul class="stills">
+          <li><img src="clinic-explain.webp" width="800" height="450" alt="A clinic staff member explaining required vaccines, with the list appearing beside him on screen" loading="lazy" decoding="async"><span>Explainer</span></li>
+          <li><img src="clinic-desk.webp" width="800" height="450" alt="A student walking up to the clinic reception desk" loading="lazy" decoding="async"><span>Front desk</span></li>
+          <li><img src="clinic-consult.webp" width="800" height="450" alt="A nurse going over a form with the student" loading="lazy" decoding="async"><span>Consult</span></li>
+        </ul>
       </figure>
     </div>
   </section>
 
   <section class="band" aria-labelledby="safe-h">
-    <div class="wrap two">
+    <div class="wrap">
       <div>
-        <h2 id="safe-h">Safe for your practice</h2>
+        <p class="kicker">Your practice</p>
+        <h2 id="safe-h">Safe for <em>your practice</em></h2>
         <p class="intro">Medical content has rules. These are mine.</p>
       </div>
       <ul class="safe">
@@ -384,21 +444,24 @@
     </div>
   </section>
 
-  <section class="band mintband" aria-labelledby="about-h">
+  <section class="band whiteband" aria-labelledby="about-h">
     <div class="wrap two about-grid">
-      <img class="about-photo" src="../img/juan-sm.webp" width="400" height="500" alt="Juan Sebastian, smiling, in a black-and-white portrait" loading="lazy" decoding="async">
+      <img class="about-photo" src="../images/home/juan.webp" width="507" height="900" alt="Juan Sebastian, smiling, in a black-and-white portrait" loading="lazy" decoding="async">
       <div class="prose">
-        <h2 id="about-h">Hi, I&rsquo;m Juan.</h2>
+        <p class="kicker">Who films it</p>
+        <h2 id="about-h">Hi, I&rsquo;m <em>Juan.</em></h2>
         <p>I grew up in Colombia, studied film at Georgia Southern University and live in Las Vegas, where I film live events. The job taught me to work fast and quietly around people who have somewhere to be.</p>
         <p>I film every shoot myself and answer every message myself.</p>
         <p>Hablo espa&ntilde;ol. Every video can carry English and Spanish captions; a third of Las Vegas speaks a language other than English at home.</p>
+        <a class="textlink" href="../">See my portfolio</a>
       </div>
     </div>
   </section>
 
   <section class="band" aria-labelledby="faq-h">
     <div class="wrap">
-      <h2 id="faq-h">Questions owners ask</h2>
+      <p class="kicker">Questions</p>
+      <h2 id="faq-h">Questions owners <em>ask</em></h2>
       <div class="faq">
         <details><summary>Do I or my staff have to be on camera?</summary><p>No. Hands, products, rooms and treatments carry most videos. If someone wants to talk to camera, I&rsquo;ll coach them through it.</p></details>
         <details><summary>What does the ad boost pay for?</summary><p>It shows your best 2 or 3 videos to people near your spa who don&rsquo;t follow you yet. You pay Instagram directly from your own account, $150 to $300 in total, and I set it up with you.</p></details>
@@ -410,10 +473,11 @@
     </div>
   </section>
 
-  <section class="band mintband" id="apply" aria-labelledby="apply-h">
+  <section class="band whiteband" id="apply" aria-labelledby="apply-h">
     <div class="wrap two claim-grid">
       <div class="prose">
-        <h2 id="apply-h">Apply for a test spot</h2>
+        <p class="kicker">Three spots a month</p>
+        <h2 id="apply-h">Apply for a <em>test spot</em></h2>
         <p>I take three spas a month. Tell me about yours and I&rsquo;ll reply within 24 hours.</p>
       </div>
       <div class="claim">
@@ -440,9 +504,9 @@
   </section>
 </main>
 
-<footer class="dark">
+<footer class="night">
   <div class="wrap">
-    <span>Juan Sebastian, video for med spas in Las Vegas, Nevada</span>
+    <span>Juan Sebastian &middot; Video for med spas in Las Vegas, Nevada</span>
     <a href="../">See my portfolio</a>
   </div>
 </footer>
@@ -451,7 +515,13 @@
 (function () {
   var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* The promo video loops muted with a pause button. Reduced motion: it waits for a press. */
+  /* The header stays on top with the Apply button, solid once the page moves. */
+  var bar = document.getElementById('top-bar');
+  var onScroll = function () { bar.classList.toggle('solid', window.scrollY > 24); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* The promo loops muted with a pause button. Reduced motion: it waits for a press. */
   var v = document.getElementById('promo'), vb = document.getElementById('promo-toggle');
   if (v && vb) {
     var label = function () { vb.textContent = v.paused ? 'Play video' : 'Pause video'; };
@@ -491,6 +561,7 @@
     dlg.showModal();
   });
   dlg.querySelector('.close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
   dlg.addEventListener('close', function () { frame.innerHTML = ''; if (opener) opener.focus(); });
 
   /* Form: sends through Web3Forms to Juan's inbox. Bots that tick the hidden box
