@@ -28,7 +28,7 @@
     "url": "https://thesalatiz.github.io/js-cinematography/",
     "image": "https://thesalatiz.github.io/js-cinematography/images/home/hero-1.jpg",
     "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV", "addressCountry": "US" },
-    "alumniOf": "Georgia Southern University",
+    "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "Georgia Southern University" }, { "@type": "EducationalOrganization", "name": "Georgia Film Academy" }],
     "knowsLanguage": ["en", "es"]
   }
   </script>
@@ -38,7 +38,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Nanum+Pen+Script&display=swap">
   <style>
   /* Layout: a screening room. Dark full-bleed frames, credit-style captions,
-     one daylight light table where the selects get circled. */
+     one daylight light table of contact sheets. */
   :root {
     --night: #100F0D;        /* screening room */
     --raised: #1A1916;       /* panels, film base */
@@ -176,22 +176,6 @@
   .frbar i.hold { animation-play-state: paused; }
   @keyframes frbar { to { transform: scaleX(1); } }
 
-  /* ---------- 2. rack focus ---------- */
-  .rack { position: relative; height: 260vh; background: #000; }
-  .rack-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-  .rack-loud, .rack-quiet { position: absolute; margin: 0; }
-  .rack-loud { inset: 0; }
-  .rack-loud img, .rack-quiet img { width: 100%; height: 100%; object-fit: cover; }
-  .rack-loud img { will-change: transform, filter; }
-  .rack-loud::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgba(10, 9, 8, 0.82) 0%, rgba(10, 9, 8, 0.55) 34%, rgba(10, 9, 8, 0.08) 66%), linear-gradient(0deg, rgba(10, 9, 8, 0.55) 0%, rgba(10, 9, 8, 0) 42%); }
-  .rack-a { text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55); }
-  .rack-quiet { width: min(54vw, 760px); aspect-ratio: 16 / 9; right: 8vw; top: 50%; transform: translateY(-50%); opacity: 0; will-change: opacity, transform, filter; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.8); }
-  .bar { position: absolute; left: 0; right: 0; height: 0; background: #000; z-index: 3; }
-  .bar.top { top: 0; } .bar.bottom { bottom: 0; }
-  .rack-line { position: absolute; left: var(--gutter); z-index: 4; font-family: var(--display); font-size: clamp(2.4rem, 6vw, 5.6rem); line-height: 0.95; letter-spacing: -0.02em; max-width: 9em; }
-  .rack-a { top: 50%; transform: translateY(-50%); }
-  .rack-b { bottom: 14vh; max-width: 7.5em; opacity: 0; font-style: italic; color: var(--tungsten); }
-  .rack-cap { position: absolute; z-index: 4; right: var(--gutter); bottom: 13vh; color: var(--smoke); opacity: 0; text-align: right; }
 
   /* ---------- 3. stories (horizontal strip) ---------- */
   .stories { position: relative; background: var(--night); }
@@ -214,6 +198,17 @@
   .story-meta h3 { font-size: 1.7rem; line-height: 1.1; }
   .story-meta p { color: var(--smoke); font-size: 0.95rem; }
   .story-meta .mono { color: var(--tungsten); white-space: nowrap; }
+  .film-card { position: relative; height: min(52vh, 500px); aspect-ratio: 4 / 5; display: grid; grid-template-rows: 34px 1fr auto auto; align-items: end; gap: 10px; padding: 0 clamp(18px, 2vw, 28px) clamp(20px, 2.4vw, 30px); background: #0B0A09; border: 1px solid rgba(237, 231, 220, 0.16); overflow: hidden; transition: border-color 0.4s var(--ease); }
+  .film-stick { align-self: start; margin-inline: calc(-1 * clamp(18px, 2vw, 28px)); height: 34px; background: repeating-linear-gradient(-60deg, #0B0A09 0 22px, var(--chalk) 22px 44px); }
+  .film-kind { color: var(--tungsten); text-transform: uppercase; letter-spacing: 0.18em; }
+  .film-name { font-family: var(--display); font-size: clamp(2rem, 3.2vw, 2.9rem); line-height: 1; color: var(--chalk); text-wrap: balance; }
+  .film-play { display: inline-flex; align-items: center; gap: 12px; margin-top: 8px; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); transition: color 0.3s; }
+  .film-play i { width: 42px; height: 42px; border: 1px solid var(--tungsten); border-radius: 50%; position: relative; transition: background-color 0.3s; }
+  .film-play i::after { content: ""; position: absolute; left: 16px; top: 13px; border-style: solid; border-width: 8px 0 8px 12px; border-color: transparent transparent transparent var(--tungsten); transition: border-color 0.3s; }
+  .story.film:hover .film-card, .story.film:focus-visible .film-card { border-color: var(--tungsten); }
+  .story.film:hover .film-play, .story.film:focus-visible .film-play { color: var(--chalk); }
+  .story.film:hover .film-play i, .story.film:focus-visible .film-play i { background: var(--tungsten); }
+  .story.film:hover .film-play i::after, .story.film:focus-visible .film-play i::after { border-left-color: var(--night); }
   .story.end { width: min(340px, 80vw); align-self: stretch; display: flex; flex-direction: column; justify-content: center; gap: 18px; border-left: 1px solid var(--line); padding-left: clamp(20px, 3vw, 44px); }
   .story.end h3 { font-size: 2.2rem; line-height: 1.05; }
   .story.end p { color: var(--smoke); }
@@ -257,12 +252,6 @@
   .cell { position: relative; margin: 0; }
   .cell img { width: 100%; aspect-ratio: 3 / 2; object-fit: cover; }
   .cell figcaption { position: absolute; left: 0; bottom: -22px; font-family: var(--mono); font-size: 0.7rem; color: rgba(201, 168, 98, 0.75); letter-spacing: 0.1em; }
-  .circle { position: absolute; z-index: 2; pointer-events: none; overflow: visible; }
-  .circle path { fill: none; stroke: var(--grease); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.92; }
-  .note { position: absolute; z-index: 3; font-family: var(--hand); font-size: clamp(1.75rem, 2.5vw, 2.4rem); line-height: 0.95; color: var(--grease); width: 9em; transform: rotate(-4deg); opacity: 0; transition: opacity 0.8s var(--ease) 0.6s; }
-  .cell.marked .note { opacity: 1; }
-  .note.below { top: calc(100% + 28px); left: 4%; }
-  .note.above { bottom: calc(100% + 30px); left: 10%; }
 
   /* ---------- 5. services ---------- */
   .services { padding: clamp(90px, 12vw, 170px) var(--gutter); position: relative; }
@@ -335,13 +324,6 @@
     .frame:first-child img { object-position: 86% center; }
     .frame img[data-pos] { object-position: var(--pos) center; }
     .hero-meta { top: calc(env(safe-area-inset-top, 0px) + 84px); bottom: auto; }
-    .rack { height: 220vh; }
-    .rack-quiet { width: calc(100% - 2 * var(--gutter)); right: var(--gutter); top: 18vh; transform: none; }
-    .rack-a { top: auto; bottom: 18vh; transform: none; }
-    .rack-loud img { object-position: 57% center; }
-    .rack-loud::after { background: linear-gradient(0deg, rgba(10, 9, 8, 0.9) 0%, rgba(10, 9, 8, 0.62) 34%, rgba(10, 9, 8, 0) 64%); }
-    .rack-b { bottom: 18vh; }
-    .rack-cap { display: none; }
     .cine { grid-template-columns: minmax(0, 1fr); }
     .cine h2 { font-size: clamp(2rem, 10.5vw, 3.2rem); }
     .slate { justify-self: start; width: min(100%, 340px); }
@@ -351,7 +333,6 @@
     .table-head { grid-template-columns: 1fr; }
     .table-head p { justify-self: start; }
     .roll { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 34px; }
-    .note.below, .note.above { position: static; display: block; width: auto; margin-top: 30px; font-size: 1.55rem; color: #E8756A; transform: rotate(-3deg); }
     .svc a { grid-template-columns: 72px minmax(0, 1fr); gap: 6px 18px; align-items: center; }
     .svc-name { font-size: clamp(1.45rem, 7.2vw, 2.4rem); hyphens: auto; }
     .svc-thumb { display: block; grid-row: span 3; width: 72px; aspect-ratio: 1; object-fit: cover; }
@@ -371,19 +352,13 @@
   .stories.free .strip { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 12px; transform: none !important; scrollbar-width: thin; }
   .stories.free .story { scroll-snap-align: start; }
   .stories.free .story img { height: min(58vw, 360px); }
+  .stories.free .film-card { height: min(58vw, 360px); }
   .stories.free .strip-foot { display: none; }
 
   @media (prefers-reduced-motion: reduce) {
     .grain { animation: none; }
     .frame.on img { animation: none; }
     .reveal.pre { transform: none; opacity: 1; }
-    .rack { height: auto; }
-    .rack-stage { position: relative; height: auto; display: grid; gap: 24px; padding: 100px var(--gutter); background: var(--night); }
-    .rack-loud, .rack-quiet, .rack-line, .rack-cap { position: static; transform: none; opacity: 1; width: auto; filter: none; }
-    .rack-loud img { aspect-ratio: 16 / 9; }
-    .rack-loud::after { display: none; }
-    .bar { display: none; }
-    .note { opacity: 1; transition: none; }
     .slate-stick { transform: none; transition: none; }
   }
 </style>
@@ -418,7 +393,7 @@
   <section class="hero" id="top" aria-label="Opening">
     <figure class="frame on" data-cap="Graduation · Georgia Southern"><img src="images/home/hero-1.webp" width="1800" height="1013" alt="A graduate seen from behind with arms outstretched in front of the Georgia Southern hedge"></figure>
     <figure class="frame" data-cap="Performance · Violinist"><img src="images/home/hero-violin.webp" width="1800" height="1286" data-pos style="--pos: 62%" alt="A violinist in profile holding his violin and bow, lit from the side against black" loading="lazy"></figure>
-    <figure class="frame" data-cap="Long Time No See · Short film"><img src="images/home/hero-ltns.webp" width="1800" height="1012" data-pos style="--pos: 44%" alt="A young man steps into a hallway, his shadow thrown large on the wall" loading="lazy"></figure>
+    <figure class="frame" data-cap="Portraits · Georgia Southern"><img src="images/home/hero-portrait.webp" width="1800" height="1013" data-pos style="--pos: 50%" alt="A graduate in a navy gown and a red, white and blue stole, hands in his pockets, in front of the campus hedge" loading="lazy"></figure>
     <figure class="frame" data-cap="Milestones · Georgia Southern"><img src="images/home/hero-walk.webp" width="1800" height="1013" data-pos style="--pos: 50%" alt="A graduate in a navy gown walking away down a road lined with oaks and university banners" loading="lazy"></figure>
     <div class="hero-shade"></div>
     <div class="hero-copy">
@@ -441,57 +416,54 @@
     </div>
   </section>
 
-  <!-- 2. Rack focus: the thesis -->
-  <section class="rack" id="rack" aria-label="Loud room, quiet eye">
-    <div class="rack-stage">
-      <figure class="rack-loud"><img src="images/home/loud.webp" width="1800" height="1012" alt="Three friends on a couch arguing over each other in front of bright tapestries, from Long Time No See" loading="lazy"></figure>
-      <figure class="rack-quiet"><img src="images/home/quiet.webp" width="1400" height="788" alt="A young woman in glasses looking down, alone with her thoughts in an elevator, from The Day After" loading="lazy"></figure>
-      <div class="bar top"></div><div class="bar bottom"></div>
-      <p class="rack-line rack-a">Every room is loud. Everyone's performing.</p>
-      <p class="rack-line rack-b">I'm watching the quiet part.</p>
-      <p class="rack-cap mono">Long Time No See · The Day After<br>Two films, one eye</p>
-    </div>
-  </section>
 
   <!-- 3. Stories -->
-  <section class="stories" id="work" aria-label="Stories">
+  <section class="stories" id="work" aria-label="Selected work">
     <div class="stories-stage">
       <div class="stories-head">
-        <h2 class="reveal">Stories I was <em>trusted with.</em></h2>
-        <p class="reveal">Each one is a full shoot, start to finish. Open one to see the whole roll or the whole film.</p>
+        <h2 class="reveal">Selected <em>work.</em></h2>
+        <p class="reveal">Open one to see the full gallery or watch the film.</p>
       </div>
       <div class="strip" id="strip">
-        <a class="story" href="videography.html#long-time-no-see">
-          <figure><img src="images/home/s-ltns.webp" width="1100" height="619" alt="A young man on a leather couch glances sideways, a bright tapestry behind him" loading="lazy"><span class="af"></span></figure>
-          <div class="story-meta"><div><h3>Long Time No See</h3><p>Short film, directed and shot</p></div><span class="mono">JS 01 · FILM</span></div>
-        </a>
-        <a class="story" href="gallery-commercial.html">
-          <figure><img src="images/home/s-affogato.webp" width="434" height="800" alt="Espresso being poured over an affogato on a dark background" loading="lazy"><span class="af"></span></figure>
-          <div class="story-meta"><div><h3>Affogato</h3><p>Culinary series</p></div><span class="mono">JS 02 · BRAND</span></div>
-        </a>
-        <a class="story" href="videography.html#the-day-after">
-          <figure><img src="images/home/s-tda.webp" width="1100" height="619" alt="A young woman in profile waiting in a small elevator" loading="lazy"><span class="af"></span></figure>
-          <div class="story-meta"><div><h3>The Day After</h3><p>Short film</p></div><span class="mono">JS 03 · FILM</span></div>
+        <a class="story film" href="videography.html#julia-and-perry">
+          <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Wedding film</span><span class="film-name">Julia &amp; Perry</span><span class="film-play"><i></i>Watch</span></div>
+          <div class="story-meta"><div><h3>Julia &amp; Perry</h3><p>Wedding film, Las Vegas</p></div><span class="mono">JS 01 · FILM</span></div>
         </a>
         <a class="story" href="gallery-grad.html">
           <figure><img src="images/home/s-grad.webp" width="1100" height="619" alt="A graduate walking away down a lamp-lined campus road" loading="lazy"><span class="af"></span></figure>
-          <div class="story-meta"><div><h3>Milestones</h3><p>Georgia Southern graduates</p></div><span class="mono">JS 04 · PORTRAIT</span></div>
-        </a>
-        <a class="story" href="videography.html#health-services">
-          <figure><img src="images/home/s-gsu.webp" width="1100" height="619" alt="A nurse gives a student a vaccine in a campus clinic" loading="lazy"><span class="af"></span></figure>
-          <div class="story-meta"><div><h3>Health Services</h3><p>A clinic spot for Georgia Southern</p></div><span class="mono">JS 05 · SPOT</span></div>
+          <div class="story-meta"><div><h3>Milestones</h3><p>Georgia Southern graduates</p></div><span class="mono">JS 02 · PORTRAIT</span></div>
         </a>
         <a class="story" href="gallery-recital.html">
           <figure><img src="images/home/s-recital.webp" width="1100" height="786" alt="A violinist resting his violin against his shoulder on a black background" loading="lazy"><span class="af"></span></figure>
-          <div class="story-meta"><div><h3>Performance</h3><p>Recital portraits</p></div><span class="mono">JS 06 · PORTRAIT</span></div>
+          <div class="story-meta"><div><h3>Performance</h3><p>Recital portraits</p></div><span class="mono">JS 03 · PORTRAIT</span></div>
+        </a>
+        <a class="story" href="gallery-commercial.html">
+          <figure><img src="images/home/s-affogato.webp" width="434" height="800" alt="Espresso being poured over an affogato on a dark background" loading="lazy"><span class="af"></span></figure>
+          <div class="story-meta"><div><h3>Affogato</h3><p>Culinary series</p></div><span class="mono">JS 04 · BRAND</span></div>
+        </a>
+        <a class="story film" href="videography.html#ephemeral">
+          <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Short film</span><span class="film-name">Ephemeral</span><span class="film-play"><i></i>Watch</span></div>
+          <div class="story-meta"><div><h3>Ephemeral</h3><p>Cinematographer and colourist</p></div><span class="mono">JS 05 · FILM</span></div>
+        </a>
+        <a class="story film" href="videography.html#health-services">
+          <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Spot</span><span class="film-name">Health Services</span><span class="film-play"><i></i>Watch</span></div>
+          <div class="story-meta"><div><h3>Health Services</h3><p>Director and editor</p></div><span class="mono">JS 06 · SPOT</span></div>
+        </a>
+        <a class="story film" href="videography.html#long-time-no-see">
+          <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Short film</span><span class="film-name">Long Time No&nbsp;See</span><span class="film-play"><i></i>Watch</span></div>
+          <div class="story-meta"><div><h3>Long Time No See</h3><p>Director and cinematographer</p></div><span class="mono">JS 07 · FILM</span></div>
+        </a>
+        <a class="story film" href="videography.html#the-day-after">
+          <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Short film</span><span class="film-name">The Day After</span><span class="film-play"><i></i>Watch</span></div>
+          <div class="story-meta"><div><h3>The Day After</h3><p>Director</p></div><span class="mono">JS 08 · FILM</span></div>
         </a>
         <a class="story end" href="videography.html">
           <h3>Prefer it moving?</h3>
-          <p>Short films, a clinic spot and a wedding film live on the film page.</p>
+          <p>A wedding film, short films and a clinic spot live on the film page.</p>
           <span>Watch the films &rarr;</span>
         </a>
       </div>
-      <div class="strip-foot mono"><span id="storyCount">01 / 06</span><div class="strip-rail"><span id="rail"></span></div><span>Scroll</span></div>
+      <div class="strip-foot mono"><span id="storyCount">01 / 08</span><div class="strip-rail"><span id="rail"></span></div><span>Scroll</span></div>
     </div>
   </section>
 
@@ -499,7 +471,7 @@
   <section class="cine" id="cinematography" aria-label="Cinematography">
     <div class="cine-copy">
       <h2 class="reveal">Trained as a <em>cinematographer.</em></h2>
-      <p class="reveal">Before Vegas there was film school. At Georgia Southern I shot, lit and colour graded short films, often as the whole camera department. That training is in everything I shoot: the framing, the light, the grade.</p>
+      <p class="reveal">Before Vegas there was film school, at Georgia Southern University and the Georgia Film Academy. I directed, shot and edited short films, and worked as script supervisor on others.</p>
       <div class="cine-actions reveal">
         <button type="button" class="play" data-reel><i aria-hidden="true"></i>Watch the cinematography reel</button>
         <a class="textlink" href="videography.html">See the short films</a>
@@ -516,11 +488,11 @@
     </div>
     <ol class="films">
       <li class="reveal"><span class="film-title">Ephemeral</span><span class="film-note">A short film about depression, friendship and mental health.</span><span class="film-role mono">Cinematographer · Colourist · Lighting, camera &amp; grip</span></li>
-      <li class="reveal"><span class="film-title">Blue Pill Red Pill</span><span class="film-note">A Matrix short.</span><span class="film-role mono"></span></li>
+      <li class="reveal"><span class="film-title">Blue Pill Red Pill</span><span class="film-note">A Matrix short.</span><span class="film-role mono">Script supervisor</span></li>
+      <li class="reveal"><span class="film-title">Code Words</span><span class="film-note">Georgia Film Academy project.</span><span class="film-role mono">Script supervisor</span></li>
+      <li class="reveal"><span class="film-title">Health Services</span><span class="film-note">A 45-second spot for the Georgia Southern campus clinic.</span><span class="film-role mono">Director · Editor</span></li>
       <li class="reveal"><span class="film-title">Long Time No See</span><span class="film-note">Short film.</span><span class="film-role mono">Director · Cinematographer</span></li>
-      <li class="reveal"><span class="film-title">The Day After</span><span class="film-note">Short film.</span><span class="film-role mono"></span></li>
-      <li class="reveal"><span class="film-title">Code Words</span><span class="film-note">GFA project.</span><span class="film-role mono"></span></li>
-      <li class="reveal"><span class="film-title">Health Services</span><span class="film-note">A 45-second spot filmed in the Georgia Southern campus clinic.</span><span class="film-role mono"></span></li>
+      <li class="reveal"><span class="film-title">The Day After</span><span class="film-note">Short film.</span><span class="film-role mono">Director</span></li>
     </ol>
   </section>
 
@@ -528,26 +500,26 @@
   <section class="table" id="table" aria-label="The light table">
     <div class="table-head">
       <h2 class="reveal">The light table.</h2>
-      <p class="reveal">Every shoot ends here. Hundreds of frames, a red pencil, and the few that say what the day actually felt like.</p>
+      <p class="reveal">Every shoot ends here. Hundreds of frames, and the few that say what the day actually felt like.</p>
     </div>
     <ol class="sheet">
       <li class="roll" data-edge="JS 400  ▸ 14  ▸ 15  ▸ 16  ▸ 17">
         <figure class="cell"><img src="images/home/t01.webp" width="640" height="427" alt="A graduate in a navy gown standing between hedges on a brick path" loading="lazy"><figcaption>14</figcaption></figure>
-        <figure class="cell" data-select="1"><img src="images/home/t02.webp" width="640" height="427" alt="A graduation cap flying into the trees above a raised hand" loading="lazy"><figcaption>15</figcaption><span class="note below">Caps off.</span></figure>
+        <figure class="cell"><img src="images/home/t02.webp" width="640" height="427" alt="A graduation cap flying into the trees above a raised hand" loading="lazy"><figcaption>15</figcaption></figure>
         <figure class="cell"><img src="images/home/t03.webp" width="640" height="427" alt="The graduate with arms spread wide, kicking up one heel in front of the hedge letters" loading="lazy"><figcaption>16</figcaption></figure>
         <figure class="cell"><img src="images/home/t04.webp" width="640" height="427" alt="The graduate walking away down a lamp-lined road, cap in hand" loading="lazy"><figcaption>17</figcaption></figure>
       </li>
       <li class="roll" data-edge="JS 400  ▸ 18  ▸ 19  ▸ 20  ▸ 21">
         <figure class="cell"><img src="images/home/t05.webp" width="640" height="426" alt="A scoop of ice cream waiting in a clear glass cup" loading="lazy"><figcaption>18</figcaption></figure>
-        <figure class="cell" data-select="2"><img src="images/home/t06.webp" width="640" height="426" alt="Espresso streaming from a glass jug onto the ice cream" loading="lazy"><figcaption>19</figcaption><span class="note below">Caught the pour.</span></figure>
+        <figure class="cell"><img src="images/home/t06.webp" width="640" height="426" alt="Espresso streaming from a glass jug onto the ice cream" loading="lazy"><figcaption>19</figcaption></figure>
         <figure class="cell"><img src="images/home/t07.webp" width="640" height="426" alt="A rainbow sundae in a waffle bowl topped with a cherry" loading="lazy"><figcaption>20</figcaption></figure>
         <figure class="cell"><img src="images/home/t08.webp" width="640" height="426" alt="The last drops of espresso leaving the jug" loading="lazy"><figcaption>21</figcaption></figure>
       </li>
       <li class="roll" data-edge="JS 400  ▸ 22  ▸ 23  ▸ 24  ▸ 25">
-        <figure class="cell" data-select="3"><img src="images/home/t09.webp" width="640" height="427" alt="A violinist holding his violin close to his face against a warm red curtain" loading="lazy"><figcaption>22</figcaption><span class="note below">One pool of light.</span></figure>
+        <figure class="cell"><img src="images/home/t09.webp" width="640" height="427" alt="A violinist holding his violin close to his face against a warm red curtain" loading="lazy"><figcaption>22</figcaption></figure>
         <figure class="cell"><img src="images/home/t10.webp" width="640" height="427" alt="The violinist playing on a wooden stage" loading="lazy"><figcaption>23</figcaption></figure>
-        <figure class="cell" data-select="4"><img src="images/home/t11.webp" width="640" height="427" alt="A young man in a bandana and red headphones grinning in a doorway, from Long Time No See" loading="lazy"><figcaption>24</figcaption><span class="note below">Keep this one.</span></figure>
-        <figure class="cell"><img src="images/home/t12.webp" width="640" height="427" alt="A nurse going over a form with a student, from the Health Services spot" loading="lazy"><figcaption>25</figcaption></figure>
+        <figure class="cell"><img src="images/home/t11.webp" width="640" height="427" alt="The violinist in profile, bow raised, lit from the side against black" loading="lazy"><figcaption>24</figcaption></figure>
+        <figure class="cell"><img src="images/home/t12.webp" width="640" height="427" alt="The violinist holding his violin close to his face on a black background" loading="lazy"><figcaption>25</figcaption></figure>
       </li>
     </ol>
   </section>
@@ -562,8 +534,8 @@
       <li><a href="#cinematography" data-slate="1"><span class="svc-thumb svc-slate" aria-hidden="true">DP</span><span class="svc-name">Cinematography</span><span class="svc-desc">Short films and spots. Shot, lit and colour graded.</span><span class="svc-kind mono">FILM</span></a></li>
       <li><a href="gallery-commercial.html" data-img="images/home/v-event.webp"><img class="svc-thumb" src="images/home/v-event.webp" alt="" loading="lazy"><span class="svc-name">Brand &amp; product</span><span class="svc-desc">Food and products, lit so the details sell.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
       <li><a href="gallery-grad.html" data-img="images/home/v-portrait.webp"><img class="svc-thumb" src="images/home/v-portrait.webp" alt="" loading="lazy"><span class="svc-name">Portraits &amp; performers</span><span class="svc-desc">Graduates, musicians, headshots.</span><span class="svc-kind mono">PHOTO</span></a></li>
-      <li><a href="videography.html" data-img="images/home/s-ltns.webp"><img class="svc-thumb" src="images/home/s-ltns.webp" alt="" loading="lazy"><span class="svc-name">Social video</span><span class="svc-desc">Vertical edits with captions in English and Spanish.</span><span class="svc-kind mono">FILM</span></a></li>
-      <li><a href="about.html" data-img="images/home/quiet.webp"><img class="svc-thumb" src="images/home/quiet.webp" alt="" loading="lazy"><span class="svc-name">Editing &amp; colour</span><span class="svc-desc">Premiere Pro, DaVinci Resolve and CapCut. Lightroom and Photoshop for stills.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
+      <li><a href="videography.html" data-img="images/home/v-social.webp"><img class="svc-thumb" src="images/home/v-social.webp" alt="" loading="lazy"><span class="svc-name">Social video</span><span class="svc-desc">Vertical edits with captions in English and Spanish.</span><span class="svc-kind mono">FILM</span></a></li>
+      <li><a href="about.html" data-img="images/home/v-colour.webp"><img class="svc-thumb" src="images/home/v-colour.webp" alt="" loading="lazy"><span class="svc-name">Editing &amp; colour</span><span class="svc-desc">Premiere Pro, DaVinci Resolve and CapCut. Lightroom and Photoshop for stills.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
     </ul>
     <div class="preview" id="preview" aria-hidden="true"><img alt="" id="previewImg"><div class="preview-slate"><span>Director of photography</span><b>Juan Sebastian</b></div></div>
   </section>
@@ -585,7 +557,7 @@
     <div class="about-copy">
       <h2 class="reveal">Hi, I'm Juan.</h2>
       <p class="reveal">I grew up in Colombia, where I had a dream bigger than myself. It took shape after I moved to the United States to study multimedia and film, and learned to observe the world closely.</p>
-      <p class="reveal">That path led me to Las Vegas. When the room is loud and the energy is frantic, I'm focused on telling the story, in English or Spanish.</p>
+      <p class="reveal">That path led me to Las Vegas. When the room is loud and the energy is frantic, I'm focused on telling the story the best way I can.</p>
       <p class="sign reveal">— Juan</p>
       <div class="about-links reveal"><a class="textlink" href="about.html">Read my story</a><a class="textlink" href="https://www.linkedin.com/in/juan-salazar-68a389261/" rel="me noopener">LinkedIn</a></div>
     </div>
@@ -707,11 +679,6 @@
     if (lenis) lenis.scrollTo(y, { immediate: true }); else window.scrollTo(0, y);
   });
 
-  /* rack focus */
-  const rack = document.getElementById('rack');
-  const loudImg = rack.querySelector('.rack-loud img'), quiet = rack.querySelector('.rack-quiet');
-  const lineA = rack.querySelector('.rack-a'), lineB = rack.querySelector('.rack-b'), rcap = rack.querySelector('.rack-cap');
-  const bars = rack.querySelectorAll('.bar');
 
   const pad = n => String(n).padStart(2, '0');
 
@@ -719,21 +686,6 @@
     const y = window.scrollY, vh = innerHeight;
     nav.classList.toggle('solid', y > vh * 0.6);
 
-    if (!reduce) {
-      const p = clamp((y - rack.offsetTop) / (rack.offsetHeight - vh), 0, 1);
-      const out = ease(seg(p, 0.12, 0.6)), inn = ease(seg(p, 0.3, 0.72));
-      loudImg.style.transform = 'scale(' + (1 + out * 0.08) + ')';
-      loudImg.style.filter = 'blur(' + (out * 14).toFixed(1) + 'px) brightness(' + (1 - out * 0.55).toFixed(2) + ')';
-      quiet.style.opacity = inn.toFixed(3);
-      quiet.style.filter = 'blur(' + ((1 - inn) * 12).toFixed(1) + 'px)';
-      const s = 0.94 + inn * 0.06;
-      quiet.style.transform = innerWidth > 860 ? 'translateY(-50%) scale(' + s + ')' : 'scale(' + s + ')';
-      const bh = ease(seg(p, 0.08, 0.5)) * 11;
-      bars.forEach(b => { b.style.height = bh + 'vh'; });
-      lineA.style.opacity = (1 - seg(p, 0.18, 0.38)).toFixed(3);
-      lineB.style.opacity = seg(p, 0.55, 0.75).toFixed(3);
-      rcap.style.opacity = seg(p, 0.65, 0.85).toFixed(3);
-    }
 
     if (travel > 0) {
       const p = clamp((y - stories.offsetTop) / travel, 0, 1);
@@ -746,53 +698,8 @@
   let queued = false;
   const onScroll = () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; update(); }); } };
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => { layoutStories(); drawCircles(); update(); });
+  window.addEventListener('resize', () => { layoutStories(); update(); });
 
-  /* light table: wobbly red-pencil circles, generated so no two are the same */
-  let seed = 7;
-  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
-  const wobble = (w, h) => {
-    const cx = w / 2, cy = h / 2, rx = w / 2, ry = h / 2, pts = [], n = 44, turns = 1.12;
-    const ph = [rnd() * 6, rnd() * 6, rnd() * 6], start = -0.6 + rnd() * 0.5;
-    for (let i = 0; i <= n; i++) {
-      const t = i / n, a = start + t * Math.PI * 2 * turns;
-      const k = 1 + 0.035 * Math.sin(a * 2 + ph[0]) + 0.025 * Math.sin(a * 3 + ph[1]) + 0.03 * t + 0.012 * Math.sin(a * 7 + ph[2]);
-      pts.push([cx + Math.cos(a) * rx * k, cy + Math.sin(a) * ry * k * (1 - 0.04 * t)]);
-    }
-    let d = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
-    for (let i = 0; i < pts.length - 1; i++) {
-      const p0 = pts[Math.max(0, i - 1)], p1 = pts[i], p2 = pts[i + 1], p3 = pts[Math.min(pts.length - 1, i + 2)];
-      const c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6], c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
-      d += 'C' + c1.map(v => v.toFixed(1)).join(' ') + ' ' + c2.map(v => v.toFixed(1)).join(' ') + ' ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
-    }
-    return d;
-  };
-  const selects = [...document.querySelectorAll('.cell[data-select]')];
-  const drawCircles = () => {
-    seed = 7;
-    selects.forEach(cell => {
-      cell.querySelector('.circle')?.remove();
-      const img = cell.querySelector('img');
-      const w = img.offsetWidth * 1.18, h = img.offsetHeight * 1.3;
-      const ns = 'http://www.w3.org/2000/svg';
-      const svg = document.createElementNS(ns, 'svg');
-      svg.setAttribute('class', 'circle'); svg.setAttribute('aria-hidden', 'true');
-      svg.setAttribute('width', w); svg.setAttribute('height', h); svg.setAttribute('viewBox', '-6 -6 ' + (w + 12) + ' ' + (h + 12));
-      svg.style.left = (-(w - img.offsetWidth) / 2 - 6) + 'px'; svg.style.top = (-(h - img.offsetHeight) / 2 - 6) + 'px';
-      const path = document.createElementNS(ns, 'path');
-      path.setAttribute('d', wobble(w, h)); svg.appendChild(path); cell.appendChild(svg);
-      const len = path.getTotalLength();
-      path.style.strokeDasharray = len; path.style.strokeDashoffset = cell.classList.contains('marked') || reduce ? 0 : len;
-      path.style.transition = 'stroke-dashoffset 1.1s cubic-bezier(0.65, 0, 0.35, 1) ' + (0.15 * Number(cell.dataset.select) % 0.45) + 's';
-    });
-  };
-  const sheetIO = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add('marked');
-    const path = e.target.querySelector('.circle path'); if (path) path.style.strokeDashoffset = 0;
-    sheetIO.unobserve(e.target);
-  }), { threshold: 0.6 });
-  if (reduce) selects.forEach(c => c.classList.add('marked'));
 
   /* cinematography: the slate claps once when it comes into view */
   const slate = document.getElementById('slate');
@@ -855,7 +762,7 @@
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeReel(); if (!menu.hidden) setMenu(false); } });
 
-  const start = () => { layoutStories(); drawCircles(); selects.forEach(c => sheetIO.observe(c)); update(); };
+  const start = () => { layoutStories(); update(); };
   if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
   layoutStories(); update();
 })();

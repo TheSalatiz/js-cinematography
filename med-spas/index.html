@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Video for Las Vegas med spas | Juan Sebastian</title>
   <meta name="description" content="Twelve short videos in 30 days from one half-day at your spa: planned, filmed, edited, captioned in English and Spanish, and posted for independent Las Vegas med spas, with a day-30 report on views, DMs and bookings. Free from me for 3 spas a month.">
-  <meta name="theme-color" content="#100F0D">
+  <meta name="theme-color" content="#12241E">
   <link rel="icon" type="image/png" href="../favicon.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <!-- If you move to a custom domain, change these addresses to it. -->
@@ -18,7 +18,7 @@
   <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/med-spas/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Twelve videos in 30 days from one half-day at your spa, in gold type beside a phone inside a ring light">
+  <meta property="og:image:alt" content="Twelve videos in 30 days from one half-day at your spa, beside a phone inside a ring light">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">
   {
@@ -37,276 +37,242 @@
   <link rel="preload" as="image" href="../media/spa-promo.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,400..600,0..100&family=Hanken+Grotesk:wght@400..700&display=swap">
   <style>
-  /* One page for a busy med spa owner on a phone, in the portfolio's palette:
-     a night hero with tungsten gold, then warm white pages with gold accents.
-     The memorable moment is the hero: the promo playing on a phone inside a
-     ring light, the tool every injector's content is shot with. */
+  /* One page for a busy med spa owner on a phone. Written to be scanned:
+     short sentences, sentence-case labels, 18px text, and pictures (the
+     receipt, the calendar) doing the explaining. The hero is the one
+     memorable moment: the promo playing on a phone inside a ring light. */
   :root {
-    --night: #100F0D;        /* hero, proof band, footer */
-    --raised: #1A1916;
-    --chalk: #EDE7DC;        /* text on night */
-    --smoke: #A39C90;        /* secondary text on night, 7:1 */
-    --tungsten: #C9A862;     /* gold on night */
-    --paper: #FAF8F4;        /* page */
-    --white: #FFFFFF;
-    --ink: #191814;          /* headings on light */
-    --body: #3F3D37;         /* text on light */
-    --muted: #5C5A53;        /* secondary text on light, 6.6:1 */
-    --gold: #8A6D34;         /* gold text and buttons on light, 4.7:1 */
-    --gold-dark: #6E5627;
-    --gold-line: #B4975A;    /* hairlines and ornaments only */
-    --line: rgba(25, 24, 20, 0.12);
-    --line-dark: rgba(237, 231, 220, 0.16);
+    --pine: #12241E;        /* hero, footer */
+    --pine-deep: #0D1B16;
+    --porcelain: #EEF1EE;   /* page */
+    --card: #FFFFFF;
+    --mint: #DCE9E2;        /* tinted bands */
+    --mint-soft: #BFE6D6;   /* small text on pine, 10:1 */
+    --ink: #33433D;         /* body text, 10:1 on porcelain */
+    --heading: #12241E;
+    --moss: #56655F;        /* secondary text, 5.4:1 */
+    --emerald: #0B6E52;     /* buttons, links, accents, 6.3:1 */
+    --emerald-dark: #085641;
+    --line: rgba(18, 36, 30, 0.14);
+    --line-dark: rgba(238, 241, 238, 0.18);
 
-    --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
-    --text: "Jost", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+    --display: "Fraunces", "Iowan Old Style", Georgia, serif;
+    --text: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
     --gutter: clamp(20px, 5vw, 56px);
-    --ease: cubic-bezier(0.16, 1, 0.3, 1);
     color-scheme: light;
   }
   *, *::before, *::after { box-sizing: border-box; }
-  html { background: var(--paper); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
-  body { margin: 0; background: var(--paper); color: var(--body); font-family: var(--text); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
-  img, video { display: block; max-width: 100%; }
+  html { background: var(--porcelain); -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body { margin: 0; background: var(--porcelain); color: var(--ink); font-family: var(--text); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
+  img, video, svg { display: block; max-width: 100%; }
   img { height: auto; }
   p { margin: 0 0 1em; }
-  a { color: var(--gold); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
-  a:hover { color: var(--gold-dark); }
-  :focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
-  .night :focus-visible { outline-color: var(--tungsten); }
+  a { color: var(--emerald); text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+  a:hover { color: var(--emerald-dark); }
+  :focus-visible { outline: 3px solid var(--emerald); outline-offset: 3px; border-radius: 4px; }
+  .dark :focus-visible { outline-color: var(--mint-soft); }
   button { font: inherit; }
-  h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
-  h1 em, h2 em { font-style: italic; color: var(--gold); }
-  .night h1 em, .night h2 em { color: var(--tungsten); }
-  h1 { font-size: clamp(2.5rem, 1.4rem + 4.4vw, 4.9rem); line-height: 1.02; }
-  h2 { font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.4rem); line-height: 1.06; color: var(--ink); margin-bottom: 0.5em; }
-  h3 { font-family: var(--text); font-size: 1.12rem; line-height: 1.35; font-weight: 600; color: var(--ink); margin: 0 0 0.3em; }
-  .wrap { width: min(100%, 1200px); margin-inline: auto; padding-inline: var(--gutter); }
+  h1, h2 { font-family: var(--display); font-weight: 500; margin: 0; text-wrap: balance; font-variation-settings: "opsz" 144, "SOFT" 100; color: var(--heading); }
+  h1 { font-size: clamp(2.5rem, 1.4rem + 4.4vw, 4.8rem); line-height: 1.04; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.2rem); line-height: 1.08; letter-spacing: -0.012em; margin-bottom: 0.4em; }
+  h3 { font-family: var(--text); font-size: 1.15rem; line-height: 1.3; font-weight: 700; color: var(--heading); margin: 0 0 0.35em; }
+  .wrap { width: min(100%, 1180px); margin-inline: auto; padding-inline: var(--gutter); }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-  .skip { position: absolute; left: 12px; top: -80px; background: var(--paper); color: var(--ink); padding: 12px 16px; z-index: 10; font-weight: 600; }
+  .skip { position: absolute; left: 12px; top: -80px; background: var(--porcelain); color: var(--pine); padding: 12px 16px; border-radius: 8px; z-index: 30; font-weight: 600; }
   .skip:focus { top: 12px; }
-  .kicker { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); }
-  .kicker::before { content: ""; width: 34px; height: 1px; background: currentColor; opacity: 0.7; }
-  .night .kicker { color: var(--tungsten); }
 
-  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6em; min-height: 54px; padding: 0 30px; border: 1px solid var(--gold); background: var(--gold); color: #fff; font: 500 0.88rem/1 var(--text); letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 0.35s var(--ease), color 0.35s var(--ease), border-color 0.35s var(--ease); }
-  .btn:hover { background: var(--ink); border-color: var(--ink); color: #fff; }
-  .night .btn { background: var(--tungsten); border-color: var(--tungsten); color: var(--night); }
-  .night .btn:hover { background: transparent; color: var(--tungsten); }
-  .textlink { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.86rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; }
-  .night { position: relative; background: var(--night); color: var(--chalk); }
-  .night h1, .night h2 { color: var(--chalk); }
-  .night h3 { color: var(--chalk); }
-  .night a:not(.btn) { color: var(--chalk); }
-  .night a:not(.btn):hover { color: var(--tungsten); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 0 28px; border-radius: 999px; border: 0; cursor: pointer; background: var(--emerald); color: #fff; font: 600 1.05rem/1 var(--text); text-decoration: none; transition: background-color 0.2s; }
+  .btn:hover { background: var(--emerald-dark); color: #fff; }
+  .dark .btn { background: var(--porcelain); color: var(--pine); }
+  .dark .btn:hover { background: #fff; color: var(--pine); }
+  .textlink { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; }
+  .dark { background: var(--pine); color: #DCE6E0; }
+  .dark h1, .dark h2, .dark h3 { color: #F3F6F4; }
+  .dark a:not(.btn) { color: var(--porcelain); text-decoration-color: var(--mint-soft); }
 
-  /* film grain on the dark bands, as on the portfolio */
-  .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.05; z-index: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1.2 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
-  .grain > * { position: relative; z-index: 1; }
-
-  /* header sits on the hero */
-  .top { position: sticky; top: 0; z-index: 20; padding-block: calc(env(safe-area-inset-top, 0px) + 12px) 12px; background: var(--night); transition: background-color 0.4s var(--ease), box-shadow 0.4s var(--ease); }
-  .top.solid { background: rgba(16, 15, 13, 0.9); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 1px 0 rgba(237, 231, 220, 0.08); }
+  /* header: stays on top so Apply is always one tap away */
+  .top { position: sticky; top: 0; z-index: 20; padding-block: calc(env(safe-area-inset-top, 0px) + 10px) 10px; transition: background-color 0.3s, box-shadow 0.3s; }
+  .top.solid { background: rgba(18, 36, 30, 0.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line-dark); }
   .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-  .mark { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.84rem; font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase; text-decoration: none; }
-  .top .btn { min-height: 46px; padding: 0 20px; font-size: 0.8rem; }
+  .mark { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--display); font-size: 1.35rem; font-variation-settings: "opsz" 36, "SOFT" 100; text-decoration: none; }
+  .dark .mark { color: var(--porcelain); text-decoration: none; }
+  .top .btn { min-height: 46px; padding: 0 22px; font-size: 1rem; }
 
-  /* hero */
-  .hero { padding-block: clamp(24px, 4vw, 56px) clamp(64px, 9vw, 112px); overflow: hidden; }
-  .hero .wrap { display: grid; gap: 40px; align-items: center; grid-template-areas: 'head' 'stage' 'body'; }
+  /* hero: headline, then the phone, then the details (on phones too) */
+  .hero { padding-block: clamp(16px, 3vw, 44px) clamp(60px, 8vw, 100px); overflow: hidden; }
+  .hero .wrap { display: grid; gap: 34px; align-items: center; grid-template-areas: "head" "stage" "body"; }
   .hero-head { grid-area: head; }
   .hero-body { grid-area: body; }
   .stagebox { grid-area: stage; }
+  .kicker { margin: 0 0 16px; font-size: 1rem; font-weight: 600; color: var(--mint-soft); }
   .hero h1 { max-width: 13ch; }
-  .lead { font-size: 1.16rem; line-height: 1.6; color: rgba(237, 231, 220, 0.86); margin-bottom: 32px; max-width: 34rem; }
-  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; }
-  .note { margin: 22px 0 0; font-size: 1rem; color: var(--smoke); }
-  .note b { color: var(--tungsten); font-weight: 500; }
+  .lead { font-size: 1.15rem; line-height: 1.6; color: #DCE6E0; margin-bottom: 28px; max-width: 32rem; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; }
+  .note { margin: 18px 0 0; font-size: 1rem; color: var(--mint-soft); }
 
-  .stagebox { position: relative; display: grid; justify-items: center; gap: 16px; padding-block: 10px; }
+  .stagebox { position: relative; display: grid; justify-items: center; gap: 14px; padding-block: 8px; }
   .halo { position: absolute; left: 50%; top: 46%; width: min(118%, 560px); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%;
-    border: clamp(20px, 3.2vw, 32px) solid #FFF4DF; opacity: 0.3; filter: blur(1.5px);
-    box-shadow: 0 0 90px 24px rgba(232, 200, 140, 0.42), inset 0 0 70px 14px rgba(232, 200, 140, 0.38); pointer-events: none;
+    border: clamp(22px, 3.4vw, 34px) solid #F4FAF7; opacity: 0.22; filter: blur(1.5px);
+    box-shadow: 0 0 90px 24px rgba(214, 240, 228, 0.5), inset 0 0 70px 14px rgba(214, 240, 228, 0.45); pointer-events: none;
     animation: breathe 7s ease-in-out infinite; }
-  @keyframes breathe { 0%, 100% { opacity: 0.24; } 50% { opacity: 0.36; } }
-  .phone { position: relative; width: min(70vw, 300px); border-radius: 42px; padding: 10px; background: #0B0A09; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 0 1.5px rgba(237, 231, 220, 0.14); }
-  .phone video, .phone img { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 32px; background: var(--night); }
-  .vidctl { position: relative; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 18px; border: 1px solid var(--line-dark); background: rgba(16, 15, 13, 0.6); color: var(--smoke); cursor: pointer; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  .vidctl:hover { color: var(--chalk); border-color: rgba(237, 231, 220, 0.45); }
+  @keyframes breathe { 0%, 100% { opacity: 0.18; } 50% { opacity: 0.3; } }
+  .phone { position: relative; width: min(68vw, 300px); border-radius: 42px; padding: 10px; background: #0A1411; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), inset 0 0 0 1.5px rgba(238, 241, 238, 0.12); }
+  .phone video, .phone img { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 32px; background: var(--pine-deep); }
+  .vidctl { position: relative; display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line-dark); background: rgba(18, 36, 30, 0.6); color: var(--mint-soft); cursor: pointer; font-size: 0.95rem; }
+  .vidctl:hover { color: var(--porcelain); border-color: rgba(238, 241, 238, 0.45); }
 
   /* sections */
-  section.band { padding-block: clamp(72px, 10vw, 128px); }
+  section.band { padding-block: clamp(64px, 9vw, 116px); }
   section[id] { scroll-margin-top: 72px; }
-  .whiteband { background: var(--white); }
-  .two { display: grid; gap: 44px; }
-  .prose { max-width: 36rem; }
-  .intro { font-size: 1.15rem; max-width: 42rem; margin-bottom: 40px; }
+  .white { background: var(--card); }
+  .mintband { background: var(--mint); }
+  .intro { font-size: 1.15rem; max-width: 38rem; margin-bottom: 40px; }
+  .two { display: grid; gap: 40px; }
+  .prose { max-width: 34rem; }
 
-  /* the menu: printed like a treatment menu, so the free test reads against real prices */
-  .menu { position: relative; background: var(--white); border: 1px solid var(--line); padding: clamp(26px, 4vw, 46px); box-shadow: 0 30px 60px -40px rgba(25, 24, 20, 0.35); }
-  .menu::before { content: ""; position: absolute; inset: 8px; border: 1px solid rgba(180, 151, 90, 0.35); pointer-events: none; }
-  .menu-head { text-align: center; margin-bottom: 18px; }
-  .menu-head p { margin: 0; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); }
-  .menu-head h3 { font-family: var(--display); font-weight: 500; font-size: 1.9rem; margin: 6px 0 0; }
-  .item { padding: 20px 0; border-top: 1px solid var(--line); }
-  .item .name { display: flex; align-items: baseline; gap: 12px; font-family: var(--display); font-weight: 500; color: var(--ink); font-size: 1.35rem; line-height: 1.2; }
-  .item .name::after { content: ""; order: 2; flex: 1 1 auto; border-bottom: 1px dotted rgba(25, 24, 20, 0.4); transform: translateY(-6px); min-width: 24px; }
-  .item .name .price { order: 3; font-size: 1.5rem; white-space: nowrap; }
-  .item .name .per { font-family: var(--text); font-size: 0.9rem; font-weight: 400; color: var(--muted); }
-  .item p { margin: 8px 0 0; color: var(--muted); font-size: 1rem; max-width: 30rem; }
-  .item.free { margin-top: 8px; padding: 22px; border: 1px solid var(--gold); background: #FBF7EE; }
-  .item.free .price { color: var(--gold); font-style: italic; font-size: 2.2rem; }
-  .menu .fine { margin: 18px 0 0; font-size: 0.95rem; color: var(--muted); text-align: center; }
-  .why { display: grid; gap: 30px; }
-  .why ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-  .why li { position: relative; padding-left: 28px; }
-  .why li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 9px; height: 9px; border: 1px solid var(--gold); transform: rotate(45deg); }
-  .why p { margin: 0; }
-  .why p + p { margin-top: 12px; }
-  .worth { display: flex; gap: 18px; align-items: baseline; padding: 18px 20px; border-left: 2px solid var(--gold-line); background: #F4EFE4; color: var(--ink); }
-  .worth strong { font-family: var(--display); font-weight: 500; font-size: 1.8rem; line-height: 1; color: var(--gold); white-space: nowrap; }
-  .worth span { font-size: 1rem; }
-  .honest { padding: 18px 20px; border: 1px solid var(--line); background: var(--white); color: var(--ink); font-size: 1rem; }
+  /* what's included: a receipt does the explaining */
+  .value-grid { display: grid; gap: 40px; align-items: start; }
+  .receipt { position: relative; margin: 0; background: var(--card); border-radius: 18px; padding: 28px clamp(20px, 3.5vw, 36px) 26px; box-shadow: 0 24px 50px -30px rgba(18, 36, 30, 0.45); }
+  .receipt::before, .receipt::after { content: ""; position: absolute; left: 0; right: 0; height: 12px; background: radial-gradient(circle at 8px -2px, transparent 8px, var(--card) 8.5px) 0 0 / 16px 12px repeat-x; }
+  .receipt::before { top: -11px; transform: scaleY(-1); }
+  .receipt::after { bottom: -11px; }
+  .receipt-head { margin: 0 0 14px; font-size: 1rem; font-weight: 700; color: var(--moss); }
+  .lines { list-style: none; margin: 0; padding: 0; }
+  .lines li, .total, .boost { display: flex; align-items: baseline; gap: 10px; }
+  .lines li { padding: 10px 0; font-size: 1.05rem; color: var(--heading); }
+  .lines li::after, .boost::after { content: ""; order: 2; flex: 1 1 auto; min-width: 16px; border-bottom: 2px dotted rgba(18, 36, 30, 0.22); transform: translateY(-5px); }
+  .amt { order: 3; white-space: nowrap; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .incl { color: var(--emerald); }
+  .total { justify-content: space-between; margin-top: 12px; padding-top: 16px; border-top: 2px solid var(--heading); font-weight: 700; font-size: 1.2rem; color: var(--heading); }
+  .total .amt { font-family: var(--display); font-variation-settings: "opsz" 144, "SOFT" 100; font-size: 3rem; line-height: 1; color: var(--emerald); }
+  .boost { margin-top: 16px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 1rem; color: var(--moss); }
+  .stamp { position: absolute; right: clamp(16px, 4vw, 34px); top: 22px; padding: 6px 14px; border: 3px solid var(--emerald); border-radius: 10px; color: var(--emerald); font-weight: 800; font-size: 1.25rem; letter-spacing: 0.06em; text-transform: uppercase; transform: rotate(-10deg); opacity: 0.85; }
+  .footnote { margin: 22px 4px 0; font-size: 0.95rem; color: var(--moss); }
+
+  .side { display: grid; gap: 36px; }
+  .flow { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .flow li { position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 4px 14px; align-items: center; padding: 14px 16px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
+  .flow li:not(:last-child)::after { content: ""; position: absolute; left: 37px; bottom: -13px; width: 2px; height: 12px; background: var(--emerald); }
+  .flow .n { grid-row: span 2; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--emerald); color: #fff; font-weight: 700; }
+  .flow b { color: var(--heading); font-size: 1.05rem; }
+  .flow span:last-child { color: var(--moss); font-size: 1rem; line-height: 1.4; }
+  .gives { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .gives li { display: grid; gap: 10px; align-content: start; padding: 16px; border-radius: 14px; background: var(--mint); color: var(--heading); font-weight: 600; font-size: 1rem; line-height: 1.35; }
+  .gives svg { width: 28px; height: 28px; color: var(--emerald); }
+  .after { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin: 44px 0 0; color: var(--moss); }
+  .chip { display: inline-flex; align-items: baseline; gap: 8px; padding: 8px 16px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--heading); font-weight: 600; }
+  .chip span { color: var(--moss); font-weight: 400; }
 
   /* the 30-day calendar */
-  .cal { background: var(--paper); border: 1px solid var(--line); padding: 24px clamp(14px, 3vw, 28px) 22px; }
-  .cal h3 { font-family: var(--display); font-weight: 500; font-size: 1.6rem; line-height: 1.15; margin-bottom: 4px; }
-  .cal .sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 16px; }
+  .cal { background: var(--porcelain); border: 1px solid var(--line); border-radius: 22px; padding: 22px clamp(14px, 3vw, 26px) 20px; }
+  .cal h3 { font-family: var(--display); font-weight: 500; font-size: 1.55rem; line-height: 1.15; margin-bottom: 4px; font-variation-settings: "opsz" 48, "SOFT" 100; }
+  .cal .sub { font-size: 1rem; color: var(--moss); margin-bottom: 16px; }
   .cal table { border-collapse: separate; border-spacing: 4px; table-layout: fixed; margin-inline: -4px; width: calc(100% + 8px); }
-  .cal th { font: 500 0.82rem/1 var(--text); letter-spacing: 0.12em; color: var(--muted); padding: 0 0 6px; text-align: center; }
-  .cal td { height: 48px; padding: 0; background: #EFEAE0; text-align: center; vertical-align: middle; }
-  .cal td.shoot { background: var(--night); color: var(--tungsten); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .cal td.report { background: var(--white); box-shadow: inset 0 0 0 1.5px var(--gold); color: var(--ink); font-family: var(--display); font-size: 1.05rem; }
-  .cal .post { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); color: #fff; font-weight: 600; font-size: 0.85rem; vertical-align: middle; transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1.2), opacity 0.2s; }
+  .cal th { font: 600 0.9rem/1 var(--text); color: var(--moss); padding: 0 0 6px; text-align: center; }
+  .cal td { height: 48px; padding: 0; border-radius: 10px; background: #E3E9E5; text-align: center; vertical-align: middle; }
+  .cal td.shoot { background: var(--pine); color: #fff; font-weight: 650; font-size: 0.875rem; }
+  .cal td.report { background: var(--card); box-shadow: inset 0 0 0 2px var(--emerald); color: var(--pine); font-weight: 650; font-size: 0.95rem; }
+  .cal .post { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--emerald); color: #fff; font-weight: 650; font-size: 0.875rem; vertical-align: middle; transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1.2), opacity 0.2s; }
   .cal.arm .post { transform: scale(0.2); opacity: 0; }
   .cal.arm.play .post { transform: scale(1); opacity: 1; transition-delay: calc(var(--i) * 70ms); }
-  .legend { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; font-size: 0.95rem; }
+  .legend { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; font-size: 1rem; }
   .legend li { display: flex; align-items: center; gap: 10px; }
-  .key { flex: none; width: 18px; height: 18px; }
-  .k-shoot { background: var(--night); }
-  .k-post { background: var(--gold); border-radius: 50%; }
-  .k-report { box-shadow: inset 0 0 0 1.5px var(--gold); background: var(--white); }
-  .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 22px; counter-reset: step; }
-  .steps li { position: relative; padding-left: 58px; }
-  .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: -4px; width: 40px; height: 40px; border: 1px solid var(--gold-line); border-radius: 50%; display: grid; place-items: center; font-family: var(--display); font-size: 1.15rem; color: var(--gold); }
+  .key { flex: none; width: 18px; height: 18px; border-radius: 5px; }
+  .k-shoot { background: var(--pine); }
+  .k-post { background: var(--emerald); border-radius: 50%; }
+  .k-report { box-shadow: inset 0 0 0 2px var(--emerald); background: var(--card); }
+  .steps { margin: 0; padding: 0; list-style: none; display: grid; gap: 20px; counter-reset: step; }
+  .steps li { position: relative; padding-left: 54px; }
+  .steps li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: -3px; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; background: var(--pine); color: #fff; font-weight: 700; font-size: 1rem; }
   .steps p { margin: 0; }
 
-  /* proof, on night */
-  .proof figure { margin: 0; }
-  .shot { position: relative; display: block; overflow: hidden; aspect-ratio: 16 / 9; background: var(--raised); }
-  .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-  .shot:hover img { transform: scale(1.03); }
-  .shot .tag { position: absolute; left: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 12px; min-height: 46px; padding: 0 18px 0 16px; background: rgba(16, 15, 13, 0.86); color: var(--chalk); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
-  .shot .tri { width: 0; height: 0; border-style: solid; border-width: 6px 0 6px 10px; border-color: transparent transparent transparent var(--tungsten); }
-  .proof figcaption { margin-top: 10px; font-size: 0.95rem; color: var(--smoke); }
-  .stills { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-  .stills img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-  .stills span { display: block; margin-top: 8px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--smoke); }
-
-  .safe { list-style: none; margin: 0; padding: 0; display: grid; gap: 26px; }
+  .safe { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
   .safe li { position: relative; padding-left: 50px; }
-  .safe li::before { content: ""; position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%; background: var(--gold); }
-  .safe li::after { content: ""; position: absolute; left: 11px; top: 6px; width: 8px; height: 15px; border-right: 2.5px solid #fff; border-bottom: 2.5px solid #fff; transform: rotate(45deg); }
+  .safe li::before { content: ""; position: absolute; left: 0; top: 0; width: 34px; height: 34px; border-radius: 50%; background: var(--emerald); }
+  .safe li::after { content: ""; position: absolute; left: 12px; top: 7px; width: 9px; height: 16px; border-right: 3px solid #fff; border-bottom: 3px solid #fff; transform: rotate(45deg); }
   .safe p { margin: 0; }
 
-  .about-photo { width: min(100%, 340px); aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; filter: grayscale(1) contrast(1.05); background: #111; }
-  .sign { font-family: var(--display); font-style: italic; font-size: 1.6rem; color: var(--gold); margin-top: 6px; }
+  .about-photo { width: min(100%, 320px); aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; border-radius: 14px; filter: grayscale(1); background: #111; }
 
-  .faq { max-width: 48rem; border-top: 1px solid var(--line); }
+  .faq { max-width: 46rem; border-top: 1px solid var(--line); }
   .faq details { border-bottom: 1px solid var(--line); }
-  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 68px; padding: 14px 0; font-family: var(--display); font-weight: 500; color: var(--ink); font-size: 1.28rem; line-height: 1.25; }
+  .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 14px 0; font-weight: 650; color: var(--heading); font-size: 1.08rem; }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: ""; flex: none; width: 11px; height: 11px; border-right: 1.5px solid var(--gold); border-bottom: 1.5px solid var(--gold); transform: rotate(45deg) translate(-3px, -3px); transition: transform 0.25s; }
+  .faq summary::after { content: ""; flex: none; width: 12px; height: 12px; border-right: 2px solid var(--emerald); border-bottom: 2px solid var(--emerald); transform: rotate(45deg) translate(-3px, -3px); transition: transform 0.2s; }
   .faq details[open] summary::after { transform: rotate(-135deg) translate(-3px, -3px); }
-  .faq details p { padding: 0 0 20px; max-width: 42rem; margin: 0; }
+  .faq details p { padding: 0 0 18px; max-width: 40rem; margin: 0; }
 
-  .claim { background: var(--white); border: 1px solid var(--line); padding: clamp(24px, 4vw, 44px); box-shadow: 0 30px 60px -40px rgba(25, 24, 20, 0.35); }
-  .claim form { display: grid; gap: 20px; }
-  .field { display: grid; gap: 8px; }
-  .field label { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
-  .field .opt { text-transform: none; letter-spacing: 0; font-weight: 400; color: var(--muted); }
-  .field input, .field textarea { font: inherit; font-size: 1.05rem; color: var(--ink); background: var(--paper); border: 1px solid rgba(25, 24, 20, 0.22); border-radius: 0; padding: 12px 14px; min-height: 52px; width: 100%; }
-  .field textarea { min-height: 116px; resize: vertical; }
-  .field input:focus, .field textarea:focus { outline: 2px solid rgba(138, 109, 52, 0.45); outline-offset: 0; border-color: var(--gold); background: var(--white); }
-  .two-fields { display: grid; gap: 20px; }
+  .claim { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 4vw, 40px); }
+  .claim form { display: grid; gap: 18px; }
+  .field { display: grid; gap: 6px; }
+  .field label { font-weight: 600; color: var(--heading); font-size: 1rem; }
+  .field .opt { font-weight: 400; color: var(--moss); }
+  .field input, .field textarea { font: inherit; font-size: 1.05rem; color: var(--heading); background: #fff; border: 1px solid rgba(18, 36, 30, 0.3); border-radius: 12px; padding: 12px 14px; min-height: 52px; width: 100%; }
+  .field textarea { min-height: 110px; resize: vertical; }
+  .field input:focus, .field textarea:focus { outline: 3px solid rgba(11, 110, 82, 0.35); outline-offset: 0; border-color: var(--emerald); }
+  .two-fields { display: grid; gap: 18px; }
   .trap { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
-  .fine { font-size: 0.95rem; color: var(--muted); margin: 0; }
-  #status { font-weight: 500; margin: 0; }
-  #status.ok { color: #2F6B3A; }
+  .fine { font-size: 0.95rem; color: var(--moss); margin: 0; }
+  #status { font-weight: 600; margin: 0; }
+  #status.ok { color: var(--emerald); }
   #status.err { color: #A3241A; }
 
-  footer { padding-block: 44px calc(env(safe-area-inset-bottom, 0px) + 56px); font-size: 0.95rem; }
-  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; color: var(--smoke); }
+  footer { padding-block: 40px calc(env(safe-area-inset-bottom, 0px) + 56px); font-size: 1rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; color: #C9D6CF; }
   footer a { display: inline-flex; align-items: center; min-height: 44px; }
 
-  dialog.viewer { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgba(8, 7, 6, 0.97); color: var(--chalk); }
-  dialog.viewer::backdrop { background: rgba(8, 7, 6, 0.9); }
-  .viewer .bar { display: flex; justify-content: flex-end; padding: 10px var(--gutter); }
-  .viewer .close { min-height: 44px; padding: 0 18px; border: 1px solid var(--line-dark); background: transparent; color: var(--chalk); cursor: pointer; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  .viewer .close:hover { border-color: var(--tungsten); color: var(--tungsten); }
-  .viewer .frame { width: min(calc(100% - 2 * var(--gutter)), calc((100dvh - 120px) * 16 / 9)); margin: 10px auto 0; aspect-ratio: 16 / 9; background: #000; }
-  .viewer iframe { width: 100%; height: 100%; border: 0; display: block; }
-
   @media (min-width: 960px) {
-    .hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-areas: 'head stage' 'body stage'; column-gap: 56px; row-gap: 28px; align-items: end; }
+    .hero .wrap { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); grid-template-areas: "head stage" "body stage"; column-gap: 56px; row-gap: 26px; align-items: end; }
     .hero-body { align-self: start; }
     .phone { width: 300px; }
-    .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 76px; align-items: start; }
-    .value .two { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); }
-    .safe { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 48px; }
+    .value-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
+    .two { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; align-items: start; }
+    .safe { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px 44px; }
     .about-grid { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); align-items: center; }
     .claim-grid { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); }
     .two-fields { grid-template-columns: 1fr 1fr; }
   }
-  @media (max-width: 520px) {
-    .stills { grid-template-columns: 1fr 1fr; }
-    .stills li:first-child { grid-column: 1 / -1; }
-    .worth { flex-direction: column; gap: 8px; }
-  }
   @media (max-width: 420px) {
-    .cal { padding-inline: 12px; }
+    .cal { border-radius: 18px; padding-inline: 12px; }
     .cal td { height: 46px; }
     .cal .post { width: 30px; height: 30px; }
-    .cal td.shoot { font-size: 0.64rem; letter-spacing: 0; }
-    .top .btn { padding: 0 14px; letter-spacing: 0.14em; }
-    .mark { letter-spacing: 0.26em; }
+    .top .btn { padding: 0 18px; }
+    .stamp { font-size: 1.05rem; top: 18px; }
   }
+  @media (max-width: 340px) { .gives { grid-template-columns: 1fr; } }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .halo { animation: none; }
     .cal.arm .post { transform: none; opacity: 1; transition: none; }
-    .shot img { transition: none; }
   }
   </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="top night grain" id="top-bar">
-    <div class="wrap">
-      <a class="mark" href="../">Juan Sebastian</a>
-      <a class="btn" href="#apply">Apply</a>
-    </div>
+<header class="top dark" id="top-bar">
+  <div class="wrap">
+    <a class="mark" href="../">Juan Sebastian</a>
+    <a class="btn" href="#apply">Apply</a>
+  </div>
 </header>
 
-<div class="night grain">
-
+<div class="dark">
   <section class="hero" id="top" aria-labelledby="hero-h">
     <div class="wrap">
       <div class="hero-head">
         <p class="kicker">For Las Vegas med spas</p>
-        <h1 id="hero-h">Twelve videos in 30 days from <em>one half&#8209;day</em> at your spa.</h1>
+        <h1 id="hero-h">Twelve videos in 30 days from one half&#8209;day at your spa.</h1>
       </div>
       <div class="hero-body">
-        <p class="lead">I plan, film, edit, caption and post short videos for independent med spas in Las Vegas. The first three go live within 72 hours of your shoot, and on day 30 you get a report with your real numbers: views, DMs and bookings.</p>
+        <p class="lead">I plan, film, edit, caption and post short videos for your spa. On day 30 you get a report with your real numbers: views, DMs and bookings.</p>
         <div class="actions">
-          <a class="btn" href="#apply">Apply for a test spot</a>
-          <a class="textlink" href="#value">Why it&rsquo;s free</a>
+          <a class="btn" href="#apply">Apply for a free test spot</a>
+          <a class="textlink" href="#value">What&rsquo;s included</a>
         </div>
-        <p class="note"><b>Free from me</b>, for 3 Las Vegas spas a month.</p>
+        <p class="note">Free for 3 Las Vegas spas a month.</p>
       </div>
       <div class="stagebox">
         <div class="halo" aria-hidden="true"></div>
@@ -326,53 +292,52 @@
 <main id="main">
   <section class="band value" id="value" aria-labelledby="value-h">
     <div class="wrap">
-      <p class="kicker">The offer</p>
-      <h2 id="value-h">What it&rsquo;s worth, and <em>why it&rsquo;s free</em></h2>
-      <p class="intro">The test is the same work paying spas get: the same shoot, editing, captions and posting. It&rsquo;s priced at zero for three spas a month. Here are my real prices next to it.</p>
-      <div class="two">
-        <div class="menu">
-          <div class="menu-head"><p>Juan Sebastian</p><h3>Video for your spa</h3></div>
-          <div class="item">
-            <div class="name"><span>Content Sprint</span><span class="price">$997</span></div>
-            <p>One shoot and 5 finished videos, delivered in 7 days.</p>
-          </div>
-          <div class="item">
-            <div class="name"><span>Monthly plan</span><span class="price">$2,950 <span class="per">a month</span></span></div>
-            <p>Two half-day shoots a month, 12 videos, 20 photos, ad versions, posting 3 a week and a monthly report.</p>
-          </div>
-          <div class="item free">
-            <div class="name"><span>30-day test</span><span class="price">$0</span></div>
-            <p>One half-day shoot, 12 videos, posting 3 a week and a day-30 report. For 3 spas a month.</p>
-          </div>
-          <p class="fine">You keep all 12 videos either way. No contract beyond a one-page agreement.</p>
+      <h2 id="value-h">What the free test includes</h2>
+      <p class="intro">The same work paying spas get. Free for 3 Las Vegas spas a month.</p>
+      <div class="value-grid">
+        <div>
+          <figure class="receipt" aria-labelledby="receipt-h">
+            <p class="receipt-head" id="receipt-h">Your 30-day test</p>
+            <ul class="lines">
+              <li><span>12 finished videos</span><span class="amt">$2,393</span></li>
+              <li><span>Posting, 3 a week</span><span class="amt incl">Included</span></li>
+              <li><span>English and Spanish captions</span><span class="amt incl">Included</span></li>
+              <li><span>Day-30 report</span><span class="amt incl">Included</span></li>
+            </ul>
+            <p class="total"><span>Your fee</span><span class="amt">$0</span></p>
+            <p class="boost"><span>Ad boost, paid to Instagram, not me</span><span class="amt">$150&ndash;$300</span></p>
+            <span class="stamp" aria-hidden="true">Free</span>
+          </figure>
+          <p class="footnote">$2,393 is what 12 videos cost at my Content Sprint rate ($997 for 5). You keep all 12 either way.</p>
         </div>
-        <div class="why">
-          <p class="worth"><strong>$2,300+</strong><span>is what 12 videos would cost at my Content Sprint rate. In the test, my fee is $0.</span></p>
+        <div class="side">
           <div>
             <h3>Why it&rsquo;s free</h3>
-            <p>Spas that pay for video want proof from spas like theirs. I&rsquo;m new to filming for Las Vegas med spas, so I&rsquo;m earning that proof the honest way: three spas a month get the full service with no fee, and I get real numbers and, if you&rsquo;re happy, a review.</p>
-            <p>Instead of spending on ads for my own business, I spend that time on yours.</p>
+            <ol class="flow">
+              <li><span class="n" aria-hidden="true">1</span><b>I take 3 spas a month</b><span>Full service, no fee.</span></li>
+              <li><span class="n" aria-hidden="true">2</span><b>You keep everything</b><span>All 12 videos and the report.</span></li>
+              <li><span class="n" aria-hidden="true">3</span><b>I get proof</b><span>Your numbers and, if you liked it, a review.</span></li>
+            </ol>
           </div>
           <div>
             <h3>What you put in</h3>
-            <ul>
-              <li>A $150 to $300 boost on your best 2 or 3 videos, paid to Instagram from your account, not to me</li>
-              <li>A 15-minute call, one half-day at your spa, and about 10 minutes a week to approve videos</li>
-              <li>Replies to the DMs the videos bring in, within a day</li>
-              <li>A 20-minute review on day 30, a short testimonial if you liked it, and a look at your numbers again on day 90</li>
+            <ul class="gives">
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Half a day at your spa</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>10 minutes a week to approve videos</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Quick replies to new DMs</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>A 20-minute review on day 30</li>
             </ul>
           </div>
-          <p class="honest">Views and bookings aren&rsquo;t guaranteed. Nobody honest can promise them. What I promise is the work, on schedule, and a report that shows exactly what happened.</p>
         </div>
       </div>
+      <p class="after">Want more after the test? <span class="chip">Content Sprint <span>$997</span></span><span class="chip">Monthly plan <span>$2,950 a month</span></span></p>
     </div>
   </section>
 
-  <section class="band whiteband" id="how" aria-labelledby="how-h">
+  <section class="band white" id="how" aria-labelledby="how-h">
     <div class="wrap two">
       <div>
-        <p class="kicker">The 30 days</p>
-        <h2 id="how-h">How the test <em>runs</em></h2>
+        <h2 id="how-h">How the 30 days run</h2>
         <ol class="steps">
           <li><h3>Before day 1</h3><p>A 15-minute call, and I record your last 30 days of Instagram numbers so the report has a real before.</p></li>
           <li><h3>Day 1</h3><p>A half-day shoot at your spa, scheduled around your patients. I bring the release forms.</p></li>
@@ -403,81 +368,51 @@
     </div>
   </section>
 
-  <section class="band night grain proof" aria-labelledby="proof-h">
-    <div class="wrap two">
-      <div class="prose">
-        <p class="kicker">Proof</p>
-        <h2 id="proof-h">I&rsquo;ve filmed in a <em>clinic</em> before</h2>
-        <p>For Georgia Southern University Health Services I shot a 45-second spot inside their clinic: the front desk, a nurse walking a student through his forms, a vaccine going in, and an explainer with on-screen graphics. Quiet, quick and out of everyone&rsquo;s way.</p>
-        <p>I trained as a cinematographer, so your treatment rooms get lit properly: soft light that flatters skin and shows results clearly.</p>
-        <a class="textlink" href="../">See my full portfolio</a>
-      </div>
-      <figure>
-        <a class="shot" href="https://vimeo.com/1073431405" data-video="vimeo:1073431405" aria-label="Play the 45-second Health Services spot">
-          <img src="clinic-shot.webp" srcset="clinic-shot-sm.webp 640w, clinic-shot.webp 1280w" sizes="(min-width: 960px) 540px, 100vw" width="1280" height="720" alt="" loading="lazy" decoding="async">
-          <span class="tag"><span class="tri" aria-hidden="true"></span>Watch the spot</span>
-        </a>
-        <figcaption>A nurse gives a student a vaccine in the Health Services spot.</figcaption>
-        <ul class="stills">
-          <li><img src="clinic-explain.webp" width="800" height="450" alt="A clinic staff member explaining required vaccines, with the list appearing beside him on screen" loading="lazy" decoding="async"><span>Explainer</span></li>
-          <li><img src="clinic-desk.webp" width="800" height="450" alt="A student walking up to the clinic reception desk" loading="lazy" decoding="async"><span>Front desk</span></li>
-          <li><img src="clinic-consult.webp" width="800" height="450" alt="A nurse going over a form with the student" loading="lazy" decoding="async"><span>Consult</span></li>
-        </ul>
-      </figure>
-    </div>
-  </section>
-
   <section class="band" aria-labelledby="safe-h">
     <div class="wrap">
-      <div>
-        <p class="kicker">Your practice</p>
-        <h2 id="safe-h">Safe for <em>your practice</em></h2>
-        <p class="intro">Medical content has rules. These are mine.</p>
-      </div>
+      <h2 id="safe-h">Safe for your practice</h2>
+      <p class="intro">Medical content has rules. These are mine.</p>
       <ul class="safe">
-        <li><h3>Consent first</h3><p>Nobody appears on camera without a signed release. I bring the forms, or use yours.</p></li>
+        <li><h3>Consent first</h3><p>Nobody appears on camera without a signed release.</p></li>
         <li><h3>Nothing posts without you</h3><p>You approve every video before it goes live.</p></li>
-        <li><h3>Claims get checked</h3><p>Your medical director or lead injector reviews anything a video says about a treatment.</p></li>
-        <li><h3>No patient records</h3><p>I never need them. Before-and-after posts only with the patient&rsquo;s written authorization.</p></li>
+        <li><h3>Claims get checked</h3><p>Your medical director reviews anything a video says about a treatment.</p></li>
+        <li><h3>No patient records</h3><p>I never need them. Before-and-after posts only with written consent.</p></li>
         <li><h3>The files are yours</h3><p>You keep every video, even if we stop working together.</p></li>
       </ul>
     </div>
   </section>
 
-  <section class="band whiteband" aria-labelledby="about-h">
+  <section class="band mintband" aria-labelledby="about-h">
     <div class="wrap two about-grid">
       <img class="about-photo" src="../images/home/juan.webp" width="507" height="900" alt="Juan Sebastian, smiling, in a black-and-white portrait" loading="lazy" decoding="async">
       <div class="prose">
-        <p class="kicker">Who films it</p>
-        <h2 id="about-h">Hi, I&rsquo;m <em>Juan.</em></h2>
-        <p>I grew up in Colombia, studied film at Georgia Southern University and live in Las Vegas, where I film live events. The job taught me to work fast and quietly around people who have somewhere to be.</p>
-        <p>I film every shoot myself and answer every message myself.</p>
-        <p>Hablo espa&ntilde;ol. Every video can carry English and Spanish captions; a third of Las Vegas speaks a language other than English at home.</p>
+        <h2 id="about-h">Hi, I&rsquo;m Juan.</h2>
+        <p>I grew up in Colombia, studied film at Georgia Southern University and the Georgia Film Academy, and live in Las Vegas. I film every shoot myself and answer every message myself.</p>
+        <p>Hablo espa&ntilde;ol. Every video can have English and Spanish captions; a third of Las Vegas speaks a language other than English at home.</p>
         <a class="textlink" href="../">See my portfolio</a>
       </div>
     </div>
   </section>
 
-  <section class="band" aria-labelledby="faq-h">
+  <section class="band white" aria-labelledby="faq-h">
     <div class="wrap">
-      <p class="kicker">Questions</p>
-      <h2 id="faq-h">Questions owners <em>ask</em></h2>
+      <h2 id="faq-h">Questions owners ask</h2>
       <div class="faq">
         <details><summary>Do I or my staff have to be on camera?</summary><p>No. Hands, products, rooms and treatments carry most videos. If someone wants to talk to camera, I&rsquo;ll coach them through it.</p></details>
         <details><summary>What does the ad boost pay for?</summary><p>It shows your best 2 or 3 videos to people near your spa who don&rsquo;t follow you yet. You pay Instagram directly from your own account, $150 to $300 in total, and I set it up with you.</p></details>
         <details><summary>How much of my team&rsquo;s time does it take?</summary><p>The half-day shoot, scheduled around your patients, and about 10 minutes a week to approve videos.</p></details>
         <details><summary>Do you post for us?</summary><p>Yes. Three times a week from your own account, after you approve each video. I can add TikTok and Facebook too.</p></details>
+        <details><summary>Can you promise more bookings?</summary><p>No, and nobody honest can. What I promise is the work, on schedule, and a report that shows exactly what happened.</p></details>
         <details><summary>What happens after 30 days?</summary><p>We go through the report together. If it&rsquo;s working, we talk about a monthly plan. If it isn&rsquo;t, you keep the videos and owe me nothing.</p></details>
         <details><summary>What&rsquo;s the catch?</summary><p>There isn&rsquo;t one beyond what&rsquo;s above: the boost, your time, honest numbers and a review call. I take three spas a month so I can film each one myself.</p></details>
       </div>
     </div>
   </section>
 
-  <section class="band whiteband" id="apply" aria-labelledby="apply-h">
+  <section class="band mintband" id="apply" aria-labelledby="apply-h">
     <div class="wrap two claim-grid">
       <div class="prose">
-        <p class="kicker">Three spots a month</p>
-        <h2 id="apply-h">Apply for a <em>test spot</em></h2>
+        <h2 id="apply-h">Apply for a test spot</h2>
         <p>I take three spas a month. Tell me about yours and I&rsquo;ll reply within 24 hours.</p>
       </div>
       <div class="claim">
@@ -504,9 +439,9 @@
   </section>
 </main>
 
-<footer class="night">
+<footer class="dark">
   <div class="wrap">
-    <span>Juan Sebastian &middot; Video for med spas in Las Vegas, Nevada</span>
+    <span>Juan Sebastian, video for med spas in Las Vegas, Nevada</span>
     <a href="../">See my portfolio</a>
   </div>
 </footer>
@@ -544,25 +479,6 @@
       io.observe(cal);
     }
   }
-
-  /* The clinic spot plays on the page. */
-  var dlg = document.createElement('dialog');
-  dlg.className = 'viewer';
-  dlg.setAttribute('aria-label', 'Health Services spot');
-  dlg.innerHTML = '<div class="bar"><button type="button" class="close">Close</button></div><div class="frame"></div>';
-  document.body.appendChild(dlg);
-  var frame = dlg.querySelector('.frame'), opener = null;
-  document.addEventListener('click', function (e) {
-    var a = e.target.closest('[data-video]');
-    if (!a || typeof dlg.showModal !== 'function') return;
-    e.preventDefault(); opener = a;
-    var id = a.getAttribute('data-video').split(':')[1];
-    frame.innerHTML = '<iframe title="Health Services spot" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen src="https://player.vimeo.com/video/' + id + '?autoplay=1&dnt=1&title=0&byline=0&portrait=0"></iframe>';
-    dlg.showModal();
-  });
-  dlg.querySelector('.close').addEventListener('click', function () { dlg.close(); });
-  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-  dlg.addEventListener('close', function () { frame.innerHTML = ''; if (opener) opener.focus(); });
 
   /* Form: sends through Web3Forms to Juan's inbox. Bots that tick the hidden box
      or submit within 3 seconds are dropped. */
