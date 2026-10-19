@@ -26,21 +26,21 @@ and no venue names. Spa patient content needs the patient's written authorizatio
 
 `index.html` doesn't use Tailwind or `css/site.css`; its styles and script live inside the page.
 
-- **Photos:** web-sized WebP copies in `images/home/`: hero frames (`hero-1`, `hero-violin`, `hero-ltns`, `hero-walk`),
-  the loud and quiet frames (`loud`, `quiet`), story cards (`s-*`), light-table frames (`t01` to `t12`) and service
-  previews (`v-*`). To swap one, export it about 1800px wide for hero frames or 640px for light-table frames and keep the name.
-- **Red-pencil notes** on the light table are the `<span class="note">` next to each circled frame.
+- **Photos only, no stills from films:** web-sized WebP copies in `images/home/`: hero frames (`hero-1`, `hero-violin`,
+  `hero-portrait`, `hero-walk`), story cards (`s-*`), light-table frames (`t01` to `t12`) and service previews (`v-*`).
+  To swap one, export it about 1800px wide for hero frames or 640px for light-table frames and keep the name.
+- **Films in the work strip** are drawn as slates (`.story.film`), not stills. Each links to its film on `videography.html`.
 - **Smooth scrolling** uses [Lenis](https://github.com/darkroomengineering/lenis) (MIT), stored in `js/lenis.min.js`.
 - **Fonts** come from Google Fonts: Bodoni Moda and Jost everywhere, plus IBM Plex Mono and Nanum Pen Script on the homepage.
 - Motion turns off for visitors who have "reduce motion" on, and the slideshow can be paused.
 
 ## Med spa page
 
-- Styles and script live inside `med-spas/index.html`. Same palette and fonts as the portfolio.
+- Styles and script live inside `med-spas/index.html`. Its own palette (pine and emerald) and type (Fraunces for
+  headlines, Hanken Grotesk for text), set at 18px with short sentences so owners can scan it on a phone.
 - The promo in the phone is `media/spa-promo.mp4` (a `.webm` copy is the fallback) with `spa-promo.webp` as its still.
   Keep each video here under about 2 MB: GitHub refuses files over 100 MB, warns over 50 MB, and big files slow the page.
-- Clinic stills are from the Health Services spot. After the first test spa, add three of its vertical clips and the day-30
-  numbers as a case study.
+- After the first test spa, add three of its vertical clips and the day-30 numbers as a case study.
 
 ## Contact forms
 
