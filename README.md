@@ -8,12 +8,12 @@ Live at <https://thesalatiz.github.io/js-cinematography/> (GitHub Pages, served 
 | Page | What it is |
 |---|---|
 | `index.html` | Home ("Loud room. Quiet eye."): self-contained page with its own styles and script |
-| `about.html` | Bio, kit and languages |
+| `about.html` | Bio, roles, software, gear, languages, education and the credits list (each credit links to its film) |
 | `videography.html` | Short films, the Health Services spot and a wedding film (YouTube and Vimeo embeds) |
 | `photography.html` | Links to the three photo series |
 | `gallery-commercial.html`, `gallery-grad.html`, `gallery-recital.html` | The series. Each photo opens in a full-screen viewer (`js/viewer.js`) |
 | `contact.html` | The contact form |
-| `med-spas/index.html` | The page for med spa owners: the free 30-day test, prices, the promo video and the application form. Not linked from the portfolio menu; share `/med-spas/` directly |
+| `med-spas/index.html` | The page for med spa owners: the complimentary 30-day pilot, the twelve videos, the 30-day calendar, privacy standards, prices, the promo video and the application form. Not linked from the portfolio menu; share `/med-spas/` directly |
 | `404.html` | Shown for any missing address. Any address with "spa" in it goes to the med spa page |
 | `robots.txt`, `sitemap.xml` | For search engines. Submit the sitemap in Google Search Console; `robots.txt` only takes effect on a custom domain |
 
@@ -29,6 +29,10 @@ and no venue names. Spa patient content needs the patient's written authorizatio
 - **Photos only, no stills from films:** web-sized WebP copies in `images/home/`: hero frames (`hero-1`, `hero-violin`,
   `hero-portrait`, `hero-walk`), story cards (`s-*`), light-table frames (`t01` to `t12`) and service previews (`v-*`).
   To swap one, export it about 1800px wide for hero frames or 640px for light-table frames and keep the name.
+- **The first hero photo has a phone crop,** `hero-1-tall.webp` (840 x 1013), so phones download 130 KB instead of 290 KB.
+  If you replace `hero-1`, make a new tall crop too. The other three hero photos load after the page has finished.
+- **At a glance,** the strip under the hero, is the short version of a résumé: roles, city, languages, software and training.
+  Keep it true and short; hiring managers read it first.
 - **Films in the work strip** are drawn as slates (`.story.film`), not stills. Each links to its film on `videography.html`.
 - **Smooth scrolling** uses [Lenis](https://github.com/darkroomengineering/lenis) (MIT), stored in `js/lenis.min.js`.
 - **Fonts** come from Google Fonts: Bodoni Moda and Jost everywhere, plus IBM Plex Mono and Nanum Pen Script on the homepage.
@@ -40,7 +44,10 @@ and no venue names. Spa patient content needs the patient's written authorizatio
   headlines, Hanken Grotesk for text), set at 18px with short sentences so owners can scan it on a phone.
 - The promo in the phone is `media/spa-promo.mp4` (a `.webm` copy is the fallback) with `spa-promo.webp` as its still.
   Keep each video here under about 2 MB: GitHub refuses files over 100 MB, warns over 50 MB, and big files slow the page.
-- After the first test spa, add three of its vertical clips and the day-30 numbers as a case study.
+- The calendar shows the schedule in the content plan: session on day 1, one video every Monday, Wednesday and Friday
+  from day 3 to day 29, report on day 30. If the schedule changes, change the steps, the calendar and its hidden caption together.
+- Every promise on this page has to match what the pilot agreement says. Change one, change the other.
+- After the first pilot, add three of its vertical clips and the day-30 numbers as a case study.
 
 ## Contact forms
 
@@ -50,9 +57,20 @@ not written anywhere on the site, so scrapers can't harvest it.
 
 ## Styling
 
-The inner pages use [Tailwind CSS 2](https://v2.tailwindcss.com/) through a small prebuilt file, `css/tailwind.css`, which
-contains only the classes the pages use. Page styles sit in each page's `<style>` block; the nav button, footer, phone menu
-and photo viewer shared by the inner pages are in `css/site.css`.
+The seven inner pages (about, films, photos, the three galleries, contact) share one stylesheet and one script, so the
+header, menu, buttons, footer and motion are identical on every page:
+
+- `css/site.css`: everything those pages look like. No inner page has its own `<style>` block any more.
+- `js/site.js`: the phone menu, the header background and the blocks that ease in while scrolling.
+- `js/viewer.js`: the full-screen photo viewer on the gallery pages.
+- `css/tailwind.css`: a small prebuilt [Tailwind CSS 2](https://v2.tailwindcss.com/) file with only the layout classes the pages use.
+
+After changing `site.css`, `site.js` or `viewer.js`, raise the `?v=` number where the pages link to them (now `?v=5`),
+so returning visitors get the new file straight away.
+
+House rules that keep the pages easy to read and to trust: no text under 14px, links and buttons at least 44px tall,
+lines of text under about 80 characters, a visible focus ring on everything, and the same label for the same thing
+everywhere (Films, Photos, About, Get in touch).
 
 If you add or change Tailwind classes in any HTML file, rebuild the CSS so the new classes are included:
 

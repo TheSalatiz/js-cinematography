@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Juan Sebastian | Las Vegas Cinematographer &amp; Photographer</title>
-  <meta name="description" content="Juan Sebastian is a cinematographer and photographer in Las Vegas: short films, brand and product work, and portraits, lit, shot and colour graded.">
+  <meta name="description" content="Juan Sebastian is a cinematographer and photographer in Las Vegas: short films, brand and product work, and portraits, lit, shot and color graded.">
   <link rel="canonical" href="https://thesalatiz.github.io/js-cinematography/">
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Juan Sebastian">
   <meta property="og:title" content="Juan Sebastian | Las Vegas Cinematographer &amp; Photographer">
-  <meta property="og:description" content="Juan Sebastian is a cinematographer and photographer in Las Vegas: short films, brand and product work, and portraits, lit, shot and colour graded.">
+  <meta property="og:description" content="Juan Sebastian is a cinematographer and photographer in Las Vegas: short films, brand and product work, and portraits, lit, shot and color graded.">
   <meta property="og:url" content="https://thesalatiz.github.io/js-cinematography/">
   <meta property="og:image" content="https://thesalatiz.github.io/js-cinematography/images/home/hero-1.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -24,7 +24,7 @@
     "alternateName": "Juan Sebastian",
     "jobTitle": "Cinematographer and photographer",
     "sameAs": ["https://www.linkedin.com/in/juan-salazar-68a389261/"],
-    "description": "Juan Sebastian is a cinematographer and photographer in Las Vegas: short films, brand and product work, and portraits, lit, shot and colour graded.",
+    "description": "Juan Sebastian is a cinematographer and photographer in Las Vegas: short films, brand and product work, and portraits, lit, shot and color graded.",
     "url": "https://thesalatiz.github.io/js-cinematography/",
     "image": "https://thesalatiz.github.io/js-cinematography/images/home/hero-1.jpg",
     "address": { "@type": "PostalAddress", "addressLocality": "Las Vegas", "addressRegion": "NV", "addressCountry": "US" },
@@ -32,10 +32,13 @@
     "knowsLanguage": ["en", "es"]
   }
   </script>
-  <link rel="preload" as="image" href="images/home/hero-1.webp" type="image/webp">
+  <link rel="preload" as="image" href="images/home/hero-1.webp" type="image/webp" media="(min-width: 521px)" fetchpriority="high">
+  <link rel="preload" as="image" href="images/home/hero-1-tall.webp" type="image/webp" media="(max-width: 520px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Nanum+Pen+Script&display=swap">
+  <!-- Pages a visitor points at start loading early, so the next page opens at once. -->
+  <script type="speculationrules">{"prefetch": [{"where": {"href_matches": "/*"}, "eagerness": "moderate"}]}</script>
   <style>
   /* Layout: a screening room. Dark full-bleed frames, credit-style captions,
      one daylight light table of contact sheets. */
@@ -80,9 +83,11 @@
   :focus-visible { outline: 2px solid var(--tungsten); outline-offset: 4px; }
   h1, h2, h3 { font-family: var(--display); font-weight: 400; margin: 0; text-wrap: balance; }
   p { margin: 0; }
-  .caps { font-family: var(--body); text-transform: uppercase; letter-spacing: 0.26em; font-size: 0.8rem; font-weight: 500; }
-  .mono { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+  .caps { font-family: var(--body); text-transform: uppercase; letter-spacing: 0.24em; font-size: 0.875rem; font-weight: 500; }
+  .mono { font-family: var(--mono); font-size: 0.875rem; letter-spacing: 0.03em; font-variant-numeric: tabular-nums; }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .skip { position: absolute; left: 12px; top: -80px; z-index: 110; padding: 12px 18px; background: var(--chalk); color: var(--night); font-weight: 500; }
+  .skip:focus { top: 12px; }
 
   /* ---------- film grain + viewfinder ---------- */
   .grain {
@@ -100,18 +105,19 @@
     transition: background-color 0.6s var(--ease), padding 0.6s var(--ease);
   }
   .nav.solid { background: rgba(16, 15, 13, 0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); padding-block: 14px; }
-  .nav-name { font-family: var(--body); font-weight: 500; letter-spacing: 0.34em; text-transform: uppercase; font-size: 0.84rem; display: flex; align-items: center; gap: 14px; min-height: 44px; }
+  .nav-name { font-family: var(--body); font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase; font-size: 0.875rem; display: flex; align-items: center; gap: 14px; min-height: 44px; }
   .nav-links { display: flex; align-items: center; gap: clamp(16px, 3vw, 40px); }
-  .nav-links a:not(.btn) { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.84rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); transition: color 0.3s; }
+  .nav-links a:not(.btn) { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); transition: color 0.3s; }
   .nav-links a:not(.btn):hover { color: var(--chalk); }
 
   .btn {
     display: inline-flex; align-items: center; gap: 0.7em;
     padding: 0.95em 1.6em; border: 1px solid var(--tungsten); min-height: 46px;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase;
+    font-size: 0.875rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
     color: var(--night); background: var(--tungsten);
-    transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+    transition: background-color 0.4s var(--ease), color 0.4s var(--ease), transform 0.2s var(--ease);
   }
+  .btn:active { transform: translateY(1px); }
   .btn:hover { background: transparent; color: var(--tungsten); }
   .btn.ghost { background: transparent; color: var(--tungsten); }
   .btn.ghost:hover { background: var(--tungsten); color: var(--night); }
@@ -120,28 +126,32 @@
 
 
   /* phone menu */
-  .menu-btn { display: none; min-height: 46px; background: none; border: 1px solid var(--line); color: var(--chalk); font: 500 0.8rem/1 var(--body); letter-spacing: 0.22em; text-transform: uppercase; padding: 0.95em 1em; cursor: pointer; }
+  .menu-btn { display: none; min-height: 46px; background: none; border: 1px solid var(--line); color: var(--chalk); font: 500 0.875rem/1 var(--body); letter-spacing: 0.2em; text-transform: uppercase; padding: 0.95em 1em; cursor: pointer; }
   .menu { position: fixed; inset: 0; z-index: 65; background: var(--night); padding: calc(env(safe-area-inset-top, 0px) + 110px) var(--gutter) 40px; overflow-y: auto; }
   .menu nav { display: grid; gap: 6px; }
   .menu a { font-family: var(--display); font-size: clamp(2.4rem, 11vw, 3.4rem); line-height: 1.15; }
   .menu a.menu-cta { font-family: var(--body); font-size: 0.9rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--tungsten); margin-top: 28px; }
 
   /* reel viewer */
-  .reel { position: fixed; inset: 0; z-index: 100; background: rgba(8, 7, 6, 0.96); display: grid; place-items: center; padding: var(--gutter); }
+  dialog.reel { position: fixed; inset: 0; z-index: 100; width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; padding: var(--gutter); background: rgba(8, 7, 6, 0.96); color: var(--chalk); }
+  dialog.reel[open] { display: grid; place-items: center; animation: reel-in 0.3s var(--ease); }
+  dialog.reel::backdrop { background: rgba(8, 7, 6, 0.9); }
+  @keyframes reel-in { from { opacity: 0; } }
   .reel-frame { width: min(100%, 1200px); aspect-ratio: 16 / 9; max-width: 100%; background: #000; }
   .reel-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-  .reel-close { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 18px); right: var(--gutter); min-height: 46px; background: none; border: 1px solid var(--line); color: var(--chalk); font: 500 0.8rem/1 var(--body); letter-spacing: 0.22em; text-transform: uppercase; padding: 0.9em 1.1em; cursor: pointer; }
+  .reel-close { position: absolute; top: calc(env(safe-area-inset-top, 0px) + 18px); right: var(--gutter); min-height: 46px; background: none; border: 1px solid var(--line); color: var(--chalk); font: 500 0.875rem/1 var(--body); letter-spacing: 0.2em; text-transform: uppercase; padding: 0.9em 1.1em; cursor: pointer; }
   .reel-close:hover { border-color: var(--chalk); }
-  button.play { background: none; border: 0; color: inherit; font: inherit; font-size: 0.82rem; cursor: pointer; padding: 0; }
+  button.play { background: none; border: 0; color: inherit; font: inherit; font-size: 0.875rem; cursor: pointer; padding: 0; }
 
   .credits-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin-top: 34px; }
-  .credits-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--smoke); font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .credits-links a { display: inline-flex; align-items: center; min-height: 44px; color: var(--smoke); font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; }
   .credits-links a:hover { color: var(--chalk); }
 
   /* ---------- 1. hero ---------- */
-  .hero { position: relative; height: min(88vh, 900px); min-height: 560px; overflow: hidden; background: #000; }
+  .hero { position: relative; height: min(86vh, 900px); min-height: 560px; overflow: hidden; background: #000; }
   .frame { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 1.6s var(--ease); }
   .frame.on { opacity: 1; }
+  .frame picture { display: contents; }
   .frame img { width: 100%; height: 100%; object-fit: cover; }
   .frame.on img { animation: settle 8s var(--ease) both; }
   .frame:first-child.on img { animation-name: settle-first; }
@@ -157,7 +167,8 @@
   .hero h1 em { color: var(--tungsten); font-style: italic; }
   .hero-sub { font-size: clamp(1.02rem, 1.4vw, 1.2rem); max-width: 30em; color: rgba(237, 231, 220, 0.88); }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; }
-  .play { display: inline-flex; align-items: center; gap: 12px; min-height: 46px; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; }
+  .play { display: inline-flex; align-items: center; gap: 12px; min-height: 46px; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; text-align: left; }
+  .play .short { display: none; }
   .play i { width: 42px; height: 42px; border: 1px solid rgba(237, 231, 220, 0.6); border-radius: 50%; display: grid; place-items: center; transition: background-color 0.4s var(--ease), border-color 0.4s var(--ease); }
   .play i::before { content: ""; border-left: 9px solid var(--chalk); border-top: 6px solid transparent; border-bottom: 6px solid transparent; margin-left: 3px; }
   .play:hover i { background: var(--chalk); border-color: var(--chalk); }
@@ -175,6 +186,14 @@
   .frbar i.run { animation: frbar 6.5s linear forwards; }
   .frbar i.hold { animation-play-state: paused; }
   @keyframes frbar { to { transform: scaleX(1); } }
+  #cap { padding: 3px 8px; background: rgba(10, 9, 8, 0.45); }
+
+  /* ---------- 2. at a glance: what a hiring manager looks for first ---------- */
+  .glance { padding: 0 var(--gutter); border-bottom: 1px solid var(--line); }
+  .glance dl { margin: 0; display: grid; grid-template-columns: 1.1fr 0.85fr 0.85fr 1.5fr 1.4fr; gap: 0 clamp(20px, 3vw, 48px); }
+  .glance div { padding: 22px 0 24px; display: grid; gap: 6px; align-content: start; }
+  .glance dt { font-size: 0.875rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--tungsten); }
+  .glance dd { margin: 0; font-size: 1rem; line-height: 1.4; color: var(--chalk); text-wrap: balance; }
 
 
   /* ---------- 3. stories (horizontal strip) ---------- */
@@ -202,7 +221,7 @@
   .film-stick { align-self: start; margin-inline: calc(-1 * clamp(18px, 2vw, 28px)); height: 34px; background: repeating-linear-gradient(-60deg, #0B0A09 0 22px, var(--chalk) 22px 44px); }
   .film-kind { color: var(--tungsten); text-transform: uppercase; letter-spacing: 0.18em; }
   .film-name { font-family: var(--display); font-size: clamp(2rem, 3.2vw, 2.9rem); line-height: 1; color: var(--chalk); text-wrap: balance; }
-  .film-play { display: inline-flex; align-items: center; gap: 12px; margin-top: 8px; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); transition: color 0.3s; }
+  .film-play { display: inline-flex; align-items: center; gap: 12px; margin-top: 8px; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); transition: color 0.3s; }
   .film-play i { width: 42px; height: 42px; border: 1px solid var(--tungsten); border-radius: 50%; position: relative; transition: background-color 0.3s; }
   .film-play i::after { content: ""; position: absolute; left: 16px; top: 13px; border-style: solid; border-width: 8px 0 8px 12px; border-color: transparent transparent transparent var(--tungsten); transition: border-color 0.3s; }
   .story.film:hover .film-card, .story.film:focus-visible .film-card { border-color: var(--tungsten); }
@@ -212,7 +231,7 @@
   .story.end { width: min(340px, 80vw); align-self: stretch; display: flex; flex-direction: column; justify-content: center; gap: 18px; border-left: 1px solid var(--line); padding-left: clamp(20px, 3vw, 44px); }
   .story.end h3 { font-size: 2.2rem; line-height: 1.05; }
   .story.end p { color: var(--smoke); }
-  .story.end span { color: var(--tungsten); letter-spacing: 0.2em; font-size: 0.82rem; text-transform: uppercase; }
+  .story.end span { color: var(--tungsten); letter-spacing: 0.2em; font-size: 0.875rem; text-transform: uppercase; }
   .strip-foot { padding-inline: var(--gutter); display: flex; align-items: center; gap: 20px; color: var(--smoke); }
   .strip-rail { flex: 1; height: 1px; background: var(--line); position: relative; }
   .strip-rail span { position: absolute; left: 0; top: -1px; height: 3px; width: 0; background: var(--tungsten); }
@@ -232,11 +251,12 @@
   .slate-board { margin: 0; background: #0B0A09; border: 1px solid rgba(237, 231, 220, 0.25); display: grid; grid-template-columns: repeat(3, 1fr); }
   .slate-board div { padding: 12px 14px; border: 1px solid rgba(237, 231, 220, 0.18); }
   .slate-board .wide { grid-column: 1 / -1; }
-  .slate-board dt { font-family: var(--body); font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--smoke); }
+  .slate-board dt { font-family: var(--body); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--smoke); }
   .slate-board dd { margin: 4px 0 0; font-family: var(--hand); font-size: 1.9rem; line-height: 1; color: var(--chalk); }
   .films { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-  .films li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr); gap: 24px; align-items: baseline; padding: 20px 0; border-bottom: 1px solid var(--line); }
-  .film-title { font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.05; }
+  .films li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr); gap: 24px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .film-title { display: inline-flex; align-items: center; min-height: 44px; font-family: var(--display); font-size: clamp(1.5rem, 2.6vw, 2.2rem); line-height: 1.05; transition: color 0.3s; }
+  a.film-title:hover, a.film-title:focus-visible { color: var(--tungsten); font-style: italic; }
   .film-note { color: var(--smoke); }
   .film-role { color: var(--tungsten); text-align: right; }
 
@@ -266,6 +286,9 @@
   .svc-kind { color: var(--tungsten); }
   .svc a:hover, .svc a:focus-visible { padding-left: 24px; }
   .svc a:hover .svc-name, .svc a:focus-visible .svc-name { font-style: italic; }
+  .svc a:not([href]) { cursor: default; }
+  .svc a:not([href]):hover { padding-left: 0; }
+  .svc a:not([href]):hover .svc-name { font-style: normal; }
   .svc-thumb { display: none; }
   .preview { position: fixed; z-index: 60; top: 0; left: 0; width: 300px; aspect-ratio: 3 / 2; pointer-events: none; opacity: 0; transition: opacity 0.35s var(--ease); overflow: hidden; box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7); }
   .preview.show { opacity: 1; }
@@ -296,7 +319,7 @@
   .sign { font-family: var(--hand); font-size: 2.6rem; color: var(--tungsten); line-height: 1; }
   .about-links { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; }
   .tag { border: 1px solid var(--line); padding: 6px 10px; color: var(--smoke); }
-  .textlink { display: inline-flex; align-items: flex-end; min-height: 44px; font-size: 0.82rem; letter-spacing: 0.22em; text-transform: uppercase; border-bottom: 1px solid var(--tungsten); padding-bottom: 6px; }
+  .textlink { display: inline-flex; align-items: flex-end; min-height: 44px; font-size: 0.875rem; letter-spacing: 0.2em; text-transform: uppercase; border-bottom: 1px solid var(--tungsten); padding-bottom: 6px; }
 
   /* ---------- 8. close + credits ---------- */
   .close { padding: clamp(110px, 16vw, 220px) var(--gutter) clamp(70px, 10vw, 120px); display: grid; gap: 34px; justify-items: start; }
@@ -316,17 +339,20 @@
   @media (max-width: 860px) {
     .nav-links a.hide-sm { display: none; }
     .menu-btn { display: inline-block; }
-    .nav .btn .long { display: none; }
-    .nav .btn .short { display: inline; }
+    .nav .btn .long, .play .long { display: none; }
+    .nav .btn .short, .play .short { display: inline; }
     .nav-name { letter-spacing: 0.26em; }
     .hero { height: 86svh; min-height: 540px; }
     .hero-shade { background: linear-gradient(0deg, rgba(10, 9, 8, 0.94) 0%, rgba(10, 9, 8, 0.72) 48%, rgba(10, 9, 8, 0.1) 78%, rgba(10, 9, 8, 0.5) 100%); }
     .frame:first-child img { object-position: 86% center; }
     .frame img[data-pos] { object-position: var(--pos) center; }
     .hero-meta { top: calc(env(safe-area-inset-top, 0px) + 84px); bottom: auto; }
+    .glance dl { grid-template-columns: 1fr; }
+    .glance div { grid-template-columns: 8.5rem minmax(0, 1fr); gap: 16px; align-items: baseline; padding: 14px 0; border-top: 1px solid var(--line); }
+    .glance div:first-child { border-top: 0; }
     .cine { grid-template-columns: minmax(0, 1fr); }
     .cine h2 { font-size: clamp(2rem, 10.5vw, 3.2rem); }
-    .slate { justify-self: start; width: min(100%, 340px); }
+    .slate { justify-self: start; width: min(100%, 340px); margin-top: 56px; }
     .films li { grid-template-columns: 1fr; gap: 4px; }
     .film-role { text-align: left; }
     .svc a .svc-slate { display: grid; }
@@ -344,7 +370,17 @@
     .about img { max-width: 420px; }
     .credit { grid-template-columns: 1fr 1.4fr; gap: 16px; }
   }
-  @media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+  @media (hover: none), (max-width: 860px) {
+    .grain { inset: 0; animation: none; }
+  }
+  @media (max-width: 520px) {
+    .steps { grid-template-columns: 1fr; }
+    .frame:first-child img { object-position: 74% center; }   /* the phone crop of the first photo */
+  }
+  @media (min-width: 861px) and (max-width: 1180px) {
+    .glance dl { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .glance div:nth-child(n+4) { padding-top: 0; }
+  }
 
   /* stories fall back to a swipeable row when not pinned */
   .stories.free { height: auto !important; }
@@ -360,10 +396,16 @@
     .frame.on img { animation: none; }
     .reveal.pre { transform: none; opacity: 1; }
     .slate-stick { transform: none; transition: none; }
+    dialog.reel[open] { animation: none; }
   }
+
+  /* moving to another page cross-fades instead of flashing (browsers that support it) */
+  @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
+  ::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.28s; }
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
@@ -379,7 +421,7 @@
 
 <div class="menu" id="menu" hidden>
   <nav aria-label="Menu">
-    <a href="#work">Stories</a>
+    <a href="#work">Work</a>
     <a href="videography.html">Films</a>
     <a href="photography.html">Photos</a>
     <a href="about.html">About</a>
@@ -388,20 +430,20 @@
 </div>
 
 
-<main>
+<main id="main">
   <!-- 1. Opening shot -->
   <section class="hero" id="top" aria-label="Opening">
-    <figure class="frame on" data-cap="Graduation · Georgia Southern"><img src="images/home/hero-1.webp" width="1800" height="1013" alt="A graduate seen from behind with arms outstretched in front of the Georgia Southern hedge"></figure>
-    <figure class="frame" data-cap="Performance · Violinist"><img src="images/home/hero-violin.webp" width="1800" height="1286" data-pos style="--pos: 62%" alt="A violinist in profile holding his violin and bow, lit from the side against black" loading="lazy"></figure>
-    <figure class="frame" data-cap="Portraits · Georgia Southern"><img src="images/home/hero-portrait.webp" width="1800" height="1013" data-pos style="--pos: 50%" alt="A graduate in a navy gown and a red, white and blue stole, hands in his pockets, in front of the campus hedge" loading="lazy"></figure>
-    <figure class="frame" data-cap="Milestones · Georgia Southern"><img src="images/home/hero-walk.webp" width="1800" height="1013" data-pos style="--pos: 50%" alt="A graduate in a navy gown walking away down a road lined with oaks and university banners" loading="lazy"></figure>
+    <figure class="frame on" data-cap="Graduation · Georgia Southern"><picture><source media="(max-width: 520px)" srcset="images/home/hero-1-tall.webp" type="image/webp" width="840" height="1013"><img src="images/home/hero-1.webp" width="1800" height="1013" fetchpriority="high" alt="A graduate seen from behind with arms outstretched in front of the Georgia Southern hedge"></picture></figure>
+    <figure class="frame" data-cap="Performance · Violinist"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/home/hero-violin.webp" width="1800" height="1286" data-pos style="--pos: 62%" alt="A violinist in profile holding his violin and bow, lit from the side against black"></figure>
+    <figure class="frame" data-cap="Portraits · Georgia Southern"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/home/hero-portrait.webp" width="1800" height="1013" data-pos style="--pos: 50%" alt="A graduate in a navy gown and a red, white and blue stole, hands in his pockets, in front of the campus hedge"></figure>
+    <figure class="frame" data-cap="Milestones · Georgia Southern"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="images/home/hero-walk.webp" width="1800" height="1013" data-pos style="--pos: 50%" alt="A graduate in a navy gown walking away down a road lined with oaks and university banners"></figure>
     <div class="hero-shade"></div>
     <div class="hero-copy">
       <h1><span>Loud room.</span><span><em>Quiet eye.</em></span><span class="sr-only">Juan Sebastian, cinematographer and photographer in Las Vegas</span></h1>
       <p class="hero-sub">Cinematographer and photographer in Las Vegas. Short films, brands and portraits, and mostly the parts nobody planned.</p>
       <div class="hero-actions">
         <a class="btn" href="contact.html">Get in touch</a>
-        <button type="button" class="play" data-reel><i aria-hidden="true"></i>Watch the cinematography reel</button>
+        <button type="button" class="play" data-reel><i aria-hidden="true"></i><span class="long">Watch the cinematography reel</span><span class="short">Watch the reel</span></button>
       </div>
     </div>
     <div class="hero-meta mono" aria-label="Slideshow">
@@ -416,6 +458,16 @@
     </div>
   </section>
 
+  <!-- 2. At a glance -->
+  <section class="glance" aria-label="At a glance">
+    <dl>
+      <div><dt>Roles</dt><dd>Cinematographer, photographer, editor</dd></div>
+      <div><dt>Based in</dt><dd>Las Vegas, Nevada</dd></div>
+      <div><dt>Languages</dt><dd>English and Spanish</dd></div>
+      <div><dt>Edit &amp; color</dt><dd>Premiere Pro, DaVinci Resolve, CapCut, Lightroom, Photoshop</dd></div>
+      <div><dt>Training</dt><dd>Georgia Southern University<br>Georgia Film Academy</dd></div>
+    </dl>
+  </section>
 
   <!-- 3. Stories -->
   <section class="stories" id="work" aria-label="Selected work">
@@ -430,20 +482,20 @@
           <div class="story-meta"><div><h3>Julia &amp; Perry</h3><p>Wedding film, Las Vegas</p></div><span class="mono">JS 01 · FILM</span></div>
         </a>
         <a class="story" href="gallery-grad.html">
-          <figure><img src="images/home/s-grad.webp" width="1100" height="619" alt="A graduate walking away down a lamp-lined campus road" loading="lazy"><span class="af"></span></figure>
+          <figure><img src="images/home/s-grad.webp" width="1100" height="619" alt="A graduate walking away down a lamp-lined campus road" loading="lazy" decoding="async"><span class="af"></span></figure>
           <div class="story-meta"><div><h3>Milestones</h3><p>Georgia Southern graduates</p></div><span class="mono">JS 02 · PORTRAIT</span></div>
         </a>
         <a class="story" href="gallery-recital.html">
-          <figure><img src="images/home/s-recital.webp" width="1100" height="786" alt="A violinist resting his violin against his shoulder on a black background" loading="lazy"><span class="af"></span></figure>
+          <figure><img src="images/home/s-recital.webp" width="1100" height="786" alt="A violinist resting his violin against his shoulder on a black background" loading="lazy" decoding="async"><span class="af"></span></figure>
           <div class="story-meta"><div><h3>Performance</h3><p>Recital portraits</p></div><span class="mono">JS 03 · PORTRAIT</span></div>
         </a>
         <a class="story" href="gallery-commercial.html">
-          <figure><img src="images/home/s-affogato.webp" width="434" height="800" alt="Espresso being poured over an affogato on a dark background" loading="lazy"><span class="af"></span></figure>
+          <figure><img src="images/home/s-affogato.webp" width="434" height="800" alt="Espresso being poured over an affogato on a dark background" loading="lazy" decoding="async"><span class="af"></span></figure>
           <div class="story-meta"><div><h3>Affogato</h3><p>Culinary series</p></div><span class="mono">JS 04 · BRAND</span></div>
         </a>
         <a class="story film" href="videography.html#ephemeral">
           <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Short film</span><span class="film-name">Ephemeral</span><span class="film-play"><i></i>Watch</span></div>
-          <div class="story-meta"><div><h3>Ephemeral</h3><p>Cinematographer and colourist</p></div><span class="mono">JS 05 · FILM</span></div>
+          <div class="story-meta"><div><h3>Ephemeral</h3><p>Cinematographer and colorist</p></div><span class="mono">JS 05 · FILM</span></div>
         </a>
         <a class="story film" href="videography.html#health-services">
           <div class="film-card" aria-hidden="true"><span class="film-stick"></span><span class="film-kind mono">Spot</span><span class="film-name">Health Services</span><span class="film-play"><i></i>Watch</span></div>
@@ -473,7 +525,7 @@
       <h2 class="reveal">Trained as a <em>cinematographer.</em></h2>
       <p class="reveal">Before Vegas there was film school, at Georgia Southern University and the Georgia Film Academy. I directed, shot and edited short films, and worked as script supervisor on others.</p>
       <div class="cine-actions reveal">
-        <button type="button" class="play" data-reel><i aria-hidden="true"></i>Watch the cinematography reel</button>
+        <button type="button" class="play" data-reel><i aria-hidden="true"></i><span class="long">Watch the cinematography reel</span><span class="short">Watch the reel</span></button>
         <a class="textlink" href="videography.html">See the short films</a>
       </div>
     </div>
@@ -487,12 +539,12 @@
       </dl>
     </div>
     <ol class="films">
-      <li class="reveal"><span class="film-title">Ephemeral</span><span class="film-note">A short film about depression, friendship and mental health.</span><span class="film-role mono">Cinematographer · Colourist · Lighting, camera &amp; grip</span></li>
-      <li class="reveal"><span class="film-title">Blue Pill Red Pill</span><span class="film-note">A Matrix short.</span><span class="film-role mono">Script supervisor</span></li>
-      <li class="reveal"><span class="film-title">Code Words</span><span class="film-note">Georgia Film Academy project.</span><span class="film-role mono">Script supervisor</span></li>
-      <li class="reveal"><span class="film-title">Health Services</span><span class="film-note">A 45-second spot for the Georgia Southern campus clinic.</span><span class="film-role mono">Director · Editor</span></li>
-      <li class="reveal"><span class="film-title">Long Time No See</span><span class="film-note">Short film.</span><span class="film-role mono">Director · Cinematographer</span></li>
-      <li class="reveal"><span class="film-title">The Day After</span><span class="film-note">Short film.</span><span class="film-role mono">Director</span></li>
+      <li class="reveal"><a class="film-title" href="videography.html#ephemeral">Ephemeral</a><span class="film-note">A short film about depression, friendship and mental health.</span><span class="film-role mono">Cinematographer · Colorist · Lighting, camera &amp; grip</span></li>
+      <li class="reveal"><a class="film-title" href="videography.html#long-time-no-see">Long Time No See</a><span class="film-note">Short film.</span><span class="film-role mono">Director · Cinematographer</span></li>
+      <li class="reveal"><a class="film-title" href="videography.html#health-services">Health Services</a><span class="film-note">A 45-second spot for the Georgia Southern campus clinic.</span><span class="film-role mono">Director · Editor</span></li>
+      <li class="reveal"><a class="film-title" href="videography.html#the-day-after">The Day After</a><span class="film-note">Short film.</span><span class="film-role mono">Director</span></li>
+      <li class="reveal"><a class="film-title" href="videography.html#blue-pill-red-pill">Blue Pill Red Pill</a><span class="film-note">A Matrix short.</span><span class="film-role mono">Script supervisor</span></li>
+      <li class="reveal"><a class="film-title" href="videography.html#code-words">Code Words</a><span class="film-note">Georgia Film Academy project.</span><span class="film-role mono">Script supervisor</span></li>
     </ol>
   </section>
 
@@ -504,22 +556,22 @@
     </div>
     <ol class="sheet">
       <li class="roll" data-edge="JS 400  ▸ 14  ▸ 15  ▸ 16  ▸ 17">
-        <figure class="cell"><img src="images/home/t01.webp" width="640" height="427" alt="A graduate in a navy gown standing between hedges on a brick path" loading="lazy"><figcaption>14</figcaption></figure>
-        <figure class="cell"><img src="images/home/t02.webp" width="640" height="427" alt="A graduation cap flying into the trees above a raised hand" loading="lazy"><figcaption>15</figcaption></figure>
-        <figure class="cell"><img src="images/home/t03.webp" width="640" height="427" alt="The graduate with arms spread wide, kicking up one heel in front of the hedge letters" loading="lazy"><figcaption>16</figcaption></figure>
-        <figure class="cell"><img src="images/home/t04.webp" width="640" height="427" alt="The graduate walking away down a lamp-lined road, cap in hand" loading="lazy"><figcaption>17</figcaption></figure>
+        <figure class="cell"><img src="images/home/t01.webp" width="640" height="427" alt="A graduate in a navy gown standing between hedges on a brick path" loading="lazy" decoding="async"><figcaption aria-hidden="true">14</figcaption></figure>
+        <figure class="cell"><img src="images/home/t02.webp" width="640" height="427" alt="A graduation cap flying into the trees above a raised hand" loading="lazy" decoding="async"><figcaption aria-hidden="true">15</figcaption></figure>
+        <figure class="cell"><img src="images/home/t03.webp" width="640" height="427" alt="The graduate with arms spread wide, kicking up one heel in front of the hedge letters" loading="lazy" decoding="async"><figcaption aria-hidden="true">16</figcaption></figure>
+        <figure class="cell"><img src="images/home/t04.webp" width="640" height="427" alt="The graduate walking away down a lamp-lined road, cap in hand" loading="lazy" decoding="async"><figcaption aria-hidden="true">17</figcaption></figure>
       </li>
       <li class="roll" data-edge="JS 400  ▸ 18  ▸ 19  ▸ 20  ▸ 21">
-        <figure class="cell"><img src="images/home/t05.webp" width="640" height="426" alt="A scoop of ice cream waiting in a clear glass cup" loading="lazy"><figcaption>18</figcaption></figure>
-        <figure class="cell"><img src="images/home/t06.webp" width="640" height="426" alt="Espresso streaming from a glass jug onto the ice cream" loading="lazy"><figcaption>19</figcaption></figure>
-        <figure class="cell"><img src="images/home/t07.webp" width="640" height="426" alt="A rainbow sundae in a waffle bowl topped with a cherry" loading="lazy"><figcaption>20</figcaption></figure>
-        <figure class="cell"><img src="images/home/t08.webp" width="640" height="426" alt="The last drops of espresso leaving the jug" loading="lazy"><figcaption>21</figcaption></figure>
+        <figure class="cell"><img src="images/home/t05.webp" width="640" height="426" alt="A scoop of ice cream waiting in a clear glass cup" loading="lazy" decoding="async"><figcaption aria-hidden="true">18</figcaption></figure>
+        <figure class="cell"><img src="images/home/t06.webp" width="640" height="426" alt="Espresso streaming from a glass jug onto the ice cream" loading="lazy" decoding="async"><figcaption aria-hidden="true">19</figcaption></figure>
+        <figure class="cell"><img src="images/home/t07.webp" width="640" height="426" alt="A rainbow sundae in a waffle bowl topped with a cherry" loading="lazy" decoding="async"><figcaption aria-hidden="true">20</figcaption></figure>
+        <figure class="cell"><img src="images/home/t08.webp" width="640" height="426" alt="The last drops of espresso leaving the jug" loading="lazy" decoding="async"><figcaption aria-hidden="true">21</figcaption></figure>
       </li>
       <li class="roll" data-edge="JS 400  ▸ 22  ▸ 23  ▸ 24  ▸ 25">
-        <figure class="cell"><img src="images/home/t09.webp" width="640" height="427" alt="A violinist holding his violin close to his face against a warm red curtain" loading="lazy"><figcaption>22</figcaption></figure>
-        <figure class="cell"><img src="images/home/t10.webp" width="640" height="427" alt="The violinist playing on a wooden stage" loading="lazy"><figcaption>23</figcaption></figure>
-        <figure class="cell"><img src="images/home/t11.webp" width="640" height="427" alt="The violinist in profile, bow raised, lit from the side against black" loading="lazy"><figcaption>24</figcaption></figure>
-        <figure class="cell"><img src="images/home/t12.webp" width="640" height="427" alt="The violinist holding his violin close to his face on a black background" loading="lazy"><figcaption>25</figcaption></figure>
+        <figure class="cell"><img src="images/home/t09.webp" width="640" height="427" alt="A violinist holding his violin close to his face against a warm red curtain" loading="lazy" decoding="async"><figcaption aria-hidden="true">22</figcaption></figure>
+        <figure class="cell"><img src="images/home/t10.webp" width="640" height="427" alt="The violinist playing on a wooden stage" loading="lazy" decoding="async"><figcaption aria-hidden="true">23</figcaption></figure>
+        <figure class="cell"><img src="images/home/t11.webp" width="640" height="427" alt="The violinist in profile, bow raised, lit from the side against black" loading="lazy" decoding="async"><figcaption aria-hidden="true">24</figcaption></figure>
+        <figure class="cell"><img src="images/home/t12.webp" width="640" height="427" alt="The violinist holding his violin close to his face on a black background" loading="lazy" decoding="async"><figcaption aria-hidden="true">25</figcaption></figure>
       </li>
     </ol>
   </section>
@@ -531,11 +583,11 @@
       <p class="reveal">Film, photo, or both from the same person, so the story and the stills match.</p>
     </div>
     <ul class="svc" id="svc">
-      <li><a href="#cinematography" data-slate="1"><span class="svc-thumb svc-slate" aria-hidden="true">DP</span><span class="svc-name">Cinematography</span><span class="svc-desc">Short films and spots. Shot, lit and colour graded.</span><span class="svc-kind mono">FILM</span></a></li>
-      <li><a href="gallery-commercial.html" data-img="images/home/v-event.webp"><img class="svc-thumb" src="images/home/v-event.webp" alt="" loading="lazy"><span class="svc-name">Brand &amp; product</span><span class="svc-desc">Food and products, lit so the details sell.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
-      <li><a href="gallery-grad.html" data-img="images/home/v-portrait.webp"><img class="svc-thumb" src="images/home/v-portrait.webp" alt="" loading="lazy"><span class="svc-name">Portraits &amp; performers</span><span class="svc-desc">Graduates, musicians, headshots.</span><span class="svc-kind mono">PHOTO</span></a></li>
-      <li><a href="videography.html" data-img="images/home/v-social.webp"><img class="svc-thumb" src="images/home/v-social.webp" alt="" loading="lazy"><span class="svc-name">Social video</span><span class="svc-desc">Vertical edits with captions in English and Spanish.</span><span class="svc-kind mono">FILM</span></a></li>
-      <li><a href="about.html" data-img="images/home/v-colour.webp"><img class="svc-thumb" src="images/home/v-colour.webp" alt="" loading="lazy"><span class="svc-name">Editing &amp; colour</span><span class="svc-desc">Premiere Pro, DaVinci Resolve and CapCut. Lightroom and Photoshop for stills.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
+      <li><a href="#cinematography" data-slate="1"><span class="svc-thumb svc-slate" aria-hidden="true">DP</span><span class="svc-name">Cinematography</span><span class="svc-desc">Short films and spots. Shot, lit and color graded.</span><span class="svc-kind mono">FILM</span></a></li>
+      <li><a href="gallery-commercial.html" data-img="images/home/v-event.webp"><img class="svc-thumb" src="images/home/v-event.webp" width="379" height="700" alt="" loading="lazy" decoding="async"><span class="svc-name">Brand &amp; product</span><span class="svc-desc">Food and products, lit so the details sell.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
+      <li><a href="gallery-grad.html" data-img="images/home/v-portrait.webp"><img class="svc-thumb" src="images/home/v-portrait.webp" width="700" height="394" alt="" loading="lazy" decoding="async"><span class="svc-name">Portraits &amp; performers</span><span class="svc-desc">Graduates, musicians, headshots.</span><span class="svc-kind mono">PHOTO</span></a></li>
+      <li><a data-img="images/home/v-social.webp"><img class="svc-thumb" src="images/home/v-social.webp" width="700" height="467" alt="" loading="lazy" decoding="async"><span class="svc-name">Social video</span><span class="svc-desc">Vertical edits with captions in English and Spanish.</span><span class="svc-kind mono">FILM</span></a></li>
+      <li><a href="videography.html#ephemeral" data-img="images/home/v-colour.webp"><img class="svc-thumb" src="images/home/v-colour.webp" width="700" height="467" alt="" loading="lazy" decoding="async"><span class="svc-name">Editing &amp; color</span><span class="svc-desc">Premiere Pro, DaVinci Resolve and CapCut. Lightroom and Photoshop for stills.</span><span class="svc-kind mono">FILM · PHOTO</span></a></li>
     </ul>
     <div class="preview" id="preview" aria-hidden="true"><img alt="" id="previewImg"><div class="preview-slate"><span>Director of photography</span><b>Juan Sebastian</b></div></div>
   </section>
@@ -553,7 +605,7 @@
 
   <!-- 7. About -->
   <section class="about" id="story" aria-label="About Juan">
-    <img class="reveal" src="images/home/juan.webp" width="507" height="900" alt="Portrait of Juan Sebastian" loading="lazy">
+    <img class="reveal" src="images/home/juan.webp" width="507" height="900" alt="Portrait of Juan Sebastian" loading="lazy" decoding="async">
     <div class="about-copy">
       <h2 class="reveal">Hi, I'm Juan.</h2>
       <p class="reveal">I grew up in Colombia, where I had a dream bigger than myself. It took shape after I moved to the United States to study multimedia and film, and learned to observe the world closely.</p>
@@ -581,10 +633,10 @@
   </nav>
 </main>
 
-<div class="reel" id="reel" hidden role="dialog" aria-modal="true" aria-label="Cinematography reel">
+<dialog class="reel" id="reel" aria-label="Cinematography reel">
   <button type="button" class="reel-close" id="reelClose">Close</button>
-  <div class="reel-frame"><iframe id="reelFrame" title="Juan Sebastian cinematography reel" src="about:blank" data-src="https://player.vimeo.com/video/1106622625?autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-</div>
+  <div class="reel-frame"><iframe id="reelFrame" title="Juan Sebastian cinematography reel" src="about:blank" data-src="https://player.vimeo.com/video/1106622625?autoplay=1&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+</dialog>
 
 <script src="js/lenis.min.js"></script>
 <script>
@@ -602,7 +654,7 @@
     const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
   }
-  document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  document.querySelectorAll('a[href^="#"]:not(.skip)').forEach(a => a.addEventListener('click', e => {
     const id = a.getAttribute('href');
     const el = id.length > 1 && document.querySelector(id);
     if (!el) return;
@@ -618,6 +670,10 @@
 
   /* hero: frames settle into focus, one at a time. The bar shows time to the next photo. */
   const frames = [...document.querySelectorAll('.frame')];
+  /* Only the first photo loads with the page. The others follow once it has finished,
+     and the slideshow waits for a photo rather than fading to an empty frame. */
+  const loadFrame = f => { const im = f.querySelector('img[data-src]'); if (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); } };
+  const frameReady = f => { const im = f.querySelector('img'); return !im.hasAttribute('data-src') && im.complete && im.naturalWidth > 1; };
   const fr = document.getElementById('fr'), cap = document.getElementById('cap');
   const pauseBtn = document.getElementById('pause'), bar = document.getElementById('frbar');
   let idx = 0, playing = !reduce;
@@ -627,7 +683,7 @@
     if (playing) bar.classList.add('run');
   };
   const show = i => {
-    frames[idx].classList.remove('on'); idx = (i + frames.length) % frames.length; frames[idx].classList.add('on');
+    frames[idx].classList.remove('on'); idx = (i + frames.length) % frames.length; loadFrame(frames[idx]); frames[idx].classList.add('on');
     fr.textContent = String(idx + 1).padStart(2, '0') + ' / ' + total;
     cap.textContent = frames[idx].dataset.cap;
     runBar();
@@ -637,7 +693,11 @@
     pauseBtn.setAttribute('aria-label', on ? 'Pause slideshow' : 'Play slideshow');
     pauseBtn.innerHTML = on ? '<span class="ico-pause" aria-hidden="true"></span>' : '<span class="ico-play" aria-hidden="true"></span>';
   };
-  bar.addEventListener('animationend', () => { if (playing) show(idx + 1); });
+  bar.addEventListener('animationend', () => {
+    if (!playing) return;
+    const next = frames[(idx + 1) % frames.length];
+    if (frameReady(next)) show(idx + 1); else { loadFrame(next); runBar(); }
+  });
   document.getElementById('prev').addEventListener('click', () => show(idx - 1));
   document.getElementById('next').addEventListener('click', () => show(idx + 1));
   pauseBtn.addEventListener('click', () => {
@@ -646,6 +706,8 @@
   });
   document.addEventListener('visibilitychange', () => bar.classList.toggle('hold', document.hidden || !playing));
   setPlaying(playing); runBar();
+  const loadFrames = () => setTimeout(() => frames.forEach(loadFrame), 300);
+  if (document.readyState === 'complete') loadFrames(); else window.addEventListener('load', loadFrames);
 
   /* reveal: only things below the fold at load start masked */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }), { threshold: 0.15 });
@@ -710,7 +772,7 @@
   const preview = document.getElementById('preview'), previewImg = document.getElementById('previewImg');
   let mx = 0, my = 0, px = 0, py = 0, vx = 0, active = false;
   if (fine) {
-    document.querySelectorAll('#svc a').forEach(a => {
+    document.querySelectorAll('#svc a[href]').forEach(a => {
       a.addEventListener('mouseenter', () => {
         const slateMode = !!a.dataset.slate;
         preview.classList.toggle('slate-mode', slateMode);
@@ -732,20 +794,16 @@
     requestAnimationFrame(follow);
   }
 
-  /* reel viewer: the Vimeo player only loads when opened */
+  /* reel viewer: a dialog, so focus stays inside it and Esc closes it.
+     The Vimeo player only loads when it opens. */
   const reel = document.getElementById('reel'), reelFrame = document.getElementById('reelFrame');
-  let reelOpener = null;
-  const openReel = e => {
-    reelOpener = e.currentTarget; reelFrame.src = reelFrame.dataset.src; reel.hidden = false;
+  const openReel = () => {
+    reelFrame.src = reelFrame.dataset.src;
+    if (reel.showModal) reel.showModal(); else reel.setAttribute('open', '');
     if (lenis) lenis.stop(); document.body.style.overflow = 'hidden';
-    document.getElementById('reelClose').focus();
   };
-  const closeReel = () => {
-    if (reel.hidden) return;
-    reel.hidden = true; reelFrame.src = 'about:blank';
-    if (lenis) lenis.start(); document.body.style.overflow = '';
-    if (reelOpener) reelOpener.focus();
-  };
+  const closeReel = () => { if (reel.close) reel.close(); else { reel.removeAttribute('open'); reel.dispatchEvent(new Event('close')); } };
+  reel.addEventListener('close', () => { reelFrame.src = 'about:blank'; if (lenis) lenis.start(); document.body.style.overflow = ''; });
   document.querySelectorAll('[data-reel]').forEach(b => b.addEventListener('click', openReel));
   document.getElementById('reelClose').addEventListener('click', closeReel);
   reel.addEventListener('click', e => { if (e.target === reel) closeReel(); });
@@ -760,7 +818,7 @@
   };
   menuBtn.addEventListener('click', () => setMenu(menu.hidden));
   menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeReel(); if (!menu.hidden) setMenu(false); } });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setMenu(false); menuBtn.focus(); } });
 
   const start = () => { layoutStories(); update(); };
   if (document.readyState === 'complete') start(); else window.addEventListener('load', start);
